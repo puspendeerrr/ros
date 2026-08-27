@@ -1,0 +1,48 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum RestaurantStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+}
+
+enum TokenType {
+  VERIFY_EMAIL
+  RESET_PASSWORD
+}
+
+model Restaurant {
+  id             String           @id @default(cuid())
+  restaurantName String           @map("restaurant_name")
+  ownerName      String           @map("owner_name")
+  slug           String           @unique
+  email          String           @unique
+  phone          String           @unique
+  passwordHash   String           @map("password_hash")
+  status         RestaurantStatus @default(PENDING)
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @updatedAt @map("updated_at")
+  tokens         Token[]
+
+  @@map("restaurants")
+}
+
+model Token {
+  id           String     @id @default(cuid())
+  restaurantId String     @map("restaurant_id")
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  tokenHash    String     @unique @map("token_hash")
+  type         TokenType
+  expiresAt    DateTime   @map("expires_at")
+  used         Boolean    @default(false)
+  createdAt    DateTime   @default(now()) @map("created_at")
+
+  @@map("tokens")
+}
