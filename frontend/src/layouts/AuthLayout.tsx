@@ -3,6 +3,8 @@ import { Outlet } from 'react-router-dom';
 import { Layout, Row, Col, Flex, Typography, Grid } from 'antd';
 import { SafetyCertificateOutlined, ThunderboltOutlined, LineChartOutlined } from '@ant-design/icons';
 
+import logo from '../assets/logo.png';
+
 const { Content } = Layout;
 const { Title, Text } = Typography;
 const { useBreakpoint } = Grid;
@@ -22,7 +24,7 @@ export const AuthLayout: React.FC = () => {
               padding: '64px',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'space-between',
+              justifyContent: 'center', // Vertically center the complete hero section
               position: 'relative',
               overflow: 'hidden'
             }}>
@@ -39,46 +41,34 @@ export const AuthLayout: React.FC = () => {
                 pointerEvents: 'none'
               }} />
 
-              {/* Logo */}
-              <Flex align="center" gap={10}>
-                <div style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '8px',
-                  background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 'bold',
-                  color: 'white',
-                  fontSize: '18px',
-                  boxShadow: '0 4px 12px rgba(249, 115, 22, 0.3)'
-                }}>
-                  R
+              {/* Hero block wrapper */}
+              <div style={{ zIndex: 1, maxWidth: '460px', width: '100%' }}>
+                {/* Logo directly above the main heading */}
+                <div style={{ width: '260px', height: '60px', overflow: 'hidden', marginBottom: '32px' }}>
+                  <img 
+                    src={logo} 
+                    alt="Restaurant OS" 
+                    style={{ width: '260px', height: '260px', marginTop: '-100px', objectFit: 'contain' }} 
+                  />
                 </div>
-                <Title level={4} style={{ margin: 0, color: '#F8FAFC', letterSpacing: '-0.5px' }}>
-                  Restaurant OS
-                </Title>
-              </Flex>
 
-              {/* Tagline & Core value */}
-              <div style={{ zIndex: 1, maxWidth: '460px', margin: '40px 0' }}>
+                {/* Tagline & Core value */}
                 <Title level={1} style={{ 
                   color: '#FFFFFF', 
                   fontSize: '36px', 
                   lineHeight: '1.2',
                   fontWeight: 800,
-                  marginBottom: '20px',
-                  letterSpacing: '-1px'
+                  marginBottom: '16px',
+                  letterSpacing: '-1.0px'
                 }}>
                   Run your restaurant like a tech company.
                 </Title>
-                <Text style={{ color: '#94A3B8', fontSize: '15px', display: 'block', marginBottom: '32px', lineHeight: '1.6' }}>
+                <Text style={{ color: '#94A3B8', fontSize: '15px', display: 'block', marginBottom: '40px', lineHeight: '1.6' }}>
                   The unified operating system for modern food service operations. Register your owner account to manage menu modules, table ordering, kitchen dispatching, and live operations.
                 </Text>
 
                 {/* Micro Features list */}
-                <Flex vertical gap={20}>
+                <Flex vertical gap={24}>
                   <Flex gap={16} align="start">
                     <div style={{ padding: '8px', borderRadius: '8px', background: 'rgba(249, 115, 22, 0.1)', color: '#F97316', display: 'flex' }}>
                       <ThunderboltOutlined style={{ fontSize: '20px' }} />
@@ -111,8 +101,8 @@ export const AuthLayout: React.FC = () => {
                 </Flex>
               </div>
 
-              {/* Footer text */}
-              <Text style={{ color: '#475569', fontSize: '12px' }}>
+              {/* Absolute footer text at the bottom */}
+              <Text style={{ color: '#475569', fontSize: '12px', position: 'absolute', bottom: '40px', left: '64px' }}>
                 © {new Date().getFullYear()} Restaurant OS. All rights reserved.
               </Text>
             </Col>
@@ -130,24 +120,8 @@ export const AuthLayout: React.FC = () => {
             <div style={{ width: '100%', maxWidth: '440px' }}>
               {/* Mobile Logo Header */}
               {!isMd && (
-                <Flex align="center" justify="center" gap={10} style={{ marginBottom: '40px' }}>
-                  <div style={{
-                    width: '32px',
-                    height: '32px',
-                    borderRadius: '6px',
-                    background: '#F97316',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontWeight: 'bold',
-                    color: 'white',
-                    fontSize: '16px'
-                  }}>
-                    R
-                  </div>
-                  <Title level={4} style={{ margin: 0, letterSpacing: '-0.5px' }}>
-                    Restaurant OS
-                  </Title>
+                <Flex align="center" justify="center" style={{ height: '40px', overflow: 'hidden', marginBottom: '32px' }}>
+                  <img src={logo} alt="Restaurant OS" style={{ height: '200px', marginTop: '-80px', marginBottom: '-80px', objectFit: 'contain' }} />
                 </Flex>
               )}
               <Outlet />

@@ -61,7 +61,7 @@ export class AuthService {
     });
 
     // 7. Send verification email
-    const verificationUrl = `${env.FRONTEND_URL}/verify-email?token=${token}`;
+    const verificationUrl = `${env.PUBLIC_BASE_URL}/verify-email?token=${token}`;
     await sendEmail({
       to: restaurant.email,
       subject: 'Verify Your Restaurant OS Account',
@@ -198,7 +198,7 @@ export class AuthService {
       expiresAt,
     });
 
-    const resetUrl = `${env.FRONTEND_URL}/reset-password?token=${token}`;
+    const resetUrl = `${env.PUBLIC_BASE_URL}/reset-password?token=${token}`;
     await sendEmail({
       to: restaurant.email,
       subject: 'Reset Your Restaurant OS Password',

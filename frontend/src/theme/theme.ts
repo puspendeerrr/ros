@@ -20,7 +20,15 @@ export const themeConfig: ThemeConfig = {
       borderRadius: 6,
     },
     Card: {
-      borderRadiusLG: 12,
+      borderRadiusLG: 16,
+    },
+    Menu: {
+      darkItemBg: 'transparent',
+      darkItemColor: '#94A3B8',
+      darkItemSelectedBg: '#F97316',
+      darkItemSelectedColor: '#FFFFFF',
+      darkItemHoverBg: '#1E293B',
+      darkItemHoverColor: '#FFFFFF',
     },
   },
 };
