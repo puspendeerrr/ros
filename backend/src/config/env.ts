@@ -11,6 +11,7 @@ const envSchema = z.object({
   JWT_REFRESH_SECRET: z.string().min(8),
   CORS_ORIGINS: z.string().default('http://localhost:5173'),
   PUBLIC_BASE_URL: z.string().url().default('http://localhost:5173'),
+  REQUIRE_EMAIL_VERIFICATION: z.string().default('false').transform((val) => val === 'true'),
   SMTP_HOST: z.string().optional(),
   SMTP_PORT: z.coerce.number().optional(),
   SMTP_USER: z.string().optional(),

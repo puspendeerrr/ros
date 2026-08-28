@@ -38,7 +38,8 @@ export class AuthService {
     // 4. Hash password
     const passwordHash = await bcrypt.hash(input.password, SALT_ROUNDS);
 
-    // 5. Save restaurant (defaults to PENDING)
+    // 5. Save restaurant
+    const status = env.REQUIRE_EMAIL_VERIFICATION ? RestaurantStatus.PENDING : RestaurantStatus.ACTIVE;
     const restaurant = await this.repository.createRestaurant({
       restaurantName: input.restaurantName,
       ownerName: input.ownerName,
@@ -46,38 +47,54 @@ export class AuthService {
       email: input.email,
       phone: input.phone,
       passwordHash,
+      status,
     });
 
-    // 6. Generate email verification token
-    const token = generateRandomToken();
-    const tokenHash = hashToken(token);
-    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
+    // 6. Generate token and send email
+    if (env.REQUIRE_EMAIL_VERIFICATION) {
+      const token = generateRandomToken();
+      const tokenHash = hashToken(token);
+      const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
-    await this.repository.createToken({
-      restaurantId: restaurant.id,
-      tokenHash,
-      type: TokenType.VERIFY_EMAIL,
-      expiresAt,
-    });
+      await this.repository.createToken({
+        restaurantId: restaurant.id,
+        tokenHash,
+        type: TokenType.VERIFY_EMAIL,
+        expiresAt,
+      });
 
-    // 7. Send verification email
-    const verificationUrl = `${env.PUBLIC_BASE_URL}/verify-email?token=${token}`;
-    await sendEmail({
-      to: restaurant.email,
-      subject: 'Verify Your Restaurant OS Account',
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
-          <h2 style="color: #F97316;">Welcome to Restaurant OS!</h2>
-          <p>Hi ${restaurant.ownerName},</p>
-          <p>Thank you for registering <strong>${restaurant.restaurantName}</strong>. Please verify your email address to activate your account:</p>
-          <div style="text-align: center; margin: 30px 0;">
-            <a href="${verificationUrl}" style="background-color: #F97316; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">Verify Email Address</a>
+      const verificationUrl = `${env.PUBLIC_BASE_URL}/verify-email?token=${token}`;
+      await sendEmail({
+        to: restaurant.email,
+        subject: 'Verify Your Restaurant OS Account',
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
+            <h2 style="color: #F97316;">Welcome to Restaurant OS!</h2>
+            <p>Hi ${restaurant.ownerName},</p>
+            <p>Thank you for registering <strong>${restaurant.restaurantName}</strong>. Please verify your email address to activate your account:</p>
+            <div style="text-align: center; margin: 30px 0;">
+              <a href="${verificationUrl}" style="background-color: #F97316; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">Verify Email Address</a>
+            </div>
+            <p style="font-size: 12px; color: #666;">This verification link will expire in 24 hours. If the button above doesn't work, copy and paste this link into your browser:</p>
+            <p style="font-size: 12px; color: #666; word-break: break-all;">${verificationUrl}</p>
           </div>
-          <p style="font-size: 12px; color: #666;">This verification link will expire in 24 hours. If the button above doesn't work, copy and paste this link into your browser:</p>
-          <p style="font-size: 12px; color: #666; word-break: break-all;">${verificationUrl}</p>
-        </div>
-      `,
-    });
+        `,
+      });
+    } else {
+      // Send a general welcome email
+      await sendEmail({
+        to: restaurant.email,
+        subject: 'Welcome to Restaurant OS!',
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
+            <h2 style="color: #F97316;">Welcome to Restaurant OS!</h2>
+            <p>Hi ${restaurant.ownerName},</p>
+            <p>Thank you for registering <strong>${restaurant.restaurantName}</strong>. Your account is active and ready to go!</p>
+            <p>You can now log in to the dashboard to build your menu, manage tables, and run your restaurant operations.</p>
+          </div>
+        `,
+      });
+    }
 
     return restaurant;
   }

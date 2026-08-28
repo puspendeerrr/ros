@@ -33,6 +33,7 @@ export class AuthRepository {
     email: string;
     phone: string;
     passwordHash: string;
+    status?: RestaurantStatus;
   }): Promise<Restaurant> {
     return prisma.restaurant.create({
       data: {
@@ -42,7 +43,7 @@ export class AuthRepository {
         email: data.email.toLowerCase().trim(),
         phone: data.phone.trim(),
         passwordHash: data.passwordHash,
-        status: RestaurantStatus.PENDING,
+        status: data.status ?? RestaurantStatus.PENDING,
       },
     });
   }
