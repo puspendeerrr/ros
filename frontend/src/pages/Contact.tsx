@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { 
   MailOutlined, 
   ClockCircleOutlined, 
-  EnvironmentOutlined,
   CustomerServiceOutlined
 } from '@ant-design/icons';
 import { SEOManager } from '../components/SEOManager.js';
@@ -155,13 +154,7 @@ export const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="info-row">
-                <div className="info-icon-wrap"><EnvironmentOutlined /></div>
-                <div>
-                  <span style={{ display: 'block', fontSize: '12px', color: '#64748B', fontWeight: 700 }}>OFFICE LOCATION</span>
-                  <span style={{ color: '#0F172A', fontWeight: 700 }}>Delhi NCR, India — Fully Remote Support</span>
-                </div>
-              </div>
+
 
               <div className="info-row">
                 <div className="info-icon-wrap"><CustomerServiceOutlined /></div>

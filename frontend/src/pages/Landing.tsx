@@ -281,17 +281,57 @@ export const Landing: React.FC = () => {
           border-color: #F97316;
           box-shadow: 0 16px 36px rgba(249,115,22,0.06);
         }
-        .timeline-bullet {
-          width: 40px;
-          height: 40px;
+        .timeline-line {
+          position: absolute;
+          top: 54px;
+          left: 60px;
+          right: 60px;
+          height: 2px;
+          background: #E2E8F0;
+          z-index: 1;
+        }
+        .timeline-card-redesign {
+          position: relative;
+          z-index: 2;
+          background: #FFFFFF;
+          border: 1px solid #E2E8F0;
+          border-radius: 20px;
+          padding: 32px 24px;
+          box-shadow: 0 4px 20px rgba(15,23,42,0.01);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          text-align: center;
+          height: 100%;
+        }
+        .timeline-card-redesign:hover {
+          transform: translateY(-6px);
+          border-color: #F97316;
+          box-shadow: 0 16px 36px rgba(249,115,22,0.06);
+        }
+        .timeline-card-redesign:hover .timeline-bullet-redesign {
+          background: #F97316;
+          color: #FFFFFF;
+          border-color: #F97316;
+          box-shadow: 0 8px 20px rgba(249,115,22,0.25);
+        }
+        .timeline-bullet-redesign {
+          width: 44px;
+          height: 44px;
           border-radius: 50%;
-          background: #FFF7ED;
-          border: 2px solid #FFEDD5;
-          display: flex;
+          background: #FFFFFF;
+          border: 2px solid #E2E8F0;
+          display: inline-flex;
           align-items: center;
           justify-content: center;
           font-weight: 800;
-          color: #F97316;
+          color: #475569;
+          font-size: 15px;
+          transition: all 0.3s;
+          margin-bottom: 24px;
+        }
+        @media (max-width: 768px) {
+          .timeline-line {
+            display: none !important;
+          }
         }
         .mockup-tab-btn {
           padding: 10px 20px;
@@ -591,25 +631,28 @@ export const Landing: React.FC = () => {
             </Paragraph>
           </div>
 
-          <Row gutter={[40, 40]} justify="center">
-            {[
-              { step: '01', title: 'Setup Restaurant Profile', body: 'Register business operations, maps address, contacts, and brand logos.' },
-              { step: '02', title: 'Enter Menu Details', body: 'Upload food categories, dish photos, modifier pricing, and diet labels.' },
-              { step: '03', title: 'Generate QR Stand SVG', body: 'Download vector files of table-specific QR codes, custom to your styling.' },
-              { step: '04', title: 'Customers Scan to View', body: 'Guests scan using basic smartphone cameras. Menu renders instantly.' },
-              { step: '05', title: 'Operations Grow', body: 'Analyze analytics telemetry, update menu availability, and scaling.' }
-            ].map((node, index) => (
-              <Col xs={24} md={4} key={index}>
-                <div style={{ position: 'relative', textAlign: 'center' }}>
-                  <div style={{ display: 'inline-flex', justifyContent: 'center', marginBottom: '20px' }}>
-                    <div className="timeline-bullet">{node.step}</div>
+          <div style={{ position: 'relative' }}>
+            {/* Desktop Connector Line */}
+            <div className="timeline-line" />
+            
+            <Row gutter={[20, 20]} justify="center">
+              {[
+                { step: '01', title: 'Setup Profile', body: 'Register business operations, maps address, contacts, and brand logos.' },
+                { step: '02', title: 'Enter Menu Details', body: 'Upload food categories, dish photos, modifier pricing, and diet labels.' },
+                { step: '03', title: 'Generate QR Stand', body: 'Download vector files of table-specific QR codes, custom to your styling.' },
+                { step: '04', title: 'Scan to View', body: 'Guests scan using basic smartphone cameras. Menu renders instantly.' },
+                { step: '05', title: 'Operations Grow', body: 'Analyze analytics telemetry, update menu availability, and scaling.' }
+              ].map((node, index) => (
+                <Col xs={24} sm={12} md={4} key={index}>
+                  <div className="timeline-card-redesign">
+                    <div className="timeline-bullet-redesign">{node.step}</div>
+                    <Title level={4} style={{ fontSize: '15px', fontWeight: 800, color: '#0F172A', margin: '0 0 10px 0' }}>{node.title}</Title>
+                    <Paragraph style={{ fontSize: '13px', color: '#64748B', lineHeight: '1.6', margin: 0 }}>{node.body}</Paragraph>
                   </div>
-                  <Title level={4} style={{ fontSize: '15px', fontWeight: 800, color: '#0F172A', margin: '0 0 8px 0' }}>{node.title}</Title>
-                  <Paragraph style={{ fontSize: '12.5px', color: '#64748B', lineHeight: '1.6', margin: 0 }}>{node.body}</Paragraph>
-                </div>
-              </Col>
-            ))}
-          </Row>
+                </Col>
+              ))}
+            </Row>
+          </div>
         </div>
       </section>
 
