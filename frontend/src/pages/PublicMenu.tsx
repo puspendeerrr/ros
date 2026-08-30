@@ -126,6 +126,38 @@ export const PublicMenu: React.FC = () => {
   return (
     <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <style>{`
+        .public-menu-banner {
+          width: 100%;
+          position: relative;
+          background-position: center;
+          background-size: cover;
+          height: 320px;
+        }
+        .public-restaurant-logo {
+          width: 90px;
+          height: 90px;
+          border-radius: 50% !important;
+          border: 4px solid #FFFFFF;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          flex-shrink: 0;
+        }
+        @media (max-width: 991px) {
+          .public-menu-banner {
+            height: 260px;
+          }
+        }
+        @media (max-width: 576px) {
+          .public-menu-banner {
+            height: 200px;
+          }
+          .public-restaurant-logo {
+            width: 70px;
+            height: 70px;
+          }
+          .public-restaurant-card .ant-card-body {
+            padding: 20px 16px !important;
+          }
+        }
         @media (max-width: 576px) {
           .desktop-branding-logo-wrapper { display: none !important; }
           .mobile-branding-logo-wrapper { display: flex !important; }
@@ -228,68 +260,81 @@ export const PublicMenu: React.FC = () => {
       </div>
 
       {/* Restaurant Header Banner */}
-      <div style={{
-        background: restaurant.coverImageUrl 
-          ? `url(${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${restaurant.coverImageUrl}) center/cover`
-          : 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
-        height: '140px',
-        width: '100%',
-        position: 'relative'
-      }}>
-        {/* Transparent overlay */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(15, 23, 42, 0.4)'
-        }} />
+      <div 
+        className="public-menu-banner"
+        style={{
+          backgroundImage: restaurant.coverImageUrl 
+            ? `linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.35)), url(${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${restaurant.coverImageUrl})`
+            : 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+        }}
+      >
+        {/* Watermark logo overlay when no cover image exists */}
+        {!restaurant.coverImageUrl && (
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            opacity: 0.06,
+            width: '320px',
+            height: '80px',
+            overflow: 'hidden',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            pointerEvents: 'none'
+          }}>
+            <img src={logo} alt="Restaurant OS Logo" style={{ height: '320px', objectFit: 'contain' }} />
+          </div>
+        )}
       </div>
 
       {/* Main Content Area */}
-      <div style={{ maxWidth: '640px', margin: '0 auto', padding: '0 16px 64px 16px', position: 'relative', marginTop: '-48px', zIndex: 10 }}>
+      <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 16px 64px 16px', position: 'relative', marginTop: '-80px', zIndex: 10 }}>
         {/* Restaurant Header Card */}
         <Card
           bordered={false}
+          className="public-restaurant-card"
           style={{
-            borderRadius: '16px',
-            boxShadow: '0 10px 25px rgba(15, 23, 42, 0.06)',
-            marginBottom: '24px',
+            borderRadius: '20px',
+            boxShadow: '0 10px 30px rgba(15, 23, 42, 0.08)',
+            marginBottom: '32px',
             background: '#FFFFFF'
           }}
-          bodyStyle={{ padding: '24px' }}
+          bodyStyle={{ padding: '32px' }}
         >
-          <Flex align="center" gap={16} style={{ marginBottom: '16px' }}>
+          <Flex align="start" gap={20} wrap="wrap">
             {restaurant.logoUrl ? (
               <img
                 src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${restaurant.logoUrl}`}
                 alt={restaurant.restaurantName}
-                style={{ width: '64px', height: '64px', borderRadius: '12px', objectFit: 'cover', border: '1px solid #F1F5F9' }}
+                className="public-restaurant-logo"
+                style={{ objectFit: 'cover' }}
               />
             ) : (
-              <div style={{
-                width: '64px',
-                height: '64px',
-                borderRadius: '12px',
-                background: '#F97316',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#FFFFFF',
-                fontSize: '24px',
-                fontWeight: 'bold'
-              }}>
+              <div 
+                className="public-restaurant-logo"
+                style={{
+                  background: '#F97316',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#FFFFFF',
+                  fontSize: '28px',
+                  fontWeight: 'bold'
+                }}
+              >
                 <ShopOutlined />
               </div>
             )}
-            <div>
-              <Title level={3} style={{ margin: '0 0 4px 0', fontWeight: 800, letterSpacing: '-0.5px', color: '#0F172A' }}>
+            
+            <Flex vertical gap={6} style={{ flex: 1, minWidth: '240px' }}>
+              <Title level={2} style={{ margin: '0 0 2px 0', fontWeight: 800, letterSpacing: '-0.8px', color: '#0F172A', fontSize: '26px' }}>
                 {restaurant.restaurantName}
               </Title>
               <Flex gap={12} wrap="wrap" align="center">
-                <Text type="secondary" style={{ fontSize: '13px' }}>
-                  <EnvironmentOutlined style={{ marginRight: '4px' }} /> {locationStr}
+                <Text type="secondary" style={{ fontSize: '13px', fontWeight: 500 }}>
+                  <EnvironmentOutlined style={{ marginRight: '4px', color: '#F97316' }} /> {locationStr}
                 </Text>
                 {restaurant.googleMapsUrl && (
                   <Button
@@ -298,38 +343,53 @@ export const PublicMenu: React.FC = () => {
                     href={restaurant.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ padding: 0, height: 'auto', color: '#F97316', fontSize: '13px' }}
+                    style={{ padding: 0, height: 'auto', color: '#F97316', fontSize: '13px', fontWeight: 600 }}
                   >
                     Get Directions
                   </Button>
                 )}
               </Flex>
-            </div>
+              {restaurant.description && (
+                <Paragraph style={{ margin: '8px 0 0 0', color: '#475569', fontSize: '13px', lineHeight: '1.6' }}>
+                  {restaurant.description}
+                </Paragraph>
+              )}
+            </Flex>
           </Flex>
 
-          {restaurant.description && (
-            <Paragraph style={{ margin: '0 0 16px 0', color: '#475569', fontSize: '13px', lineHeight: '1.6' }}>
-              {restaurant.description}
-            </Paragraph>
-          )}
-
-          {/* Operating hours & phone */}
-          <Flex vertical gap={8} style={{ background: '#F8FAFC', padding: '12px', borderRadius: '8px', border: '1px solid #F1F5F9' }}>
+          {/* Operating hours & phone pills */}
+          <Flex gap={12} wrap="wrap" style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid #F1F5F9' }}>
             {(restaurant.openingTime || restaurant.closingTime) && (
-              <Flex align="center" gap={8}>
+              <div style={{ 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '8px', 
+                background: '#FFF7ED', 
+                padding: '6px 14px', 
+                borderRadius: '20px', 
+                border: '1px solid #FFEDD5' 
+              }}>
                 <ClockCircleOutlined style={{ color: '#F97316', fontSize: '13px' }} />
-                <Text style={{ fontSize: '12px', color: '#475569', fontWeight: 500 }}>
-                  Hours: {restaurant.openingTime || '10:00 AM'} - {restaurant.closingTime || '11:00 PM'}
+                <Text style={{ fontSize: '12px', color: '#C2410C', fontWeight: 600 }}>
+                  Open: {restaurant.openingTime || '10:00 AM'} - {restaurant.closingTime || '11:00 PM'}
                 </Text>
-              </Flex>
+              </div>
             )}
             {restaurant.phone && (
-              <Flex align="center" gap={8}>
-                <PhoneOutlined style={{ color: '#F97316', fontSize: '13px' }} />
-                <Text style={{ fontSize: '12px', color: '#475569', fontWeight: 500 }}>
-                  Phone: {restaurant.phone}
+              <div style={{ 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '8px', 
+                background: '#F0FDF4', 
+                padding: '6px 14px', 
+                borderRadius: '20px', 
+                border: '1px solid #DCFCE7' 
+              }}>
+                <PhoneOutlined style={{ color: '#16A34A', fontSize: '13px' }} />
+                <Text style={{ fontSize: '12px', color: '#14532D', fontWeight: 600 }}>
+                  Call: {restaurant.phone}
                 </Text>
-              </Flex>
+              </div>
             )}
           </Flex>
         </Card>
@@ -358,7 +418,7 @@ export const PublicMenu: React.FC = () => {
             />
           </Card>
         ) : (
-          <Space direction="vertical" size={32} style={{ width: '100%' }}>
+          <Space direction="vertical" size={40} style={{ width: '100%' }}>
             {categories.map((category: any) => {
               // Filter items inside this category based on search query
               const filteredItems = (category.menuItems || []).filter((item: any) =>
