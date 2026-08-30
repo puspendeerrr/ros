@@ -114,7 +114,7 @@ export const Dashboard: React.FC = () => {
 
         {/* Quick Statistics Cards */}
         <Row gutter={[16, 16]}>
-          <Col xs={24} sm={12} lg={6}>
+          <Col xs={12} sm={12} lg={6}>
             <Card bordered={false} style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
               <Statistic
                 title={<Text type="secondary" style={{ fontSize: '13px', fontWeight: 500 }}>Categories</Text>}
@@ -125,7 +125,7 @@ export const Dashboard: React.FC = () => {
               />
             </Card>
           </Col>
-          <Col xs={24} sm={12} lg={6}>
+          <Col xs={12} sm={12} lg={6}>
             <Card bordered={false} style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
               <Statistic
                 title={<Text type="secondary" style={{ fontSize: '13px', fontWeight: 500 }}>Total Items</Text>}
@@ -136,7 +136,7 @@ export const Dashboard: React.FC = () => {
               />
             </Card>
           </Col>
-          <Col xs={24} sm={12} lg={6}>
+          <Col xs={12} sm={12} lg={6}>
             <Card bordered={false} style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
               <Statistic
                 title={<Text type="secondary" style={{ fontSize: '13px', fontWeight: 500 }}>Available Items</Text>}
@@ -147,7 +147,7 @@ export const Dashboard: React.FC = () => {
               />
             </Card>
           </Col>
-          <Col xs={24} sm={12} lg={6}>
+          <Col xs={12} sm={12} lg={6}>
             <Card bordered={false} style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
               <Statistic
                 title={<Text type="secondary" style={{ fontSize: '13px', fontWeight: 500 }}>Unavailable Items</Text>}

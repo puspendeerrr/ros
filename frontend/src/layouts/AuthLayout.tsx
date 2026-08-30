@@ -26,7 +26,7 @@ export const AuthLayout: React.FC = () => {
         <Row style={{ flex: 1, minHeight: '100vh' }}>
           {/* Left panel - Branding & Features */}
           {isMd && (
-            <Col xs={0} md={10} lg={11} xl={10} style={{ 
+            <Col xs={0} md={10} lg={11} xl={10} style={{
               background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
               padding: '64px',
               display: 'flex',
@@ -52,17 +52,17 @@ export const AuthLayout: React.FC = () => {
               <div style={{ zIndex: 1, maxWidth: '460px', width: '100%' }}>
                 {/* Logo directly above the main heading */}
                 <div style={{ width: '260px', height: '60px', overflow: 'hidden', marginBottom: '32px' }}>
-                  <img 
-                    src={logo} 
-                    alt="Restaurant OS" 
-                    style={{ width: '260px', height: '260px', marginTop: '-100px', objectFit: 'contain' }} 
+                  <img
+                    src={logo}
+                    alt="Restaurant OS"
+                    style={{ width: '260px', height: '260px', marginTop: '-100px', objectFit: 'contain' }}
                   />
                 </div>
 
                 {/* Tagline & Core value */}
-                <Title level={1} style={{ 
-                  color: '#FFFFFF', 
-                  fontSize: '36px', 
+                <Title level={1} style={{
+                  color: '#FFFFFF',
+                  fontSize: '36px',
                   lineHeight: '1.2',
                   fontWeight: 800,
                   marginBottom: '16px',
@@ -92,7 +92,7 @@ export const AuthLayout: React.FC = () => {
                     </div>
                     <div>
                       <Title level={5} style={{ color: '#F8FAFC', margin: '0 0 2px 0', fontSize: '15px' }}>Secure Owner Isolation</Title>
-                      <Text style={{ color: '#64748B', fontSize: '13px' }}>Enterprise cryptography keeps your menu data and transaction details isolated.</Text>
+                      <Text style={{ color: '#64748B', fontSize: '13px' }}>Enterprise cryptography keeps your menu data and transaction details isolated.</Text>  
                     </div>
                   </Flex>
 
