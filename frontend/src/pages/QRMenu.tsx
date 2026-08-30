@@ -158,7 +158,21 @@ export const QRMenu: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '40px 24px', maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
+    <div style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }} className="qr-menu-container">
+      <style>{`
+        .qr-menu-container {
+          padding: 40px 24px;
+        }
+        @media (max-width: 576px) {
+          .qr-menu-container {
+            padding: 16px 12px;
+          }
+          #qr-canvas {
+            width: 140px !important;
+            height: 140px !important;
+          }
+        }
+      `}</style>
       <Space direction="vertical" size={32} style={{ width: '100%' }}>
         {/* Header section */}
         <div>
@@ -254,7 +268,7 @@ export const QRMenu: React.FC = () => {
                   </Text>
 
                   <Row gutter={[12, 12]}>
-                    <Col span={12}>
+                    <Col xs={24} sm={12}>
                       <Button
                         type="default"
                         icon={<FileImageOutlined />}
@@ -266,7 +280,7 @@ export const QRMenu: React.FC = () => {
                         Download PNG
                       </Button>
                     </Col>
-                    <Col span={12}>
+                    <Col xs={24} sm={12}>
                       <Button
                         type="default"
                         icon={<CodeOutlined />}

@@ -20,6 +20,7 @@ import {
   Drawer,
   Radio,
   message,
+  Grid,
 } from 'antd';
 import {
   PlusOutlined,
@@ -54,6 +55,8 @@ type ItemFormValues = z.infer<typeof itemSchema>;
 
 export const Menu: React.FC = () => {
   const queryClient = useQueryClient();
+  const screens = Grid.useBreakpoint();
+  const drawerWidth = screens.md ? 450 : '100%';
 
   // State
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
@@ -339,7 +342,34 @@ export const Menu: React.FC = () => {
   const activeCategoryName = categories.find((c) => c.id === selectedCategoryId)?.name || 'Items';
 
   return (
-    <div style={{ padding: '32px 24px' }}>
+    <div style={{ padding: '32px 24px' }} className="menu-builder-container">
+      <style>{`
+        @media (max-width: 768px) {
+          .menu-builder-container .ant-card {
+            min-height: auto !important;
+          }
+        }
+        @media (max-width: 576px) {
+          .menu-builder-container {
+            padding: 16px 12px !important;
+          }
+          .menu-item-list .ant-list-item {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+          .menu-item-list .ant-list-item-extra {
+            margin-left: 0 !important;
+            margin-top: 12px !important;
+            width: 100% !important;
+            justify-content: flex-end !important;
+            display: flex !important;
+            gap: 12px;
+          }
+          .menu-builder-container .ant-card-body {
+            padding: 16px !important;
+          }
+        }
+      `}</style>
       {/* Top Header Section */}
       <Flex align="center" justify="space-between" style={{ marginBottom: '24px' }}>
         <div>
@@ -478,6 +508,7 @@ export const Menu: React.FC = () => {
                   <Empty description="No items found. Add items to this category to get started." />
                 ) : (
                   <List
+                    className="menu-item-list"
                     itemLayout="horizontal"
                     dataSource={filteredItems}
                     renderItem={(item) => (
@@ -707,7 +738,7 @@ export const Menu: React.FC = () => {
         placement="right"
         onClose={() => setIsPreviewOpen(false)}
         open={isPreviewOpen}
-        width={450}
+        width={drawerWidth}
         bodyStyle={{ background: '#F8FAFC', padding: '24px 16px' }}
       >
         {categories.length === 0 ? (

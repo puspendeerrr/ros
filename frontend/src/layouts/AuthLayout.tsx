@@ -15,6 +15,13 @@ export const AuthLayout: React.FC = () => {
 
   return (
     <Layout style={{ minHeight: '100vh', background: '#FFFFFF' }}>
+      <style>{`
+        @media (max-width: 576px) {
+          .auth-right-panel {
+            padding: 24px 16px !important;
+          }
+        }
+      `}</style>
       <Content style={{ display: 'flex', flexDirection: 'column' }}>
         <Row style={{ flex: 1, minHeight: '100vh' }}>
           {/* Left panel - Branding & Features */}
@@ -109,7 +116,7 @@ export const AuthLayout: React.FC = () => {
           )}
 
           {/* Right panel - Auth Forms */}
-          <Col xs={24} md={14} lg={13} xl={14} style={{
+          <Col className="auth-right-panel" xs={24} md={14} lg={13} xl={14} style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

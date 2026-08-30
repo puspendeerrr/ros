@@ -134,6 +134,20 @@ export const PublicMenu: React.FC = () => {
           .desktop-branding-logo { display: inline-block !important; }
           .mobile-branding-logo { display: none !important; }
         }
+        @media (max-width: 480px) {
+          .public-menu-list .ant-list-item {
+            flex-direction: column-reverse !important;
+            align-items: flex-start !important;
+            gap: 12px;
+          }
+          .public-menu-list .ant-list-item-extra {
+            margin-left: 0 !important;
+            width: 100% !important;
+          }
+          .public-menu-list .ant-list-item-meta {
+            width: 100% !important;
+          }
+        }
       `}</style>
       
       {/* Minimal Branding Bar */}
@@ -336,6 +350,7 @@ export const PublicMenu: React.FC = () => {
 
                   {/* Items list */}
                   <List
+                    className="public-menu-list"
                     itemLayout="horizontal"
                     dataSource={filteredItems}
                     renderItem={(item: any) => (

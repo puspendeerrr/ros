@@ -59,10 +59,26 @@ export const Dashboard: React.FC = () => {
   });
 
   return (
-    <div style={{ padding: '40px 24px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+    <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }} className="dashboard-container">
+      <style>{`
+        .dashboard-container {
+          padding: 40px 24px;
+        }
+        @media (max-width: 576px) {
+          .dashboard-container {
+            padding: 16px 12px;
+          }
+          .dashboard-welcome-banner {
+            padding: 16px !important;
+          }
+        }
+      `}</style>
       <Space direction="vertical" size={32} style={{ width: '100%' }}>
         {/* Welcome Section */}
-        <div style={{ background: '#FFFFFF', padding: '32px', borderRadius: '16px', border: '1px solid #E2E8F0', boxShadow: '0 4px 12px rgba(15, 23, 42, 0.01)' }}>
+        <div 
+          className="dashboard-welcome-banner"
+          style={{ background: '#FFFFFF', padding: '32px', borderRadius: '16px', border: '1px solid #E2E8F0', boxShadow: '0 4px 12px rgba(15, 23, 42, 0.01)' }}
+        >
           <Row justify="space-between" align="middle" gutter={[20, 20]}>
             <Col xs={24} md={16}>
               <Space direction="vertical" size={4}>

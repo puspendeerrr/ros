@@ -330,7 +330,30 @@ export const Restaurant: React.FC = () => {
     : '';
 
   return (
-    <div style={{ padding: '32px', maxWidth: '1280px', margin: '0 auto' }}>
+    <div style={{ maxWidth: '1280px', margin: '0 auto' }} className="restaurant-settings-container">
+      <style>{`
+        .restaurant-settings-container {
+          padding: 32px;
+        }
+        @media (max-width: 991px) {
+          .restaurant-settings-container {
+            padding: 16px 12px 96px 12px !important;
+          }
+          .restaurant-sticky-bar {
+            position: fixed !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            background: #FFFFFF !important;
+            padding: 12px 24px !important;
+            padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05) !important;
+            z-index: 900 !important;
+            margin: 0 !important;
+            text-align: right !important;
+          }
+        }
+      `}</style>
       <Row gutter={[32, 32]}>
         
         {/* LEFT COLUMN: Editor & Progress */}
@@ -620,7 +643,7 @@ export const Restaurant: React.FC = () => {
                 </Row>
 
                 {/* Submit Action */}
-                <div style={{ marginTop: '24px', textAlign: 'right' }}>
+                <div className="restaurant-sticky-bar" style={{ marginTop: '24px', textAlign: 'right' }}>
                   <Button
                     type="primary"
                     icon={<SaveOutlined />}
