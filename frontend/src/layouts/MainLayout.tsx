@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { Layout, Menu, Button, Flex, Typography, Card, Drawer, Grid } from 'antd';
+import { Layout, Menu, Button, Flex, Typography, Card, Grid } from 'antd';
 import {
   DashboardOutlined,
   ShopOutlined,
   LogoutOutlined,
   QrcodeOutlined,
   SettingOutlined,
-  MenuOutlined,
 } from '@ant-design/icons';
 import { useMutation } from '@tanstack/react-query';
 import { useAuthStore } from '../store/auth.store.js';
@@ -26,17 +25,11 @@ export const MainLayout: React.FC = () => {
   const { restaurant, logout } = useAuthStore();
 
   // Responsiveness states
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   // Breakpoints mapping
   const isMobile = screens.hasOwnProperty('md') ? !screens.md : false;
   const isTablet = screens.hasOwnProperty('md') && screens.hasOwnProperty('lg') ? (screens.md && !screens.lg) : false;
-
-  // Auto-close drawer on location pathname change
-  useEffect(() => {
-    setIsDrawerOpen(false);
-  }, [location.pathname]);
 
   const logoutMutation = useMutation({
     mutationFn: () => authService.logout(),
@@ -231,10 +224,23 @@ export const MainLayout: React.FC = () => {
             boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
           }}
         >
+          <img 
+            src={logo} 
+            alt="Restaurant OS" 
+            style={{ height: '140px', marginTop: '-55px', marginBottom: '-55px', objectFit: 'contain', width: '120px' }} 
+          />
           <Button
             type="text"
-            icon={<MenuOutlined style={{ color: '#FFFFFF', fontSize: '18px' }} />}
-            onClick={() => setIsDrawerOpen(true)}
+            icon={<LogoutOutlined style={{ color: '#94A3B8', fontSize: '18px' }} />}
+            onClick={() => {
+              if ((window as any).hasUnsavedChanges) {
+                const confirmLeave = window.confirm("You have unsaved changes. Are you sure you want to leave?");
+                if (!confirmLeave) return;
+                (window as any).hasUnsavedChanges = false;
+              }
+              logoutMutation.mutate();
+            }}
+            loading={logoutMutation.isPending}
             style={{ 
               width: '44px', 
               height: '44px', 
@@ -243,12 +249,6 @@ export const MainLayout: React.FC = () => {
               justifyContent: 'center' 
             }}
           />
-          <img 
-            src={logo} 
-            alt="Restaurant OS" 
-            style={{ height: '140px', marginTop: '-55px', marginBottom: '-55px', objectFit: 'contain', width: '120px' }} 
-          />
-          <div style={{ width: '44px' }} /> {/* Spacing placeholder */}
         </Header>
       )}
 
@@ -276,22 +276,66 @@ export const MainLayout: React.FC = () => {
         </Sider>
       )}
 
-      {/* 3. Mobile Navigation Drawer */}
-      <Drawer
-        placement="left"
-        closable={false}
-        onClose={() => setIsDrawerOpen(false)}
-        open={isDrawerOpen}
-        width={240}
-        styles={{
-          body: {
-            padding: 0,
+      {/* 3. Mobile Instagram-style Bottom Navigation Bar */}
+      {isMobile && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: '56px',
             background: '#0F172A',
-          }
-        }}
-      >
-        {renderSidebarContent(true, false)}
-      </Drawer>
+            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            zIndex: 999,
+            paddingBottom: 'env(safe-area-inset-bottom)',
+            boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.15)',
+          }}
+        >
+          {[
+            { key: 'dashboard', icon: <DashboardOutlined />, label: 'Dashboard', path: '/dashboard' },
+            { key: 'menu', icon: <ShopOutlined />, label: 'Menu', path: '/menu' },
+            { key: 'qr-menu', icon: <QrcodeOutlined />, label: 'QR Menu', path: '/qr-menu' },
+            { key: 'restaurant', icon: <SettingOutlined />, label: 'Restaurant', path: '/restaurant' },
+          ].map((item) => {
+            const isActive = getSelectedKey() === item.key;
+            return (
+              <button
+                key={item.key}
+                onClick={() => {
+                  if ((window as any).hasUnsavedChanges) {
+                    const confirmLeave = window.confirm("You have unsaved changes. Are you sure you want to leave?");
+                    if (!confirmLeave) return;
+                    (window as any).hasUnsavedChanges = false;
+                  }
+                  navigate(item.path);
+                }}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  outline: 'none',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: isActive ? '#F97316' : '#94A3B8',
+                  fontSize: '10px',
+                  cursor: 'pointer',
+                  padding: '4px 0',
+                  width: '25%',
+                  transition: 'color 0.2s',
+                }}
+              >
+                <span style={{ fontSize: '18px', color: isActive ? '#F97316' : '#94A3B8' }}>{item.icon}</span>
+                <span style={{ marginTop: '2px', fontWeight: isActive ? 700 : 500 }}>{item.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {/* 4. Main Content Layout Container */}
       <Layout 
@@ -300,7 +344,8 @@ export const MainLayout: React.FC = () => {
           marginLeft: `${sidebarWidth}px`, 
           minHeight: '100vh',
           transition: 'margin-left 0.2s ease',
-          paddingTop: isMobile ? 'calc(56px + env(safe-area-inset-top))' : '0px'
+          paddingTop: isMobile ? 'calc(56px + env(safe-area-inset-top))' : '0px',
+          paddingBottom: isMobile ? 'calc(56px + env(safe-area-inset-bottom))' : '0px'
         }}
       >
         <Content style={{ minHeight: '100%', overflowY: 'auto' }}>

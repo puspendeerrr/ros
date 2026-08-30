@@ -43,7 +43,7 @@ export const Login: React.FC = () => {
     onSuccess: (response) => {
       const { restaurant, accessToken } = response.data;
       setAuth(restaurant, accessToken);
-      navigate('/');
+      navigate('/dashboard');
     },
   });
 

@@ -569,7 +569,7 @@ export const Menu: React.FC = () => {
                             ) : null
                           }
                           title={
-                            <Space align="center" size={8}>
+                            <Flex align="center" gap={8} wrap="wrap" style={{ width: '100%' }}>
                               <Text strong style={{ fontSize: '15px', color: '#1E293B' }}>{item.name}</Text>
                               <span
                                 style={{
@@ -583,10 +583,10 @@ export const Menu: React.FC = () => {
                               >
                                 {item.isVeg ? 'VEG' : 'NON-VEG'}
                               </span>
-                            </Space>
+                            </Flex>
                           }
                           description={
-                            <Space direction="vertical" size={4} style={{ marginTop: '4px' }}>
+                            <Flex vertical gap={4} style={{ marginTop: '4px', width: '100%' }}>
                               <Text strong style={{ color: '#F97316', fontSize: '15px' }}>
                                 ₹{Number(item.price).toFixed(2)}
                               </Text>
@@ -595,7 +595,7 @@ export const Menu: React.FC = () => {
                                   {item.description}
                                 </Paragraph>
                               )}
-                            </Space>
+                            </Flex>
                           }
                         />
                       </List.Item>
