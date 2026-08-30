@@ -151,6 +151,41 @@ export const Landing: React.FC = () => {
       />
 
       <style>{`
+        .grid-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-size: 30px 30px;
+          background-image: linear-gradient(to right, rgba(249, 115, 22, 0.02) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(249, 115, 22, 0.02) 1px, transparent 1px);
+          z-index: 1;
+          pointer-events: none;
+        }
+        .hero-spotlight {
+          position: absolute;
+          top: -20%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 800px;
+          height: 500px;
+          background: radial-gradient(circle, rgba(249, 115, 22, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+          filter: blur(80px);
+          pointer-events: none;
+          z-index: 2;
+        }
+        .premium-badge-highlight {
+          background: #FFF7ED;
+          border: 1px solid #FFEDD5;
+          color: #EA580C;
+          padding: 6px 14px;
+          border-radius: 20px;
+          font-size: 12.5px;
+          font-weight: 700;
+          display: inline-block;
+          white-space: nowrap;
+        }
         .hero-section {
           position: relative;
           padding: 120px 24px 140px 24px;
@@ -377,15 +412,16 @@ export const Landing: React.FC = () => {
         .pricing-card-overhaul:hover {
           transform: translateY(-8px);
         }
-      `}</style>
-
-      {/* Hero Section */}
-      <section className="hero-section">
+      `}</style>      {/* Hero Section */}
+      <section className="hero-section" style={{ position: 'relative' }}>
+        {/* Ambient Aurora backgrounds & Grid grids */}
+        <div className="grid-bg" />
+        <div className="hero-spotlight" />
         <div className="hero-glow-1" />
         <div className="hero-glow-2" />
         
         <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-          <Row gutter={[64, 48]} align="middle">
+          <Row gutter={[64, 48]} align="middle" style={{ marginBottom: '40px' }}>
             <Col xs={24} lg={11}>
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
@@ -396,12 +432,14 @@ export const Landing: React.FC = () => {
                   <img src={logoIcon} alt="Icon" style={{ height: '14px' }} />
                   <span style={{ color: '#C2410C', fontWeight: 750, fontSize: '11px', letterSpacing: '0.5px' }}>RELAUNCHED 2.0</span>
                 </div>
-                <Title level={1} style={{ fontSize: 'calc(2.2rem + 2vw)', fontWeight: 900, letterSpacing: '-2px', lineHeight: 1.05, margin: '0 0 24px 0', color: '#0F172A' }}>
-                  Run Your Restaurant Like a <span style={{ color: '#F97316' }}>Tech Company.</span>
+                <Title level={1} style={{ fontSize: 'calc(2.2rem + 2.2vw)', fontWeight: 900, letterSpacing: '-2.5px', lineHeight: 1.05, margin: '0 0 24px 0', color: '#0F172A' }}>
+                  Everything Your Restaurant Needs <span style={{ color: '#F97316' }}>To Go Digital.</span>
                 </Title>
-                <Paragraph style={{ fontSize: '18px', color: '#475569', lineHeight: 1.65, marginBottom: '40px', fontWeight: 400 }}>
-                  Restaurant OS helps restaurants manage menus, QR table ordering, digital profiles, and live customer menus—all from one premium dashboard.
+                <Paragraph style={{ fontSize: '17px', color: '#475569', lineHeight: 1.7, marginBottom: '32px', fontWeight: 400 }}>
+                  Instantly launch dynamic QR table menus, update dishes in real time, build a professional digital presence, and manage your entire floor from one unified cloud dashboard—with zero commission fees or printing costs.
                 </Paragraph>
+                
+                {/* CTA Buttons */}
                 <Flex gap={16} wrap="wrap">
                   <Button 
                     type="primary" 
@@ -420,57 +458,144 @@ export const Landing: React.FC = () => {
                     Book Demo
                   </Button>
                 </Flex>
+
+                {/* Subtle Trust Indicators */}
+                <Flex gap={16} wrap="wrap" justify="flex-start" style={{ marginTop: '20px', color: '#64748B', fontSize: '13px', fontWeight: 500 }}>
+                  <span>✓ No Credit Card Required</span>
+                  <span>✓ Setup in Under 5 Minutes</span>
+                  <span>✓ Unlimited Menu Updates</span>
+                  <span>✓ Commission Free</span>
+                </Flex>
+
+                {/* Compact Badges Feature highlights */}
+                <Flex gap={8} wrap="wrap" style={{ marginTop: '40px' }}>
+                  <span className="premium-badge-highlight">✓ QR Menu</span>
+                  <span className="premium-badge-highlight">✓ Digital Restaurant Profile</span>
+                  <span className="premium-badge-highlight">✓ Live Menu Updates</span>
+                  <span className="premium-badge-highlight">✓ Cloud Dashboard</span>
+                  <span className="premium-badge-highlight">✓ Mobile Optimized</span>
+                  <span className="premium-badge-highlight">✓ Zero Printing Cost</span>
+                </Flex>
               </motion.div>
             </Col>
 
-            {/* Laptop + Mobile Floating Mockup */}
+            {/* Laptop + Mobile Layered Mockups */}
             <Col xs={24} lg={13}>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 40 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className="visual-depth-mockups"
-              >
-                {/* Simulated Laptop */}
-                <div className="laptop-mockup-frame">
+              <div className="visual-depth-mockups" style={{ position: 'relative', height: '460px', width: '100%' }}>
+                {/* 1. Main Laptop Mockup (Menu Builder console) */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8 }}
+                  style={{
+                    position: 'absolute',
+                    top: '20px',
+                    left: '20px',
+                    width: '80%',
+                    height: '320px',
+                    background: '#0F172A',
+                    borderRadius: '16px',
+                    border: '4px solid #1E293B',
+                    boxShadow: '0 30px 60px rgba(0,0,0,0.15)',
+                    overflow: 'hidden',
+                    zIndex: 5
+                  }}
+                >
+                  {/* Laptop Titlebar */}
                   <div style={{ height: '32px', background: '#1E293B', padding: '0 16px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#EF4444' }} />
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F59E0B' }} />
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10B981' }} />
+                    <span style={{ fontSize: '11px', color: '#64748B', marginLeft: '12px', fontWeight: 650 }}>Restaurant OS — Menu Builder Workspace</span>
                   </div>
-                  <div style={{ background: '#0F172A', padding: '20px', minHeight: '280px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  
+                  {/* Laptop Content */}
+                  <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #1E293B', paddingBottom: '12px' }}>
-                      <div style={{ width: '120px', height: '14px', background: '#1E293B', borderRadius: '4px' }} />
+                      <div style={{ display: 'flex', gap: '8px' }}>
+                        <div style={{ width: '80px', height: '14px', background: '#1E293B', borderRadius: '4px' }} />
+                        <div style={{ width: '40px', height: '14px', background: '#1E293B', borderRadius: '4px' }} />
+                      </div>
                       <div style={{ width: '64px', height: '20px', background: '#F97316', borderRadius: '6px' }} />
                     </div>
-                    <Row gutter={16}>
-                      <Col span={8}>
-                        <div style={{ background: '#1E293B', padding: '16px', borderRadius: '10px', border: '1px solid #334155' }}>
-                          <div style={{ width: '32px', height: '10px', background: '#475569', borderRadius: '2px', marginBottom: '8px' }} />
-                          <div style={{ width: '48px', height: '18px', background: '#FFFFFF', borderRadius: '3px' }} />
-                        </div>
-                      </Col>
-                      <Col span={8}>
-                        <div style={{ background: '#1E293B', padding: '16px', borderRadius: '10px', border: '1px solid #334155' }}>
-                          <div style={{ width: '32px', height: '10px', background: '#475569', borderRadius: '2px', marginBottom: '8px' }} />
-                          <div style={{ width: '56px', height: '18px', background: '#F97316', borderRadius: '3px' }} />
-                        </div>
-                      </Col>
-                      <Col span={8}>
-                        <div style={{ background: '#1E293B', padding: '16px', borderRadius: '10px', border: '1px solid #334155' }}>
-                          <div style={{ width: '32px', height: '10px', background: '#475569', borderRadius: '2px', marginBottom: '8px' }} />
-                          <div style={{ width: '40px', height: '18px', background: '#FFFFFF', borderRadius: '3px' }} />
-                        </div>
-                      </Col>
-                    </Row>
+                    <div style={{ background: '#1E293B', padding: '16px', borderRadius: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <div style={{ width: '40%', height: '12px', background: '#475569', borderRadius: '2px' }} />
+                        <div style={{ width: '20px', height: '12px', background: '#475569', borderRadius: '2px' }} />
+                      </div>
+                      <div style={{ width: '80%', height: '8px', background: '#334155', borderRadius: '2px' }} />
+                    </div>
+                    <div style={{ display: 'flex', gap: '12px' }}>
+                      <div style={{ flex: 1, background: '#1E293B', padding: '12px', borderRadius: '8px', height: '48px' }} />
+                      <div style={{ flex: 1, background: '#1E293B', padding: '12px', borderRadius: '8px', height: '48px' }} />
+                    </div>
                   </div>
-                </div>
+                </motion.div>
 
-                {/* Simulated Floating Mobile Device */}
+                {/* 2. Floating Card Left: "Menu Updated successfully" */}
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{
+                    position: 'absolute',
+                    top: '80px',
+                    left: '-10px',
+                    background: '#FFFFFF',
+                    border: '1px solid #E2E8F0',
+                    borderRadius: '12px',
+                    padding: '10px 16px',
+                    boxShadow: '0 10px 25px rgba(15,23,42,0.08)',
+                    zIndex: 20,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}
+                >
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#22C55E' }} />
+                  <span style={{ fontSize: '12.5px', fontWeight: 700, color: '#0F172A' }}>Menu Updated Live</span>
+                </motion.div>
+
+                {/* 3. Floating Card Right: "347 scans today" */}
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{
+                    position: 'absolute',
+                    top: '30px',
+                    right: '40px',
+                    background: '#FFFFFF',
+                    border: '1px solid #E2E8F0',
+                    borderRadius: '12px',
+                    padding: '10px 16px',
+                    boxShadow: '0 10px 25px rgba(15,23,42,0.08)',
+                    zIndex: 20,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '4px'
+                  }}
+                >
+                  <span style={{ fontSize: '11px', color: '#64748B', fontWeight: 600 }}>SCAN TELEMETRY</span>
+                  <span style={{ fontSize: '16px', fontWeight: 900, color: '#F97316' }}>347 Table Scans</span>
+                </motion.div>
+
+                {/* 4. Floating Phone Mockup (Overlap) */}
                 <motion.div 
                   className="mobile-mockup-frame"
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }}
+                  style={{
+                    position: 'absolute',
+                    bottom: '0px',
+                    right: '10px',
+                    width: '180px',
+                    height: '350px',
+                    background: '#FFFFFF',
+                    borderRadius: '28px',
+                    border: '6px solid #0F172A',
+                    boxShadow: '0 20px 45px rgba(15,23,42,0.22)',
+                    overflow: 'hidden',
+                    zIndex: 30
+                  }}
                 >
                   <div style={{ height: '24px', background: '#F8FAFC', borderBottom: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <div style={{ width: '40px', height: '4px', background: '#E2E8F0', borderRadius: '2px' }} />
@@ -478,9 +603,9 @@ export const Landing: React.FC = () => {
                   {/* Public Menu preview mockup */}
                   <div style={{ background: '#FFFFFF', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px', height: '100%' }}>
                     <div style={{ height: '48px', background: '#FFF7ED', borderRadius: '8px', border: '1px dashed #FFD8A8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <span style={{ fontSize: '10px', color: '#F97316', fontWeight: 700 }}>Menu Active</span>
+                      <span style={{ fontSize: '11px', color: '#F97316', fontWeight: 800 }}>Digital QR Menu</span>
                     </div>
-                    <div style={{ width: '60%', height: '12px', background: '#0F172A', borderRadius: '2px', marginTop: '4px' }} />
+                    <div style={{ width: '70%', height: '12px', background: '#0F172A', borderRadius: '2px', marginTop: '4px' }} />
                     <div style={{ width: '90%', height: '8px', background: '#94A3B8', borderRadius: '2px' }} />
                     <hr style={{ border: 'none', borderTop: '1px solid #F1F5F9', margin: '4px 0' }} />
                     <div style={{ display: 'flex', gap: '8px' }}>
@@ -492,7 +617,90 @@ export const Landing: React.FC = () => {
                     </div>
                   </div>
                 </motion.div>
-              </motion.div>
+
+                {/* 5. Floating Card Bottom Left: "Popular: Margherita" */}
+                <motion.div
+                  animate={{ x: [0, 6, 0] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{
+                    position: 'absolute',
+                    bottom: '40px',
+                    left: '0px',
+                    background: '#FFFFFF',
+                    border: '1px solid #E2E8F0',
+                    borderRadius: '12px',
+                    padding: '8px 14px',
+                    boxShadow: '0 10px 25px rgba(15,23,42,0.08)',
+                    zIndex: 20,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}
+                >
+                  <StarFilled style={{ color: '#F59E0B' }} />
+                  <span style={{ fontSize: '12.5px', fontWeight: 700, color: '#475569' }}>Popular Dish Tagged</span>
+                </motion.div>
+              </div>
+            </Col>
+          </Row>
+
+          {/* Divider Line */}
+          <hr style={{ border: 'none', borderTop: '1px solid #F1F5F9', margin: '80px 0 48px 0' }} />
+
+          {/* Social Proof + Value Metrics Grid */}
+          <Row gutter={[32, 32]} align="middle">
+            <Col xs={24} md={12}>
+              <div style={{ textAlign: 'left' }}>
+                <Text type="secondary" style={{ fontSize: '12px', fontWeight: 800, letterSpacing: '1px', display: 'block', marginBottom: '16px' }}>
+                  PERFECTLY ADAPTED FOR HOSPITALITY
+                </Text>
+                <Flex gap={8} wrap="wrap">
+                  {['Restaurants', 'Cafés', 'Cloud Kitchens', 'Hotels', 'Food Courts', 'Franchises'].map((outlet) => (
+                    <span 
+                      key={outlet}
+                      style={{ 
+                        background: '#F8FAFC', 
+                        border: '1px solid #E2E8F0', 
+                        padding: '6px 14px', 
+                        borderRadius: '8px', 
+                        fontSize: '13px', 
+                        color: '#475569', 
+                        fontWeight: 650,
+                        cursor: 'default',
+                        transition: 'all 0.2s'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = '#F97316';
+                        e.currentTarget.style.color = '#F97316';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = '#E2E8F0';
+                        e.currentTarget.style.color = '#475569';
+                      }}
+                    >
+                      {outlet}
+                    </span>
+                  ))}
+                </Flex>
+              </div>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Row gutter={[16, 16]}>
+                {[
+                  { text: 'Setup in 5 Mins', icon: '⚡' },
+                  { text: 'Mobile Friendly', icon: '📱' },
+                  { text: 'Unlimited Edits', icon: '🔄' },
+                  { text: '0% Commissions', icon: '💸' }
+                ].map((metric) => (
+                  <Col span={12} key={metric.text}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: '#FFFFFF', padding: '12px 16px', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+                      <span style={{ fontSize: '18px' }}>{metric.icon}</span>
+                      <span style={{ fontSize: '13.5px', fontWeight: 700, color: '#0F172A' }}>{metric.text}</span>
+                    </div>
+                  </Col>
+                ))}
+              </Row>
             </Col>
           </Row>
         </div>
