@@ -10,12 +10,13 @@ import {
   RiseOutlined,
   ArrowRightOutlined,
   MobileOutlined,
+  CameraOutlined,
 } from '@ant-design/icons';
 
 const { Title, Paragraph } = Typography;
 
 /* ────────────────────────────────────────────────────────────
-   HERO SECTION COMPONENT (Static, Clean, Simplicity First)
+   HERO SECTION COMPONENT (Super Simple - "Ghanta kuch na pata ho tab bhi samajh aaye")
    ──────────────────────────────────────────────────────────── */
 export const HeroSection: React.FC = () => {
   const navigate = useNavigate();
@@ -23,13 +24,13 @@ export const HeroSection: React.FC = () => {
   return (
     <>
       <style>{`
-        .hero-section-v3 {
+        .hero-section-v4 {
           position: relative;
-          padding: 40px 24px 80px 24px;
+          padding: 48px 24px 80px 24px;
           background: #FFFFFF;
           overflow: hidden;
         }
-        .hero-grid-bg-v3 {
+        .hero-grid-bg-v4 {
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
           background-size: 30px 30px;
@@ -38,7 +39,7 @@ export const HeroSection: React.FC = () => {
           z-index: 1;
           pointer-events: none;
         }
-        .hero-spotlight-v3 {
+        .hero-spotlight-v4 {
           position: absolute;
           top: -10%; left: 50%;
           transform: translateX(-50%);
@@ -48,7 +49,7 @@ export const HeroSection: React.FC = () => {
           pointer-events: none;
           z-index: 2;
         }
-        .hero-headline-v3 {
+        .hero-headline-v4 {
           font-size: clamp(2rem, 1.8rem + 2.5vw, 3.4rem) !important;
           font-weight: 900 !important;
           letter-spacing: -2px !important;
@@ -57,155 +58,171 @@ export const HeroSection: React.FC = () => {
           color: #0F172A !important;
           max-width: 580px;
         }
-        .hero-btn-primary-v3 {
+        .hero-btn-primary-v4 {
           background: #F97316 !important;
           border-color: #F97316 !important;
-          height: 52px !important;
-          padding: 0 32px !important;
-          border-radius: 10px !important;
-          font-weight: 700 !important;
-          font-size: 15px !important;
-          box-shadow: 0 8px 20px rgba(249,115,22,0.2) !important;
+          height: 54px !important;
+          padding: 0 36px !important;
+          border-radius: 12px !important;
+          font-weight: 750 !important;
+          font-size: 16px !important;
+          box-shadow: 0 8px 20px rgba(249,115,22,0.25) !important;
           transition: all 0.25s !important;
         }
-        .hero-btn-primary-v3:hover {
+        .hero-btn-primary-v4:hover {
           transform: translateY(-2px);
-          box-shadow: 0 12px 24px rgba(249,115,22,0.3) !important;
+          box-shadow: 0 12px 24px rgba(249,115,22,0.35) !important;
         }
-        .hero-btn-secondary-v3 {
-          height: 52px !important;
-          padding: 0 32px !important;
-          border-radius: 10px !important;
-          font-weight: 700 !important;
-          font-size: 15px !important;
+        .hero-btn-secondary-v4 {
+          height: 54px !important;
+          padding: 0 36px !important;
+          border-radius: 12px !important;
+          font-weight: 750 !important;
+          font-size: 16px !important;
           border-color: #CBD5E1 !important;
           color: #475569 !important;
           transition: all 0.25s !important;
         }
-        .hero-btn-secondary-v3:hover {
+        .hero-btn-secondary-v4:hover {
           background: #F8FAFC !important;
           transform: translateY(-2px);
         }
-        .benefit-item-v3 {
-          font-size: 14px;
-          font-weight: 600;
-          color: #334155;
+        .benefit-item-v4 {
+          font-size: 15px;
+          font-weight: 700;
+          color: #1E293B;
           display: inline-flex;
           align-items: center;
-          gap: 6px;
+          gap: 8px;
         }
-        .benefit-icon-v3 {
+        .benefit-icon-v4 {
           color: #22C55E;
-          font-weight: 800;
+          font-weight: 900;
+          font-size: 16px;
         }
-        .trust-text-v3 {
-          font-size: 12px;
+        .trust-text-v4 {
+          font-size: 13px;
           color: #64748B;
-          font-weight: 500;
-          margin-top: 12px;
+          font-weight: 600;
+          margin-top: 14px;
           display: block;
         }
 
-        /* Workflow Journey Cards */
-        .journey-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-          position: relative;
-        }
-        .journey-card {
-          background: #FFFFFF;
-          border: 1px solid #E2E8F0;
-          border-radius: 16px;
-          padding: 16px;
-          box-shadow: 0 4px 20px rgba(15,23,42,0.03);
+        /* Physical Table Stand Mockup */
+        .physical-stand {
+          width: 160px;
+          height: 240px;
+          background: linear-gradient(to bottom, #475569, #1E293B);
+          border-radius: 12px;
+          padding: 6px;
+          box-shadow: 0 20px 40px rgba(15,23,42,0.15);
           display: flex;
           flex-direction: column;
           position: relative;
-          transition: all 0.2s ease-in-out;
         }
-        .journey-card:hover {
-          transform: translateY(-2px);
-          border-color: #F97316;
-          box-shadow: 0 8px 30px rgba(249,115,22,0.06);
-        }
-        .journey-badge {
-          background: #FFF7ED;
-          color: #EA580C;
-          border: 1px solid #FFEDD5;
-          font-size: 10px;
-          font-weight: 750;
-          padding: 2px 8px;
-          border-radius: 20px;
-          width: fit-content;
-          margin-bottom: 12px;
-        }
-        .flow-arrow-h {
+        .stand-base {
           position: absolute;
-          top: 30%;
-          left: 48%;
-          transform: translateX(-50%);
-          font-size: 18px;
-          color: #F97316;
-          opacity: 0.5;
-          z-index: 10;
+          bottom: -12px;
+          left: -10px;
+          right: -10px;
+          height: 16px;
+          background: #0F172A;
+          border-radius: 4px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .flow-arrow-v {
-          position: absolute;
-          top: 48%;
-          left: 25%;
-          transform: rotate(90deg);
-          font-size: 18px;
-          color: #F97316;
-          opacity: 0.5;
-          z-index: 10;
-        }
-        .flow-arrow-v2 {
-          position: absolute;
-          top: 48%;
-          left: 75%;
-          transform: rotate(90deg);
-          font-size: 18px;
-          color: #F97316;
-          opacity: 0.5;
-          z-index: 10;
+        .stand-card {
+          flex: 1;
+          background: #FFFFFF;
+          border-radius: 8px;
+          padding: 12px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          text-align: center;
         }
 
-        /* Responsive styling for right column */
+        /* Phone Mockup */
+        .customer-phone {
+          width: 170px;
+          height: 310px;
+          background: #0F172A;
+          border-radius: 28px;
+          border: 6px solid #0F172A;
+          box-shadow: 0 25px 50px rgba(15,23,42,0.2);
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+        }
+        .phone-screen {
+          flex: 1;
+          background: #FFFFFF;
+          border-radius: 22px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+        }
+
+        /* Connecting arrow */
+        .connecting-flow {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          color: #F97316;
+          z-index: 10;
+        }
+        .connecting-arrow {
+          font-size: 24px;
+          font-weight: 900;
+          animation: pulse-arrow 2s infinite;
+        }
+        @keyframes pulse-arrow {
+          0%, 100% { transform: translateX(0); opacity: 0.6; }
+          50% { transform: translateX(6px); opacity: 1; }
+        }
+
+        /* Mobile overrides */
         @media (max-width: 576px) {
-          .journey-grid {
-            grid-template-columns: 1fr;
-            gap: 16px;
+          .visual-journey-v4 {
+            flex-direction: column !important;
+            gap: 40px !important;
+            align-items: center !important;
           }
-          .flow-arrow-h, .flow-arrow-v, .flow-arrow-v2 {
-            display: none !important;
+          .connecting-flow {
+            transform: rotate(90deg);
+          }
+          @keyframes pulse-arrow {
+            0%, 100% { transform: translateY(0); opacity: 0.6; }
+            50% { transform: translateY(6px); opacity: 1; }
           }
         }
       `}</style>
 
-      <section className="hero-section-v3">
-        <div className="hero-grid-bg-v3" />
-        <div className="hero-spotlight-v3" />
+      <section className="hero-section-v4">
+        <div className="hero-grid-bg-v4" />
+        <div className="hero-spotlight-v4" />
 
         <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
           <Row gutter={[48, 48]} align="middle">
-            {/* ─── Left Side: Headline & Copy ─── */}
+            {/* ─── Left Side: Super Simple Headline & Checklist ─── */}
             <Col xs={24} lg={11}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#FFF7ED', border: '1px solid #FFEDD5', padding: '6px 14px', borderRadius: '30px', marginBottom: '20px' }}>
                 <span style={{ fontSize: '12px' }}>🇮🇳</span>
                 <span style={{ color: '#EA580C', fontWeight: 750, fontSize: '11px', letterSpacing: '0.5px' }}>MADE FOR INDIAN RESTAURANTS</span>
               </div>
 
-              <Title level={1} className="hero-headline-v3">
-                Build a Modern Digital Restaurant in Minutes
+              <Title level={1} className="hero-headline-v4">
+                Put QR Menus on Your Tables. Zero Printing Costs.
               </Title>
 
-              <Paragraph style={{ fontSize: '15.5px', color: '#475569', lineHeight: 1.6, marginBottom: '24px', maxWidth: '500px' }}>
-                Create your digital menu, generate QR codes, manage your restaurant profile, and give customers a premium menu experience — all from one simple dashboard.
+              <Paragraph style={{ fontSize: '16px', color: '#475569', lineHeight: 1.6, marginBottom: '28px', maxWidth: '520px' }}>
+                Stop printing paper menus. Generate a QR code stand for your tables. Customers scan it with their mobile camera to see your full menu instantly — and you can change items or prices anytime from your phone.
               </Paragraph>
 
-              {/* Benefits checklist */}
-              <Row gutter={[16, 12]} style={{ marginBottom: '28px', maxWidth: '500px' }}>
+              {/* Checklist */}
+              <Row gutter={[16, 16]} style={{ marginBottom: '32px', maxWidth: '520px' }}>
                 {[
                   'Digital QR Menu',
                   'Update Menu Anytime',
@@ -215,8 +232,8 @@ export const HeroSection: React.FC = () => {
                   'Ready in Minutes',
                 ].map(b => (
                   <Col span={12} key={b}>
-                    <span className="benefit-item-v3">
-                      <span className="benefit-icon-v3">✓</span> {b}
+                    <span className="benefit-item-v4">
+                      <span className="benefit-icon-v4">✅</span> {b}
                     </span>
                   </Col>
                 ))}
@@ -227,7 +244,7 @@ export const HeroSection: React.FC = () => {
                 <Button
                   type="primary"
                   size="large"
-                  className="hero-btn-primary-v3"
+                  className="hero-btn-primary-v4"
                   onClick={() => navigate('/signup')}
                 >
                   Create My Restaurant
@@ -235,7 +252,7 @@ export const HeroSection: React.FC = () => {
                 <Button
                   type="default"
                   size="large"
-                  className="hero-btn-secondary-v3"
+                  className="hero-btn-secondary-v4"
                   onClick={() => {
                     const el = document.getElementById('how-it-works');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -245,86 +262,75 @@ export const HeroSection: React.FC = () => {
                 </Button>
               </Flex>
 
-              <span className="trust-text-v3">
+              <span className="trust-text-v4">
                 No Credit Card Required • Setup in Minutes • Made for Indian Restaurants
               </span>
             </Col>
 
-            {/* ─── Right Side: Visual Workflow Journey ─── */}
+            {/* ─── Right Side: Visually Self-Explanatory Table-Stand to Phone Flow ─── */}
             <Col xs={24} lg={13}>
-              <div className="journey-grid">
-                {/* Connecting Arrows for Desktop */}
-                <div className="flow-arrow-h"><ArrowRightOutlined /></div>
-                <div className="flow-arrow-v"><ArrowRightOutlined /></div>
-                <div className="flow-arrow-v2"><ArrowRightOutlined /></div>
-
-                {/* ── Step 1: Owner Dashboard ── */}
-                <div className="journey-card">
-                  <div className="journey-badge">STEP 1 • OWNER ADDS INFO</div>
-                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px', background: '#F8FAFC', padding: '6px 10px', borderRadius: '8px', border: '1px solid #E2E8F0' }}>
-                      <span style={{ fontSize: '12px' }}>🏪</span>
-                      <span style={{ fontSize: '10px', fontWeight: 800, color: '#0F172A' }}>The Pepper Bistro</span>
-                    </div>
-                    <div style={{ background: '#F8FAFC', border: '1px dashed #CBD5E1', borderRadius: '8px', padding: '10px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <div style={{ fontSize: '9px', fontWeight: 700, color: '#475569' }}>Add Menu Item:</div>
-                      <div style={{ display: 'flex', gap: '6px' }}>
-                        <div style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '4px', padding: '3px 6px', fontSize: '8px', color: '#475569' }}>Paneer Tikka</div>
-                        <div style={{ width: '40px', background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '4px', padding: '3px 6px', fontSize: '8px', color: '#475569' }}>₹260</div>
-                      </div>
-                      <div style={{ display: 'flex', gap: '4px', alignSelf: 'flex-end' }}>
-                        <span style={{ fontSize: '7px', color: '#16A34A', background: '#F0FDF4', padding: '2px 6px', borderRadius: '4px', fontWeight: 700 }}>🟢 Veg Added</span>
-                      </div>
+              <div 
+                className="visual-journey-v4"
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '24px', position: 'relative' }}
+              >
+                {/* 1. Physical QR Table Stand */}
+                <div className="physical-stand">
+                  <div className="stand-card">
+                    <span style={{ fontSize: '8px', fontWeight: 800, color: '#EA580C', background: '#FFF7ED', padding: '2px 8px', borderRadius: '10px' }}>THE PEPPER BISTRO</span>
+                    <QrcodeOutlined style={{ fontSize: '80px', color: '#0F172A', margin: '12px 0' }} />
+                    <div>
+                      <span style={{ display: 'block', fontSize: '9px', fontWeight: 900, color: '#0F172A' }}>SCAN TO VIEW MENU</span>
+                      <span style={{ display: 'block', fontSize: '6px', color: '#64748B', marginTop: '2px' }}>No App Download Required</span>
                     </div>
                   </div>
+                  <div className="stand-base" />
                 </div>
 
-                {/* ── Step 2: QR Generated ── */}
-                <div className="journey-card" style={{ alignItems: 'center', justifyContent: 'center' }}>
-                  <div className="journey-badge" style={{ alignSelf: 'flex-start' }}>STEP 2 • QR GENERATED</div>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', flex: 1, justifyContent: 'center' }}>
-                    <div style={{ background: '#FFF7ED', border: '2px solid #FFEDD5', padding: '14px', borderRadius: '16px', display: 'inline-flex' }}>
-                      <QrcodeOutlined style={{ fontSize: '48px', color: '#F97316' }} />
-                    </div>
-                    <span style={{ fontSize: '10.5px', fontWeight: 750, color: '#0F172A', textAlign: 'center' }}>Unique QR Menu Created</span>
-                    <span style={{ fontSize: '8px', color: '#64748B', background: '#F1F5F9', padding: '2px 8px', borderRadius: '10px' }}>Table Stands Ready</span>
-                  </div>
+                {/* 2. Dotted Connecting Flow with Label */}
+                <div className="connecting-flow">
+                  <span style={{ fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', background: '#FFF7ED', padding: '4px 10px', borderRadius: '12px', border: '1px solid #FFEDD5', color: '#EA580C' }}>
+                    <CameraOutlined style={{ marginRight: '4px' }} /> Scan QR
+                  </span>
+                  <span className="connecting-arrow"><ArrowRightOutlined /></span>
                 </div>
 
-                {/* ── Step 3: Customer Scans ── */}
-                <div className="journey-card">
-                  <div className="journey-badge">STEP 3 • CUSTOMER SCANS</div>
-                  <div style={{ flex: 1, display: 'flex', gap: '8px', alignItems: 'center' }}>
-                    {/* Tiny phone screen mock */}
-                    <div style={{ width: '70px', height: '110px', background: '#0F172A', borderRadius: '8px', border: '2px solid #1E293B', padding: '2px', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                      <div style={{ flex: 1, background: '#FFFFFF', borderRadius: '4px', padding: '4px', display: 'flex', flexDirection: 'column', gap: '3px' }}>
-                        <div style={{ fontSize: '5px', fontWeight: 800, color: '#0F172A' }}>Pepper Bistro</div>
-                        <div style={{ background: '#FFF7ED', padding: '2px', borderRadius: '2px', fontSize: '4.5px', color: '#EA580C', fontWeight: 700 }}>🍛 Paneer Tikka</div>
-                        <div style={{ fontSize: '5px', fontWeight: 900, color: '#F97316' }}>₹260</div>
-                      </div>
+                {/* 3. Sleek Mobile Mockup displaying Diner Menu */}
+                <div className="customer-phone">
+                  <div className="phone-screen">
+                    {/* Header Banner */}
+                    <div style={{ height: '48px', background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)', padding: '6px 10px', color: '#FFFFFF', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      <span style={{ fontSize: '9px', fontWeight: 800 }}>The Pepper Bistro</span>
+                      <span style={{ fontSize: '5.5px', color: '#94A3B8' }}>Koramangala, Bengaluru</span>
                     </div>
-                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                      <span style={{ fontSize: '9px', fontWeight: 800, color: '#0F172A' }}>Instant Digital Menu</span>
-                      <span style={{ fontSize: '7.5px', color: '#64748B', lineHeight: '1.3' }}>Diners scan QR on table to view categories, photos, and live prices.</span>
+                    {/* Status badge floating inside phone */}
+                    <div style={{ margin: '-8px 6px 4px 6px', background: '#FFFFFF', borderRadius: '4px', padding: '4px', border: '1px solid #F1F5F9', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
+                      <span style={{ fontSize: '7px', fontWeight: 800, color: '#0F172A' }}>Digital Menu</span>
+                      <span style={{ fontSize: '5px', background: '#F0FDF4', color: '#16A34A', padding: '1px 3px', borderRadius: '4px', fontWeight: 700 }}>🟢 Open</span>
                     </div>
-                  </div>
-                </div>
-
-                {/* ── Step 4: Growth ── */}
-                <div className="journey-card">
-                  <div className="journey-badge">STEP 4 • RESTAURANT GROWS</div>
-                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', justifyContent: 'center' }}>
-                    {[
-                      { icon: '📈', label: 'More Orders' },
-                      { icon: '⭐', label: 'Better Dining Experience' },
-                      { icon: '💰', label: 'Zero Printing Cost' },
-                      { icon: '🔄', label: 'Instant Menu Updates' },
-                    ].map(r => (
-                      <div key={r.label} style={{ display: 'flex', alignItems: 'center', gap: '6px', background: '#F8FAFC', padding: '4px 8px', borderRadius: '6px', border: '1px solid #F1F5F9' }}>
-                        <span style={{ fontSize: '10px' }}>{r.icon}</span>
-                        <span style={{ fontSize: '8.5px', fontWeight: 700, color: '#334155' }}>{r.label}</span>
-                      </div>
-                    ))}
+                    {/* Menu items */}
+                    <div style={{ padding: '4px 6px', display: 'flex', flexDirection: 'column', gap: '4px', flex: 1, overflow: 'hidden' }}>
+                      {[
+                        { name: 'Paneer Butter Masala', price: '₹280', icon: '🍛', veg: true },
+                        { name: 'Chicken Biryani', price: '₹340', icon: '🍗', veg: false },
+                        { name: 'Dal Makhani', price: '₹220', icon: '🍲', veg: true },
+                      ].map((item, idx) => (
+                        <div key={idx} style={{ display: 'flex', gap: '5px', padding: '4px', background: '#FFFFFF', borderRadius: '4px', border: '1px solid #F1F5F9', alignItems: 'center' }}>
+                          <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: '#FFF7ED', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px' }}>{item.icon}</div>
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', lineHeight: 1 }}>
+                              <span style={{ fontSize: '7.5px', fontWeight: 800, color: '#1E293B', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{item.name}</span>
+                              <span style={{ fontSize: '4.5px', background: item.veg ? '#F0FDF4' : '#FEF2F2', color: item.veg ? '#16A34A' : '#DC2626', padding: '0px 2px', borderRadius: '2px', border: item.veg ? '1px solid #BBF7D0' : '1px solid #FECACA' }}>
+                                {item.veg ? '🟢' : '🔴'}
+                              </span>
+                            </div>
+                            <span style={{ display: 'block', fontSize: '7.5px', fontWeight: 900, color: '#F97316', marginTop: '2px' }}>{item.price}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ background: '#FFFFFF', borderTop: '1px solid #F1F5F9', padding: '4px 0', textAlign: 'center', fontSize: '5.5px', color: '#94A3B8', fontWeight: 600 }}>
+                      Powered by Restaurant OS
+                    </div>
                   </div>
                 </div>
               </div>
