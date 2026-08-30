@@ -888,8 +888,8 @@ export const Landing: React.FC = () => {
                       <span style={{ background: '#334155', padding: '4px 12px', borderRadius: '14px', fontSize: '12px' }}>Desserts</span>
                     </div>
                     <div style={{ display: 'flex', justifyItems: 'space-between', alignItems: 'center', background: '#0F172A', padding: '12px 20px', borderRadius: '8px', border: '1px solid #334155' }}>
-                      <span>🍔 Classic Truffle Cheeseburger</span>
-                      <span style={{ color: '#F97316', fontWeight: 800 }}>$14.50</span>
+                      <span>🍛 Paneer Butter Masala</span>
+                      <span style={{ color: '#F97316', fontWeight: 800 }}>₹280</span>
                     </div>
                   </div>
                 </motion.div>
@@ -944,8 +944,8 @@ export const Landing: React.FC = () => {
                     <div style={{ padding: '20px' }}>
                       <span style={{ fontWeight: 700 }}>Menu List</span>
                       <div style={{ marginTop: '12px', display: 'flex', justifyItems: 'space-between', borderBottom: '1px solid #F1F5F9', paddingBottom: '8px' }}>
-                        <span>🍔 Classic Burger</span>
-                        <span style={{ fontWeight: 850 }}>$12.00</span>
+                        <span>🍛 Dal Makhani</span>
+                        <span style={{ fontWeight: 850 }}>₹220</span>
                       </div>
                     </div>
                   </div>
