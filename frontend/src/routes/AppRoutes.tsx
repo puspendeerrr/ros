@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthLayout } from '../layouts/AuthLayout.js';
 import { MainLayout } from '../layouts/MainLayout.js';
+import { LandingLayout } from '../layouts/LandingLayout.js';
 import { Login } from '../pages/Login.js';
 import { Signup } from '../pages/Signup.js';
 import { ForgotPassword } from '../pages/ForgotPassword.js';
@@ -13,6 +14,13 @@ import { Menu } from '../pages/Menu.js';
 import { QRMenu } from '../pages/QRMenu.js';
 import { PublicMenu } from '../pages/PublicMenu.js';
 import { Restaurant } from '../pages/Restaurant.js';
+import { Landing } from '../pages/Landing.js';
+import { Features } from '../pages/Features.js';
+import { PricingPage } from '../pages/PricingPage.js';
+import { About } from '../pages/About.js';
+import { Contact } from '../pages/Contact.js';
+import { Privacy } from '../pages/Privacy.js';
+import { Terms } from '../pages/Terms.js';
 import { ProtectedRoute, PublicOnlyRoute } from './ProtectedRoute.js';
 import { useAuthStore } from '../store/auth.store.js';
 
@@ -42,10 +50,21 @@ export const AppRoutes: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public SaaS Landing & Resource Pages */}
+        <Route element={<LandingLayout />}>
+          <Route path="/" element={<Landing />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+        </Route>
+
         {/* Protected Platform Routes */}
         <Route element={<ProtectedRoute />}>
           <Route element={<MainLayout />}>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/qr-menu" element={<QRMenu />} />
             <Route path="/restaurant" element={<Restaurant />} />

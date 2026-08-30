@@ -28,5 +28,5 @@ export const PublicOnlyRoute: React.FC = () => {
     );
   }
 
-  return !isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
+  return !isAuthenticated ? <Outlet /> : <Navigate to="/dashboard" replace />;
 };

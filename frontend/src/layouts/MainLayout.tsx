@@ -71,7 +71,7 @@ export const MainLayout: React.FC = () => {
     } else if (info.key === 'restaurant') {
       navigate('/restaurant');
     } else {
-      navigate('/');
+      navigate('/dashboard');
     }
   };
 
