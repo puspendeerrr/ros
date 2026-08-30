@@ -28,7 +28,6 @@ export const LandingLayout: React.FC = () => {
 
   const navLinks = [
     { label: 'Features', path: '/features' },
-    { label: 'Pricing', path: '/pricing' },
     { label: 'About', path: '/about' },
     { label: 'Contact', path: '/contact' },
   ];
@@ -327,7 +326,6 @@ export const LandingLayout: React.FC = () => {
                   <Flex vertical gap={12}>
                     <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '14px', letterSpacing: '0.5px' }}>Product</span>
                     <Link to="/features" className="footer-link-redesign">Features</Link>
-                    <Link to="/pricing" className="footer-link-redesign">Pricing</Link>
                     <Link to="/about" className="footer-link-redesign">About Brand</Link>
                   </Flex>
                 </Col>

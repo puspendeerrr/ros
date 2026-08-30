@@ -137,7 +137,7 @@ export const About: React.FC = () => {
                 <div className="about-bento-card" style={{ borderLeft: '6px solid #0F172A' }}>
                   <Title level={3} style={{ fontSize: '22px', fontWeight: 800, color: '#0F172A', marginBottom: '16px' }}>Our Vision</Title>
                   <Paragraph style={{ color: '#475569', fontSize: '15px', lineHeight: '1.75', margin: 0 }}>
-                    To establish a commission-free dining infrastructure that powers thousands of cafes, hotels, food courts, and kitchens worldwide. We build tools that make hospitality services fast, tactile, and highly cost-effective.
+                    To establish a commission-free dining infrastructure that powers thousands of cafes, hotels, food courts, and kitchens across India. We build tools that make hospitality services fast, tactile, and highly cost-effective.
                   </Paragraph>
                 </div>
               </motion.div>

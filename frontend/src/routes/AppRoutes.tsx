@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { AnimatePresence } from 'framer-motion';
 import { AuthLayout } from '../layouts/AuthLayout.js';
@@ -17,7 +17,7 @@ import { PublicMenu } from '../pages/PublicMenu.js';
 import { Restaurant } from '../pages/Restaurant.js';
 import { Landing } from '../pages/Landing.js';
 import { Features } from '../pages/Features.js';
-import { PricingPage } from '../pages/PricingPage.js';
+
 import { About } from '../pages/About.js';
 import { Contact } from '../pages/Contact.js';
 import { Privacy } from '../pages/Privacy.js';
@@ -71,7 +71,7 @@ export const AppRoutes: React.FC = () => {
         <Route element={<LandingLayout />}>
           <Route path="/" element={<Landing />} />
           <Route path="/features" element={<Features />} />
-          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/pricing" element={<Navigate to="/" replace />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
