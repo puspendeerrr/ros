@@ -357,6 +357,16 @@ export const Menu: React.FC = () => {
             flex-direction: column !important;
             align-items: flex-start !important;
           }
+          .menu-item-list .ant-list-item-meta {
+            width: 100% !important;
+            display: flex !important;
+            align-items: flex-start !important;
+          }
+          .menu-item-list .ant-list-item-meta-content {
+            width: 100% !important;
+            flex: 1 !important;
+            min-width: 0 !important;
+          }
           .menu-item-list .ant-list-item-extra {
             margin-left: 0 !important;
             margin-top: 12px !important;
