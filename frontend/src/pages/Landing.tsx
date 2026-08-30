@@ -16,7 +16,7 @@ import {
   LaptopOutlined,
   PhoneOutlined
 } from '@ant-design/icons';
-import { HeroSection, SocialProofMetrics } from '../components/HeroSection.js';
+import { HeroSection, FeaturesSection, SocialProofMetrics } from '../components/HeroSection.js';
 import { SEOManager } from '../components/SEOManager.js';
 
 const { Title, Paragraph, Text } = Typography;
@@ -246,6 +246,9 @@ export const Landing: React.FC = () => {
 
       {/* Social Proof Metrics Strip */}
       <SocialProofMetrics />
+
+      {/* Features Section */}
+      <FeaturesSection />
 
       {/* Trusted By Segment (Grayscale Logos Hover Color) */}
       <section style={{ padding: '60px 24px', background: '#F8FAFC', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
