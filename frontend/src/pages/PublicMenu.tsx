@@ -155,8 +155,11 @@ export const PublicMenu: React.FC = () => {
         style={{
           background: '#FFFFFF',
           borderBottom: '1px solid #E2E8F0',
-          padding: '8px 16px',
-          textAlign: 'center',
+          height: '56px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '0 16px',
         }}
       >
         <a 
@@ -167,7 +170,7 @@ export const PublicMenu: React.FC = () => {
             display: 'inline-flex', 
             alignItems: 'center', 
             justifyContent: 'center', 
-            gap: '8px', 
+            gap: '12px', 
             textDecoration: 'none',
             color: '#64748B',
             fontSize: '12px',
@@ -178,15 +181,25 @@ export const PublicMenu: React.FC = () => {
             src={logo} 
             alt="Restaurant OS" 
             className="desktop-branding-logo"
-            style={{ height: '14px', objectFit: 'contain' }}
+            style={{ 
+              height: '140px', 
+              marginTop: '-54px', 
+              marginBottom: '-54px', 
+              objectFit: 'contain',
+              width: 'auto'
+            }}
           />
           <img 
             src={logoIcon} 
             alt="Restaurant OS" 
             className="mobile-branding-logo"
-            style={{ height: '14px', objectFit: 'contain' }}
+            style={{ 
+              height: '32px', 
+              objectFit: 'contain',
+              width: 'auto'
+            }}
           />
-          <span style={{ color: '#94A3B8' }}>|</span>
+          <span style={{ height: '18px', width: '1px', background: '#E2E8F0' }} />
           <span>Powered by Restaurant OS</span>
         </a>
       </div>
