@@ -2,18 +2,43 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Flex, Row, Col, Typography } from 'antd';
 import {
-  QrcodeOutlined,
-  BuildOutlined,
-  ShopOutlined,
-  GlobalOutlined,
-  AppstoreOutlined,
-  RiseOutlined,
-  ArrowRightOutlined,
-  MobileOutlined,
-  CameraOutlined,
-} from '@ant-design/icons';
+  QrCode,
+  Utensils,
+  Store,
+  Globe,
+  LayoutDashboard,
+  TrendingUp,
+  ArrowRight,
+  Smartphone,
+  Camera,
+  Check,
+} from 'lucide-react';
 
 const { Title, Paragraph } = Typography;
+
+/* ────────────────────────────────────────────────────────────
+   FoodVegIndicator — Indian standard Veg (🟢) / Non-Veg (🔴) vector label
+   ──────────────────────────────────────────────────────────── */
+const FoodVegIndicator: React.FC<{ isVeg: boolean }> = ({ isVeg }) => (
+  <div style={{
+    width: '8px',
+    height: '8px',
+    border: `1px solid ${isVeg ? '#16A34A' : '#DC2626'}`,
+    padding: '1px',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '1px',
+    background: '#FFFFFF'
+  }}>
+    <div style={{
+      width: '4px',
+      height: '4px',
+      borderRadius: '50%',
+      background: isVeg ? '#16A34A' : '#DC2626'
+    }} />
+  </div>
+);
 
 /* ────────────────────────────────────────────────────────────
    HERO SECTION COMPONENT (Super Simple - "Ghanta kuch na pata ho tab bhi samajh aaye")
@@ -174,8 +199,9 @@ export const HeroSection: React.FC = () => {
           z-index: 10;
         }
         .connecting-arrow {
-          font-size: 24px;
-          font-weight: 900;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           animation: pulse-arrow 2s infinite;
         }
         @keyframes pulse-arrow {
@@ -233,7 +259,7 @@ export const HeroSection: React.FC = () => {
                 ].map(b => (
                   <Col span={12} key={b}>
                     <span className="benefit-item-v4">
-                      <span className="benefit-icon-v4">✅</span> {b}
+                      <Check size={16} strokeWidth={3} style={{ color: '#22C55E' }} /> {b}
                     </span>
                   </Col>
                 ))}
@@ -277,7 +303,7 @@ export const HeroSection: React.FC = () => {
                 <div className="physical-stand">
                   <div className="stand-card">
                     <span style={{ fontSize: '8px', fontWeight: 800, color: '#EA580C', background: '#FFF7ED', padding: '2px 8px', borderRadius: '10px' }}>THE PEPPER BISTRO</span>
-                    <QrcodeOutlined style={{ fontSize: '80px', color: '#0F172A', margin: '12px 0' }} />
+                    <QrCode size={72} strokeWidth={1.5} style={{ color: '#0F172A', margin: '12px 0' }} />
                     <div>
                       <span style={{ display: 'block', fontSize: '9px', fontWeight: 900, color: '#0F172A' }}>SCAN TO VIEW MENU</span>
                       <span style={{ display: 'block', fontSize: '6px', color: '#64748B', marginTop: '2px' }}>No App Download Required</span>
@@ -288,10 +314,10 @@ export const HeroSection: React.FC = () => {
 
                 {/* 2. Dotted Connecting Flow with Label */}
                 <div className="connecting-flow">
-                  <span style={{ fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', background: '#FFF7ED', padding: '4px 10px', borderRadius: '12px', border: '1px solid #FFEDD5', color: '#EA580C' }}>
-                    <CameraOutlined style={{ marginRight: '4px' }} /> Scan QR
+                  <span style={{ fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', background: '#FFF7ED', padding: '4px 10px', borderRadius: '12px', border: '1px solid #FFEDD5', color: '#EA580C', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                    <Camera size={12} /> Scan QR
                   </span>
-                  <span className="connecting-arrow"><ArrowRightOutlined /></span>
+                  <span className="connecting-arrow"><ArrowRight size={20} strokeWidth={3} /></span>
                 </div>
 
                 {/* 3. Sleek Mobile Mockup displaying Diner Menu */}
@@ -305,23 +331,25 @@ export const HeroSection: React.FC = () => {
                     {/* Status badge floating inside phone */}
                     <div style={{ margin: '-8px 6px 4px 6px', background: '#FFFFFF', borderRadius: '4px', padding: '4px', border: '1px solid #F1F5F9', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
                       <span style={{ fontSize: '7px', fontWeight: 800, color: '#0F172A' }}>Digital Menu</span>
-                      <span style={{ fontSize: '5px', background: '#F0FDF4', color: '#16A34A', padding: '1px 3px', borderRadius: '4px', fontWeight: 700 }}>🟢 Open</span>
+                      <span style={{ fontSize: '5px', background: '#F0FDF4', color: '#16A34A', padding: '1px 3px', borderRadius: '4px', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '2px' }}>
+                        <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#16A34A' }} /> Open
+                      </span>
                     </div>
                     {/* Menu items */}
                     <div style={{ padding: '4px 6px', display: 'flex', flexDirection: 'column', gap: '4px', flex: 1, overflow: 'hidden' }}>
                       {[
-                        { name: 'Paneer Butter Masala', price: '₹280', icon: '🍛', veg: true },
-                        { name: 'Chicken Biryani', price: '₹340', icon: '🍗', veg: false },
-                        { name: 'Dal Makhani', price: '₹220', icon: '🍲', veg: true },
+                        { name: 'Paneer Butter Masala', price: '₹280', veg: true },
+                        { name: 'Chicken Biryani', price: '₹340', veg: false },
+                        { name: 'Dal Makhani', price: '₹220', veg: true },
                       ].map((item, idx) => (
                         <div key={idx} style={{ display: 'flex', gap: '5px', padding: '4px', background: '#FFFFFF', borderRadius: '4px', border: '1px solid #F1F5F9', alignItems: 'center' }}>
-                          <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: '#FFF7ED', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px' }}>{item.icon}</div>
+                          <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: '#FFF7ED', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Utensils size={10} style={{ color: '#EA580C' }} />
+                          </div>
                           <div style={{ flex: 1, minWidth: 0 }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '3px', lineHeight: 1 }}>
                               <span style={{ fontSize: '7.5px', fontWeight: 800, color: '#1E293B', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{item.name}</span>
-                              <span style={{ fontSize: '4.5px', background: item.veg ? '#F0FDF4' : '#FEF2F2', color: item.veg ? '#16A34A' : '#DC2626', padding: '0px 2px', borderRadius: '2px', border: item.veg ? '1px solid #BBF7D0' : '1px solid #FECACA' }}>
-                                {item.veg ? '🟢' : '🔴'}
-                              </span>
+                              <FoodVegIndicator isVeg={item.veg} />
                             </div>
                             <span style={{ display: 'block', fontSize: '7.5px', fontWeight: 900, color: '#F97316', marginTop: '2px' }}>{item.price}</span>
                           </div>
@@ -348,32 +376,32 @@ export const HeroSection: React.FC = () => {
 export const FeaturesSection: React.FC = () => {
   const features = [
     {
-      icon: <MobileOutlined style={{ color: '#F97316', fontSize: '24px' }} />,
+      icon: <Smartphone size={24} style={{ color: '#F97316' }} />,
       title: '📱 QR Menu',
       desc: 'Create QR menus for every table.',
     },
     {
-      icon: <BuildOutlined style={{ color: '#F97316', fontSize: '24px' }} />,
+      icon: <Utensils size={24} style={{ color: '#F97316' }} />,
       title: '🍽 Menu Builder',
       desc: 'Update food items, prices and photos anytime.',
     },
     {
-      icon: <ShopOutlined style={{ color: '#F97316', fontSize: '24px' }} />,
+      icon: <Store size={24} style={{ color: '#F97316' }} />,
       title: '🏪 Restaurant Profile',
       desc: 'Show customers your restaurant information.',
     },
     {
-      icon: <GlobalOutlined style={{ color: '#F97316', fontSize: '24px' }} />,
+      icon: <Globe size={24} style={{ color: '#F97316' }} />,
       title: '🌐 Restaurant Website',
       desc: 'Get your own professional restaurant page.',
     },
     {
-      icon: <AppstoreOutlined style={{ color: '#F97316', fontSize: '24px' }} />,
+      icon: <LayoutDashboard size={24} style={{ color: '#F97316' }} />,
       title: '📊 Dashboard',
       desc: 'Manage everything from one place.',
     },
     {
-      icon: <RiseOutlined style={{ color: '#F97316', fontSize: '24px' }} />,
+      icon: <TrendingUp size={24} style={{ color: '#F97316' }} />,
       title: '📈 Grow Your Business',
       desc: 'Give customers a modern dining experience.',
     },
