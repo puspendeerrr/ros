@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
+import { AnimatePresence } from 'framer-motion';
 import { AuthLayout } from '../layouts/AuthLayout.js';
 import { MainLayout } from '../layouts/MainLayout.js';
 import { LandingLayout } from '../layouts/LandingLayout.js';
@@ -21,11 +22,15 @@ import { About } from '../pages/About.js';
 import { Contact } from '../pages/Contact.js';
 import { Privacy } from '../pages/Privacy.js';
 import { Terms } from '../pages/Terms.js';
+import { NotFound, Forbidden, ServerError } from '../pages/ErrorPages.js';
+import { ScrollToTop } from '../components/ScrollToTop.js';
+import { SplashLoader } from '../components/SplashLoader.js';
 import { ProtectedRoute, PublicOnlyRoute } from './ProtectedRoute.js';
 import { useAuthStore } from '../store/auth.store.js';
 
 export const AppRoutes: React.FC = () => {
   const { setAccessToken, logout, setLoading } = useAuthStore();
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     const autoLogin = async () => {
@@ -45,10 +50,22 @@ export const AppRoutes: React.FC = () => {
     };
 
     autoLogin();
+
+    // Trigger splash dismissal after 1.2s
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 1200);
+
+    return () => clearTimeout(timer);
   }, [setAccessToken, logout, setLoading]);
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
+      <AnimatePresence>
+        {showSplash && <SplashLoader />}
+      </AnimatePresence>
+
       <Routes>
         {/* Public SaaS Landing & Resource Pages */}
         <Route element={<LandingLayout />}>
@@ -85,8 +102,13 @@ export const AppRoutes: React.FC = () => {
         {/* Public Menu Route */}
         <Route path="/r/:restaurantSlug" element={<PublicMenu />} />
 
+        {/* Branded Error Routes */}
+        <Route path="/403" element={<Forbidden />} />
+        <Route path="/500" element={<ServerError />} />
+        <Route path="/404" element={<NotFound />} />
+
         {/* Fallback routing */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
