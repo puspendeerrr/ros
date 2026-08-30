@@ -810,13 +810,29 @@ export const HeroSection: React.FC = () => {
         .hero-pills-container > * { scroll-snap-align: start; }
         .hero-laptop-shell {
           position: relative;
-          width: 100%;
+          width: 82%;
           height: 280px;
           background: #0F172A;
           border-radius: 14px;
           border: 3px solid #1E293B;
           box-shadow: 0 25px 50px rgba(15,23,42,0.15);
           overflow: hidden;
+          transition: transform 0.15s ease-out;
+        }
+        .hero-phone-shell {
+          position: absolute;
+          bottom: -15px;
+          right: 0px;
+          width: 175px;
+          height: 330px;
+          background: #FFFFFF;
+          border-radius: 28px;
+          border: 6px solid #0F172A;
+          box-shadow: 0 25px 50px rgba(15,23,42,0.22);
+          overflow: hidden;
+          z-index: 25;
+          display: flex;
+          flex-direction: column;
           transition: transform 0.15s ease-out;
         }
         .hero-laptop-titlebar {
@@ -890,6 +906,8 @@ export const HeroSection: React.FC = () => {
         @media (max-width: 768px) {
           .hero-headline-v2 { min-height: auto !important; }
           .hero-text-container { min-height: auto !important; }
+          .hero-laptop-shell { width: 100% !important; }
+          .hero-phone-shell { display: none !important; }
         }
       `}</style>
 
@@ -1024,6 +1042,74 @@ export const HeroSection: React.FC = () => {
                         {MockupComponent && <MockupComponent active={true} />}
                       </motion.div>
                     </AnimatePresence>
+                  </div>
+                </div>
+
+                {/* Phone Mockup (Actual Public Menu Preview) */}
+                <div
+                  className="hero-phone-shell"
+                  style={{
+                    transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+                  }}
+                >
+                  {/* Speaker and notch */}
+                  <div style={{ height: '16px', background: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', borderBottom: '1px solid #F1F5F9' }}>
+                    <div style={{ width: '40px', height: '4px', background: '#CBD5E1', borderRadius: '2px', marginTop: '2px' }} />
+                  </div>
+                  {/* Phone Screen Area */}
+                  <div style={{ flex: 1, overflowY: 'hidden', background: '#FFFFFF', display: 'flex', flexDirection: 'column', fontFamily: 'Inter, sans-serif' }}>
+                    {/* Header Banner */}
+                    <div style={{ height: '56px', background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)', padding: '8px 10px', color: '#FFFFFF', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      <span style={{ fontSize: '10px', fontWeight: 800 }}>The Pepper Bistro</span>
+                      <span style={{ fontSize: '6px', color: '#94A3B8', marginTop: '1px' }}>Koramangala, Bengaluru</span>
+                    </div>
+                    {/* Restaurant Info Floating Box */}
+                    <div style={{ margin: '-10px 6px 6px 6px', background: '#FFFFFF', borderRadius: '6px', padding: '6px', boxShadow: '0 4px 10px rgba(15,23,42,0.06)', zIndex: 10, border: '1px solid #F1F5F9' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ fontSize: '8px', fontWeight: 800, color: '#0F172A' }}>Digital QR Menu</span>
+                        <span style={{ fontSize: '6px', background: '#FFF7ED', color: '#EA580C', padding: '1px 4px', borderRadius: '4px', fontWeight: 700 }}>🟢 Open</span>
+                      </div>
+                      <div style={{ fontSize: '5.5px', color: '#64748B', marginTop: '2px' }}>Mon – Sun • 📞 +91 98765 43210</div>
+                    </div>
+                    {/* Search Field */}
+                    <div style={{ padding: '0 6px 4px 6px' }}>
+                      <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '4px', padding: '3px 6px', display: 'flex', alignItems: 'center' }}>
+                        <span style={{ fontSize: '7px', color: '#94A3B8' }}>🔍 Search food items...</span>
+                      </div>
+                    </div>
+                    {/* Category Selector */}
+                    <div style={{ display: 'flex', gap: '3px', padding: '2px 6px 4px 6px', borderBottom: '1px solid #F1F5F9' }}>
+                      {['All', 'Starters', 'Mains'].map((cat, idx) => (
+                        <span key={idx} style={{ fontSize: '6px', fontWeight: 750, padding: '2px 5px', borderRadius: '4px', background: idx === 0 ? '#F97316' : '#F8FAFC', color: idx === 0 ? '#FFFFFF' : '#475569', border: idx === 0 ? '1px solid #F97316' : '1px solid #E2E8F0' }}>
+                          {cat}
+                        </span>
+                      ))}
+                    </div>
+                    {/* Menu Items List */}
+                    <div style={{ flex: 1, padding: '4px 6px', display: 'flex', flexDirection: 'column', gap: '4px', overflowY: 'hidden' }}>
+                      {[
+                        { name: 'Paneer Butter Masala', price: '₹280', veg: true, desc: 'Cubes of cottage cheese in a rich tomato gravy' },
+                        { name: 'Dal Makhani', price: '₹220', veg: true, desc: 'Slow cooked black lentils with fresh cream' },
+                        { name: 'Butter Naan', price: '₹60', veg: true, desc: 'Soft tandoori flatbread glazed with butter' },
+                      ].map((item, idx) => (
+                        <div key={idx} style={{ display: 'flex', gap: '5px', padding: '4px', background: '#FFFFFF', borderRadius: '4px', border: '1px solid #F1F5F9', alignItems: 'center' }}>
+                          {/* Mini placeholder circle */}
+                          <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: '#FFF7ED', border: '1px solid #FFEDD5', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px' }}>🍛</div>
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', lineHeight: 1 }}>
+                              <span style={{ fontSize: '7.5px', fontWeight: 800, color: '#1E293B', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{item.name}</span>
+                              <span style={{ fontSize: '5px', background: '#F0FDF4', color: '#16A34A', padding: '0px 2px', borderRadius: '2px', border: '1px solid #BBF7D0' }}>🟢</span>
+                            </div>
+                            <span style={{ display: 'block', fontSize: '5.5px', color: '#64748B', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap', marginTop: '1px' }}>{item.desc}</span>
+                            <span style={{ display: 'block', fontSize: '7.5px', fontWeight: 900, color: '#F97316', marginTop: '1px' }}>{item.price}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* Powered by tag */}
+                  <div style={{ background: '#FFFFFF', borderTop: '1px solid #F1F5F9', padding: '4px 0', textAlign: 'center', fontSize: '5.5px', color: '#94A3B8', fontWeight: 600 }}>
+                    Powered by Restaurant OS
                   </div>
                 </div>
 
