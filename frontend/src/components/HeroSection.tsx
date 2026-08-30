@@ -602,11 +602,19 @@ export const HeroSection: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Persist variant to localStorage
-  const handleVariantChange = useCallback((index: number) => {
-    setActiveVariant(index);
+  // Auto-cycle hero variants every 4 seconds
+  useEffect(() => {
+    if (prefersReduced) return;
+    const timer = setTimeout(() => {
+      setActiveVariant(prev => (prev + 1) % heroVariants.length);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, [activeVariant, prefersReduced]);
+
+  // Persist active variant changes to localStorage
+  useEffect(() => {
     try {
-      const v = heroVariants[index];
+      const v = heroVariants[activeVariant];
       localStorage.setItem('ros-hero-variant', v.id);
       const viewed: string[] = JSON.parse(localStorage.getItem('ros-hero-viewed') || '[]');
       if (!viewed.includes(v.id)) {
@@ -614,6 +622,11 @@ export const HeroSection: React.FC = () => {
         localStorage.setItem('ros-hero-viewed', JSON.stringify(viewed));
       }
     } catch { /* localStorage unavailable */ }
+  }, [activeVariant]);
+
+  // Persist variant to localStorage
+  const handleVariantChange = useCallback((index: number) => {
+    setActiveVariant(index);
   }, []);
 
   // 3D tilt on cursor (desktop ≥ 1024px)
@@ -1025,9 +1038,9 @@ export const HeroSection: React.FC = () => {
                   >
                     {variant.floatingCards.map((card, i) => {
                       const positions = [
-                        { top: '60px', left: '-20px', zIndex: 20 },
-                        { top: '20px', right: '30px', zIndex: 20 },
-                        { bottom: '100px', left: '-10px', zIndex: 20 },
+                        { top: '60px', left: '20px', zIndex: 20 },
+                        { top: '20px', right: '40px', zIndex: 20 },
+                        { bottom: '60px', left: '35px', zIndex: 20 },
                       ];
                       const pos = positions[i] || positions[0];
                       const floatDelay = i * 0.5;
