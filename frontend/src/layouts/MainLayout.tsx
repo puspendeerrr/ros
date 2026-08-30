@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { Layout, Menu, Button, Flex, Typography, Card } from 'antd';
-import { DashboardOutlined, ShopOutlined, LogoutOutlined, QrcodeOutlined } from '@ant-design/icons';
+import { DashboardOutlined, ShopOutlined, LogoutOutlined, QrcodeOutlined, SettingOutlined } from '@ant-design/icons';
 import { useMutation } from '@tanstack/react-query';
 import { useAuthStore } from '../store/auth.store.js';
 import { authService } from '../services/auth.service.js';
@@ -30,14 +30,23 @@ export const MainLayout: React.FC = () => {
   const getSelectedKey = () => {
     if (location.pathname === '/menu') return 'menu';
     if (location.pathname === '/qr-menu') return 'qr-menu';
+    if (location.pathname === '/restaurant') return 'restaurant';
     return 'dashboard';
   };
 
   const handleMenuClick = (info: { key: string }) => {
+    if ((window as any).hasUnsavedChanges) {
+      const confirmLeave = window.confirm("You have unsaved changes. Are you sure you want to leave?");
+      if (!confirmLeave) return;
+      (window as any).hasUnsavedChanges = false;
+    }
+
     if (info.key === 'menu') {
       navigate('/menu');
     } else if (info.key === 'qr-menu') {
       navigate('/qr-menu');
+    } else if (info.key === 'restaurant') {
+      navigate('/restaurant');
     } else {
       navigate('/');
     }
@@ -94,6 +103,12 @@ export const MainLayout: React.FC = () => {
                   icon: <QrcodeOutlined style={{ fontSize: '16px' }} />,
                   label: 'QR Menu',
                   style: { borderRadius: '6px', margin: '4px 12px', width: 'calc(100% - 24px)' }
+                },
+                {
+                  key: 'restaurant',
+                  icon: <SettingOutlined style={{ fontSize: '16px' }} />,
+                  label: 'Restaurant',
+                  style: { borderRadius: '6px', margin: '4px 12px', width: 'calc(100% - 24px)' }
                 }
               ]}
             />
@@ -142,7 +157,14 @@ export const MainLayout: React.FC = () => {
             <Button
               type="text"
               icon={<LogoutOutlined />}
-              onClick={() => logoutMutation.mutate()}
+              onClick={() => {
+                if ((window as any).hasUnsavedChanges) {
+                  const confirmLeave = window.confirm("You have unsaved changes. Are you sure you want to leave?");
+                  if (!confirmLeave) return;
+                  (window as any).hasUnsavedChanges = false;
+                }
+                logoutMutation.mutate();
+              }}
               loading={logoutMutation.isPending}
               block
               style={{

@@ -142,14 +142,18 @@ export class MenuRepository {
       select: {
         id: true,
         restaurantName: true,
+        description: true,
         slug: true,
         status: true,
         logoUrl: true,
         coverImageUrl: true,
+        phone: true,
         address: true,
         city: true,
         state: true,
         country: true,
+        postalCode: true,
+        googleMapsUrl: true,
         openingTime: true,
         closingTime: true,
       }

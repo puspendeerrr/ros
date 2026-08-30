@@ -22,6 +22,7 @@ model Restaurant {
   id             String           @id @default(cuid())
   restaurantName String           @map("restaurant_name")
   ownerName      String           @map("owner_name")
+  description    String?
   slug           String           @unique
   email          String           @unique
   phone          String           @unique

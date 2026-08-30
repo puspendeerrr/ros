@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { Flex, Input, Typography, Card, List, Space, Empty, Spin, Result } from 'antd';
-import { SearchOutlined, ClockCircleOutlined, EnvironmentOutlined, ShopOutlined } from '@ant-design/icons';
+import { Flex, Input, Typography, Card, List, Space, Empty, Spin, Result, Button } from 'antd';
+import { SearchOutlined, ClockCircleOutlined, EnvironmentOutlined, ShopOutlined, PhoneOutlined, CompassOutlined } from '@ant-design/icons';
 import { menuService } from '../services/menu.service.js';
+import logo from '../assets/logo.png';
+import logoIcon from '../assets/logo-icon.png';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -123,6 +125,58 @@ export const PublicMenu: React.FC = () => {
 
   return (
     <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
+      <style>{`
+        @media (max-width: 576px) {
+          .desktop-branding-logo { display: none !important; }
+          .mobile-branding-logo { display: inline-block !important; }
+        }
+        @media (min-width: 577px) {
+          .desktop-branding-logo { display: inline-block !important; }
+          .mobile-branding-logo { display: none !important; }
+        }
+      `}</style>
+      
+      {/* Minimal Branding Bar */}
+      <div 
+        style={{
+          background: '#FFFFFF',
+          borderBottom: '1px solid #E2E8F0',
+          padding: '8px 16px',
+          textAlign: 'center',
+        }}
+      >
+        <a 
+          href="https://ros.algorithyum.in" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ 
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: '8px', 
+            textDecoration: 'none',
+            color: '#64748B',
+            fontSize: '12px',
+            fontWeight: 500
+          }}
+        >
+          <img 
+            src={logo} 
+            alt="Restaurant OS" 
+            className="desktop-branding-logo"
+            style={{ height: '14px', objectFit: 'contain' }}
+          />
+          <img 
+            src={logoIcon} 
+            alt="Restaurant OS" 
+            className="mobile-branding-logo"
+            style={{ height: '14px', objectFit: 'contain' }}
+          />
+          <span style={{ color: '#94A3B8' }}>|</span>
+          <span>Powered by Restaurant OS</span>
+        </a>
+      </div>
+
       {/* Restaurant Header Banner */}
       <div style={{
         background: restaurant.coverImageUrl 
@@ -183,23 +237,51 @@ export const PublicMenu: React.FC = () => {
               <Title level={3} style={{ margin: '0 0 4px 0', fontWeight: 800, letterSpacing: '-0.5px', color: '#0F172A' }}>
                 {restaurant.restaurantName}
               </Title>
-              <Flex gap={12} wrap="wrap">
+              <Flex gap={12} wrap="wrap" align="center">
                 <Text type="secondary" style={{ fontSize: '13px' }}>
                   <EnvironmentOutlined style={{ marginRight: '4px' }} /> {locationStr}
                 </Text>
+                {restaurant.googleMapsUrl && (
+                  <Button
+                    type="link"
+                    icon={<CompassOutlined />}
+                    href={restaurant.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ padding: 0, height: 'auto', color: '#F97316', fontSize: '13px' }}
+                  >
+                    Get Directions
+                  </Button>
+                )}
               </Flex>
             </div>
           </Flex>
 
-          {/* Operating hours */}
-          {(restaurant.openingTime || restaurant.closingTime) && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: '#F8FAFC', padding: '8px 12px', borderRadius: '8px', border: '1px solid #F1F5F9' }}>
-              <ClockCircleOutlined style={{ color: '#F97316', fontSize: '13px' }} />
-              <Text style={{ fontSize: '12px', color: '#475569', fontWeight: 500 }}>
-                Hours: {restaurant.openingTime || '10:00 AM'} - {restaurant.closingTime || '11:00 PM'}
-              </Text>
-            </div>
+          {restaurant.description && (
+            <Paragraph style={{ margin: '0 0 16px 0', color: '#475569', fontSize: '13px', lineHeight: '1.6' }}>
+              {restaurant.description}
+            </Paragraph>
           )}
+
+          {/* Operating hours & phone */}
+          <Flex vertical gap={8} style={{ background: '#F8FAFC', padding: '12px', borderRadius: '8px', border: '1px solid #F1F5F9' }}>
+            {(restaurant.openingTime || restaurant.closingTime) && (
+              <Flex align="center" gap={8}>
+                <ClockCircleOutlined style={{ color: '#F97316', fontSize: '13px' }} />
+                <Text style={{ fontSize: '12px', color: '#475569', fontWeight: 500 }}>
+                  Hours: {restaurant.openingTime || '10:00 AM'} - {restaurant.closingTime || '11:00 PM'}
+                </Text>
+              </Flex>
+            )}
+            {restaurant.phone && (
+              <Flex align="center" gap={8}>
+                <PhoneOutlined style={{ color: '#F97316', fontSize: '13px' }} />
+                <Text style={{ fontSize: '12px', color: '#475569', fontWeight: 500 }}>
+                  Phone: {restaurant.phone}
+                </Text>
+              </Flex>
+            )}
+          </Flex>
         </Card>
 
         {/* Search Filter */}
@@ -322,6 +404,38 @@ export const PublicMenu: React.FC = () => {
             })}
           </Space>
         )}
+      </div>
+
+      {/* CTA Footer */}
+      <div style={{ 
+        background: '#F8FAFC', 
+        borderTop: '1px solid #E2E8F0', 
+        padding: '24px 16px', 
+        textAlign: 'center', 
+        marginTop: '48px' 
+      }}>
+        <Paragraph style={{ margin: '0 0 8px 0', fontSize: '13px', color: '#64748B', fontWeight: 500 }}>
+          Powered by <a href="https://ros.algorithyum.in" target="_blank" rel="noopener noreferrer" style={{ color: '#F97316', fontWeight: 600 }}>Restaurant OS</a>
+        </Paragraph>
+        <Paragraph style={{ margin: '0 0 16px 0', fontSize: '12px', color: '#94A3B8' }}>
+          Build your own commission-free restaurant ordering system.
+        </Paragraph>
+        <Button
+          type="primary"
+          href="https://ros.algorithyum.in"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ 
+            background: '#F97316', 
+            borderColor: '#F97316', 
+            borderRadius: '8px', 
+            fontSize: '12px', 
+            fontWeight: 600,
+            height: '36px'
+          }}
+        >
+          Learn More
+        </Button>
       </div>
     </div>
   );

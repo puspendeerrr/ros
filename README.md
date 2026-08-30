@@ -93,7 +93,7 @@ Vercel handles React SPA client-side routing rewrites using the configured [`ver
    - Build Command: `npm run build`
    - Output Directory: `dist`
 5. Configure Environment Variables:
-   - `VITE_API_URL`: The production URL of your Render backend API (e.g. `https://api.restaurantos.com`).
+   - `VITE_API_URL`: The production URL of your Render backend API (e.g. `https://api.ros.algorithyum.in`).
 6. Click **Deploy**.
 
 ### Backend Deployment (Render)

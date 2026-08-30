@@ -16,7 +16,7 @@ const envSchema = z.object({
   SMTP_PORT: z.coerce.number().optional(),
   SMTP_USER: z.string().optional(),
   SMTP_PASS: z.string().optional(),
-  SMTP_FROM: z.string().default('no-reply@restaurantos.com'),
+  SMTP_FROM: z.string().default('no-reply@ros.algorithyum.in'),
 });
 
 export const env = envSchema.parse(process.env);

@@ -12,6 +12,7 @@ import { Dashboard } from '../pages/Dashboard.js';
 import { Menu } from '../pages/Menu.js';
 import { QRMenu } from '../pages/QRMenu.js';
 import { PublicMenu } from '../pages/PublicMenu.js';
+import { Restaurant } from '../pages/Restaurant.js';
 import { ProtectedRoute, PublicOnlyRoute } from './ProtectedRoute.js';
 import { useAuthStore } from '../store/auth.store.js';
 
@@ -47,6 +48,7 @@ export const AppRoutes: React.FC = () => {
             <Route path="/" element={<Dashboard />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/qr-menu" element={<QRMenu />} />
+            <Route path="/restaurant" element={<Restaurant />} />
           </Route>
         </Route>
 

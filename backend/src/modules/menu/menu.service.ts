@@ -215,13 +215,17 @@ export class MenuService {
     return {
       restaurant: {
         restaurantName: restaurant.restaurantName,
+        description: restaurant.description,
         slug: restaurant.slug,
         logoUrl: restaurant.logoUrl,
         coverImageUrl: restaurant.coverImageUrl,
+        phone: restaurant.phone,
         address: restaurant.address,
         city: restaurant.city,
         state: restaurant.state,
         country: restaurant.country,
+        postalCode: restaurant.postalCode,
+        googleMapsUrl: restaurant.googleMapsUrl,
         openingTime: restaurant.openingTime,
         closingTime: restaurant.closingTime,
       },

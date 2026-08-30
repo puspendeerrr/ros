@@ -11,6 +11,7 @@ import { env } from './config/env';
 import { errorMiddleware } from './middleware/error.middleware';
 import authRoutes from './modules/auth/auth.routes';
 import menuRoutes from './modules/menu/menu.routes';
+import restaurantRoutes from './modules/restaurant/restaurant.routes';
 
 const app = express();
 
@@ -107,6 +108,7 @@ app.use('/', authLimiter, authRoutes);
 
 // Mount menu builder routes under /api
 app.use('/api', menuRoutes);
+app.use('/api', restaurantRoutes);
 
 // Global Error Handler Middleware
 app.use(errorMiddleware);
