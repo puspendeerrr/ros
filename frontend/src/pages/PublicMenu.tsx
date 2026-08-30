@@ -127,12 +127,12 @@ export const PublicMenu: React.FC = () => {
     <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <style>{`
         @media (max-width: 576px) {
-          .desktop-branding-logo { display: none !important; }
-          .mobile-branding-logo { display: inline-block !important; }
+          .desktop-branding-logo-wrapper { display: none !important; }
+          .mobile-branding-logo-wrapper { display: flex !important; }
         }
         @media (min-width: 577px) {
-          .desktop-branding-logo { display: inline-block !important; }
-          .mobile-branding-logo { display: none !important; }
+          .desktop-branding-logo-wrapper { display: flex !important; }
+          .mobile-branding-logo-wrapper { display: none !important; }
         }
         @media (max-width: 480px) {
           .public-menu-list .ant-list-item {
@@ -177,28 +177,51 @@ export const PublicMenu: React.FC = () => {
             fontWeight: 500
           }}
         >
-          <img 
-            src={logo} 
-            alt="Restaurant OS" 
-            className="desktop-branding-logo"
-            style={{ 
-              height: '140px', 
-              marginTop: '-54px', 
-              marginBottom: '-54px', 
-              objectFit: 'contain',
-              width: 'auto'
-            }}
-          />
-          <img 
-            src={logoIcon} 
-            alt="Restaurant OS" 
-            className="mobile-branding-logo"
+          {/* Desktop logo wrapper - Centers and clips whitespace of full logo */}
+          <div 
+            className="desktop-branding-logo-wrapper"
             style={{ 
               height: '32px', 
-              objectFit: 'contain',
-              width: 'auto'
+              width: '144px',
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}
-          />
+          >
+            <img 
+              src={logo} 
+              alt="Restaurant OS" 
+              style={{ 
+                height: '140px', 
+                objectFit: 'contain',
+                flexShrink: 0,
+                width: 'auto'
+              }}
+            />
+          </div>
+          {/* Mobile icon logo wrapper */}
+          <div 
+            className="mobile-branding-logo-wrapper"
+            style={{ 
+              height: '32px', 
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <img 
+              src={logoIcon} 
+              alt="Restaurant OS" 
+              style={{ 
+                height: '32px', 
+                objectFit: 'contain',
+                flexShrink: 0,
+                width: 'auto'
+              }}
+            />
+          </div>
           <span style={{ height: '18px', width: '1px', background: '#E2E8F0' }} />
           <span>Powered by Restaurant OS</span>
         </a>
