@@ -38,6 +38,7 @@ model Restaurant {
   googleMapsUrl  String?          @map("google_maps_url")
   openingTime    String?          @map("opening_time")
   closingTime    String?          @map("closing_time")
+  onboardingStep Int              @default(1) @map("onboarding_step")
   createdAt      DateTime         @default(now()) @map("created_at")
   updatedAt      DateTime         @updatedAt @map("updated_at")
   tokens         Token[]

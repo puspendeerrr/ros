@@ -19,6 +19,7 @@ export interface RestaurantProfile {
   googleMapsUrl?: string | null;
   openingTime?: string | null;
   closingTime?: string | null;
+  onboardingStep?: number | null;
   createdAt: string;
   updatedAt: string;
 }

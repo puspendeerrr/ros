@@ -15,6 +15,7 @@ import { Menu } from '../pages/Menu.js';
 import { QRMenu } from '../pages/QRMenu.js';
 import { PublicMenu } from '../pages/PublicMenu.js';
 import { Restaurant } from '../pages/Restaurant.js';
+import { Onboarding } from '../pages/Onboarding.js';
 import { Landing } from '../pages/Landing.js';
 import { Features } from '../pages/Features.js';
 
@@ -80,6 +81,7 @@ export const AppRoutes: React.FC = () => {
 
         {/* Protected Platform Routes */}
         <Route element={<ProtectedRoute />}>
+          <Route path="/onboarding" element={<Onboarding />} />
           <Route element={<MainLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/menu" element={<Menu />} />

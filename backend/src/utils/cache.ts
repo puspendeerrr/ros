@@ -1,8 +1,8 @@
 import { Redis } from 'ioredis';
 import zlib from 'zlib';
-import { env } from '../config/env.js';
-import { CacheConfig } from '../config/cache.js';
-import { requestContextStore } from './context.js';
+import { env } from '../config/env';
+import { CacheConfig } from '../config/cache';
+import { requestContextStore } from './context';
 
 interface CacheMetrics {
   hitCount: number;

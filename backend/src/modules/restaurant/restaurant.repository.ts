@@ -14,11 +14,11 @@ export class RestaurantRepository {
     return prisma.restaurant.update({
       where: { id },
       data: {
-        restaurantName: data.restaurantName,
+        restaurantName: data.restaurantName !== undefined ? data.restaurantName : undefined,
         description: data.description !== undefined ? data.description : undefined,
         logoUrl: data.logoUrl !== undefined ? data.logoUrl : undefined,
         coverImageUrl: data.coverImageUrl !== undefined ? data.coverImageUrl : undefined,
-        phone: data.phone.trim(),
+        phone: data.phone !== undefined ? data.phone.trim() : undefined,
         address: data.address !== undefined ? data.address : undefined,
         city: data.city !== undefined ? data.city : undefined,
         state: data.state !== undefined ? data.state : undefined,
@@ -27,6 +27,7 @@ export class RestaurantRepository {
         googleMapsUrl: data.googleMapsUrl !== undefined ? data.googleMapsUrl : undefined,
         openingTime: data.openingTime !== undefined ? data.openingTime : undefined,
         closingTime: data.closingTime !== undefined ? data.closingTime : undefined,
+        onboardingStep: data.onboardingStep !== undefined ? data.onboardingStep : undefined,
       },
     });
   }

@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import { Restaurant } from '@prisma/client';
-import { RestaurantRepository } from './restaurant.repository.js';
-import { UpdateRestaurantInput } from './restaurant.validation.js';
-import { AppError } from '../../middleware/error.middleware.js';
-import { cacheService } from '../../utils/cache.js';
-import { CacheConfig } from '../../config/cache.js';
+import { RestaurantRepository } from './restaurant.repository';
+import { UpdateRestaurantInput } from './restaurant.validation';
+import { AppError } from '../../middleware/error.middleware';
+import { cacheService } from '../../utils/cache';
+import { CacheConfig } from '../../config/cache';
 
 export class RestaurantService {
   private repository = new RestaurantRepository();

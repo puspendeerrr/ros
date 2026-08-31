@@ -9,6 +9,7 @@ export interface Restaurant {
   email: string;
   phone: string;
   status: string;
+  onboardingStep?: number;
 }
 
 interface AuthState {
