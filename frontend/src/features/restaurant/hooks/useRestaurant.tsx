@@ -11,6 +11,30 @@ import { Camera, CameraResultType } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
+// Normalize any time string to HH:mm for <input type="time">
+const normalizeTimeTo24h = (timeStr: string | null | undefined): string => {
+  if (!timeStr) return '';
+  const s = timeStr.trim();
+  const h24Match = s.match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/);
+  if (h24Match) {
+    const h = parseInt(h24Match[1], 10);
+    const m = parseInt(h24Match[2], 10);
+    if (h >= 0 && h <= 23 && m >= 0 && m <= 59) {
+      return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+    }
+  }
+  const ampmMatch = s.match(/^(\d{1,2})(?::(\d{2}))?(?::\d{2})?\s*(AM|PM)$/i);
+  if (ampmMatch) {
+    let hours = parseInt(ampmMatch[1], 10);
+    const minutes = parseInt(ampmMatch[2] || '0', 10);
+    const period = ampmMatch[3].toUpperCase();
+    if (period === 'AM' && hours === 12) hours = 0;
+    if (period === 'PM' && hours !== 12) hours += 12;
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  }
+  return '';
+};
+
 export const useRestaurant = () => {
   const [form] = Form.useForm();
   const queryClient = useQueryClient();
@@ -59,8 +83,8 @@ export const useRestaurant = () => {
         country: profile.country || '',
         postalCode: profile.postalCode || '',
         googleMapsUrl: profile.googleMapsUrl || '',
-        openingTime: profile.openingTime || '',
-        closingTime: profile.closingTime || '',
+        openingTime: normalizeTimeTo24h(profile.openingTime),
+        closingTime: normalizeTimeTo24h(profile.closingTime),
       };
       form.setFieldsValue(formValues);
       initialValuesRef.current = {

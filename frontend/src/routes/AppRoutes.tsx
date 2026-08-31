@@ -31,7 +31,7 @@ import { useAuthStore } from '../store/auth.store.js';
 import { restaurantService } from '../services/restaurant.service.js';
 
 export const AppRoutes: React.FC = () => {
-  const { setAccessToken, logout, setLoading, setAuth } = useAuthStore();
+  const { setAccessToken, logout, setLoading, setAuth, setProfileLoaded } = useAuthStore();
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
@@ -48,8 +48,10 @@ export const AppRoutes: React.FC = () => {
         // Fetch latest profile from backend (source of truth)
         const profileRes = await restaurantService.getProfile();
         setAuth(profileRes.data, accessToken);
+        // profileLoaded is set to true inside setAuth
       } catch (error) {
         logout();
+        setProfileLoaded(false);
       } finally {
         setLoading(false);
       }
@@ -63,7 +65,7 @@ export const AppRoutes: React.FC = () => {
     }, 1200);
 
     return () => clearTimeout(timer);
-  }, [setAccessToken, logout, setLoading, setAuth]);
+  }, [setAccessToken, logout, setLoading, setAuth, setProfileLoaded]);
 
   return (
     <BrowserRouter>

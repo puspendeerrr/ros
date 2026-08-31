@@ -22,6 +22,35 @@ import { Clipboard } from '@capacitor/clipboard';
 
 const { Title, Text, Paragraph } = Typography;
 
+// Normalize any time string to HH:mm format for <input type="time">
+const normalizeTimeTo24h = (timeStr: string | null | undefined, fallback: string): string => {
+  if (!timeStr) return fallback;
+  const s = timeStr.trim();
+
+  // Already in HH:mm or HH:mm:ss format
+  const h24Match = s.match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/);
+  if (h24Match) {
+    const h = parseInt(h24Match[1], 10);
+    const m = parseInt(h24Match[2], 10);
+    if (h >= 0 && h <= 23 && m >= 0 && m <= 59) {
+      return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+    }
+  }
+
+  // 12-hour AM/PM format: "12 AM", "1:30 PM", "12:00 AM"
+  const ampmMatch = s.match(/^(\d{1,2})(?::(\d{2}))?(?::\d{2})?\s*(AM|PM)$/i);
+  if (ampmMatch) {
+    let hours = parseInt(ampmMatch[1], 10);
+    const minutes = parseInt(ampmMatch[2] || '0', 10);
+    const period = ampmMatch[3].toUpperCase();
+    if (period === 'AM' && hours === 12) hours = 0;
+    if (period === 'PM' && hours !== 12) hours += 12;
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  }
+
+  return fallback;
+};
+
 export const Onboarding: React.FC = () => {
   const navigate = useNavigate();
   const { restaurant, setAuth, accessToken } = useAuthStore();
@@ -79,8 +108,8 @@ export const Onboarding: React.FC = () => {
         setEmail(rData.email || '');
         setAddress(rData.address || '');
         setGoogleMapsUrl(rData.googleMapsUrl || '');
-        setOpeningTime(rData.openingTime || '10:00');
-        setClosingTime(rData.closingTime || '22:00');
+        setOpeningTime(normalizeTimeTo24h(rData.openingTime, '10:00'));
+        setClosingTime(normalizeTimeTo24h(rData.closingTime, '22:00'));
         setSlug(rData.slug || '');
         
         if (rData.logoUrl) setLogoPreview(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${rData.logoUrl}`);
@@ -410,7 +439,7 @@ export const Onboarding: React.FC = () => {
                 <Text strong style={{ display: 'block', marginBottom: '8px' }}>Restaurant Logo</Text>
                 <Flex align="center" gap={16}>
                   {logoPreview ? (
-                    <img src={logoPreview} alt="Logo" style={{ width: '80px', height: '80px', borderRadius: '16px', objectFit: 'cover' }} />
+                    <img src={logoPreview} alt="Logo" loading="lazy" style={{ width: '80px', height: '80px', borderRadius: '16px', objectFit: 'cover' }} />
                   ) : (
                     <div style={{ width: '80px', height: '80px', background: '#F1F5F9', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <ShopOutlined style={{ fontSize: '24px', color: '#94A3B8' }} />
@@ -427,7 +456,7 @@ export const Onboarding: React.FC = () => {
                 <Text strong style={{ display: 'block', marginBottom: '8px' }}>Cover Banner Image</Text>
                 <Flex align="center" gap={16}>
                   {coverPreview ? (
-                    <img src={coverPreview} alt="Cover" style={{ width: '160px', height: '80px', borderRadius: '8px', objectFit: 'cover' }} />
+                    <img src={coverPreview} alt="Cover" loading="lazy" style={{ width: '160px', height: '80px', borderRadius: '8px', objectFit: 'cover' }} />
                   ) : (
                     <div style={{ width: '160px', height: '80px', background: '#F1F5F9', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <CameraOutlined style={{ fontSize: '24px', color: '#94A3B8' }} />
@@ -657,7 +686,7 @@ export const Onboarding: React.FC = () => {
               <Card style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px' }} bodyStyle={{ padding: '20px' }}>
                 <Flex align="center" gap={12}>
                   {logoPreview ? (
-                    <img src={logoPreview} alt="Logo" style={{ width: '56px', height: '56px', borderRadius: '12px', objectFit: 'cover' }} />
+                    <img src={logoPreview} alt="Logo" loading="lazy" style={{ width: '56px', height: '56px', borderRadius: '12px', objectFit: 'cover' }} />
                   ) : (
                     <div style={{ width: '56px', height: '56px', background: '#F97316', borderRadius: '12px', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}><ShopOutlined /></div>
                   )}

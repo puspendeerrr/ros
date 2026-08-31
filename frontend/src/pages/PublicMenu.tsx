@@ -117,20 +117,57 @@ export const PublicMenu: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [categories]);
 
+  // Robust time parser: HH:mm, HH:mm:ss, h:mm AM/PM, h AM/PM
+  const parseTimeToMinutes = (timeStr: string): number | null => {
+    if (!timeStr) return null;
+    const s = timeStr.trim();
+
+    // Try 12-hour AM/PM format: "12 AM", "1:30 PM", "12:00 AM"
+    const ampmMatch = s.match(/^(\d{1,2})(?::(\d{2}))?(?::(\d{2}))?\s*(AM|PM)$/i);
+    if (ampmMatch) {
+      let hours = parseInt(ampmMatch[1], 10);
+      const minutes = parseInt(ampmMatch[2] || '0', 10);
+      const period = ampmMatch[4].toUpperCase();
+      if (period === 'AM' && hours === 12) hours = 0;
+      if (period === 'PM' && hours !== 12) hours += 12;
+      return hours * 60 + minutes;
+    }
+
+    // Try 24-hour format: "10:00", "22:00", "13:30:00"
+    const h24Match = s.match(/^(\d{1,2}):(\d{2})(?::(\d{2}))?$/);
+    if (h24Match) {
+      const hours = parseInt(h24Match[1], 10);
+      const minutes = parseInt(h24Match[2], 10);
+      if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59) {
+        return hours * 60 + minutes;
+      }
+    }
+
+    return null;
+  };
+
+  // Convert HH:mm or AM/PM to display-friendly format
+  const formatTimeDisplay = (timeStr?: string | null): string => {
+    if (!timeStr) return '';
+    const minutes = parseTimeToMinutes(timeStr);
+    if (minutes === null) return timeStr;
+    const h = Math.floor(minutes / 60);
+    const m = minutes % 60;
+    const period = h >= 12 ? 'PM' : 'AM';
+    const displayH = h === 0 ? 12 : h > 12 ? h - 12 : h;
+    return `${displayH}:${m.toString().padStart(2, '0')} ${period}`;
+  };
+
   // Open / Closed Calculation helper
-  const checkIfOpen = (openTime?: string, closeTime?: string) => {
+  const checkIfOpen = (openTime?: string | null, closeTime?: string | null) => {
     if (!openTime || !closeTime) return true;
     try {
       const now = new Date();
       const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-      const parseTimeToMinutes = (timeStr: string) => {
-        const [hours, minutes] = timeStr.split(':').map(Number);
-        return hours * 60 + minutes;
-      };
-
       const openMinutes = parseTimeToMinutes(openTime);
       const closeMinutes = parseTimeToMinutes(closeTime);
+      if (openMinutes === null || closeMinutes === null) return true;
 
       if (closeMinutes < openMinutes) {
         // Overnight timing e.g. 10:00 PM to 4:00 AM
@@ -391,6 +428,7 @@ export const PublicMenu: React.FC = () => {
               <img
                 src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${restaurant.logoUrl}`}
                 alt={restaurant.restaurantName}
+                loading="lazy"
                 style={{
                   width: '72px',
                   height: '72px',
@@ -447,7 +485,7 @@ export const PublicMenu: React.FC = () => {
                 </span>
                 {(restaurant.openingTime && restaurant.closingTime) && (
                   <Text type="secondary" style={{ fontSize: '11px' }}>
-                    ({restaurant.openingTime} - {restaurant.closingTime})
+                    ({formatTimeDisplay(restaurant.openingTime)} - {formatTimeDisplay(restaurant.closingTime)})
                   </Text>
                 )}
               </Flex>
@@ -842,7 +880,7 @@ export const PublicMenu: React.FC = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px' }}>
             <Flex align="center" gap={8}>
               <ClockCircleOutlined />
-              <span>Hours: {restaurant.openingTime || '10:00 AM'} - {restaurant.closingTime || '11:00 PM'}</span>
+              <span>Hours: {formatTimeDisplay(restaurant.openingTime) || '10:00 AM'} - {formatTimeDisplay(restaurant.closingTime) || '11:00 PM'}</span>
             </Flex>
             {restaurant.phone && (
               <Flex align="center" gap={8}>

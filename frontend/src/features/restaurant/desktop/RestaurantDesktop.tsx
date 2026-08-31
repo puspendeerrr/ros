@@ -196,6 +196,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
                           <img
                             src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${logoPreview}`}
                             alt="Logo"
+                            loading="lazy"
                             style={{ width: '80px', height: '80px', borderRadius: '12px', objectFit: 'cover', border: '1px solid #E2E8F0' }}
                           />
                         ) : (
@@ -221,6 +222,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
                           <img
                             src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${coverPreview}`}
                             alt="Cover"
+                            loading="lazy"
                             style={{ width: '100%', height: '54px', borderRadius: '8px', objectFit: 'cover', border: '1px solid #E2E8F0' }}
                           />
                         ) : (

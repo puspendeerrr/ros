@@ -19,10 +19,13 @@ interface AuthState {
   accessToken: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
+  profileLoaded: boolean; // true only after backend profile fetch completes
   setAuth: (restaurant: Restaurant, accessToken: string) => void;
   setAccessToken: (token: string) => void;
+  setRestaurant: (restaurant: Restaurant) => void;
   logout: () => void;
   setLoading: (loading: boolean) => void;
+  setProfileLoaded: (loaded: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -32,13 +35,17 @@ export const useAuthStore = create<AuthState>()(
       accessToken: null,
       isAuthenticated: false,
       isLoading: true,
+      profileLoaded: false,
       setAuth: (restaurant, accessToken) =>
-        set({ restaurant, accessToken, isAuthenticated: true, isLoading: false }),
+        set({ restaurant, accessToken, isAuthenticated: true, isLoading: false, profileLoaded: true }),
       setAccessToken: (accessToken) =>
         set({ accessToken, isAuthenticated: true }),
+      setRestaurant: (restaurant) =>
+        set({ restaurant, profileLoaded: true }),
       logout: () =>
-        set({ restaurant: null, accessToken: null, isAuthenticated: false, isLoading: false }),
+        set({ restaurant: null, accessToken: null, isAuthenticated: false, isLoading: false, profileLoaded: false }),
       setLoading: (isLoading) => set({ isLoading }),
+      setProfileLoaded: (profileLoaded) => set({ profileLoaded }),
     }),
     {
       name: 'restaurant-os-auth',

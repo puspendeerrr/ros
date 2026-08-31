@@ -55,6 +55,7 @@ export const AuthLayout: React.FC = () => {
                   <img
                     src={logo}
                     alt="Restaurant OS"
+                    loading="lazy"
                     style={{ width: '260px', height: '260px', marginTop: '-100px', objectFit: 'contain' }}
                   />
                 </div>
@@ -128,7 +129,7 @@ export const AuthLayout: React.FC = () => {
               {/* Mobile Logo Header */}
               {!isMd && (
                 <Flex align="center" justify="center" style={{ height: '40px', overflow: 'hidden', marginBottom: '32px' }}>
-                  <img src={logo} alt="Restaurant OS" style={{ height: '200px', marginTop: '-80px', marginBottom: '-80px', objectFit: 'contain' }} />
+                  <img src={logo} alt="Restaurant OS" loading="lazy" style={{ height: '200px', marginTop: '-80px', marginBottom: '-80px', objectFit: 'contain' }} />
                 </Flex>
               )}
               <Outlet />

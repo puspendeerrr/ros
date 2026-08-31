@@ -158,7 +158,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
                     }}
                   >
                     <Flex align="center" justify="space-between" style={{ width: '100%' }}>
-                      <Text strong={selectedCategoryId === category.id} style={{ color: selectedCategoryId === category.id ? '#C2410C' : '#334155' }}>
+                      <Text strong={selectedCategoryId === category.id} style={{ color: selectedCategoryId === category.id ? '#C2410C' : '#334155', wordBreak: 'break-word', flex: 1, minWidth: 0 }}>
                         {category.name}
                       </Text>
                       <Space>
@@ -265,6 +265,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
                               <img
                                 src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
                                 alt={item.name}
+                                loading="lazy"
                                 style={{
                                   width: '64px',
                                   height: '64px',
@@ -487,6 +488,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
                               <img
                                 src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
                                 alt={item.name}
+                                loading="lazy"
                                 style={{ width: '50px', height: '50px', borderRadius: '6px', objectFit: 'cover' }}
                               />
                             ) : null

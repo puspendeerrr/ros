@@ -75,7 +75,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
       <div
         style={{
           position: 'sticky',
-          top: 'calc(56px + env(safe-area-inset-top))',
+          top: 0,
           zIndex: 10,
           background: '#F8FAFC',
           paddingBottom: '12px',
@@ -119,7 +119,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
               <Panel
                 header={
                   <Flex justify="space-between" align="center" style={{ width: '100%' }}>
-                    <Text strong style={{ fontSize: '16px', color: '#0F172A' }}>
+                    <Text strong style={{ fontSize: '16px', color: '#0F172A', wordBreak: 'break-word' }}>
                       {category.name}
                     </Text>
                     <span
@@ -143,7 +143,6 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
                   marginBottom: '12px',
                   border: '1px solid #E2E8F0',
                   boxShadow: '0 2px 8px rgba(15, 23, 42, 0.02)',
-                  overflow: 'hidden',
                 }}
               >
                 {categoryItems.length === 0 ? (
@@ -169,6 +168,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
                             <img
                               src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
                               alt={item.name}
+                              loading="lazy"
                               style={{
                                 width: '72px',
                                 height: '72px',

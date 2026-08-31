@@ -83,12 +83,14 @@ export const MainLayout: React.FC = () => {
               <img 
                 src={logo} 
                 alt="Restaurant OS" 
+                loading="lazy"
                 style={{ height: '220px', marginTop: '-86px', marginBottom: '-86px', objectFit: 'contain', width: '100%' }} 
               />
             ) : (
               <img 
                 src={logoIcon} 
                 alt="ROS" 
+                loading="lazy"
                 style={{ height: '28px', marginTop: '10px', objectFit: 'contain' }} 
               />
             )}
@@ -144,7 +146,7 @@ export const MainLayout: React.FC = () => {
               <Flex vertical gap={8}>
                 <div>
                   <Flex align="center" justify="space-between" style={{ marginBottom: '4px' }}>
-                    <Text strong style={{ color: '#F8FAFC', fontSize: '12px', display: 'block', maxWidth: '100px', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                    <Text strong style={{ color: '#F8FAFC', fontSize: '12px', display: 'block', maxWidth: '140px', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
                       {restaurant?.restaurantName}
                     </Text>
                     <span style={{
@@ -233,6 +235,7 @@ export const MainLayout: React.FC = () => {
           <img 
             src={logo} 
             alt="Restaurant OS" 
+            loading="lazy"
             style={{ height: '140px', marginTop: '-55px', marginBottom: '-55px', objectFit: 'contain', width: '120px' }} 
           />
           <Button

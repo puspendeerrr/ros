@@ -26,20 +26,30 @@ interface TableQRItem {
   publicUrl: string;
 }
 
-// 1. Reusable Organic Marketing Footer component
+// Helper: generate 2-letter initials from restaurant name
+const getInitials = (name: string) => {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+  return name.substring(0, 2).toUpperCase();
+};
+
+// 1. Reusable Organic Marketing Footer component with ROS logo
 const StandeeFooter: React.FC<{ fgColor: string; isLight: boolean }> = ({ fgColor, isLight }) => (
   <div style={{
     marginTop: 'auto',
-    paddingTop: '16px',
+    paddingTop: '14px',
     borderTop: `1px solid ${isLight ? '#F1F5F9' : '#1E293B'}`,
     textAlign: 'center',
     fontSize: '11px',
     color: isLight ? '#94A3B8' : '#64748B',
     width: '100%',
-    lineHeight: '1.4'
+    lineHeight: '1.5'
   }}>
-    <div style={{ fontWeight: 500, color: isLight ? '#94A3B8' : '#64748B' }}>
-      Powered by <span style={{ fontWeight: 600, color: fgColor }}>Restaurant OS</span>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', marginBottom: '3px' }}>
+      <img src={logoIcon} alt="ROS" style={{ width: '16px', height: '16px', objectFit: 'contain', borderRadius: '3px' }} />
+      <span style={{ fontWeight: 500, color: isLight ? '#94A3B8' : '#64748B' }}>
+        Powered by <span style={{ fontWeight: 700, color: fgColor }}>Restaurant OS</span>
+      </span>
     </div>
     <div style={{ fontSize: '10px', color: isLight ? '#94A3B8' : '#64748B' }}>Create your own QR Menu</div>
     <span style={{ color: '#F97316', fontWeight: 700, fontSize: '11px', display: 'inline-block', marginTop: '2px' }}>
@@ -59,10 +69,10 @@ const templates = {
 
 // Format layout definitions
 const formats = {
-  stand: { name: 'Table Stand', width: '310px', height: '480px', borderRadius: '24px' },
-  tent: { name: 'Tent Card', width: '290px', height: '530px', borderRadius: '8px' },
-  poster: { name: 'A4 Poster', width: '320px', height: '460px', borderRadius: '0px' },
-  sticker: { name: 'Sticker', width: '290px', height: '290px', borderRadius: '50%' }
+  stand: { name: 'Table Stand', width: '310px', height: '500px', borderRadius: '24px' },
+  tent: { name: 'Tent Card', width: '290px', height: '550px', borderRadius: '8px' },
+  poster: { name: 'A4 Poster', width: '320px', height: '480px', borderRadius: '0px' },
+  sticker: { name: 'Sticker', width: '280px', height: '280px', borderRadius: '50%' }
 };
 
 export const QRMenu: React.FC = () => {
@@ -171,20 +181,21 @@ export const QRMenu: React.FC = () => {
   };
 
   // WYSIWYG Standee Canvas Generator
-  const drawStandeeCanvas = (subText: string) => {
+  const drawStandeeCanvas = async (subText: string): Promise<HTMLCanvasElement | null> => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
 
     const activeTemp = templates[selectedTemplate];
 
-    // Determine dimensions based on aspect format
+    // Determine dimensions based on format
     let width = 400;
-    let height = 580;
+    let height = 600;
     if (selectedFormat === 'sticker') {
+      width = 400;
       height = 400;
     } else if (selectedFormat === 'tent') {
-      height = 680;
+      height = 700;
     }
 
     canvas.width = width;
@@ -194,21 +205,145 @@ export const QRMenu: React.FC = () => {
     ctx.fillStyle = activeTemp.bg;
     ctx.fillRect(0, 0, width, height);
 
-    // Draw borders & guides
+    // Asynchronously load the logo and footer icon if they exist
+    let loadedLogoImg: HTMLImageElement | null = null;
+    let loadedFooterImg: HTMLImageElement | null = null;
+
+    try {
+      if (logoUrl) {
+        loadedLogoImg = await new Promise<HTMLImageElement>((resolve, reject) => {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.onload = () => resolve(img);
+          img.onerror = () => reject(new Error('Logo load failed'));
+          img.src = logoUrl;
+        });
+      }
+    } catch (e) {
+      console.warn('Could not load logo image for canvas, falling back to initials.', e);
+    }
+
+    try {
+      if (logoIcon) {
+        loadedFooterImg = await new Promise<HTMLImageElement>((resolve, reject) => {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.onload = () => resolve(img);
+          img.onerror = () => reject(new Error('Footer icon load failed'));
+          img.src = logoIcon;
+        });
+      }
+    } catch (e) {
+      console.warn('Could not load footer icon for canvas.', e);
+    }
+
     if (selectedFormat === 'sticker') {
-      // Draw sticker circular safe cut guide line
-      ctx.strokeStyle = activeTemp.isLight ? '#CBD5E1' : '#1E293B';
-      ctx.lineWidth = 2;
+      // === STICKER: Circular clipped layout ===
+      ctx.save();
       ctx.beginPath();
       ctx.arc(200, 200, 190, 0, Math.PI * 2);
+      ctx.clip();
+
+      // Circle background
+      ctx.fillStyle = activeTemp.bg;
+      ctx.fillRect(0, 0, width, height);
+
+      // Circle border
+      ctx.strokeStyle = activeTemp.isLight ? '#CBD5E1' : '#1E293B';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(200, 200, 188, 0, Math.PI * 2);
       ctx.stroke();
+
+      ctx.textAlign = 'center';
+
+      // Draw Logo (either Image or Initials)
+      const logoRadius = 28;
+      const logoCenterX = 200;
+      const logoCenterY = 80;
+
+      if (loadedLogoImg) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(loadedLogoImg, logoCenterX - logoRadius, logoCenterY - logoRadius, logoRadius * 2, logoRadius * 2);
+        ctx.restore();
+        // White border around avatar
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
+        ctx.stroke();
+      } else {
+        ctx.fillStyle = activeTemp.accent;
+        ctx.beginPath();
+        ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+        ctx.fillText(getInitials(restaurantName), logoCenterX, logoCenterY + 6);
+      }
+
+      // Restaurant Name — wrap naturally up to 2 lines
+      ctx.fillStyle = activeTemp.fg;
+      ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      const maxLenSticker = 14;
+      if (restaurantName.length > maxLenSticker) {
+        const words = restaurantName.split(/\s+/);
+        let line1 = '';
+        let line2 = '';
+        for (const w of words) {
+          if ((line1 + ' ' + w).trim().length <= maxLenSticker) {
+            line1 = (line1 + ' ' + w).trim();
+          } else {
+            line2 = (line2 + ' ' + w).trim();
+          }
+        }
+        if (line2.length > maxLenSticker) line2 = line2.substring(0, maxLenSticker - 3) + '...';
+        ctx.fillText(line1, 200, 122);
+        ctx.fillText(line2, 200, 136);
+      } else {
+        ctx.fillText(restaurantName, 200, 128);
+      }
+
+      // QR Code
+      const qrCanvas = document.getElementById('qr-standee-hidden-canvas') as HTMLCanvasElement;
+      if (qrCanvas) {
+        ctx.drawImage(qrCanvas, 200 - 70, 142, 140, 140);
+      }
+
+      // Scan to View Menu
+      ctx.fillStyle = activeTemp.isLight ? '#64748B' : '#94A3B8';
+      ctx.font = '700 10px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      ctx.fillText('SCAN TO VIEW MENU', 200, 300);
+
+      // Compact footer
+      const footerTextY = 330;
+      ctx.fillStyle = activeTemp.isLight ? '#94A3B8' : '#64748B';
+      ctx.font = '500 9px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      
+      if (loadedFooterImg) {
+        ctx.drawImage(loadedFooterImg, 125, footerTextY - 8, 12, 12);
+        ctx.fillText('Restaurant OS', 190, footerTextY);
+      } else {
+        ctx.fillText('Restaurant OS', 200, footerTextY);
+      }
+
+      ctx.fillStyle = '#F97316';
+      ctx.font = 'bold 9px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      ctx.fillText('ros.algorithyum.in', 200, footerTextY + 15);
+
+      ctx.restore();
     } else {
-      // Top color stripe indicator (Not for Minimal Black)
+      // === Non-sticker templates ===
+
+      // Top color stripe (Not for Minimal Black)
       if (selectedTemplate !== 'black') {
         ctx.fillStyle = activeTemp.accent;
         ctx.fillRect(0, 0, width, 16);
       }
-      
+
       // Dashed fold lines for Tent cards
       if (selectedFormat === 'tent') {
         ctx.strokeStyle = activeTemp.isLight ? '#94A3B8' : '#475569';
@@ -220,68 +355,118 @@ export const QRMenu: React.FC = () => {
         ctx.stroke();
         ctx.setLineDash([]);
       }
-    }
 
-    // Centered Title Header
-    ctx.fillStyle = activeTemp.fg;
-    ctx.textAlign = 'center';
-    
-    let textY = selectedFormat === 'tent' ? 120 : 65;
-    ctx.font = 'bold 22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-    ctx.fillText(restaurantName.substring(0, 24), 200, textY);
+      ctx.textAlign = 'center';
 
-    // "Scan QR to View Menu"
-    ctx.fillStyle = activeTemp.isLight ? '#64748B' : '#94A3B8';
-    ctx.font = '600 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-    ctx.fillText('SCAN QR TO VIEW MENU', 200, textY + 30);
+      // Logo avatar center position
+      const logoY = selectedFormat === 'tent' ? 110 : 50;
+      const logoRadius = 40;
+      const logoCenterX = 200;
+      const logoCenterY = logoY + 40;
 
-    // "No App Required"
-    ctx.fillStyle = activeTemp.accent;
-    ctx.font = '700 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-    ctx.fillText('NO APP REQUIRED', 200, textY + 50);
+      if (loadedLogoImg) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(loadedLogoImg, logoCenterX - logoRadius, logoCenterY - logoRadius, logoRadius * 2, logoRadius * 2);
+        ctx.restore();
+        // White border
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
+        ctx.stroke();
+      } else {
+        ctx.fillStyle = activeTemp.accent;
+        ctx.beginPath();
+        ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+        ctx.fillText(getInitials(restaurantName), logoCenterX, logoCenterY + 8);
+      }
 
-    // Draw QR Code onto stand
-    const qrCanvas = document.getElementById('qr-standee-hidden-canvas') as HTMLCanvasElement;
-    if (qrCanvas) {
-      const qrSize = selectedFormat === 'sticker' ? 140 : 180;
-      const qrX = 200 - (qrSize / 2);
-      const qrY = textY + 70;
-      ctx.drawImage(qrCanvas, qrX, qrY, qrSize, qrSize);
-    }
+      // Restaurant Name (wrap up to 2 lines on canvas)
+      const textY = logoY + 100;
+      ctx.fillStyle = activeTemp.fg;
+      ctx.font = 'bold 22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      const maxLenNonSticker = 16;
+      if (restaurantName.length > maxLenNonSticker) {
+        const words = restaurantName.split(/\s+/);
+        let line1 = '';
+        let line2 = '';
+        for (const w of words) {
+          if ((line1 + ' ' + w).trim().length <= maxLenNonSticker) {
+            line1 = (line1 + ' ' + w).trim();
+          } else {
+            line2 = (line2 + ' ' + w).trim();
+          }
+        }
+        if (line2.length > maxLenNonSticker) line2 = line2.substring(0, maxLenNonSticker - 3) + '...';
+        ctx.fillText(line1, 200, textY - 12);
+        ctx.fillText(line2, 200, textY + 12);
+      } else {
+        ctx.fillText(restaurantName, 200, textY);
+      }
 
-    // Table number badge
-    if (subText) {
-      const pillY = textY + 280;
+      // "Scan QR to View Menu"
+      ctx.fillStyle = activeTemp.isLight ? '#64748B' : '#94A3B8';
+      ctx.font = '600 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      ctx.fillText('SCAN QR TO VIEW MENU', 200, textY + 28);
+
+      // "No App Required"
       ctx.fillStyle = activeTemp.accent;
-      ctx.font = 'bold 15px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-      ctx.fillText(subText.toUpperCase(), 200, pillY);
+      ctx.font = '700 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      ctx.fillText('NO APP REQUIRED', 200, textY + 48);
+
+      // Draw QR Code
+      const qrCanvas = document.getElementById('qr-standee-hidden-canvas') as HTMLCanvasElement;
+      if (qrCanvas) {
+        const qrSize = 190;
+        ctx.drawImage(qrCanvas, 200 - (qrSize / 2), textY + 65, qrSize, qrSize);
+      }
+
+      // Table number badge
+      if (subText) {
+        const pillY = textY + 280;
+        ctx.fillStyle = activeTemp.accent;
+        ctx.font = 'bold 15px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+        ctx.fillText(subText.toUpperCase(), 200, pillY);
+      }
+
+      // Branding Footer
+      const footerY = height - 75;
+      ctx.strokeStyle = activeTemp.isLight ? '#F1F5F9' : '#1E293B';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(40, footerY);
+      ctx.lineTo(width - 40, footerY);
+      ctx.stroke();
+
+      ctx.fillStyle = activeTemp.isLight ? '#94A3B8' : '#64748B';
+      ctx.font = '500 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+
+      if (loadedFooterImg) {
+        ctx.drawImage(loadedFooterImg, 105, footerY + 10, 14, 14);
+        ctx.fillText('Powered by Restaurant OS', 210, footerY + 22);
+      } else {
+        ctx.fillText('Powered by Restaurant OS', 200, footerY + 22);
+      }
+
+      ctx.font = '500 10px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      ctx.fillText('Create your own QR Menu', 200, footerY + 38);
+
+      ctx.fillStyle = '#F97316';
+      ctx.font = 'bold 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      ctx.fillText('ros.algorithyum.in', 200, footerY + 54);
     }
-
-    // Branding Footer (WYSIWYG identical rendering)
-    const footerY = height - 70;
-    ctx.strokeStyle = activeTemp.isLight ? '#F1F5F9' : '#1E293B';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(40, footerY);
-    ctx.lineTo(width - 40, footerY);
-    ctx.stroke();
-
-    ctx.fillStyle = activeTemp.isLight ? '#94A3B8' : '#64748B';
-    ctx.font = '500 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-    ctx.fillText('Powered by Restaurant OS', 200, footerY + 22);
-
-    ctx.font = '500 10px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-    ctx.fillText('Create your own QR Menu', 200, footerY + 38);
-
-    ctx.fillStyle = '#F97316';
-    ctx.font = 'bold 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-    ctx.fillText('ros.algorithyum.in', 200, footerY + 54);
 
     return canvas;
   };
 
-  const handleDownloadPNG = (subText: string) => {
-    const canvas = drawStandeeCanvas(subText);
+  const handleDownloadPNG = async (subText: string) => {
+    const canvas = await drawStandeeCanvas(subText);
     if (!canvas) return;
     const link = document.createElement('a');
     link.href = canvas.toDataURL('image/png');
@@ -290,8 +475,8 @@ export const QRMenu: React.FC = () => {
     message.success('PNG standee downloaded.');
   };
 
-  const handlePrint = (subText: string) => {
-    const canvas = drawStandeeCanvas(subText);
+  const handlePrint = async (subText: string) => {
+    const canvas = await drawStandeeCanvas(subText);
     if (!canvas) return;
     const imgData = canvas.toDataURL('image/png');
     
@@ -381,8 +566,8 @@ export const QRMenu: React.FC = () => {
             src: logoIcon,
             x: undefined,
             y: undefined,
-            height: 48,
-            width: 48,
+            height: 70,
+            width: 70,
             excavate: true,
           }}
         />
@@ -392,123 +577,227 @@ export const QRMenu: React.FC = () => {
       {viewMode === 'restaurant' && (
         <Flex vertical gap={24} align="center">
           
-          {/* Formats Segmented selector */}
-          <Segmented
-            block
-            value={selectedFormat}
-            onChange={(val) => handleFormatChange(val as any)}
-            options={[
-              { label: 'Table Stand', value: 'stand' },
-              { label: 'Tent Card', value: 'tent' },
-              { label: 'A4 Poster', value: 'poster' },
-              { label: 'Sticker', value: 'sticker' },
-            ]}
-            style={{ width: '100%', maxWidth: '340px' }}
-          />
+          {/* Formats Segmented selector — no truncation */}
+          <div style={{ width: '100%', maxWidth: '420px', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+            <Segmented
+              block
+              value={selectedFormat}
+              onChange={(val) => handleFormatChange(val as any)}
+              options={[
+                { label: 'Table Stand', value: 'stand' },
+                { label: 'Tent Card', value: 'tent' },
+                { label: 'A4 Poster', value: 'poster' },
+                { label: 'Sticker', value: 'sticker' },
+              ]}
+              style={{ minWidth: '360px', whiteSpace: 'nowrap' }}
+            />
+          </div>
 
           {/* WYSIWYG Standee Frame Preview */}
-          <div style={{
-            width: '100%',
-            maxWidth: activeForm.width,
-            height: activeForm.height,
-            background: activeTemp.bg,
-            color: activeTemp.fg,
-            borderRadius: activeForm.borderRadius,
-            boxShadow: '0 10px 30px rgba(15,23,42,0.08)',
-            border: `1px solid ${activeTemp.border}`,
-            overflow: 'hidden',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            position: 'relative',
-            padding: '24px 16px',
-            boxSizing: 'border-box',
-            transition: 'all 0.3s'
-          }}>
-            {/* Top colored band */}
-            {selectedFormat !== 'sticker' && selectedTemplate !== 'black' && (
-              <div style={{ height: '8px', background: activeTemp.accent, width: '100%', position: 'absolute', top: 0, left: 0 }} />
-            )}
-
-            {/* Dash fold lines guides for Tent Cards */}
-            {selectedFormat === 'tent' && (
-              <div style={{ position: 'absolute', top: '50px', left: 0, right: 0, borderBottom: `1px dashed ${activeTemp.isLight ? '#94A3B8' : '#475569'}`, textAlign: 'center' }}>
-                <span style={{ fontSize: '8px', color: activeTemp.accent, fontWeight: 700 }}>FOLD LINE</span>
-              </div>
-            )}
-
-            {/* Logo */}
-            <div style={{ marginTop: selectedFormat === 'tent' ? '50px' : '12px' }}>
+          {selectedFormat === 'sticker' ? (
+            /* ===== STICKER: Circular centered layout ===== */
+            <div style={{
+              width: activeForm.width,
+              height: activeForm.height,
+              borderRadius: '50%',
+              background: activeTemp.bg,
+              color: activeTemp.fg,
+              boxShadow: '0 10px 30px rgba(15,23,42,0.08)',
+              border: `2px solid ${activeTemp.border}`,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative',
+              padding: '20px',
+              boxSizing: 'border-box',
+              overflow: 'hidden',
+              transition: 'all 0.3s'
+            }}>
+              {/* Logo */}
               {logoUrl ? (
                 <img
                   src={logoUrl}
                   alt={restaurantName}
+                  loading="lazy"
                   style={{
-                    width: '56px',
-                    height: '56px',
+                    width: '42px',
+                    height: '42px',
                     borderRadius: '50%',
-                    border: '3px solid #FFFFFF',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-                    objectFit: 'cover'
+                    border: '2px solid #FFFFFF',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                    objectFit: 'cover',
+                    marginBottom: '4px'
                   }}
                 />
               ) : (
                 <div style={{
-                  width: '56px',
-                  height: '56px',
+                  width: '42px',
+                  height: '42px',
                   borderRadius: '50%',
                   background: activeTemp.accent,
                   color: '#FFFFFF',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '18px',
+                  fontSize: '14px',
                   fontWeight: 'bold',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                  marginBottom: '4px'
                 }}>
-                  {restaurantName[0]}
+                  {getInitials(restaurantName)}
                 </div>
               )}
+              {/* Name — wrap up to 2 lines */}
+              <div style={{
+                fontWeight: 800,
+                fontSize: '13px',
+                color: activeTemp.fg,
+                textAlign: 'center',
+                lineHeight: '1.2',
+                maxWidth: '180px',
+                overflow: 'hidden',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                marginBottom: '4px'
+              }}>
+                {restaurantName}
+              </div>
+              {/* QR */}
+              <div style={{ background: '#FFFFFF', padding: '6px', borderRadius: '8px', display: 'inline-flex', marginBottom: '4px' }}>
+                <QRCodeCanvas
+                  value={publicUrl}
+                  size={90}
+                  level="H"
+                  imageSettings={{
+                    src: logoIcon,
+                    x: undefined,
+                    y: undefined,
+                    height: 18,
+                    width: 18,
+                    excavate: true,
+                  }}
+                />
+              </div>
+              <span style={{ fontSize: '8px', fontWeight: 700, color: activeTemp.isLight ? '#64748B' : '#94A3B8', letterSpacing: '0.5px' }}>
+                SCAN TO VIEW MENU
+              </span>
+              {/* Compact footer */}
+              <div style={{ textAlign: 'center', marginTop: '2px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3px' }}>
+                  <img src={logoIcon} alt="ROS" style={{ width: '10px', height: '10px', objectFit: 'contain', borderRadius: '2px' }} />
+                  <span style={{ fontSize: '7px', fontWeight: 500, color: activeTemp.isLight ? '#94A3B8' : '#64748B' }}>Restaurant OS</span>
+                </div>
+                <span style={{ color: '#F97316', fontWeight: 700, fontSize: '7px' }}>ros.algorithyum.in</span>
+              </div>
             </div>
-
-            {/* Restaurant Details */}
-            <Title level={4} style={{ margin: '12px 0 2px 0', fontWeight: 800, color: activeTemp.fg, textAlign: 'center', fontSize: '18px' }}>
-              {restaurantName}
-            </Title>
-            <span style={{ fontSize: '10px', fontWeight: 700, color: activeTemp.isLight ? '#64748B' : '#94A3B8', letterSpacing: '0.8px', marginBottom: '4px' }}>
-              SCAN QR TO VIEW MENU
-            </span>
-            <span style={{ fontSize: '9px', fontWeight: 800, color: activeTemp.accent, letterSpacing: '0.5px', marginBottom: '20px' }}>
-              NO APP REQUIRED
-            </span>
-
-            {/* QR Canvas frame */}
+          ) : (
+            /* ===== Non-sticker templates ===== */
             <div style={{
-              background: '#FFFFFF',
-              padding: '12px',
-              borderRadius: '12px',
-              border: '1px solid #F1F5F9',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.02)',
-              display: 'inline-flex'
+              width: '100%',
+              maxWidth: activeForm.width,
+              height: activeForm.height,
+              background: activeTemp.bg,
+              color: activeTemp.fg,
+              borderRadius: activeForm.borderRadius,
+              boxShadow: '0 10px 30px rgba(15,23,42,0.08)',
+              border: `1px solid ${activeTemp.border}`,
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              position: 'relative',
+              padding: '24px 16px',
+              boxSizing: 'border-box',
+              transition: 'all 0.3s'
             }}>
-              <QRCodeCanvas
-                value={publicUrl}
-                size={selectedFormat === 'sticker' ? 120 : 160}
-                level="H"
-                imageSettings={{
-                  src: logoIcon,
-                  x: undefined,
-                  y: undefined,
-                  height: 28,
-                  width: 28,
-                  excavate: true,
-                }}
-              />
-            </div>
+              {/* Top colored band */}
+              {selectedTemplate !== 'black' && (
+                <div style={{ height: '8px', background: activeTemp.accent, width: '100%', position: 'absolute', top: 0, left: 0 }} />
+              )}
 
-            {/* Organic Brand Marketing Footer */}
-            <StandeeFooter fgColor={activeTemp.fg} isLight={activeTemp.isLight} />
-          </div>
+              {/* Dash fold lines guides for Tent Cards */}
+              {selectedFormat === 'tent' && (
+                <div style={{ position: 'absolute', top: '50px', left: 0, right: 0, borderBottom: `1px dashed ${activeTemp.isLight ? '#94A3B8' : '#475569'}`, textAlign: 'center' }}>
+                  <span style={{ fontSize: '8px', color: activeTemp.accent, fontWeight: 700 }}>FOLD LINE</span>
+                </div>
+              )}
+
+              {/* Logo — 80px circular avatar */}
+              <div style={{ marginTop: selectedFormat === 'tent' ? '50px' : '16px' }}>
+                {logoUrl ? (
+                  <img
+                    src={logoUrl}
+                    alt={restaurantName}
+                    loading="lazy"
+                    style={{
+                      width: '80px',
+                      height: '80px',
+                      borderRadius: '50%',
+                      border: '3px solid #FFFFFF',
+                      boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
+                      objectFit: 'cover'
+                    }}
+                  />
+                ) : (
+                  <div style={{
+                    width: '80px',
+                    height: '80px',
+                    borderRadius: '50%',
+                    background: activeTemp.accent,
+                    color: '#FFFFFF',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '24px',
+                    fontWeight: 'bold',
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.1)'
+                  }}>
+                    {getInitials(restaurantName)}
+                  </div>
+                )}
+              </div>
+
+              {/* Restaurant Details */}
+              <Title level={4} style={{ margin: '12px 0 2px 0', fontWeight: 800, color: activeTemp.fg, textAlign: 'center', fontSize: '18px' }}>
+                {restaurantName}
+              </Title>
+              <span style={{ fontSize: '10px', fontWeight: 700, color: activeTemp.isLight ? '#64748B' : '#94A3B8', letterSpacing: '0.8px', marginBottom: '4px' }}>
+                SCAN QR TO VIEW MENU
+              </span>
+              <span style={{ fontSize: '9px', fontWeight: 800, color: activeTemp.accent, letterSpacing: '0.5px', marginBottom: '20px' }}>
+                NO APP REQUIRED
+              </span>
+
+              {/* QR Canvas frame — larger logo */}
+              <div style={{
+                background: '#FFFFFF',
+                padding: '14px',
+                borderRadius: '14px',
+                border: '1px solid #F1F5F9',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.02)',
+                display: 'inline-flex'
+              }}>
+                <QRCodeCanvas
+                  value={publicUrl}
+                  size={165}
+                  level="H"
+                  imageSettings={{
+                    src: logoIcon,
+                    x: undefined,
+                    y: undefined,
+                    height: 42,
+                    width: 42,
+                    excavate: true,
+                  }}
+                />
+              </div>
+
+              {/* Organic Brand Marketing Footer */}
+              <StandeeFooter fgColor={activeTemp.fg} isLight={activeTemp.isLight} />
+            </div>
+          )}
 
           {/* Quick-ready Template Selection Bar */}
           <div style={{ width: '100%', maxWidth: '340px', marginTop: '12px' }}>
