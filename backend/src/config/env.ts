@@ -17,6 +17,7 @@ const envSchema = z.object({
   SMTP_USER: z.string().optional(),
   SMTP_PASS: z.string().optional(),
   SMTP_FROM: z.string().default('no-reply@ros.algorithyum.in'),
+  REDIS_URL: z.string().optional(),
 });
 
 export const env = envSchema.parse(process.env);

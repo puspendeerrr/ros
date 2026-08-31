@@ -1,20 +1,33 @@
 import fs from 'fs';
 import path from 'path';
 import { Restaurant } from '@prisma/client';
-import { RestaurantRepository } from './restaurant.repository';
-import { UpdateRestaurantInput } from './restaurant.validation';
-import { AppError } from '../../middleware/error.middleware';
+import { RestaurantRepository } from './restaurant.repository.js';
+import { UpdateRestaurantInput } from './restaurant.validation.js';
+import { AppError } from '../../middleware/error.middleware.js';
+import { cacheService } from '../../utils/cache.js';
 
 export class RestaurantService {
   private repository = new RestaurantRepository();
 
   async getProfile(restaurantId: string): Promise<Omit<Restaurant, 'passwordHash'>> {
-    const restaurant = await this.repository.findById(restaurantId);
-    if (!restaurant) {
+    const baseKey = `profile:${restaurantId}`;
+    const cacheKey = await cacheService.getVersionedKey(baseKey);
+
+    const profile = await cacheService.getOrFetch<Omit<Restaurant, 'passwordHash'>>(
+      cacheKey,
+      900, // 15 minutes TTL
+      async () => {
+        const restaurant = await this.repository.findById(restaurantId);
+        if (!restaurant) return null;
+        const { passwordHash, ...prof } = restaurant;
+        return prof;
+      }
+    );
+
+    if (!profile) {
       throw new AppError(404, 'Restaurant not found');
     }
 
-    const { passwordHash, ...profile } = restaurant;
     return profile;
   }
 
@@ -27,11 +40,11 @@ export class RestaurantService {
       throw new AppError(404, 'Restaurant not found');
     }
 
+    const updatedRestaurant = await this.repository.update(restaurantId, data);
+
     // Identify obsolete images to clean up
     const logoToCleanup = data.logoUrl !== undefined && oldProfile.logoUrl && oldProfile.logoUrl !== data.logoUrl;
     const coverToCleanup = data.coverImageUrl !== undefined && oldProfile.coverImageUrl && oldProfile.coverImageUrl !== data.coverImageUrl;
-
-    const updatedRestaurant = await this.repository.update(restaurantId, data);
 
     // Delete obsolete files if successfully updated
     if (logoToCleanup && oldProfile.logoUrl) {
@@ -41,7 +54,36 @@ export class RestaurantService {
       this.deleteLocalFile(oldProfile.coverImageUrl);
     }
 
+    // Invalidate versions
+    const oldSlug = oldProfile.slug;
+    const newSlug = updatedRestaurant.slug;
+
+    await Promise.all([
+      cacheService.incrementVersion(`profile:${restaurantId}`),
+      cacheService.incrementVersion(`restaurant:${restaurantId}`),
+      cacheService.incrementVersion(`restaurant:slug:${oldSlug}`),
+      cacheService.incrementVersion(`public-menu:${oldSlug}`),
+      ...(oldSlug !== newSlug ? [
+        cacheService.incrementVersion(`restaurant:slug:${newSlug}`),
+        cacheService.incrementVersion(`public-menu:${newSlug}`)
+      ] : [])
+    ]);
+
     const { passwordHash, ...profile } = updatedRestaurant;
+
+    // Warm cache
+    const [profileKey, restaurantKey, slugKey] = await Promise.all([
+      cacheService.getVersionedKey(`profile:${restaurantId}`),
+      cacheService.getVersionedKey(`restaurant:${restaurantId}`),
+      cacheService.getVersionedKey(`restaurant:slug:${newSlug}`)
+    ]);
+
+    await Promise.all([
+      cacheService.set(profileKey, profile, 900),
+      cacheService.set(restaurantKey, updatedRestaurant, 900),
+      cacheService.set(slugKey, updatedRestaurant, 900)
+    ]);
+
     return profile;
   }
 

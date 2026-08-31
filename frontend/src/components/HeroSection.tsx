@@ -1,18 +1,18 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button, Flex, Row, Col, Typography } from 'antd';
+import { Button, Col, Flex, Row, Typography } from 'antd';
 import {
-  QrCode,
-  Utensils,
-  Store,
-  Globe,
-  LayoutDashboard,
-  TrendingUp,
   ArrowRight,
-  Smartphone,
   Camera,
   Check,
+  Globe,
+  LayoutDashboard,
+  QrCode,
+  Smartphone,
+  Store,
+  TrendingUp,
+  Utensils,
 } from 'lucide-react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const { Title, Paragraph } = Typography;
 
@@ -295,7 +295,7 @@ export const HeroSection: React.FC = () => {
 
             {/* ─── Right Side: Visually Self-Explanatory Table-Stand to Phone Flow ─── */}
             <Col xs={24} lg={13}>
-              <div 
+              <div
                 className="visual-journey-v4"
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '24px', position: 'relative' }}
               >
@@ -377,32 +377,32 @@ export const FeaturesSection: React.FC = () => {
   const features = [
     {
       icon: <Smartphone size={24} style={{ color: '#F97316' }} />,
-      title: '📱 QR Menu',
+      title: 'QR Menu',
       desc: 'Create QR menus for every table.',
     },
     {
       icon: <Utensils size={24} style={{ color: '#F97316' }} />,
-      title: '🍽 Menu Builder',
+      title: 'Menu Builder',
       desc: 'Update food items, prices and photos anytime.',
     },
     {
       icon: <Store size={24} style={{ color: '#F97316' }} />,
-      title: '🏪 Restaurant Profile',
+      title: 'Restaurant Profile',
       desc: 'Show customers your restaurant information.',
     },
     {
       icon: <Globe size={24} style={{ color: '#F97316' }} />,
-      title: '🌐 Restaurant Website',
+      title: 'Restaurant Website',
       desc: 'Get your own professional restaurant page.',
     },
     {
       icon: <LayoutDashboard size={24} style={{ color: '#F97316' }} />,
-      title: '📊 Dashboard',
+      title: 'Dashboard',
       desc: 'Manage everything from one place.',
     },
     {
       icon: <TrendingUp size={24} style={{ color: '#F97316' }} />,
-      title: '📈 Grow Your Business',
+      title: 'Grow Your Business',
       desc: 'Give customers a modern dining experience.',
     },
   ];

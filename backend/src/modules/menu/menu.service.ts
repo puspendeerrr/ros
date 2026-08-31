@@ -7,13 +7,20 @@ import { env } from '../../config/env';
 import { prisma } from '../../config/prisma';
 import { AppError } from '../../middleware/error.middleware';
 import { slugify } from '../../utils/slug';
+import { cacheService } from '../../utils/cache';
 
 export class MenuService {
   private repository = new MenuRepository();
 
   // --- CATEGORY SERVICES ---
   async getCategories(restaurantId: string): Promise<Category[]> {
-    return this.repository.findCategories(restaurantId);
+    const baseKey = `categories:${restaurantId}`;
+    const cacheKey = await cacheService.getVersionedKey(baseKey);
+    return cacheService.getOrFetch<Category[]>(
+      cacheKey,
+      900, // 15 minutes TTL
+      () => this.repository.findCategories(restaurantId)
+    ).then((res) => res || []);
   }
 
   async createCategory(restaurantId: string, input: CreateCategoryInput): Promise<Category> {
@@ -21,7 +28,9 @@ export class MenuService {
     if (existing) {
       throw new AppError(400, 'A category with this name already exists');
     }
-    return this.repository.createCategory(restaurantId, input.name);
+    const category = await this.repository.createCategory(restaurantId, input.name);
+    await this.invalidateAndWarmMenu(restaurantId);
+    return category;
   }
 
   async updateCategory(
@@ -39,7 +48,9 @@ export class MenuService {
       throw new AppError(400, 'A category with this name already exists');
     }
 
-    return this.repository.updateCategory(id, input.name);
+    const updated = await this.repository.updateCategory(id, input.name);
+    await this.invalidateAndWarmMenu(restaurantId);
+    return updated;
   }
 
   async deleteCategory(id: string, restaurantId: string): Promise<Category> {
@@ -60,12 +71,19 @@ export class MenuService {
       this.deleteItemImage(item.imageUrl);
     }
 
+    await this.invalidateAndWarmMenu(restaurantId);
     return deleted;
   }
 
   // --- ITEM SERVICES ---
   async getItems(restaurantId: string): Promise<MenuItem[]> {
-    return this.repository.findItems(restaurantId);
+    const baseKey = `menu:${restaurantId}`;
+    const cacheKey = await cacheService.getVersionedKey(baseKey);
+    return cacheService.getOrFetch<MenuItem[]>(
+      cacheKey,
+      900, // 15 minutes TTL
+      () => this.repository.findItems(restaurantId)
+    ).then((res) => res || []);
   }
 
   async createItem(restaurantId: string, input: CreateItemInput): Promise<MenuItem> {
@@ -84,7 +102,7 @@ export class MenuService {
     // 3. Generate unique slug in this restaurant
     const slug = await this.generateUniqueSlug(restaurantId, input.name);
 
-    return this.repository.createItem({
+    const item = await this.repository.createItem({
       restaurantId,
       categoryId: input.categoryId,
       name: input.name,
@@ -95,6 +113,9 @@ export class MenuService {
       isVeg: input.isVeg,
       isAvailable: input.isAvailable,
     });
+
+    await this.invalidateAndWarmMenu(restaurantId);
+    return item;
   }
 
   async updateItem(id: string, restaurantId: string, input: UpdateItemInput): Promise<MenuItem> {
@@ -132,7 +153,7 @@ export class MenuService {
       this.deleteItemImage(item.imageUrl);
     }
 
-    return this.repository.updateItem(id, {
+    const updated = await this.repository.updateItem(id, {
       categoryId: input.categoryId,
       name: input.name,
       slug,
@@ -142,6 +163,9 @@ export class MenuService {
       isVeg: input.isVeg,
       isAvailable: input.isAvailable,
     });
+
+    await this.invalidateAndWarmMenu(restaurantId);
+    return updated;
   }
 
   async deleteItem(id: string, restaurantId: string): Promise<MenuItem> {
@@ -155,6 +179,7 @@ export class MenuService {
     // Delete image file from disk
     this.deleteItemImage(item.imageUrl);
 
+    await this.invalidateAndWarmMenu(restaurantId);
     return deleted;
   }
 
@@ -201,14 +226,70 @@ export class MenuService {
 
   // --- PUBLIC & QR SERVICES ---
   async getPublicMenu(slug: string) {
-    const restaurant = await this.repository.findRestaurantPublicDetailsBySlug(slug);
-    if (!restaurant) {
-      throw new AppError(404, 'Restaurant not found');
+    const baseKey = `public-menu:${slug}`;
+    const cacheKey = await cacheService.getVersionedKey(baseKey);
+
+    const data = await cacheService.getOrFetch<any>(
+      cacheKey,
+      900, // 15 minutes TTL
+      () => this.getPublicMenuDataFromDb(slug)
+    );
+
+    if (!data) {
+      throw new AppError(404, 'Restaurant or active menu not found');
     }
 
-    if (restaurant.status !== 'ACTIVE') {
-      throw new AppError(403, 'This restaurant menu is currently unavailable');
+    return data;
+  }
+
+  async getQRCodeData(restaurantId: string) {
+    const cacheKey = `qr:${restaurantId}`;
+    return cacheService.getOrFetch<any>(
+      cacheKey,
+      86400, // 24 hours TTL
+      async () => {
+        const restaurant = await prisma.restaurant.findUnique({
+          where: { id: restaurantId },
+          select: { slug: true }
+        });
+
+        if (!restaurant) {
+          return null;
+        }
+
+        const publicUrl = `${env.PUBLIC_BASE_URL}/r/${restaurant.slug}`;
+        return {
+          publicUrl,
+          restaurantSlug: restaurant.slug,
+        };
+      }
+    ).then((res) => {
+      if (!res) {
+        throw new AppError(404, 'Restaurant not found');
+      }
+      return res;
+    });
+  }
+
+  // --- CACHE UTILITIES ---
+  private async getRestaurantSlug(restaurantId: string): Promise<string> {
+    const baseKey = `restaurant:${restaurantId}`;
+    const cacheKey = await cacheService.getVersionedKey(baseKey);
+    const cachedRestaurant = await cacheService.get<any>(cacheKey);
+    if (cachedRestaurant?.slug) {
+      return cachedRestaurant.slug;
     }
+    const restaurant = await prisma.restaurant.findUnique({
+      where: { id: restaurantId },
+      select: { slug: true }
+    });
+    return restaurant?.slug || '';
+  }
+
+  private async getPublicMenuDataFromDb(slug: string) {
+    const restaurant = await this.repository.findRestaurantPublicDetailsBySlug(slug);
+    if (!restaurant) return null;
+    if (restaurant.status !== 'ACTIVE') return null;
 
     const categories = await this.repository.findPublicMenuCategories(restaurant.id);
 
@@ -233,20 +314,35 @@ export class MenuService {
     };
   }
 
-  async getQRCodeData(restaurantId: string) {
-    const restaurant = await prisma.restaurant.findUnique({
-      where: { id: restaurantId },
-      select: { slug: true }
-    });
+  private async invalidateAndWarmMenu(restaurantId: string): Promise<void> {
+    const slug = await this.getRestaurantSlug(restaurantId);
 
-    if (!restaurant) {
-      throw new AppError(404, 'Restaurant not found');
-    }
+    // 1. Invalidate versions (Bump versions)
+    await Promise.all([
+      cacheService.incrementVersion(`categories:${restaurantId}`),
+      cacheService.incrementVersion(`menu:${restaurantId}`),
+      cacheService.incrementVersion(`public-menu:${slug}`)
+    ]);
 
-    const publicUrl = `${env.PUBLIC_BASE_URL}/r/${restaurant.slug}`;
-    return {
-      publicUrl,
-      restaurantSlug: restaurant.slug,
-    };
+    // 2. Fetch new version keys
+    const [categoriesKey, menuKey, publicMenuKey] = await Promise.all([
+      cacheService.getVersionedKey(`categories:${restaurantId}`),
+      cacheService.getVersionedKey(`menu:${restaurantId}`),
+      cacheService.getVersionedKey(`public-menu:${slug}`)
+    ]);
+
+    // 3. Query PostgreSQL for latest state
+    const [categories, items, publicMenuDetails] = await Promise.all([
+      this.repository.findCategories(restaurantId),
+      this.repository.findItems(restaurantId),
+      this.getPublicMenuDataFromDb(slug)
+    ]);
+
+    // 4. Set Redis cache (warming)
+    await Promise.all([
+      cacheService.set(categoriesKey, categories, 900),
+      cacheService.set(menuKey, items, 900),
+      ...(publicMenuDetails ? [cacheService.set(publicMenuKey, publicMenuDetails, 900)] : [])
+    ]);
   }
 }
