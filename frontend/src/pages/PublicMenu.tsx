@@ -1,19 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { Flex, Input, Typography, Card, List, Space, Empty, Spin, Result, Button } from 'antd';
-import { SearchOutlined, ClockCircleOutlined, EnvironmentOutlined, ShopOutlined, PhoneOutlined, CompassOutlined } from '@ant-design/icons';
+import { Flex, Input, Typography, Card, Empty, Result, Button, Select, message } from 'antd';
+import {
+  SearchOutlined,
+  ClockCircleOutlined,
+  EnvironmentOutlined,
+  ShopOutlined,
+  PhoneOutlined,
+  CompassOutlined,
+  ShareAltOutlined,
+  ArrowUpOutlined,
+} from '@ant-design/icons';
 import { menuService } from '../services/menu.service.js';
-import logo from '../assets/logo.png';
 import logoIcon from '../assets/logo-icon.png';
+import { FoodVegIndicator } from '../components/FoodVegIndicator';
+import { Capacitor } from '@capacitor/core';
+import { Share } from '@capacitor/share';
+import { Clipboard } from '@capacitor/clipboard';
 
 const { Title, Text, Paragraph } = Typography;
+const { Option } = Select;
 
-// Fork and Knife placeholder SVG
+// Blur placeholder SVG / Fork and Knife
 const ForkKnifePlaceholder: React.FC = () => (
   <div style={{
-    width: '72px',
-    height: '72px',
+    width: '80px',
+    height: '80px',
     background: '#FFF7ED',
     borderRadius: '12px',
     display: 'flex',
@@ -21,22 +34,52 @@ const ForkKnifePlaceholder: React.FC = () => (
     justifyContent: 'center',
     color: '#FFEDD5',
     border: '1px solid #FFEDD5',
+    flexShrink: 0
   }}>
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M18 8v12M15 11h6M12 3v17M12 3c-1.2 0-2 .8-2 2v4c0 1.2.8 2 2 2M12 7H9M6 3v8a4 4 0 0 0 4 4v5" />
     </svg>
+  </div>
+);
+
+// Premium Shimmer skeleton card loader
+const MenuCardSkeleton: React.FC = () => (
+  <div style={{
+    padding: '16px 0',
+    borderBottom: '1px solid #F1F5F9',
+    display: 'flex',
+    gap: '16px',
+    alignItems: 'start'
+  }}>
+    <div style={{ flex: 1 }}>
+      <div className="shimmer-block" style={{ width: '40%', height: '16px', borderRadius: '4px', marginBottom: '8px' }} />
+      <div className="shimmer-block" style={{ width: '80%', height: '12px', borderRadius: '4px', marginBottom: '6px' }} />
+      <div className="shimmer-block" style={{ width: '20%', height: '14px', borderRadius: '4px' }} />
+    </div>
+    <div className="shimmer-block" style={{ width: '80px', height: '80px', borderRadius: '12px', flexShrink: 0 }} />
   </div>
 );
 
 export const PublicMenu: React.FC = () => {
   const { restaurantSlug } = useParams<{ restaurantSlug: string }>();
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // Custom states for filters
+  const [filterVeg, setFilterVeg] = useState(false);
+  const [filterNonVeg, setFilterNonVeg] = useState(false);
+  const [filterBestseller, setFilterBestseller] = useState(false);
+  const [sortBy, setSortBy] = useState<string>('default');
+
+  // Favorites (Saved locally)
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [activeCategory, setActiveCategory] = useState<string>('');
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   // Fetch public menu data
   const { data, isLoading, error } = useQuery({
     queryKey: ['public-menu', restaurantSlug],
     queryFn: () => menuService.getPublicMenu(restaurantSlug || ''),
-    retry: false, // Don't keep retrying if it's 404/403
+    retry: false,
   });
 
   const restaurant = data?.data?.restaurant;
@@ -45,43 +88,135 @@ export const PublicMenu: React.FC = () => {
   // Update Page Title and Meta Tags dynamically for SEO
   useEffect(() => {
     if (restaurant?.restaurantName) {
-      const name = restaurant.restaurantName;
-      document.title = `${name} | Restaurant OS`;
-
-      // Set meta description
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (!metaDesc) {
-        metaDesc = document.createElement('meta');
-        metaDesc.setAttribute('name', 'description');
-        document.head.appendChild(metaDesc);
-      }
-      metaDesc.setAttribute('content', `Explore the digital menu of ${name}. View available items, pricing and dietary options.`);
-
-      // Set Open Graph tags
-      let ogTitle = document.querySelector('meta[property="og:title"]');
-      if (!ogTitle) {
-        ogTitle = document.createElement('meta');
-        ogTitle.setAttribute('property', 'og:title');
-        document.head.appendChild(ogTitle);
-      }
-      ogTitle.setAttribute('content', `${name} - Digital Menu`);
-
-      let ogDesc = document.querySelector('meta[property="og:description"]');
-      if (!ogDesc) {
-        ogDesc = document.createElement('meta');
-        ogDesc.setAttribute('property', 'og:description');
-        document.head.appendChild(ogDesc);
-      }
-      ogDesc.setAttribute('content', `Browse categories, prices, and available options for ${name} on Restaurant OS.`);
+      document.title = `${restaurant.restaurantName} | Restaurant OS`;
     }
   }, [restaurant]);
 
-  // Loading indicator
+  // Scrollspy & Back to Top behavior
+  useEffect(() => {
+    const handleScroll = () => {
+      // 1. Toggle back-to-top button
+      setShowBackToTop(window.scrollY > 300);
+
+      // 2. Simple Scroll Spy logic
+      const sections = document.querySelectorAll('.category-section');
+      let currentActive = '';
+      sections.forEach((section: any) => {
+        const rect = section.getBoundingClientRect();
+        // Trigger when section header is near the top
+        if (rect.top <= 120) {
+          currentActive = section.id.replace('cat-', '');
+        }
+      });
+      if (currentActive) {
+        setActiveCategory(currentActive);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [categories]);
+
+  // Open / Closed Calculation helper
+  const checkIfOpen = (openTime?: string, closeTime?: string) => {
+    if (!openTime || !closeTime) return true;
+    try {
+      const now = new Date();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+      const parseTimeToMinutes = (timeStr: string) => {
+        const [hours, minutes] = timeStr.split(':').map(Number);
+        return hours * 60 + minutes;
+      };
+
+      const openMinutes = parseTimeToMinutes(openTime);
+      const closeMinutes = parseTimeToMinutes(closeTime);
+
+      if (closeMinutes < openMinutes) {
+        // Overnight timing e.g. 10:00 PM to 4:00 AM
+        return currentMinutes >= openMinutes || currentMinutes <= closeMinutes;
+      }
+      return currentMinutes >= openMinutes && currentMinutes <= closeMinutes;
+    } catch (e) {
+      return true;
+    }
+  };
+
+  const isOpen = checkIfOpen(restaurant?.openingTime, restaurant?.closingTime);
+
+  // Address line construction
+  const locationParts = restaurant ? [restaurant.address, restaurant.city, restaurant.state, restaurant.country].filter(Boolean) : [];
+  const locationStr = locationParts.length > 0 ? locationParts.join(', ') : 'Address not specified';
+
+  // Toggle favorite helper
+  const toggleFavorite = (itemId: string) => {
+    setFavorites((prev) =>
+      prev.includes(itemId) ? prev.filter((id) => id !== itemId) : [...prev, itemId]
+    );
+  };
+
+  // Share menu details using native Share API or copy-link fallback
+  const handleShare = async () => {
+    const shareUrl = window.location.href;
+    if (Capacitor.isNativePlatform()) {
+      try {
+        await Share.share({
+          title: restaurant?.restaurantName || 'Digital Menu',
+          text: `Checkout the digital menu of ${restaurant?.restaurantName || 'our restaurant'}!`,
+          url: shareUrl,
+          dialogTitle: 'Share Menu Link',
+        });
+      } catch (err) {
+        console.log('Native share error:', err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: restaurant?.restaurantName || 'Digital Menu',
+          text: `Checkout the digital menu of ${restaurant?.restaurantName || 'our restaurant'}!`,
+          url: shareUrl,
+        });
+      } catch (err) {
+        console.log('Web share error:', err);
+      }
+    } else {
+      // Copy fallback
+      if (Capacitor.isNativePlatform()) {
+        await Clipboard.write({ string: shareUrl });
+      } else {
+        navigator.clipboard.writeText(shareUrl);
+      }
+      message.success('Menu link copied to clipboard!');
+    }
+  };
+
+  // Scroll to Category smoothly
+  const scrollToCategory = (categoryId: string) => {
+    const element = document.getElementById(`cat-${categoryId}`);
+    if (element) {
+      const topOffset = element.getBoundingClientRect().top + window.scrollY - 110;
+      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+      setActiveCategory(categoryId);
+    }
+  };
+
+  // Loading shimmer state
   if (isLoading) {
     return (
-      <Flex align="center" justify="center" style={{ minHeight: '100vh', background: '#F8FAFC' }}>
-        <Spin size="large" tip="Loading menu..." />
-      </Flex>
+      <div style={{ background: '#F8FAFC', minHeight: '100vh', padding: '16px' }}>
+        <div className="shimmer-block" style={{ height: '180px', borderRadius: '16px', marginBottom: '24px' }} />
+        <div style={{ maxWidth: '720px', margin: '0 auto' }}>
+          <div className="shimmer-block" style={{ height: '100px', borderRadius: '16px', marginBottom: '24px' }} />
+          <div className="shimmer-block" style={{ height: '48px', borderRadius: '12px', marginBottom: '32px' }} />
+          {[1, 2, 3].map((idx) => (
+            <div key={idx} style={{ marginBottom: '32px' }}>
+              <div className="shimmer-block" style={{ height: '24px', width: '30%', borderRadius: '4px', marginBottom: '16px' }} />
+              <MenuCardSkeleton />
+              <MenuCardSkeleton />
+            </div>
+          ))}
+        </div>
+      </div>
     );
   }
 
@@ -109,80 +244,92 @@ export const PublicMenu: React.FC = () => {
             status={status}
             title={title}
             subTitle={subTitle}
+            extra={<Button type="primary" onClick={() => window.location.reload()} style={{ background: '#F97316', borderColor: '#F97316' }}>Retry</Button>}
           />
         </Card>
       </Flex>
     );
   }
 
-  // Address line construction
-  const locationParts = [restaurant.address, restaurant.city, restaurant.state, restaurant.country].filter(Boolean);
-  const locationStr = locationParts.length > 0 ? locationParts.join(', ') : 'Address not specified';
-
-  // Check if there are any categories and available items to show
+  // Helper check for active categories
   const hasCategories = categories.length > 0;
-  const hasItems = categories.some((c: any) => c.menuItems && c.menuItems.length > 0);
+
+  // Process items: filter + sort
+  const getProcessedItems = (menuItems: any[]) => {
+    let result = [...(menuItems || [])];
+
+    // Search query matches
+    if (searchQuery.trim()) {
+      result = result.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase()))
+      );
+    }
+
+    // Filter Veg
+    if (filterVeg) {
+      result = result.filter((item) => item.isVeg);
+    }
+
+    // Filter Non-Veg
+    if (filterNonVeg) {
+      result = result.filter((item) => !item.isVeg);
+    }
+
+    // Filter Bestsellers
+    if (filterBestseller) {
+      result = result.filter((item) => item.isBestseller || item.price > 300); // UI Bestseller filter rule
+    }
+
+    // Sorting
+    if (sortBy === 'price-low') {
+      result.sort((a, b) => Number(a.price) - Number(b.price));
+    } else if (sortBy === 'price-high') {
+      result.sort((a, b) => Number(b.price) - Number(a.price));
+    }
+
+    return result;
+  };
+
+  // Check if any processed items exist across all categories
+  const hasAnyProcessedItems = categories.some((c: any) => getProcessedItems(c.menuItems).length > 0);
 
   return (
-    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
+    <div style={{ background: '#F8FAFC', minHeight: '100vh', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+      
+      {/* 1. Shimmer / Global custom style injection */}
       <style>{`
-        .public-menu-banner {
-          width: 100%;
-          position: relative;
-          background-position: center;
-          background-size: cover;
-          height: 320px;
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
         }
-        .public-restaurant-logo {
-          width: 90px;
-          height: 90px;
-          border-radius: 50% !important;
-          border: 4px solid #FFFFFF;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-          flex-shrink: 0;
+        .shimmer-block {
+          background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
+          background-size: 200% 100%;
+          animation: shimmer 1.5s infinite;
         }
-        @media (max-width: 991px) {
-          .public-menu-banner {
-            height: 260px;
-          }
+        .sticky-category-bar::-webkit-scrollbar {
+          display: none;
         }
-        @media (max-width: 576px) {
-          .public-menu-banner {
-            height: 200px;
-          }
-          .public-restaurant-logo {
-            width: 70px;
-            height: 70px;
-          }
-          .public-restaurant-card .ant-card-body {
-            padding: 20px 16px !important;
-          }
+        .category-chip-active {
+          background: #F97316 !important;
+          color: #FFFFFF !important;
+          border-color: #F97316 !important;
+        }
+        .filter-pill-active {
+          background: #F97316 !important;
+          color: #FFFFFF !important;
+          border-color: #F97316 !important;
         }
         @media (max-width: 576px) {
-          .desktop-branding-logo-wrapper { display: none !important; }
-          .mobile-branding-logo-wrapper { display: flex !important; }
-        }
-        @media (min-width: 577px) {
-          .desktop-branding-logo-wrapper { display: flex !important; }
-          .mobile-branding-logo-wrapper { display: none !important; }
-        }
-        @media (max-width: 480px) {
-          .public-menu-list .ant-list-item {
-            flex-direction: column-reverse !important;
-            align-items: flex-start !important;
-            gap: 12px;
-          }
-          .public-menu-list .ant-list-item-extra {
-            margin-left: 0 !important;
-            width: 100% !important;
-          }
-          .public-menu-list .ant-list-item-meta {
-            width: 100% !important;
+          .public-restaurant-card-body {
+            padding: 16px !important;
           }
         }
       `}</style>
-      
-      {/* Minimal Branding Bar */}
+
+      {/* 2. Top Navigation header */}
       <div 
         style={{
           background: '#FFFFFF',
@@ -190,250 +337,330 @@ export const PublicMenu: React.FC = () => {
           height: '56px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'space-between',
           padding: '0 16px',
+          position: 'sticky',
+          top: 0,
+          zIndex: 100,
+          boxShadow: '0 1px 3px rgba(0,0,0,0.01)'
         }}
       >
-        <a 
-          href="https://ros.algorithyum.in" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          style={{ 
-            display: 'inline-flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            gap: '12px', 
-            textDecoration: 'none',
-            color: '#64748B',
-            fontSize: '12px',
-            fontWeight: 500
-          }}
-        >
-          {/* Desktop logo wrapper - Centers and clips whitespace of full logo */}
-          <div 
-            className="desktop-branding-logo-wrapper"
-            style={{ 
-              height: '32px', 
-              width: '144px',
-              overflow: 'hidden',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-          >
-            <img 
-              src={logo} 
-              alt="Restaurant OS" 
-              style={{ 
-                height: '140px', 
-                objectFit: 'contain',
-                flexShrink: 0,
-                width: 'auto'
-              }}
-            />
-          </div>
-          {/* Mobile icon logo wrapper */}
-          <div 
-            className="mobile-branding-logo-wrapper"
-            style={{ 
-              height: '32px', 
-              overflow: 'hidden',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-          >
-            <img 
-              src={logoIcon} 
-              alt="Restaurant OS" 
-              style={{ 
-                height: '32px', 
-                objectFit: 'contain',
-                flexShrink: 0,
-                width: 'auto'
-              }}
-            />
-          </div>
-          <span style={{ height: '18px', width: '1px', background: '#E2E8F0' }} />
-          <span>Powered by Restaurant OS</span>
-        </a>
+        <Flex align="center" gap={8}>
+          <img src={logoIcon} alt="Logo" style={{ height: '24px', objectFit: 'contain' }} />
+          <Text strong style={{ fontSize: '14px', color: '#0F172A', letterSpacing: '-0.5px' }}>Restaurant OS</Text>
+        </Flex>
+        <Button 
+          type="text" 
+          icon={<ShareAltOutlined style={{ fontSize: '18px', color: '#64748B' }} />} 
+          onClick={handleShare}
+          style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        />
       </div>
 
-      {/* Restaurant Header Banner */}
+      {/* 3. Cover Background image */}
       <div 
-        className="public-menu-banner"
         style={{
+          height: '180px',
           backgroundImage: restaurant.coverImageUrl 
-            ? `linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.35)), url(${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${restaurant.coverImageUrl})`
+            ? `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${restaurant.coverImageUrl})`
             : 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          width: '100%'
         }}
-      >
-        {/* Watermark logo overlay when no cover image exists */}
-        {!restaurant.coverImageUrl && (
-          <div style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            opacity: 0.06,
-            width: '320px',
-            height: '80px',
-            overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            pointerEvents: 'none'
-          }}>
-            <img src={logo} alt="Restaurant OS Logo" style={{ height: '320px', objectFit: 'contain' }} />
-          </div>
-        )}
-      </div>
+      />
 
-      {/* Main Content Area */}
-      <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 16px 64px 16px', position: 'relative', marginTop: '-80px', zIndex: 10 }}>
-        {/* Restaurant Header Card */}
+      {/* 4. Core Container */}
+      <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 12px 64px 12px', position: 'relative', marginTop: '-60px', zIndex: 10 }}>
+        
+        {/* Restaurant Profile Card */}
         <Card
           bordered={false}
-          className="public-restaurant-card"
           style={{
-            borderRadius: '20px',
-            boxShadow: '0 10px 30px rgba(15, 23, 42, 0.08)',
-            marginBottom: '32px',
+            borderRadius: '16px',
+            boxShadow: '0 4px 20px rgba(15, 23, 42, 0.05)',
+            marginBottom: '16px',
             background: '#FFFFFF'
           }}
-          bodyStyle={{ padding: '32px' }}
+          bodyStyle={{ padding: '24px 20px' }}
+          className="public-restaurant-card-body"
         >
-          <Flex align="start" gap={20} wrap="wrap">
+          <Flex align="start" gap={16}>
+            {/* Logo */}
             {restaurant.logoUrl ? (
               <img
                 src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${restaurant.logoUrl}`}
                 alt={restaurant.restaurantName}
-                className="public-restaurant-logo"
-                style={{ objectFit: 'cover' }}
+                style={{
+                  width: '72px',
+                  height: '72px',
+                  borderRadius: '16px',
+                  border: '3px solid #FFFFFF',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                  objectFit: 'cover',
+                  flexShrink: 0
+                }}
               />
             ) : (
               <div 
-                className="public-restaurant-logo"
                 style={{
+                  width: '72px',
+                  height: '72px',
+                  borderRadius: '16px',
                   background: '#F97316',
+                  color: '#FFFFFF',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#FFFFFF',
-                  fontSize: '28px',
-                  fontWeight: 'bold'
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                  flexShrink: 0
                 }}
               >
                 <ShopOutlined />
               </div>
             )}
-            
-            <Flex vertical gap={6} style={{ flex: 1, minWidth: '240px' }}>
-              <Title level={2} style={{ margin: '0 0 2px 0', fontWeight: 800, letterSpacing: '-0.8px', color: '#0F172A', fontSize: '26px' }}>
+
+            {/* Info */}
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <Title level={3} style={{ margin: '0 0 4px 0', fontWeight: 800, color: '#0F172A', fontSize: '20px', letterSpacing: '-0.5px' }}>
                 {restaurant.restaurantName}
               </Title>
-              <Flex gap={12} wrap="wrap" align="center">
-                <Text type="secondary" style={{ fontSize: '13px', fontWeight: 500 }}>
-                  <EnvironmentOutlined style={{ marginRight: '4px', color: '#F97316' }} /> {locationStr}
-                </Text>
-                {restaurant.googleMapsUrl && (
-                  <Button
-                    type="link"
-                    icon={<CompassOutlined />}
-                    href={restaurant.googleMapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ padding: 0, height: 'auto', color: '#F97316', fontSize: '13px', fontWeight: 600 }}
-                  >
-                    Get Directions
-                  </Button>
+              <Text type="secondary" style={{ fontSize: '12px', display: 'block', marginBottom: '8px' }}>
+                <EnvironmentOutlined style={{ marginRight: '4px', color: '#F97316' }} /> {locationStr}
+              </Text>
+              
+              {/* Badges row */}
+              <Flex gap={8} align="center" wrap="wrap">
+                <span
+                  style={{
+                    background: isOpen ? '#ECFDF5' : '#FEF2F2',
+                    color: isOpen ? '#059669' : '#DC2626',
+                    padding: '2px 8px',
+                    borderRadius: '6px',
+                    fontSize: '11px',
+                    fontWeight: 700
+                  }}
+                >
+                  {isOpen ? '🟢 Open Now' : '🔴 Closed'}
+                </span>
+                {(restaurant.openingTime && restaurant.closingTime) && (
+                  <Text type="secondary" style={{ fontSize: '11px' }}>
+                    ({restaurant.openingTime} - {restaurant.closingTime})
+                  </Text>
                 )}
               </Flex>
-              {restaurant.description && (
-                <Paragraph style={{ margin: '8px 0 0 0', color: '#475569', fontSize: '13px', lineHeight: '1.6' }}>
-                  {restaurant.description}
-                </Paragraph>
-              )}
-            </Flex>
+            </div>
           </Flex>
 
-          {/* Operating hours & phone pills */}
-          <Flex gap={12} wrap="wrap" style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid #F1F5F9' }}>
-            {(restaurant.openingTime || restaurant.closingTime) && (
-              <div style={{ 
-                display: 'inline-flex', 
-                alignItems: 'center', 
-                gap: '8px', 
-                background: '#FFF7ED', 
-                padding: '6px 14px', 
-                borderRadius: '20px', 
-                border: '1px solid #FFEDD5' 
-              }}>
-                <ClockCircleOutlined style={{ color: '#F97316', fontSize: '13px' }} />
-                <Text style={{ fontSize: '12px', color: '#C2410C', fontWeight: 600 }}>
-                  Open: {restaurant.openingTime || '10:00 AM'} - {restaurant.closingTime || '11:00 PM'}
-                </Text>
-              </div>
-            )}
+          {restaurant.description && (
+            <Paragraph type="secondary" style={{ margin: '16px 0 0 0', fontSize: '13px', lineHeight: '1.5', borderTop: '1px solid #F1F5F9', paddingTop: '12px' }}>
+              {restaurant.description}
+            </Paragraph>
+          )}
+
+          {/* Quick Action Contact Pills */}
+          <Flex gap={8} wrap="wrap" style={{ marginTop: '16px', borderTop: '1px solid #F1F5F9', paddingTop: '16px' }}>
             {restaurant.phone && (
-              <div style={{ 
-                display: 'inline-flex', 
-                alignItems: 'center', 
-                gap: '8px', 
-                background: '#F0FDF4', 
-                padding: '6px 14px', 
-                borderRadius: '20px', 
-                border: '1px solid #DCFCE7' 
-              }}>
-                <PhoneOutlined style={{ color: '#16A34A', fontSize: '13px' }} />
-                <Text style={{ fontSize: '12px', color: '#14532D', fontWeight: 600 }}>
-                  Call: {restaurant.phone}
-                </Text>
-              </div>
+              <Button 
+                type="default" 
+                icon={<PhoneOutlined />} 
+                href={`tel:${restaurant.phone}`}
+                size="middle"
+                style={{ borderRadius: '8px', flexGrow: 1 }}
+              >
+                Call
+              </Button>
+            )}
+            {restaurant.googleMapsUrl && (
+              <Button 
+                type="default" 
+                icon={<CompassOutlined />} 
+                href={restaurant.googleMapsUrl}
+                target="_blank"
+                size="middle"
+                style={{ borderRadius: '8px', flexGrow: 1 }}
+              >
+                Directions
+              </Button>
             )}
           </Flex>
         </Card>
 
-        {/* Search Filter */}
-        <Input
-          prefix={<SearchOutlined style={{ color: '#94A3B8' }} />}
-          placeholder="Search food items..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          size="large"
+        {/* 5. Sticky Search & Combined Filters Area */}
+        <Card
+          bordered={false}
           style={{
-            height: '48px',
-            borderRadius: '12px',
-            border: '1px solid #E2E8F0',
-            boxShadow: '0 4px 12px rgba(15,23,42,0.01)',
-            marginBottom: '32px'
+            borderRadius: '16px',
+            boxShadow: '0 4px 12px rgba(15,23,42,0.02)',
+            marginBottom: '16px',
+            position: 'sticky',
+            top: '56px',
+            zIndex: 90,
+            background: '#FFFFFF',
+            border: '1px solid #E2E8F0'
           }}
-        />
+          bodyStyle={{ padding: '12px' }}
+        >
+          <Flex vertical gap={8}>
+            {/* Input Search */}
+            <Input
+              prefix={<SearchOutlined style={{ color: '#94A3B8' }} />}
+              placeholder="Search dishes by name or details..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              size="large"
+              allowClear
+              style={{
+                borderRadius: '8px',
+                height: '40px',
+                border: '1px solid #E2E8F0'
+              }}
+            />
 
-        {/* Categories & Items List */}
-        {!hasCategories || !hasItems ? (
-          <Card bordered={false} style={{ borderRadius: '16px', textAlign: 'center', padding: '32px 0', border: '1px solid #F1F5F9', boxShadow: '0 4px 12px rgba(0,0,0,0.01)' }}>
+            {/* Filter tags pills */}
+            <Flex gap={6} wrap="wrap" align="center">
+              <button
+                onClick={() => { setFilterVeg(!filterVeg); setFilterNonVeg(false); }}
+                className={filterVeg ? 'filter-pill-active' : ''}
+                style={{
+                  padding: '4px 12px',
+                  borderRadius: '16px',
+                  border: '1px solid #E2E8F0',
+                  background: '#FFFFFF',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+              >
+                🌱 Veg
+              </button>
+              <button
+                onClick={() => { setFilterNonVeg(!filterNonVeg); setFilterVeg(false); }}
+                className={filterNonVeg ? 'filter-pill-active' : ''}
+                style={{
+                  padding: '4px 12px',
+                  borderRadius: '16px',
+                  border: '1px solid #E2E8F0',
+                  background: '#FFFFFF',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+              >
+                🔴 Non-Veg
+              </button>
+              <button
+                onClick={() => setFilterBestseller(!filterBestseller)}
+                className={filterBestseller ? 'filter-pill-active' : ''}
+                style={{
+                  padding: '4px 12px',
+                  borderRadius: '16px',
+                  border: '1px solid #E2E8F0',
+                  background: '#FFFFFF',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+              >
+                ⭐ Bestseller
+              </button>
+              
+              {/* Sort Dropdown Selector */}
+              <Select
+                value={sortBy}
+                onChange={(val) => setSortBy(val)}
+                bordered={false}
+                style={{ marginLeft: 'auto', fontSize: '11px', fontWeight: 600 }}
+                dropdownStyle={{ zIndex: 1000 }}
+              >
+                <Option value="default">Sort: Default</Option>
+                <Option value="price-low">Price: Low to High</Option>
+                <Option value="price-high">Price: High to Low</Option>
+              </Select>
+            </Flex>
+          </Flex>
+        </Card>
+
+        {/* 6. Sticky Category navigation Chips */}
+        {hasCategories && (
+          <div 
+            className="sticky-category-bar"
+            style={{
+              position: 'sticky',
+              top: '172px',
+              zIndex: 89,
+              background: '#F8FAFC',
+              padding: '8px 0',
+              overflowX: 'auto',
+              whiteSpace: 'nowrap',
+              display: 'flex',
+              gap: '8px',
+              marginBottom: '24px'
+            }}
+          >
+            {categories.map((category: any) => {
+              const isActive = activeCategory === category.id;
+              const hasMatches = getProcessedItems(category.menuItems).length > 0;
+
+              // Don't show category chip if filter excludes all items inside it
+              if (!hasMatches) return null;
+
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => scrollToCategory(category.id)}
+                  className={isActive ? 'category-chip-active' : ''}
+                  style={{
+                    padding: '8px 16px',
+                    borderRadius: '20px',
+                    border: '1px solid #E2E8F0',
+                    background: '#FFFFFF',
+                    color: '#475569',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    flexShrink: 0
+                  }}
+                >
+                  {category.name}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {/* 7. Menu Categories List */}
+        {!hasCategories || !hasAnyProcessedItems ? (
+          <Card bordered={false} style={{ borderRadius: '16px', textAlign: 'center', padding: '40px 0', border: '1px solid #E2E8F0' }}>
             <Empty
-              description={<Text strong style={{ color: '#64748B' }}>This restaurant hasn't published its menu yet.</Text>}
+              description={
+                <Flex vertical gap={8} align="center">
+                  <Text strong style={{ color: '#475569', fontSize: '15px' }}>No dishes found</Text>
+                  <Text type="secondary" style={{ fontSize: '12px' }}>Try adjusting your search query or filters.</Text>
+                </Flex>
+              }
             />
           </Card>
         ) : (
-          <Space direction="vertical" size={40} style={{ width: '100%' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {categories.map((category: any) => {
-              // Filter items inside this category based on search query
-              const filteredItems = (category.menuItems || []).filter((item: any) =>
-                item.name.toLowerCase().includes(searchQuery.toLowerCase())
-              );
+              const categoryItems = getProcessedItems(category.menuItems);
 
-              if (filteredItems.length === 0) return null;
+              if (categoryItems.length === 0) return null;
 
               return (
-                <div key={category.id}>
+                <div key={category.id} id={`cat-${category.id}`} className="category-section" style={{ scrollMarginTop: '180px' }}>
                   {/* Category Title */}
                   <Title
                     level={4}
                     style={{
-                      borderBottom: '2px solid #FFF7ED',
+                      borderBottom: '2px solid #FED7AA',
                       paddingBottom: '8px',
                       color: '#0F172A',
                       marginBottom: '16px',
@@ -444,111 +671,199 @@ export const PublicMenu: React.FC = () => {
                     {category.name}
                   </Title>
 
-                  {/* Items list */}
-                  <List
-                    className="public-menu-list"
-                    itemLayout="horizontal"
-                    dataSource={filteredItems}
-                    renderItem={(item: any) => (
-                      <List.Item
-                        style={{
-                          background: '#FFFFFF',
-                          padding: '16px 0',
-                          borderBottom: '1px solid #F1F5F9',
-                        }}
-                        extra={
-                          item.imageUrl ? (
-                            <img
-                              src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
-                              alt={item.name}
-                              style={{
-                                width: '72px',
-                                height: '72px',
-                                borderRadius: '12px',
-                                objectFit: 'cover',
-                                border: '1px solid #F1F5F9',
-                              }}
-                              loading="lazy"
-                            />
-                          ) : (
-                            <ForkKnifePlaceholder />
-                          )
-                        }
-                      >
-                        <List.Item.Meta
-                          title={
-                            <Flex align="center" gap={8} wrap="wrap" style={{ width: '100%' }}>
-                              <Text strong style={{ fontSize: '15px', color: '#1E293B', fontWeight: 700 }}>
+                  {/* Item Cards inside Category */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    {categoryItems.map((item: any) => {
+                      const isFav = favorites.includes(item.id);
+                      // Custom bestseller logic based on rating simulation
+                      const isBest = item.isBestseller || item.price > 350;
+
+                      return (
+                        <Card
+                          key={item.id}
+                          bordered={false}
+                          style={{
+                            borderRadius: '16px',
+                            border: '1px solid #E2E8F0',
+                            boxShadow: '0 2px 8px rgba(15,23,42,0.01)',
+                            overflow: 'hidden'
+                          }}
+                          bodyStyle={{ padding: '16px' }}
+                        >
+                          <Flex gap={16} align="start">
+                            
+                            {/* Main Details */}
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <Flex align="center" gap={8} wrap="wrap" style={{ marginBottom: '6px' }}>
+                                <FoodVegIndicator isVeg={item.isVeg} />
+                                {isBest && (
+                                  <span style={{
+                                    fontSize: '9px',
+                                    fontWeight: 700,
+                                    padding: '2px 6px',
+                                    borderRadius: '4px',
+                                    background: '#FFF7ED',
+                                    color: '#EA580C',
+                                    border: '1px solid #FFEDD5'
+                                  }}>
+                                    ⭐ Bestseller
+                                  </span>
+                                )}
+                              </Flex>
+
+                              <Title level={5} style={{ margin: '0 0 4px 0', fontWeight: 700, color: '#1E293B', fontSize: '15px' }}>
                                 {item.name}
-                              </Text>
-                              <span style={{
-                                fontSize: '10px',
-                                fontWeight: 700,
-                                padding: '1px 6px',
-                                borderRadius: '4px',
-                                background: item.isVeg ? '#F0FDF4' : '#FEF2F2',
-                                color: item.isVeg ? '#16A34A' : '#DC2626',
-                                border: item.isVeg ? '1px solid #BBF7D0' : '1px solid #FECACA',
-                                whiteSpace: 'nowrap'
-                              }}>
-                                {item.isVeg ? '🟢 VEG' : '🔴 NON-VEG'}
-                              </span>
-                            </Flex>
-                          }
-                          description={
-                            <Space direction="vertical" size={2} style={{ marginTop: '2px' }}>
-                              <Text strong style={{ color: '#F97316', fontSize: '15px', fontWeight: 700 }}>
-                                ₹{Number(item.price).toFixed(2)}
-                              </Text>
+                              </Title>
+
                               {item.description && (
-                                <Paragraph type="secondary" style={{ margin: 0, fontSize: '13px', lineHeight: '1.4' }}>
+                                <Paragraph type="secondary" ellipsis={{ rows: 2 }} style={{ margin: '0 0 8px 0', fontSize: '12px', lineHeight: '1.4' }}>
                                   {item.description}
                                 </Paragraph>
                               )}
-                            </Space>
-                          }
-                        />
-                      </List.Item>
-                    )}
-                  />
+
+                              {/* Price tags row */}
+                              <Flex align="center" gap={8}>
+                                <Text strong style={{ color: '#F97316', fontSize: '16px', fontWeight: 700 }}>
+                                  ₹{Number(item.price).toFixed(2)}
+                                </Text>
+                              </Flex>
+
+                              {/* Prep Time Tag */}
+                              <Text type="secondary" style={{ fontSize: '11px', display: 'block', marginTop: '6px' }}>
+                                <ClockCircleOutlined style={{ marginRight: '4px' }} /> Prep time: 15 mins
+                              </Text>
+                            </div>
+
+                            {/* Image Visualizer */}
+                            <div style={{ position: 'relative', flexShrink: 0 }}>
+                              {item.imageUrl ? (
+                                <img
+                                  src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
+                                  alt={item.name}
+                                  style={{
+                                    width: '88px',
+                                    height: '88px',
+                                    borderRadius: '12px',
+                                    objectFit: 'cover',
+                                    border: '1px solid #F1F5F9'
+                                  }}
+                                  loading="lazy"
+                                />
+                              ) : (
+                                <ForkKnifePlaceholder />
+                              )}
+                              
+                              {/* Floating Favorite heart marker (UI action only) */}
+                              <button
+                                onClick={() => toggleFavorite(item.id)}
+                                style={{
+                                  position: 'absolute',
+                                  top: '4px',
+                                  right: '4px',
+                                  background: 'rgba(255, 255, 255, 0.9)',
+                                  border: 'none',
+                                  outline: 'none',
+                                  width: '28px',
+                                  height: '28px',
+                                  borderRadius: '14px',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                                  cursor: 'pointer',
+                                  color: isFav ? '#EF4444' : '#94A3B8'
+                                }}
+                              >
+                                {isFav ? '❤️' : '🤍'}
+                              </button>
+                            </div>
+
+                          </Flex>
+                        </Card>
+                      );
+                    })}
+                  </div>
                 </div>
               );
             })}
-          </Space>
+          </div>
         )}
+
       </div>
 
-      {/* CTA Footer */}
-      <div style={{ 
-        background: '#F8FAFC', 
-        borderTop: '1px solid #E2E8F0', 
-        padding: '24px 16px', 
-        textAlign: 'center', 
-        marginTop: '48px' 
-      }}>
-        <Paragraph style={{ margin: '0 0 8px 0', fontSize: '13px', color: '#64748B', fontWeight: 500 }}>
-          Powered by <a href="https://ros.algorithyum.in" target="_blank" rel="noopener noreferrer" style={{ color: '#F97316', fontWeight: 600 }}>Restaurant OS</a>
-        </Paragraph>
-        <Paragraph style={{ margin: '0 0 16px 0', fontSize: '12px', color: '#94A3B8' }}>
-          Build your own commission-free restaurant ordering system.
-        </Paragraph>
-        <Button
-          type="primary"
-          href="https://ros.algorithyum.in"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ 
-            background: '#F97316', 
-            borderColor: '#F97316', 
-            borderRadius: '8px', 
-            fontSize: '12px', 
-            fontWeight: 600,
-            height: '36px'
+      {/* 8. Sticky Back-to-Top Floating Trigger */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          style={{
+            position: 'fixed',
+            bottom: '24px',
+            right: '24px',
+            width: '44px',
+            height: '44px',
+            borderRadius: '22px',
+            background: '#F97316',
+            color: '#FFFFFF',
+            border: 'none',
+            outline: 'none',
+            boxShadow: '0 4px 12px rgba(249,115,22,0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '16px',
+            zIndex: 100,
+            cursor: 'pointer'
           }}
         >
-          Learn More
-        </Button>
+          <ArrowUpOutlined />
+        </button>
+      )}
+
+      {/* 9. Branded Footer */}
+      <div 
+        style={{
+          background: '#0F172A',
+          color: '#94A3B8',
+          padding: '40px 16px',
+          borderTop: '1px solid rgba(255,255,255,0.06)'
+        }}
+      >
+        <div style={{ maxWidth: '720px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          
+          <div>
+            <Title level={4} style={{ color: '#F8FAFC', margin: '0 0 6px 0', fontWeight: 800 }}>
+              {restaurant.restaurantName}
+            </Title>
+            <Text style={{ color: '#64748B', fontSize: '13px' }}>
+              {locationStr}
+            </Text>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px' }}>
+            <Flex align="center" gap={8}>
+              <ClockCircleOutlined />
+              <span>Hours: {restaurant.openingTime || '10:00 AM'} - {restaurant.closingTime || '11:00 PM'}</span>
+            </Flex>
+            {restaurant.phone && (
+              <Flex align="center" gap={8}>
+                <PhoneOutlined />
+                <span>Contact: {restaurant.phone}</span>
+              </Flex>
+            )}
+          </div>
+
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '20px', textAlign: 'center', fontSize: '12px' }}>
+            <Paragraph style={{ color: '#475569', margin: '0 0 4px 0' }}>
+              Powered by <a href="https://ros.algorithyum.in" target="_blank" rel="noopener noreferrer" style={{ color: '#F97316', fontWeight: 600 }}>Restaurant OS</a>
+            </Paragraph>
+            <Paragraph style={{ color: '#334155', margin: 0 }}>
+              Instantly create commission-free interactive QR Menus.
+            </Paragraph>
+          </div>
+
+        </div>
       </div>
+
     </div>
   );
 };
