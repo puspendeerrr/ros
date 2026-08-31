@@ -13,32 +13,9 @@ import {
 } from 'lucide-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FoodVegIndicator } from './FoodVegIndicator';
 
 const { Title, Paragraph } = Typography;
-
-/* ────────────────────────────────────────────────────────────
-   FoodVegIndicator — Indian standard Veg (🟢) / Non-Veg (🔴) vector label
-   ──────────────────────────────────────────────────────────── */
-const FoodVegIndicator: React.FC<{ isVeg: boolean }> = ({ isVeg }) => (
-  <div style={{
-    width: '8px',
-    height: '8px',
-    border: `1px solid ${isVeg ? '#16A34A' : '#DC2626'}`,
-    padding: '1px',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '1px',
-    background: '#FFFFFF'
-  }}>
-    <div style={{
-      width: '4px',
-      height: '4px',
-      borderRadius: '50%',
-      background: isVeg ? '#16A34A' : '#DC2626'
-    }} />
-  </div>
-);
 
 /* ────────────────────────────────────────────────────────────
    HERO SECTION COMPONENT (Super Simple - "Ghanta kuch na pata ho tab bhi samajh aaye")

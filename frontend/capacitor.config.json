@@ -1,0 +1,6 @@
+{
+  "appId": "com.restaurantos.app",
+  "appName": "Restaurant OS",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

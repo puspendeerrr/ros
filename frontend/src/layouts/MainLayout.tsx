@@ -13,6 +13,8 @@ import { useAuthStore } from '../store/auth.store.js';
 import { authService } from '../services/auth.service.js';
 import logo from '../assets/logo.png';
 import logoIcon from '../assets/logo-icon.png';
+import { useMobileBridge } from '../hooks/useMobileBridge.js';
+import { OfflineBanner } from '../components/OfflineBanner.js';
 
 const { Sider, Content, Header } = Layout;
 const { Text } = Typography;
@@ -23,6 +25,7 @@ export const MainLayout: React.FC = () => {
   const location = useLocation();
   const screens = useBreakpoint();
   const { restaurant, logout } = useAuthStore();
+  const { isOnline } = useMobileBridge();
 
   // Responsiveness states
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -202,9 +205,11 @@ export const MainLayout: React.FC = () => {
 
   // Determine sidebar configuration
   const sidebarWidth = isMobile ? 0 : (isTablet || isCollapsed ? 80 : 240);
+  const topOffset = isOnline ? '0px' : '36px';
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ minHeight: '100vh', paddingTop: !isOnline ? '36px' : '0px' }}>
+      <OfflineBanner isOnline={isOnline} />
       
       {/* 1. Mobile Top Header Bar */}
       {isMobile && (
@@ -220,6 +225,7 @@ export const MainLayout: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             zIndex: 999,
+            top: topOffset,
             paddingTop: 'env(safe-area-inset-top)',
             boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
           }}
@@ -267,7 +273,7 @@ export const MainLayout: React.FC = () => {
             position: 'fixed',
             height: '100vh',
             left: 0,
-            top: 0,
+            top: topOffset,
             bottom: 0,
             zIndex: 1000
           }}
@@ -284,13 +290,14 @@ export const MainLayout: React.FC = () => {
             bottom: 0,
             left: 0,
             right: 0,
-            height: '56px',
+            height: 'calc(56px + env(safe-area-inset-bottom))',
             background: '#0F172A',
             borderTop: '1px solid rgba(255, 255, 255, 0.08)',
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'flex-start',
             justifyContent: 'space-around',
             zIndex: 999,
+            paddingTop: '8px',
             paddingBottom: 'env(safe-area-inset-bottom)',
             boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.15)',
           }}
