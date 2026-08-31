@@ -8,6 +8,7 @@ import { prisma } from '../../config/prisma';
 import { AppError } from '../../middleware/error.middleware';
 import { slugify } from '../../utils/slug';
 import { cacheService } from '../../utils/cache';
+import { CacheConfig } from '../../config/cache';
 
 export class MenuService {
   private repository = new MenuRepository();
@@ -18,7 +19,7 @@ export class MenuService {
     const cacheKey = await cacheService.getVersionedKey(baseKey);
     return cacheService.getOrFetch<Category[]>(
       cacheKey,
-      900, // 15 minutes TTL
+      CacheConfig.categoriesTTL,
       () => this.repository.findCategories(restaurantId)
     ).then((res) => res || []);
   }
@@ -81,7 +82,7 @@ export class MenuService {
     const cacheKey = await cacheService.getVersionedKey(baseKey);
     return cacheService.getOrFetch<MenuItem[]>(
       cacheKey,
-      900, // 15 minutes TTL
+      CacheConfig.menuTTL,
       () => this.repository.findItems(restaurantId)
     ).then((res) => res || []);
   }
@@ -231,7 +232,7 @@ export class MenuService {
 
     const data = await cacheService.getOrFetch<any>(
       cacheKey,
-      900, // 15 minutes TTL
+      CacheConfig.publicMenuTTL,
       () => this.getPublicMenuDataFromDb(slug)
     );
 
@@ -246,7 +247,7 @@ export class MenuService {
     const cacheKey = `qr:${restaurantId}`;
     return cacheService.getOrFetch<any>(
       cacheKey,
-      86400, // 24 hours TTL
+      CacheConfig.qrTTL,
       async () => {
         const restaurant = await prisma.restaurant.findUnique({
           where: { id: restaurantId },
@@ -272,6 +273,28 @@ export class MenuService {
   }
 
   // --- CACHE UTILITIES ---
+  async warmPublicMenuCache(restaurantId: string, slug: string): Promise<void> {
+    const [categoriesKey, menuKey, publicMenuKey] = await Promise.all([
+      cacheService.getVersionedKey(`categories:${restaurantId}`),
+      cacheService.getVersionedKey(`menu:${restaurantId}`),
+      cacheService.getVersionedKey(`public-menu:${slug}`)
+    ]);
+
+    const [categories, items, publicMenuDetails] = await Promise.all([
+      this.repository.findCategories(restaurantId),
+      this.repository.findItems(restaurantId),
+      this.getPublicMenuDataFromDb(slug)
+    ]);
+
+    await Promise.all([
+      cacheService.set(categoriesKey, categories, CacheConfig.categoriesTTL),
+      cacheService.set(menuKey, items, CacheConfig.menuTTL),
+      ...(publicMenuDetails ? [cacheService.set(publicMenuKey, publicMenuDetails, CacheConfig.publicMenuTTL)] : [])
+    ]);
+
+    cacheService.incrementWarmCount();
+  }
+
   private async getRestaurantSlug(restaurantId: string): Promise<string> {
     const baseKey = `restaurant:${restaurantId}`;
     const cacheKey = await cacheService.getVersionedKey(baseKey);
@@ -324,25 +347,7 @@ export class MenuService {
       cacheService.incrementVersion(`public-menu:${slug}`)
     ]);
 
-    // 2. Fetch new version keys
-    const [categoriesKey, menuKey, publicMenuKey] = await Promise.all([
-      cacheService.getVersionedKey(`categories:${restaurantId}`),
-      cacheService.getVersionedKey(`menu:${restaurantId}`),
-      cacheService.getVersionedKey(`public-menu:${slug}`)
-    ]);
-
-    // 3. Query PostgreSQL for latest state
-    const [categories, items, publicMenuDetails] = await Promise.all([
-      this.repository.findCategories(restaurantId),
-      this.repository.findItems(restaurantId),
-      this.getPublicMenuDataFromDb(slug)
-    ]);
-
-    // 4. Set Redis cache (warming)
-    await Promise.all([
-      cacheService.set(categoriesKey, categories, 900),
-      cacheService.set(menuKey, items, 900),
-      ...(publicMenuDetails ? [cacheService.set(publicMenuKey, publicMenuDetails, 900)] : [])
-    ]);
+    // 2. Warm cache immediately using the new helper
+    await this.warmPublicMenuCache(restaurantId, slug);
   }
 }

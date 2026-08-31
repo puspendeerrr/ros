@@ -5,6 +5,7 @@ import { RestaurantRepository } from './restaurant.repository.js';
 import { UpdateRestaurantInput } from './restaurant.validation.js';
 import { AppError } from '../../middleware/error.middleware.js';
 import { cacheService } from '../../utils/cache.js';
+import { CacheConfig } from '../../config/cache.js';
 
 export class RestaurantService {
   private repository = new RestaurantRepository();
@@ -15,7 +16,7 @@ export class RestaurantService {
 
     const profile = await cacheService.getOrFetch<Omit<Restaurant, 'passwordHash'>>(
       cacheKey,
-      900, // 15 minutes TTL
+      CacheConfig.profileTTL,
       async () => {
         const restaurant = await this.repository.findById(restaurantId);
         if (!restaurant) return null;
@@ -79,9 +80,9 @@ export class RestaurantService {
     ]);
 
     await Promise.all([
-      cacheService.set(profileKey, profile, 900),
-      cacheService.set(restaurantKey, updatedRestaurant, 900),
-      cacheService.set(slugKey, updatedRestaurant, 900)
+      cacheService.set(profileKey, profile, CacheConfig.profileTTL),
+      cacheService.set(restaurantKey, updatedRestaurant, CacheConfig.profileTTL),
+      cacheService.set(slugKey, updatedRestaurant, CacheConfig.profileTTL)
     ]);
 
     return profile;

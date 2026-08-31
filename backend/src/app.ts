@@ -12,6 +12,9 @@ import { errorMiddleware } from './middleware/error.middleware';
 import authRoutes from './modules/auth/auth.routes';
 import menuRoutes from './modules/menu/menu.routes';
 import restaurantRoutes from './modules/restaurant/restaurant.routes';
+import { requestContextStore } from './utils/context';
+import { cacheService } from './utils/cache';
+import { prisma } from './config/prisma';
 
 const app = express();
 
@@ -21,12 +24,14 @@ app.disable('x-powered-by');
 // Enable trust proxy (essential for rate limiting on Render/Vercel)
 app.set('trust proxy', 1);
 
-// Generate Request ID for tracing
+// Generate Request ID for tracing and wrap in AsyncLocalStorage requestContextStore
 app.use((req, res, next) => {
   const requestId = crypto.randomUUID();
   (req as any).id = requestId;
   res.setHeader('X-Request-ID', requestId);
-  next();
+  requestContextStore.run({ requestId }, () => {
+    next();
+  });
 });
 
 // Configure CORS allowed origins from comma-separated string
@@ -92,15 +97,32 @@ const authLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-// Health check with version, environment, and uptime
-app.get('/health', (req, res) => {
+// Health check with version, environment, database, and Redis detailed status
+app.get('/health', async (req, res) => {
+  let dbStatus = 'disconnected';
+  try {
+    await prisma.$queryRaw`SELECT 1`;
+    dbStatus = 'connected';
+  } catch (err) {
+    console.error('[Health Check Error] DB query failed:', (err as Error).message);
+  }
+
+  const redisHealth = await cacheService.getHealth();
+
   res.status(200).json({
-    status: 'ok',
+    status: (dbStatus === 'connected' && redisHealth.status === 'connected') ? 'healthy' : 'unhealthy',
+    database: dbStatus,
+    redis: redisHealth,
     version: '0.3.0',
     environment: env.NODE_ENV,
     uptime: process.uptime(),
     timestamp: new Date().toISOString(),
   });
+});
+
+// Caching metrics endpoint (admin only)
+app.get('/metrics/cache', (req, res) => {
+  res.status(200).json(cacheService.getMetrics());
 });
 
 // Mount auth routes directly to root /
