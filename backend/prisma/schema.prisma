@@ -39,6 +39,7 @@ model Restaurant {
   openingTime    String?          @map("opening_time")
   closingTime    String?          @map("closing_time")
   onboardingStep Int              @default(1) @map("onboarding_step")
+  onboardingCompleted Boolean           @default(false) @map("onboarding_completed")
   createdAt      DateTime         @default(now()) @map("created_at")
   updatedAt      DateTime         @updatedAt @map("updated_at")
   tokens         Token[]

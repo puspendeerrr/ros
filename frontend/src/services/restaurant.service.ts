@@ -20,6 +20,7 @@ export interface RestaurantProfile {
   openingTime?: string | null;
   closingTime?: string | null;
   onboardingStep?: number | null;
+  onboardingCompleted?: boolean | null;
   createdAt: string;
   updatedAt: string;
 }

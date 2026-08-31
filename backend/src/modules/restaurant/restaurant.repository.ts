@@ -28,6 +28,7 @@ export class RestaurantRepository {
         openingTime: data.openingTime !== undefined ? data.openingTime : undefined,
         closingTime: data.closingTime !== undefined ? data.closingTime : undefined,
         onboardingStep: data.onboardingStep !== undefined ? data.onboardingStep : undefined,
+        onboardingCompleted: data.onboardingCompleted !== undefined ? data.onboardingCompleted : undefined,
       },
     });
   }

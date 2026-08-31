@@ -16,13 +16,12 @@ export const ProtectedRoute: React.FC = () => {
   }
 
   if (isAuthenticated) {
-    const step = restaurant?.onboardingStep;
-    const isUnderOnboarding = step !== undefined && step !== null && step < 8;
+    const isCompleted = restaurant?.onboardingCompleted === true;
 
-    if (isUnderOnboarding && location.pathname !== '/onboarding') {
+    if (!isCompleted && location.pathname !== '/onboarding') {
       return <Navigate to="/onboarding" replace />;
     }
-    if (!isUnderOnboarding && location.pathname === '/onboarding') {
+    if (isCompleted && location.pathname === '/onboarding') {
       return <Navigate to="/dashboard" replace />;
     }
     return <Outlet />;
@@ -32,7 +31,7 @@ export const ProtectedRoute: React.FC = () => {
 };
 
 export const PublicOnlyRoute: React.FC = () => {
-  const { isAuthenticated, isLoading } = useAuthStore();
+  const { isAuthenticated, isLoading, restaurant } = useAuthStore();
 
   if (isLoading) {
     return (
@@ -42,5 +41,10 @@ export const PublicOnlyRoute: React.FC = () => {
     );
   }
 
-  return !isAuthenticated ? <Outlet /> : <Navigate to="/dashboard" replace />;
+  if (isAuthenticated) {
+    const isCompleted = restaurant?.onboardingCompleted === true;
+    return <Navigate to={isCompleted ? "/dashboard" : "/onboarding"} replace />;
+  }
+
+  return <Outlet />;
 };

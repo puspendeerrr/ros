@@ -6,6 +6,9 @@ export interface Restaurant {
   email: string;
   phone: string;
   status: string;
+  onboardingStep?: number | null;
+  onboardingCompleted?: boolean | null;
+  logoUrl?: string | null;
 }
 
 export interface AuthResponse {

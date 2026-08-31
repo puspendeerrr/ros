@@ -20,6 +20,7 @@ export const updateRestaurantSchema = z.object({
   openingTime: z.string().nullable().optional(),
   closingTime: z.string().nullable().optional(),
   onboardingStep: z.number().int().min(1).max(8).optional(),
+  onboardingCompleted: z.boolean().optional(),
 });
 
 export type UpdateRestaurantInput = z.infer<typeof updateRestaurantSchema>;

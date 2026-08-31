@@ -43,7 +43,11 @@ export const Login: React.FC = () => {
     onSuccess: (response) => {
       const { restaurant, accessToken } = response.data;
       setAuth(restaurant, accessToken);
-      navigate('/dashboard');
+      if (restaurant.onboardingCompleted) {
+        navigate('/dashboard', { replace: true });
+      } else {
+        navigate('/onboarding', { replace: true });
+      }
     },
   });
 

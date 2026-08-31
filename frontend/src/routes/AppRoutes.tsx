@@ -28,9 +28,10 @@ import { ScrollToTop } from '../components/ScrollToTop.js';
 import { SplashLoader } from '../components/SplashLoader.js';
 import { ProtectedRoute, PublicOnlyRoute } from './ProtectedRoute.js';
 import { useAuthStore } from '../store/auth.store.js';
+import { restaurantService } from '../services/restaurant.service.js';
 
 export const AppRoutes: React.FC = () => {
-  const { setAccessToken, logout, setLoading } = useAuthStore();
+  const { setAccessToken, logout, setLoading, setAuth } = useAuthStore();
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
@@ -43,6 +44,10 @@ export const AppRoutes: React.FC = () => {
         );
         const { accessToken } = response.data.data;
         setAccessToken(accessToken);
+
+        // Fetch latest profile from backend (source of truth)
+        const profileRes = await restaurantService.getProfile();
+        setAuth(profileRes.data, accessToken);
       } catch (error) {
         logout();
       } finally {
@@ -58,7 +63,7 @@ export const AppRoutes: React.FC = () => {
     }, 1200);
 
     return () => clearTimeout(timer);
-  }, [setAccessToken, logout, setLoading]);
+  }, [setAccessToken, logout, setLoading, setAuth]);
 
   return (
     <BrowserRouter>

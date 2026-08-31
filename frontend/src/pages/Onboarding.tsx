@@ -274,13 +274,13 @@ export const Onboarding: React.FC = () => {
 
   const completeOnboarding = async () => {
     try {
-      await restaurantService.updateProfile({ onboardingStep: 8 });
+      await restaurantService.updateProfile({ onboardingStep: 8, onboardingCompleted: true });
       if (restaurant && accessToken) {
-        setAuth({ ...restaurant, onboardingStep: 8 }, accessToken);
+        setAuth({ ...restaurant, onboardingStep: 8, onboardingCompleted: true }, accessToken);
       }
-      navigate('/dashboard');
+      navigate('/dashboard', { replace: true });
     } catch (err) {
-      navigate('/dashboard');
+      navigate('/dashboard', { replace: true });
     }
   };
 
