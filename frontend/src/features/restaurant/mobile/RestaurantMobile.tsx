@@ -361,7 +361,14 @@ export const RestaurantMobile: React.FC<RestaurantMobileProps> = ({ restaurantDa
           disabled={!isDirty}
           block
           size="large"
-          style={{ height: '48px', borderRadius: '12px', background: '#F97316', borderColor: '#F97316' }}
+          style={{
+            height: '48px',
+            borderRadius: '12px',
+            background: isDirty ? '#F97316' : '#F1F5F9',
+            borderColor: isDirty ? '#F97316' : '#E2E8F0',
+            color: isDirty ? '#FFFFFF' : '#94A3B8',
+            fontWeight: 600
+          }}
         >
           Save Settings
         </Button>
