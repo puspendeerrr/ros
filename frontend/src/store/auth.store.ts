@@ -10,6 +10,7 @@ export interface Restaurant {
   phone: string;
   status: string;
   onboardingStep?: number;
+  logoUrl?: string;
 }
 
 interface AuthState {
