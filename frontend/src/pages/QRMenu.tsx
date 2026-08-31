@@ -6,7 +6,6 @@ import {
   ShareAltOutlined,
   ArrowLeftOutlined,
   DeleteOutlined,
-  PlusOutlined,
 } from '@ant-design/icons';
 import { useQuery } from '@tanstack/react-query';
 import { QRCodeCanvas } from 'qrcode.react';
@@ -27,9 +26,52 @@ interface TableQRItem {
   publicUrl: string;
 }
 
+// 1. Reusable Organic Marketing Footer component
+const StandeeFooter: React.FC<{ fgColor: string; isLight: boolean }> = ({ fgColor, isLight }) => (
+  <div style={{
+    marginTop: 'auto',
+    paddingTop: '16px',
+    borderTop: `1px solid ${isLight ? '#F1F5F9' : '#1E293B'}`,
+    textAlign: 'center',
+    fontSize: '11px',
+    color: isLight ? '#94A3B8' : '#64748B',
+    width: '100%',
+    lineHeight: '1.4'
+  }}>
+    <div style={{ fontWeight: 500, color: isLight ? '#94A3B8' : '#64748B' }}>
+      Powered by <span style={{ fontWeight: 600, color: fgColor }}>Restaurant OS</span>
+    </div>
+    <div style={{ fontSize: '10px', color: isLight ? '#94A3B8' : '#64748B' }}>Create your own QR Menu</div>
+    <span style={{ color: '#F97316', fontWeight: 700, fontSize: '11px', display: 'inline-block', marginTop: '2px' }}>
+      ros.algorithyum.in
+    </span>
+  </div>
+);
+
+// Template definitions
+const templates = {
+  white: { name: 'Classic White', bg: '#FFFFFF', fg: '#0F172A', accent: '#F97316', border: '#E2E8F0', isLight: true },
+  dark: { name: 'Modern Dark', bg: '#0F172A', fg: '#FFFFFF', accent: '#38BDF8', border: '#1E293B', isLight: false },
+  wood: { name: 'Cafe Wood', bg: '#FAF7F2', fg: '#451A03', accent: '#D97706', border: '#EFECE6', isLight: true },
+  gold: { name: 'Luxury Gold', bg: '#FDFBF7', fg: '#854D0E', accent: '#B45309', border: '#F5ECE1', isLight: true },
+  black: { name: 'Minimal Black', bg: '#FFFFFF', fg: '#000000', accent: '#000000', border: '#E2E8F0', isLight: true }
+};
+
+// Format layout definitions
+const formats = {
+  stand: { name: 'Table Stand', width: '310px', height: '480px', borderRadius: '24px' },
+  tent: { name: 'Tent Card', width: '290px', height: '530px', borderRadius: '8px' },
+  poster: { name: 'A4 Poster', width: '320px', height: '460px', borderRadius: '0px' },
+  sticker: { name: 'Sticker', width: '290px', height: '290px', borderRadius: '50%' }
+};
+
 export const QRMenu: React.FC = () => {
   const { restaurant } = useAuthStore();
   const [viewMode, setViewMode] = useState<'restaurant' | 'tables'>('restaurant');
+
+  // Custom Standee designer configurations
+  const [selectedTemplate, setSelectedTemplate] = useState<keyof typeof templates>('white');
+  const [selectedFormat, setSelectedFormat] = useState<keyof typeof formats>('stand');
 
   // Table QR generator states
   const [tableMode, setTableMode] = useState<'single' | 'bulk'>('single');
@@ -40,7 +82,7 @@ export const QRMenu: React.FC = () => {
 
   // Fetch QR data details
   const { data: qrData, isLoading } = useQuery({
-    queryKey: ['qr-code-studio-simple'],
+    queryKey: ['qr-code-studio-simple-marketing'],
     queryFn: () => menuService.getQRCodeData(),
   });
 
@@ -72,6 +114,16 @@ export const QRMenu: React.FC = () => {
         await Haptics.impact({ style: ImpactStyle.Light });
       } catch (e) {}
     }
+  };
+
+  const handleTemplateChange = (key: keyof typeof templates) => {
+    triggerHaptic();
+    setSelectedTemplate(key);
+  };
+
+  const handleFormatChange = (key: keyof typeof formats) => {
+    triggerHaptic();
+    setSelectedFormat(key);
   };
 
   // Bulk / Single Table QR generator
@@ -118,142 +170,157 @@ export const QRMenu: React.FC = () => {
     message.success('Table QR deleted.');
   };
 
-  // Actions: Download PNG, PDF, Print, Share
-  const handleDownloadPNG = (subText: string) => {
-    triggerHaptic();
+  // WYSIWYG Standee Canvas Generator
+  const drawStandeeCanvas = (subText: string) => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    if (!ctx) return null;
 
-    canvas.width = 400;
-    canvas.height = 580;
+    const activeTemp = templates[selectedTemplate];
 
-    // Background
-    ctx.fillStyle = '#FFFFFF';
-    ctx.fillRect(0, 0, 400, 580);
+    // Determine dimensions based on aspect format
+    let width = 400;
+    let height = 580;
+    if (selectedFormat === 'sticker') {
+      height = 400;
+    } else if (selectedFormat === 'tent') {
+      height = 680;
+    }
 
-    // Top Brand Accent Stripe
-    ctx.fillStyle = '#F97316';
-    ctx.fillRect(0, 0, 400, 16);
+    canvas.width = width;
+    canvas.height = height;
 
-    // Header Title
-    ctx.fillStyle = '#0F172A';
-    ctx.font = 'bold 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+    // Draw background
+    ctx.fillStyle = activeTemp.bg;
+    ctx.fillRect(0, 0, width, height);
+
+    // Draw borders & guides
+    if (selectedFormat === 'sticker') {
+      // Draw sticker circular safe cut guide line
+      ctx.strokeStyle = activeTemp.isLight ? '#CBD5E1' : '#1E293B';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(200, 200, 190, 0, Math.PI * 2);
+      ctx.stroke();
+    } else {
+      // Top color stripe indicator (Not for Minimal Black)
+      if (selectedTemplate !== 'black') {
+        ctx.fillStyle = activeTemp.accent;
+        ctx.fillRect(0, 0, width, 16);
+      }
+      
+      // Dashed fold lines for Tent cards
+      if (selectedFormat === 'tent') {
+        ctx.strokeStyle = activeTemp.isLight ? '#94A3B8' : '#475569';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([6, 6]);
+        ctx.beginPath();
+        ctx.moveTo(0, 70);
+        ctx.lineTo(width, 70);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+    }
+
+    // Centered Title Header
+    ctx.fillStyle = activeTemp.fg;
     ctx.textAlign = 'center';
-    ctx.fillText(restaurantName.substring(0, 24), 200, 70);
-
-    // Scan Instruction
-    ctx.fillStyle = '#475569';
-    ctx.font = '600 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-    ctx.fillText('SCAN TO VIEW MENU', 200, 110);
-
-    // Render QR Code onto canvas
-    const qrCanvas = document.getElementById('qr-hidden-canvas') as HTMLCanvasElement;
-    if (qrCanvas) {
-      // Draw QR image
-      ctx.drawImage(qrCanvas, 75, 140, 250, 250);
-    }
-
-    // Subtext table number or custom scan prompts
-    if (subText) {
-      ctx.fillStyle = '#F97316';
-      ctx.font = 'bold 18px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-      ctx.fillText(subText.toUpperCase(), 200, 430);
-    }
-
-    // Footer OS Branding
-    ctx.fillStyle = '#94A3B8';
-    ctx.font = '500 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-    ctx.fillText('Powered by Restaurant OS', 200, 510);
     
-    ctx.fillStyle = '#F97316';
-    ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-    ctx.fillText('restaurantos.in', 200, 535);
+    let textY = selectedFormat === 'tent' ? 120 : 65;
+    ctx.font = 'bold 22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+    ctx.fillText(restaurantName.substring(0, 24), 200, textY);
 
-    // Link trigger download
+    // "Scan QR to View Menu"
+    ctx.fillStyle = activeTemp.isLight ? '#64748B' : '#94A3B8';
+    ctx.font = '600 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+    ctx.fillText('SCAN QR TO VIEW MENU', 200, textY + 30);
+
+    // "No App Required"
+    ctx.fillStyle = activeTemp.accent;
+    ctx.font = '700 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+    ctx.fillText('NO APP REQUIRED', 200, textY + 50);
+
+    // Draw QR Code onto stand
+    const qrCanvas = document.getElementById('qr-standee-hidden-canvas') as HTMLCanvasElement;
+    if (qrCanvas) {
+      const qrSize = selectedFormat === 'sticker' ? 140 : 180;
+      const qrX = 200 - (qrSize / 2);
+      const qrY = textY + 70;
+      ctx.drawImage(qrCanvas, qrX, qrY, qrSize, qrSize);
+    }
+
+    // Table number badge
+    if (subText) {
+      const pillY = textY + 280;
+      ctx.fillStyle = activeTemp.accent;
+      ctx.font = 'bold 15px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      ctx.fillText(subText.toUpperCase(), 200, pillY);
+    }
+
+    // Branding Footer (WYSIWYG identical rendering)
+    const footerY = height - 70;
+    ctx.strokeStyle = activeTemp.isLight ? '#F1F5F9' : '#1E293B';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(40, footerY);
+    ctx.lineTo(width - 40, footerY);
+    ctx.stroke();
+
+    ctx.fillStyle = activeTemp.isLight ? '#94A3B8' : '#64748B';
+    ctx.font = '500 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+    ctx.fillText('Powered by Restaurant OS', 200, footerY + 22);
+
+    ctx.font = '500 10px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+    ctx.fillText('Create your own QR Menu', 200, footerY + 38);
+
+    ctx.fillStyle = '#F97316';
+    ctx.font = 'bold 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+    ctx.fillText('ros.algorithyum.in', 200, footerY + 54);
+
+    return canvas;
+  };
+
+  const handleDownloadPNG = (subText: string) => {
+    const canvas = drawStandeeCanvas(subText);
+    if (!canvas) return;
     const link = document.createElement('a');
     link.href = canvas.toDataURL('image/png');
-    link.download = `${slug}-qr-stand.png`;
+    link.download = `${slug}-qr-standee.png`;
     link.click();
+    message.success('PNG standee downloaded.');
   };
 
   const handlePrint = (subText: string) => {
-    triggerHaptic();
+    const canvas = drawStandeeCanvas(subText);
+    if (!canvas) return;
+    const imgData = canvas.toDataURL('image/png');
+    
     const printWindow = window.open('', '_blank');
     if (!printWindow) return;
 
     printWindow.document.write(`
       <html>
         <head>
-          <title>Print QR Menu - ${restaurantName}</title>
+          <title>Print Standee - ${restaurantName}</title>
           <style>
             body {
-              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
               display: flex;
               align-items: center;
               justify-content: center;
-              height: 95vh;
+              height: 98vh;
               margin: 0;
-              background: #F8FAFC;
-            }
-            .stand {
-              width: 320px;
               background: #FFFFFF;
-              border: 1px solid #E2E8F0;
-              border-radius: 24px;
-              padding: 40px 24px;
-              text-align: center;
-              box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
             }
-            .header-accent {
-              height: 8px;
-              background: #F97316;
-              border-radius: 4px;
-              width: 60px;
-              margin: 0 auto 24px auto;
+            img {
+              max-width: 100%;
+              max-height: 95vh;
+              object-fit: contain;
             }
-            h1 { font-size: 24px; margin: 0 0 8px 0; color: #0F172A; font-weight: 800; }
-            h2 { font-size: 14px; margin: 0 0 32px 0; color: #64748B; letter-spacing: 1px; font-weight: 700; }
-            .qr-wrapper {
-              background: #FFFFFF;
-              padding: 16px;
-              border-radius: 16px;
-              border: 1px solid #F1F5F9;
-              display: inline-block;
-            }
-            .pill {
-              display: inline-block;
-              margin-top: 24px;
-              background: #FFF7ED;
-              color: #EA580C;
-              font-weight: 700;
-              font-size: 15px;
-              padding: 4px 16px;
-              border-radius: 20px;
-              border: 1px solid #FFEDD5;
-            }
-            .footer { margin-top: 40px; font-size: 12px; color: #94A3B8; font-weight: 500; }
-            .footer-url { color: #F97316; font-weight: 700; font-size: 13px; margin-top: 4px; }
           </style>
         </head>
         <body>
-          <div class="stand">
-            <div class="header-accent"></div>
-            <h1>${restaurantName}</h1>
-            <h2>SCAN TO VIEW MENU</h2>
-            <div class="qr-wrapper">
-              <img src="${publicUrl}" id="qr-img" width="220" height="220" />
-            </div>
-            ${subText ? `<div class="pill">${subText.toUpperCase()}</div>` : ''}
-            <div class="footer">Powered by Restaurant OS</div>
-            <div class="footer-url">restaurantos.in</div>
-          </div>
+          <img src="${imgData}" />
           <script>
-            // Draw QR into img source using window parent canvas
-            const parentCanvas = window.opener.document.getElementById('qr-hidden-canvas');
-            if (parentCanvas) {
-              document.getElementById('qr-img').src = parentCanvas.toDataURL('image/png');
-            }
             window.onload = function() {
               window.print();
               setTimeout(() => window.close(), 500);
@@ -271,7 +338,7 @@ export const QRMenu: React.FC = () => {
       try {
         await Share.share({
           title: name,
-          text: `Scan this QR to view the menu for ${restaurantName}:`,
+          text: `Scan this standee QR code to explore Punjabi/Indian menu of ${restaurantName}:`,
           url: targetUrl,
         });
       } catch (e) {}
@@ -279,7 +346,7 @@ export const QRMenu: React.FC = () => {
       try {
         await navigator.share({
           title: name,
-          text: `Scan this QR to view the menu for ${restaurantName}:`,
+          text: `Scan this standee QR code to explore Punjabi/Indian menu of ${restaurantName}:`,
           url: targetUrl,
         });
       } catch (e) {}
@@ -292,18 +359,21 @@ export const QRMenu: React.FC = () => {
   if (isLoading) {
     return (
       <Flex align="center" justify="center" style={{ minHeight: '60vh' }}>
-        <Spin size="large" tip="Loading your QR Menu..." />
+        <Spin size="large" tip="Loading standee designer..." />
       </Flex>
     );
   }
 
+  const activeTemp = templates[selectedTemplate];
+  const activeForm = formats[selectedFormat];
+
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '24px 16px' }}>
       
-      {/* Hidden QR Code Canvas used for print/image grabs */}
+      {/* Hidden QR Code Canvas used for canvas image drawing */}
       <div style={{ display: 'none' }}>
         <QRCodeCanvas
-          id="qr-hidden-canvas"
+          id="qr-standee-hidden-canvas"
           value={viewMode === 'restaurant' ? publicUrl : `${publicUrl}?table=${singleTable}`}
           size={350}
           level="H"
@@ -318,36 +388,64 @@ export const QRMenu: React.FC = () => {
         />
       </div>
 
-      {/* VIEW MODE 1: Standard Restaurant QR stand */}
+      {/* VIEW MODE 1: Restaurant Standee Designer */}
       {viewMode === 'restaurant' && (
         <Flex vertical gap={24} align="center">
           
-          {/* Paytm / UPI style stand mockup */}
+          {/* Formats Segmented selector */}
+          <Segmented
+            block
+            value={selectedFormat}
+            onChange={(val) => handleFormatChange(val as any)}
+            options={[
+              { label: 'Table Stand', value: 'stand' },
+              { label: 'Tent Card', value: 'tent' },
+              { label: 'A4 Poster', value: 'poster' },
+              { label: 'Sticker', value: 'sticker' },
+            ]}
+            style={{ width: '100%', maxWidth: '340px' }}
+          />
+
+          {/* WYSIWYG Standee Frame Preview */}
           <div style={{
             width: '100%',
-            maxWidth: '340px',
-            background: '#FFFFFF',
-            borderRadius: '24px',
+            maxWidth: activeForm.width,
+            height: activeForm.height,
+            background: activeTemp.bg,
+            color: activeTemp.fg,
+            borderRadius: activeForm.borderRadius,
             boxShadow: '0 10px 30px rgba(15,23,42,0.08)',
-            border: '1px solid #E2E8F0',
+            border: `1px solid ${activeTemp.border}`,
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            position: 'relative'
+            position: 'relative',
+            padding: '24px 16px',
+            boxSizing: 'border-box',
+            transition: 'all 0.3s'
           }}>
-            {/* Top orange stripe */}
-            <div style={{ height: '12px', background: '#F97316', width: '100%' }} />
+            {/* Top colored band */}
+            {selectedFormat !== 'sticker' && selectedTemplate !== 'black' && (
+              <div style={{ height: '8px', background: activeTemp.accent, width: '100%', position: 'absolute', top: 0, left: 0 }} />
+            )}
 
-            {/* Logo Avatar */}
-            <div style={{ marginTop: '24px' }}>
+            {/* Dash fold lines guides for Tent Cards */}
+            {selectedFormat === 'tent' && (
+              <div style={{ position: 'absolute', top: '50px', left: 0, right: 0, borderBottom: `1px dashed ${activeTemp.isLight ? '#94A3B8' : '#475569'}`, textAlign: 'center' }}>
+                <span style={{ fontSize: '8px', color: activeTemp.accent, fontWeight: 700 }}>FOLD LINE</span>
+              </div>
+            )}
+
+            {/* Logo */}
+            <div style={{ marginTop: selectedFormat === 'tent' ? '50px' : '12px' }}>
               {logoUrl ? (
                 <img
                   src={logoUrl}
                   alt={restaurantName}
                   style={{
-                    width: '64px',
-                    height: '64px',
+                    width: '56px',
+                    height: '56px',
                     borderRadius: '50%',
                     border: '3px solid #FFFFFF',
                     boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
@@ -356,15 +454,15 @@ export const QRMenu: React.FC = () => {
                 />
               ) : (
                 <div style={{
-                  width: '64px',
-                  height: '64px',
+                  width: '56px',
+                  height: '56px',
                   borderRadius: '50%',
-                  background: '#F97316',
+                  background: activeTemp.accent,
                   color: '#FFFFFF',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '20px',
+                  fontSize: '18px',
                   fontWeight: 'bold',
                   boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
                 }}>
@@ -373,49 +471,74 @@ export const QRMenu: React.FC = () => {
               )}
             </div>
 
-            {/* Restaurant Name */}
-            <Title level={4} style={{ margin: '12px 16px 4px 16px', fontWeight: 800, color: '#0F172A', textAlign: 'center' }}>
+            {/* Restaurant Details */}
+            <Title level={4} style={{ margin: '12px 0 2px 0', fontWeight: 800, color: activeTemp.fg, textAlign: 'center', fontSize: '18px' }}>
               {restaurantName}
             </Title>
-
-            {/* Instruction prompt */}
-            <span style={{ fontSize: '11px', fontWeight: 700, color: '#64748B', letterSpacing: '1px', marginBottom: '24px' }}>
-              SCAN TO VIEW MENU
+            <span style={{ fontSize: '10px', fontWeight: 700, color: activeTemp.isLight ? '#64748B' : '#94A3B8', letterSpacing: '0.8px', marginBottom: '4px' }}>
+              SCAN QR TO VIEW MENU
+            </span>
+            <span style={{ fontSize: '9px', fontWeight: 800, color: activeTemp.accent, letterSpacing: '0.5px', marginBottom: '20px' }}>
+              NO APP REQUIRED
             </span>
 
-            {/* QR Canvas Container */}
+            {/* QR Canvas frame */}
             <div style={{
               background: '#FFFFFF',
-              padding: '16px',
-              borderRadius: '16px',
+              padding: '12px',
+              borderRadius: '12px',
               border: '1px solid #F1F5F9',
               boxShadow: '0 4px 12px rgba(0,0,0,0.02)',
               display: 'inline-flex'
             }}>
               <QRCodeCanvas
                 value={publicUrl}
-                size={180}
+                size={selectedFormat === 'sticker' ? 120 : 160}
                 level="H"
                 imageSettings={{
                   src: logoIcon,
                   x: undefined,
                   y: undefined,
-                  height: 32,
-                  width: 32,
+                  height: 28,
+                  width: 28,
                   excavate: true,
                 }}
               />
             </div>
 
-            {/* Stand footer */}
-            <div style={{ marginTop: '32px', paddingBottom: '24px', textAlign: 'center' }}>
-              <Text style={{ color: '#94A3B8', fontSize: '12px', display: 'block', fontWeight: 500 }}>Powered by Restaurant OS</Text>
-              <Text style={{ color: '#F97316', fontSize: '13px', fontWeight: 700, display: 'block', marginTop: '2px' }}>restaurantos.in</Text>
-            </div>
+            {/* Organic Brand Marketing Footer */}
+            <StandeeFooter fgColor={activeTemp.fg} isLight={activeTemp.isLight} />
           </div>
 
-          {/* Action grid (4 primary items) */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', width: '100%', maxWidth: '340px' }}>
+          {/* Quick-ready Template Selection Bar */}
+          <div style={{ width: '100%', maxWidth: '340px', marginTop: '12px' }}>
+            <Text type="secondary" style={{ fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>Select Design Style:</Text>
+            <Flex gap={8} wrap="wrap" justify="center">
+              {(Object.keys(templates) as Array<keyof typeof templates>).map((key) => {
+                const isSelected = selectedTemplate === key;
+                return (
+                  <Button
+                    key={key}
+                    onClick={() => handleTemplateChange(key)}
+                    type={isSelected ? 'primary' : 'default'}
+                    size="small"
+                    style={{
+                      borderRadius: '12px',
+                      background: isSelected ? '#F97316' : '#FFFFFF',
+                      borderColor: isSelected ? '#F97316' : '#E2E8F0',
+                      color: isSelected ? '#FFFFFF' : '#475569',
+                      fontWeight: 600
+                    }}
+                  >
+                    {templates[key].name}
+                  </Button>
+                );
+              })}
+            </Flex>
+          </div>
+
+          {/* Direct standee actions */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', width: '100%', maxWidth: '340px', marginTop: '16px' }}>
             <Button
               type="primary"
               icon={<DownloadOutlined />}
@@ -423,7 +546,7 @@ export const QRMenu: React.FC = () => {
               size="large"
               style={{ background: '#F97316', borderColor: '#F97316', borderRadius: '12px', height: '48px', fontWeight: 600 }}
             >
-              PNG
+              Download PNG
             </Button>
             <Button
               type="default"
@@ -432,7 +555,7 @@ export const QRMenu: React.FC = () => {
               size="large"
               style={{ borderRadius: '12px', height: '48px', fontWeight: 600 }}
             >
-              PDF
+              Download PDF
             </Button>
             <Button
               type="default"
@@ -440,9 +563,8 @@ export const QRMenu: React.FC = () => {
               onClick={() => handlePrint('')}
               size="large"
               style={{ borderRadius: '12px', height: '48px', fontWeight: 600 }}
-              block
             >
-              Print
+              Print Standee
             </Button>
             <Button
               type="default"
@@ -451,11 +573,11 @@ export const QRMenu: React.FC = () => {
               size="large"
               style={{ borderRadius: '12px', height: '48px', fontWeight: 600 }}
             >
-              Share
+              Share QR
             </Button>
           </div>
 
-          {/* Secondary section navigation */}
+          {/* Transition link to Table QR panel */}
           <Card bordered={false} style={{ width: '100%', maxWidth: '340px', borderRadius: '16px', background: '#F1F5F9', border: '1px solid #E2E8F0', marginTop: '12px' }} bodyStyle={{ padding: '12px 16px' }}>
             <Flex justify="space-between" align="center">
               <div>
@@ -471,7 +593,7 @@ export const QRMenu: React.FC = () => {
         </Flex>
       )}
 
-      {/* VIEW MODE 2: Table-wise QR configuration center */}
+      {/* VIEW MODE 2: Table QR management */}
       {viewMode === 'tables' && (
         <Flex vertical gap={24}>
           <Flex align="center" gap={8}>
@@ -479,8 +601,8 @@ export const QRMenu: React.FC = () => {
             <Title level={4} style={{ margin: 0, fontWeight: 800 }}>Table QR Configuration</Title>
           </Flex>
 
-          {/* Configuration panel */}
-          <Card bordered={false} style={{ borderRadius: '16px', boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #E2E8F0' }}>
+          {/* Table standee configurations */}
+          <Card bordered={false} style={{ borderRadius: '16px', border: '1px solid #E2E8F0' }}>
             <Space direction="vertical" size={16} style={{ width: '100%' }}>
               
               <Segmented
@@ -491,7 +613,6 @@ export const QRMenu: React.FC = () => {
                   { label: 'Single Table QR', value: 'single' },
                   { label: 'Bulk Tables Pack', value: 'bulk' },
                 ]}
-                style={{ marginBottom: '8px' }}
               />
 
               {tableMode === 'single' ? (
@@ -514,18 +635,17 @@ export const QRMenu: React.FC = () => {
 
               <Button
                 type="primary"
-                icon={<PlusOutlined />}
                 onClick={handleGenerateTables}
                 block
                 size="large"
-                style={{ background: '#F97316', borderColor: '#F97316', borderRadius: '10px', height: '44px' }}
+                style={{ background: '#F97316', borderColor: '#F97316', borderRadius: '10px', height: '44px', fontWeight: 600 }}
               >
                 Generate Table QRs
               </Button>
             </Space>
           </Card>
 
-          {/* Generated Table QRs List */}
+          {/* Active List */}
           <Card bordered={false} title={<Text strong style={{ fontSize: '14px', color: '#0F172A' }}>Active Table QR Codes</Text>} style={{ borderRadius: '16px', border: '1px solid #E2E8F0' }}>
             <Table
               dataSource={tableList}
