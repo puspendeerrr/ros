@@ -477,7 +477,7 @@ export const PublicMenu: React.FC = () => {
                       >
                         <List.Item.Meta
                           title={
-                            <Space align="center" size={8}>
+                            <Flex align="center" gap={8} wrap="wrap" style={{ width: '100%' }}>
                               <Text strong style={{ fontSize: '15px', color: '#1E293B', fontWeight: 700 }}>
                                 {item.name}
                               </Text>
@@ -488,11 +488,12 @@ export const PublicMenu: React.FC = () => {
                                 borderRadius: '4px',
                                 background: item.isVeg ? '#F0FDF4' : '#FEF2F2',
                                 color: item.isVeg ? '#16A34A' : '#DC2626',
-                                border: item.isVeg ? '1px solid #BBF7D0' : '1px solid #FECACA'
+                                border: item.isVeg ? '1px solid #BBF7D0' : '1px solid #FECACA',
+                                whiteSpace: 'nowrap'
                               }}>
                                 {item.isVeg ? '🟢 VEG' : '🔴 NON-VEG'}
                               </span>
-                            </Space>
+                            </Flex>
                           }
                           description={
                             <Space direction="vertical" size={2} style={{ marginTop: '2px' }}>
