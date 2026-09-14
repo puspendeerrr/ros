@@ -17,7 +17,9 @@ export class RestaurantRepository {
         restaurantName: data.restaurantName !== undefined ? data.restaurantName : undefined,
         description: data.description !== undefined ? data.description : undefined,
         logoUrl: data.logoUrl !== undefined ? data.logoUrl : undefined,
+        logoPublicId: data.logoPublicId !== undefined ? data.logoPublicId : undefined,
         coverImageUrl: data.coverImageUrl !== undefined ? data.coverImageUrl : undefined,
+        coverImagePublicId: data.coverImagePublicId !== undefined ? data.coverImagePublicId : undefined,
         phone: data.phone !== undefined ? data.phone.trim() : undefined,
         address: data.address !== undefined ? data.address : undefined,
         city: data.city !== undefined ? data.city : undefined,
@@ -29,6 +31,16 @@ export class RestaurantRepository {
         closingTime: data.closingTime !== undefined ? data.closingTime : undefined,
         onboardingStep: data.onboardingStep !== undefined ? data.onboardingStep : undefined,
         onboardingCompleted: data.onboardingCompleted !== undefined ? data.onboardingCompleted : undefined,
+      },
+    });
+  }
+
+  async updateTheme(id: string, themeId: string, themeConfig: any): Promise<Restaurant> {
+    return prisma.restaurant.update({
+      where: { id },
+      data: {
+        themeId,
+        themeConfig: themeConfig !== undefined ? themeConfig : undefined,
       },
     });
   }

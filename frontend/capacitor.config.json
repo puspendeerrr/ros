@@ -2,5 +2,13 @@
   "appId": "com.restaurantos.app",
   "appName": "Restaurant OS",
   "webDir": "dist",
-  "bundledWebRuntime": false
+  "bundledWebRuntime": false,
+  "plugins": {
+    "CapacitorCookies": {
+      "enabled": true
+    },
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
 }

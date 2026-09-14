@@ -18,6 +18,7 @@ import { Clipboard } from '@capacitor/clipboard';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 const { Title, Text } = Typography;
+import { getFullImageUrl } from '../utils/image';
 
 interface TableQRItem {
   id: string;
@@ -100,7 +101,7 @@ export const QRMenu: React.FC = () => {
   const slug = qrData?.data?.restaurantSlug || 'menu';
   const restaurantName = restaurant?.restaurantName || 'My Restaurant';
   const logoUrl = restaurant?.logoUrl 
-    ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${restaurant.logoUrl}`
+    ? getFullImageUrl(restaurant.logoUrl)
     : null;
 
   // Sync Table QR list initial default table
@@ -238,57 +239,35 @@ export const QRMenu: React.FC = () => {
     }
 
     if (selectedFormat === 'sticker') {
-      // === STICKER: Circular clipped layout ===
+      // === STICKER: Reimagined Circular Badge layout ===
       ctx.save();
+      
+      // 1. Clip canvas to a perfect circle
       ctx.beginPath();
-      ctx.arc(200, 200, 190, 0, Math.PI * 2);
+      ctx.arc(200, 200, 195, 0, Math.PI * 2);
       ctx.clip();
 
-      // Circle background
+      // 2. Base Background
       ctx.fillStyle = activeTemp.bg;
       ctx.fillRect(0, 0, width, height);
 
-      // Circle border
-      ctx.strokeStyle = activeTemp.isLight ? '#CBD5E1' : '#1E293B';
-      ctx.lineWidth = 3;
+      // 3. Top crescent banner (fills top 145px of circular clip)
+      ctx.fillStyle = activeTemp.accent;
+      ctx.fillRect(0, 0, width, 145);
+
+      // 4. Circular Border
+      ctx.strokeStyle = activeTemp.accent;
+      ctx.lineWidth = 5;
       ctx.beginPath();
-      ctx.arc(200, 200, 188, 0, Math.PI * 2);
+      ctx.arc(200, 200, 193, 0, Math.PI * 2);
       ctx.stroke();
 
       ctx.textAlign = 'center';
 
-      // Draw Logo (either Image or Initials)
-      const logoRadius = 28;
-      const logoCenterX = 200;
-      const logoCenterY = 80;
-
-      if (loadedLogoImg) {
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
-        ctx.clip();
-        ctx.drawImage(loadedLogoImg, logoCenterX - logoRadius, logoCenterY - logoRadius, logoRadius * 2, logoRadius * 2);
-        ctx.restore();
-        // White border around avatar
-        ctx.strokeStyle = '#FFFFFF';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
-        ctx.stroke();
-      } else {
-        ctx.fillStyle = activeTemp.accent;
-        ctx.beginPath();
-        ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = '#FFFFFF';
-        ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-        ctx.fillText(getInitials(restaurantName), logoCenterX, logoCenterY + 6);
-      }
-
-      // Restaurant Name — wrap naturally up to 2 lines
-      ctx.fillStyle = activeTemp.fg;
-      ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-      const maxLenSticker = 14;
+      // 5. Restaurant Name inside the crescent banner (high-contrast white/light text)
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      const maxLenSticker = 16;
       if (restaurantName.length > maxLenSticker) {
         const words = restaurantName.split(/\s+/);
         let line1 = '';
@@ -301,38 +280,78 @@ export const QRMenu: React.FC = () => {
           }
         }
         if (line2.length > maxLenSticker) line2 = line2.substring(0, maxLenSticker - 3) + '...';
-        ctx.fillText(line1, 200, 122);
-        ctx.fillText(line2, 200, 136);
+        ctx.fillText(line1, 200, 60);
+        ctx.fillText(line2, 200, 85);
       } else {
-        ctx.fillText(restaurantName, 200, 128);
+        ctx.fillText(restaurantName, 200, 75);
       }
 
-      // QR Code
+      // 6. Overlapping circular logo avatar centered on crescent line (y = 145)
+      const logoRadius = 36;
+      const logoCenterX = 200;
+      const logoCenterY = 145;
+
+      // Draw shadow for avatar
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.15)';
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 4;
+      ctx.fillStyle = '#FFFFFF';
+      ctx.beginPath();
+      ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      if (loadedLogoImg) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(loadedLogoImg, logoCenterX - logoRadius, logoCenterY - logoRadius, logoRadius * 2, logoRadius * 2);
+        ctx.restore();
+      } else {
+        ctx.fillStyle = activeTemp.accent;
+        ctx.beginPath();
+        ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+        ctx.fillText(getInitials(restaurantName), logoCenterX, logoCenterY + 7);
+      }
+
+      // White outline around avatar
+      ctx.strokeStyle = '#FFFFFF';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(logoCenterX, logoCenterY, logoRadius, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // 7. QR Code in the lower portion
       const qrCanvas = document.getElementById('qr-standee-hidden-canvas') as HTMLCanvasElement;
       if (qrCanvas) {
-        ctx.drawImage(qrCanvas, 200 - 70, 142, 140, 140);
+        const qrSize = 135;
+        // draw container box with subtle border and shadow
+        ctx.fillStyle = '#FFFFFF';
+        ctx.save();
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.04)';
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 2;
+        ctx.fillRect(200 - (qrSize / 2) - 8, 205 - 8, qrSize + 16, qrSize + 16);
+        
+        ctx.strokeStyle = '#E2E8F0';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(200 - (qrSize / 2) - 8, 205 - 8, qrSize + 16, qrSize + 16);
+        ctx.restore();
+
+        ctx.drawImage(qrCanvas, 200 - (qrSize / 2), 205, qrSize, qrSize);
       }
 
-      // Scan to View Menu
-      ctx.fillStyle = activeTemp.isLight ? '#64748B' : '#94A3B8';
-      ctx.font = '700 10px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-      ctx.fillText('SCAN TO VIEW MENU', 200, 300);
-
-      // Compact footer
-      const footerTextY = 330;
-      ctx.fillStyle = activeTemp.isLight ? '#94A3B8' : '#64748B';
-      ctx.font = '500 9px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-      
-      if (loadedFooterImg) {
-        ctx.drawImage(loadedFooterImg, 125, footerTextY - 8, 12, 12);
-        ctx.fillText('Restaurant OS', 190, footerTextY);
-      } else {
-        ctx.fillText('Restaurant OS', 200, footerTextY);
-      }
-
-      ctx.fillStyle = '#F97316';
-      ctx.font = 'bold 9px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-      ctx.fillText('ros.algorithyum.in', 200, footerTextY + 15);
+      // 8. "SCAN QR TO VIEW MENU" CTA
+      ctx.fillStyle = activeTemp.accent;
+      ctx.font = '800 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+      ctx.fillText('SCAN QR TO VIEW MENU', 200, 362);
 
       ctx.restore();
     } else {
@@ -595,80 +614,106 @@ export const QRMenu: React.FC = () => {
 
           {/* WYSIWYG Standee Frame Preview */}
           {selectedFormat === 'sticker' ? (
-            /* ===== STICKER: Circular centered layout ===== */
+            /* ===== STICKER: Reimagined Circular Badge layout ===== */
             <div style={{
               width: activeForm.width,
               height: activeForm.height,
               borderRadius: '50%',
               background: activeTemp.bg,
               color: activeTemp.fg,
-              boxShadow: '0 10px 30px rgba(15,23,42,0.08)',
-              border: `2px solid ${activeTemp.border}`,
+              boxShadow: '0 10px 30px rgba(15,23,42,0.12)',
+              border: `4px solid ${activeTemp.accent}`,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'center',
               position: 'relative',
-              padding: '20px',
               boxSizing: 'border-box',
               overflow: 'hidden',
               transition: 'all 0.3s'
             }}>
-              {/* Logo */}
-              {logoUrl ? (
-                <img
-                  src={logoUrl}
-                  alt={restaurantName}
-                  loading="lazy"
-                  style={{
-                    width: '42px',
-                    height: '42px',
-                    borderRadius: '50%',
-                    border: '2px solid #FFFFFF',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                    objectFit: 'cover',
-                    marginBottom: '4px'
-                  }}
-                />
-              ) : (
-                <div style={{
-                  width: '42px',
-                  height: '42px',
-                  borderRadius: '50%',
-                  background: activeTemp.accent,
-                  color: '#FFFFFF',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '14px',
-                  fontWeight: 'bold',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                  marginBottom: '4px'
-                }}>
-                  {getInitials(restaurantName)}
-                </div>
-              )}
-              {/* Name — wrap up to 2 lines */}
+              {/* Crescent Banner Section (fills top portion) */}
               <div style={{
-                fontWeight: 800,
-                fontSize: '13px',
-                color: activeTemp.fg,
-                textAlign: 'center',
-                lineHeight: '1.2',
-                maxWidth: '180px',
-                overflow: 'hidden',
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                marginBottom: '4px'
+                width: '100%',
+                height: '102px',
+                background: activeTemp.accent,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '0 20px',
+                boxSizing: 'border-box',
+                paddingBottom: '14px'
               }}>
-                {restaurantName}
+                <div style={{
+                  fontWeight: 800,
+                  fontSize: '14px',
+                  color: '#FFFFFF',
+                  textAlign: 'center',
+                  lineHeight: '1.2',
+                  maxWidth: '200px',
+                  overflow: 'hidden',
+                  display: '-webkit-box',
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: 'vertical'
+                }}>
+                  {restaurantName}
+                </div>
               </div>
-              {/* QR */}
-              <div style={{ background: '#FFFFFF', padding: '6px', borderRadius: '8px', display: 'inline-flex', marginBottom: '4px' }}>
+
+              {/* Overlapping circular avatar logo */}
+              <div style={{
+                position: 'absolute',
+                top: '102px',
+                transform: 'translateY(-50%)',
+                zIndex: 20,
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                borderRadius: '50%',
+                display: 'flex'
+              }}>
+                {logoUrl ? (
+                  <img
+                    src={logoUrl}
+                    alt={restaurantName}
+                    loading="lazy"
+                    style={{
+                      width: '50px',
+                      height: '50px',
+                      borderRadius: '50%',
+                      border: '3px solid #FFFFFF',
+                      objectFit: 'cover'
+                    }}
+                  />
+                ) : (
+                  <div style={{
+                    width: '50px',
+                    height: '50px',
+                    borderRadius: '50%',
+                    background: activeTemp.accent,
+                    color: '#FFFFFF',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    border: '3px solid #FFFFFF'
+                  }}>
+                    {getInitials(restaurantName)}
+                  </div>
+                )}
+              </div>
+
+              {/* QR Container */}
+              <div style={{ 
+                marginTop: '38px', 
+                background: '#FFFFFF', 
+                padding: '8px', 
+                borderRadius: '12px', 
+                display: 'inline-flex',
+                boxShadow: '0 2px 10px rgba(0,0,0,0.04)',
+                border: '1px solid #E2E8F0'
+              }}>
                 <QRCodeCanvas
                   value={publicUrl}
-                  size={90}
+                  size={95}
                   level="H"
                   imageSettings={{
                     src: logoIcon,
@@ -680,17 +725,17 @@ export const QRMenu: React.FC = () => {
                   }}
                 />
               </div>
-              <span style={{ fontSize: '8px', fontWeight: 700, color: activeTemp.isLight ? '#64748B' : '#94A3B8', letterSpacing: '0.5px' }}>
-                SCAN TO VIEW MENU
+
+              {/* Call to Action */}
+              <span style={{ 
+                marginTop: '10px', 
+                fontSize: '9px', 
+                fontWeight: 800, 
+                color: activeTemp.accent, 
+                letterSpacing: '1px' 
+              }}>
+                SCAN QR TO VIEW MENU
               </span>
-              {/* Compact footer */}
-              <div style={{ textAlign: 'center', marginTop: '2px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3px' }}>
-                  <img src={logoIcon} alt="ROS" style={{ width: '10px', height: '10px', objectFit: 'contain', borderRadius: '2px' }} />
-                  <span style={{ fontSize: '7px', fontWeight: 500, color: activeTemp.isLight ? '#94A3B8' : '#64748B' }}>Restaurant OS</span>
-                </div>
-                <span style={{ color: '#F97316', fontWeight: 700, fontSize: '7px' }}>ros.algorithyum.in</span>
-              </div>
             </div>
           ) : (
             /* ===== Non-sticker templates ===== */

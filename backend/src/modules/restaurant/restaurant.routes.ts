@@ -11,5 +11,7 @@ router.use(authMiddleware);
 router.get('/restaurant', controller.getProfile);
 router.patch('/restaurant', controller.updateProfile);
 router.post('/restaurant/upload', controller.uploadImage);
+router.patch('/restaurant/theme', controller.updateTheme);
+router.post('/restaurant/theme/reset', controller.resetTheme);
 
 export default router;

@@ -29,6 +29,7 @@ import {
   CompassOutlined,
 } from '@ant-design/icons';
 import { QRCodeCanvas } from 'qrcode.react';
+import { getFullImageUrl } from '../../../utils/image';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -194,7 +195,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
                       <Flex vertical align="center" gap={12} style={{ border: '1px dashed #CBD5E1', padding: '16px', borderRadius: '12px', background: '#F8FAFC' }}>
                         {logoPreview ? (
                           <img
-                            src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${logoPreview}`}
+                            src={getFullImageUrl(logoPreview)}
                             alt="Logo"
                             loading="lazy"
                             style={{ width: '80px', height: '80px', borderRadius: '12px', objectFit: 'cover', border: '1px solid #E2E8F0' }}
@@ -220,7 +221,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
                       <Flex vertical align="center" gap={12} style={{ border: '1px dashed #CBD5E1', padding: '16px', borderRadius: '12px', background: '#F8FAFC', height: '100%', minHeight: '144px', justifySelf: 'stretch', justifyContent: 'center' }}>
                         {coverPreview ? (
                           <img
-                            src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${coverPreview}`}
+                            src={getFullImageUrl(coverPreview)}
                             alt="Cover"
                             loading="lazy"
                             style={{ width: '100%', height: '54px', borderRadius: '8px', objectFit: 'cover', border: '1px solid #E2E8F0' }}

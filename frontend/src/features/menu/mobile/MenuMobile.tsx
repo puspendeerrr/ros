@@ -22,6 +22,7 @@ import {
 } from '@ant-design/icons';
 import { Controller } from 'react-hook-form';
 import type { Category, MenuItem } from '../../../types/menu';
+import { getFullImageUrl } from '../../../utils/image';
 import { FoodVegIndicator } from '../../../components/FoodVegIndicator';
 import { Capacitor } from '@capacitor/core';
 
@@ -166,7 +167,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
                           {/* Item Image */}
                           {item.imageUrl ? (
                             <img
-                              src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
+                              src={getFullImageUrl(item.imageUrl)}
                               alt={item.name}
                               loading="lazy"
                               style={{
@@ -375,7 +376,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
             </Flex>
             {uploadedImageUrl && (
               <img
-                src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${uploadedImageUrl}`}
+                src={getFullImageUrl(uploadedImageUrl)}
                 alt="Upload preview"
                 style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px', marginTop: '12px' }}
               />

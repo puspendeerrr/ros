@@ -70,15 +70,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(compression());
 
-// Static Files Serving - Disable directory indexing, enforce 1-day cache control
-app.use(
-  '/uploads',
-  express.static(path.join(__dirname, '../uploads'), {
-    maxAge: '1d',
-    index: false,
-  })
-);
-
 // Logger with Request ID trace prefix
 morgan.token('req-id', (req: any) => req.id);
 if (env.NODE_ENV !== 'test') {

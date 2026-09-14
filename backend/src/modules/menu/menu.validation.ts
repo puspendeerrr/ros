@@ -12,6 +12,7 @@ export const createItemSchema = z.object({
   price: z.coerce.number().positive('Price must be a positive number'),
   categoryId: z.string().min(1, 'Category is required'),
   imageUrl: z.string().optional().nullable(),
+  imagePublicId: z.string().optional().nullable(),
   isVeg: z.boolean().default(true),
   isAvailable: z.boolean().default(true),
 });
@@ -22,6 +23,7 @@ export const updateItemSchema = z.object({
   price: z.coerce.number().positive('Price must be a positive number').optional(),
   categoryId: z.string().min(1, 'Category is required').optional(),
   imageUrl: z.string().optional().nullable(),
+  imagePublicId: z.string().optional().nullable(),
   isVeg: z.boolean().optional(),
   isAvailable: z.boolean().optional(),
 });

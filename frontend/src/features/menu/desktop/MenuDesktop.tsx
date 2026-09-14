@@ -30,6 +30,7 @@ import {
 } from '@ant-design/icons';
 import { Controller } from 'react-hook-form';
 import type { Category, MenuItem } from '../../../types/menu';
+import { getFullImageUrl } from '../../../utils/image';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -263,7 +264,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
                           avatar={
                             item.imageUrl ? (
                               <img
-                                src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
+                                src={getFullImageUrl(item.imageUrl)}
                                 alt={item.name}
                                 loading="lazy"
                                 style={{
@@ -394,7 +395,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
             >
               {uploadedImageUrl ? (
                 <img
-                  src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${uploadedImageUrl}`}
+                  src={getFullImageUrl(uploadedImageUrl)}
                   alt="Uploaded preview"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
                 />
@@ -486,7 +487,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
                           avatar={
                             item.imageUrl ? (
                               <img
-                                src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
+                                src={getFullImageUrl(item.imageUrl)}
                                 alt={item.name}
                                 loading="lazy"
                                 style={{ width: '50px', height: '50px', borderRadius: '6px', objectFit: 'cover' }}

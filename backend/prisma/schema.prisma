@@ -29,7 +29,9 @@ model Restaurant {
   passwordHash   String           @map("password_hash")
   status         RestaurantStatus @default(PENDING)
   logoUrl        String?          @map("logo_url")
+  logoPublicId   String?          @map("logo_public_id")
   coverImageUrl  String?          @map("cover_image_url")
+  coverImagePublicId String?      @map("cover_image_public_id")
   address        String?
   city           String?
   state          String?
@@ -40,6 +42,8 @@ model Restaurant {
   closingTime    String?          @map("closing_time")
   onboardingStep Int              @default(1) @map("onboarding_step")
   onboardingCompleted Boolean           @default(false) @map("onboarding_completed")
+  themeId        String           @default("minimal") @map("theme_id")
+  themeConfig    Json?            @map("theme_config")
   createdAt      DateTime         @default(now()) @map("created_at")
   updatedAt      DateTime         @updatedAt @map("updated_at")
   tokens         Token[]
@@ -88,6 +92,7 @@ model MenuItem {
   description    String?
   price          Decimal     @db.Decimal(10, 2)
   imageUrl       String?     @map("image_url")
+  imagePublicId  String?     @map("image_public_id")
   isVeg          Boolean     @default(true) @map("is_veg")
   isAvailable    Boolean     @default(true) @map("is_available")
   displayOrder   Int         @default(0) @map("display_order")
