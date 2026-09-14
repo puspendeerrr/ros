@@ -1,11 +1,9 @@
 import axios from 'axios';
 import { useAuthStore } from '../store/auth.store.js';
-import { useNetworkStore } from '../store/network.store.js';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000',
   withCredentials: true,
-  timeout: 20000, // 20s request timeout for Render cold starts
 });
 
 // Request Interceptor: Attach Access Token
@@ -36,33 +34,9 @@ const processQueue = (error: any, token: string | null = null) => {
 };
 
 api.interceptors.response.use(
-  (response) => {
-    // Reset network store to online on successful response
-    useNetworkStore.getState().resetStatus();
-    return response;
-  },
+  (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    const { setBackendStatus } = useNetworkStore.getState();
-
-    // Diagnose network/server issues
-    if (!error.response) {
-      if (error.code === 'ECONNABORTED' || error.message?.toLowerCase().includes('timeout')) {
-        setBackendStatus({ isBackendOnline: false, isTimeout: true, isServerError: false, isAuthExpired: false });
-      } else {
-        setBackendStatus({ isBackendOnline: false, isTimeout: false, isServerError: false, isAuthExpired: false });
-      }
-    } else {
-      const status = error.response.status;
-      if (status >= 500) {
-        setBackendStatus({ isBackendOnline: false, isTimeout: false, isServerError: true, isAuthExpired: false });
-      } else if (status === 401) {
-        // We set auth expired but wait to see if refresh succeeds
-        setBackendStatus({ isBackendOnline: true, isAuthExpired: true });
-      } else {
-        setBackendStatus({ isBackendOnline: true });
-      }
-    }
 
     // Check if error is 401 and request was not already retried
     if (error.response?.status === 401 && !originalRequest._retry) {
@@ -89,14 +63,11 @@ api.interceptors.response.use(
         const response = await axios.post(
           `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/refresh-token`,
           {},
-          { withCredentials: true, timeout: 20000 }
+          { withCredentials: true }
         );
         const { accessToken } = response.data.data;
         
         useAuthStore.getState().setAccessToken(accessToken);
-        
-        // Success: clear auth expired flag
-        setBackendStatus({ isBackendOnline: true, isAuthExpired: false });
         
         processQueue(null, accessToken);
         isRefreshing = false;
@@ -116,4 +87,3 @@ api.interceptors.response.use(
 );
 
 export default api;
-

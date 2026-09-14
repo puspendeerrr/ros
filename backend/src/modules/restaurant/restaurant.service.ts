@@ -1,10 +1,11 @@
+import fs from 'fs';
+import path from 'path';
 import { Restaurant } from '@prisma/client';
 import { RestaurantRepository } from './restaurant.repository';
 import { UpdateRestaurantInput } from './restaurant.validation';
 import { AppError } from '../../middleware/error.middleware';
 import { cacheService } from '../../utils/cache';
 import { CacheConfig } from '../../config/cache';
-import { cloudinaryService } from '../../services/cloudinary.service';
 
 export class RestaurantService {
   private repository = new RestaurantRepository();
@@ -46,16 +47,12 @@ export class RestaurantService {
     const logoToCleanup = data.logoUrl !== undefined && oldProfile.logoUrl && oldProfile.logoUrl !== data.logoUrl;
     const coverToCleanup = data.coverImageUrl !== undefined && oldProfile.coverImageUrl && oldProfile.coverImageUrl !== data.coverImageUrl;
 
-    // Delete obsolete assets from Cloudinary if successfully updated
-    if (logoToCleanup && oldProfile.logoPublicId) {
-      cloudinaryService.deleteImage(oldProfile.logoPublicId).catch((err) =>
-        console.error(`Failed to delete old logo (${oldProfile.logoPublicId}) from Cloudinary:`, err)
-      );
+    // Delete obsolete files if successfully updated
+    if (logoToCleanup && oldProfile.logoUrl) {
+      this.deleteLocalFile(oldProfile.logoUrl);
     }
-    if (coverToCleanup && oldProfile.coverImagePublicId) {
-      cloudinaryService.deleteImage(oldProfile.coverImagePublicId).catch((err) =>
-        console.error(`Failed to delete old cover (${oldProfile.coverImagePublicId}) from Cloudinary:`, err)
-      );
+    if (coverToCleanup && oldProfile.coverImageUrl) {
+      this.deleteLocalFile(oldProfile.coverImageUrl);
     }
 
     // Invalidate versions
@@ -91,26 +88,17 @@ export class RestaurantService {
     return profile;
   }
 
-  async updateTheme(
-    restaurantId: string,
-    themeId: string,
-    themeConfig: any
-  ): Promise<Omit<Restaurant, 'passwordHash'>> {
-    const restaurant = await this.repository.findById(restaurantId);
-    if (!restaurant) {
-      throw new AppError(404, 'Restaurant not found');
-    }
+  private deleteLocalFile(relativePath: string) {
+    // Relative path starts with '/uploads/...', strip leading slash for resolve if needed, or resolve handles it
+    const cleanPath = relativePath.startsWith('/') ? relativePath.substring(1) : relativePath;
+    const absolutePath = path.resolve(__dirname, '../../../', cleanPath);
 
-    const updated = await this.repository.updateTheme(restaurantId, themeId, themeConfig);
-
-    // Invalidate versions to refresh profile and public menu caches instantly
-    const slug = restaurant.slug;
-    await Promise.all([
-      cacheService.incrementVersion(`profile:${restaurantId}`),
-      cacheService.incrementVersion(`public-menu:${slug}`),
-    ]);
-
-    const { passwordHash, ...profile } = updated;
-    return profile;
+    fs.unlink(absolutePath, (err) => {
+      if (err) {
+        console.error(`Failed to delete local file ${absolutePath}:`, err.message);
+      } else {
+        console.log(`Successfully deleted obsolete local file: ${absolutePath}`);
+      }
+    });
   }
 }

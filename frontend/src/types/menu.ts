@@ -16,7 +16,6 @@ export interface MenuItem {
   description: string | null;
   price: string | number; // Decimal serialized to JSON is returned as string or number
   imageUrl: string | null;
-  imagePublicId: string | null;
   isVeg: boolean;
   isAvailable: boolean;
   createdAt: string;

@@ -10,7 +10,6 @@ import { Share } from '@capacitor/share';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
-import { getFullImageUrl } from '../../../utils/image';
 
 // Normalize any time string to HH:mm for <input type="time">
 const normalizeTimeTo24h = (timeStr: string | null | undefined): string => {
@@ -42,14 +41,12 @@ export const useRestaurant = () => {
   const { restaurant: authRestaurant, setAuth, accessToken } = useAuthStore();
 
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
-  const [logoPublicId, setLogoPublicId] = useState<string | null>(null);
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
-  const [coverImagePublicId, setCoverImagePublicId] = useState<string | null>(null);
   const [isDirty, setIsDirty] = useState(false);
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const [uploadingLogo, setUploadingLogo] = useState(false);
   const [uploadingCover, setUploadingCover] = useState(false);
-  const initialValuesRef = useRef<Partial<RestaurantProfile> & { logoPublicId?: string | null; coverImagePublicId?: string | null }>({});
+  const initialValuesRef = useRef<Partial<RestaurantProfile>>({});
 
   // 1. Fetch Profile Data
   const { data: profileResponse, isLoading: isProfileLoading } = useQuery({
@@ -93,14 +90,10 @@ export const useRestaurant = () => {
       initialValuesRef.current = {
         ...formValues,
         logoUrl: profile.logoUrl,
-        logoPublicId: profile.logoPublicId,
         coverImageUrl: profile.coverImageUrl,
-        coverImagePublicId: profile.coverImagePublicId,
       };
       setLogoPreview(profile.logoUrl || null);
-      setLogoPublicId(profile.logoPublicId || null);
       setCoverPreview(profile.coverImageUrl || null);
-      setCoverImagePublicId(profile.coverImagePublicId || null);
       setIsDirty(false);
     }
   }, [profile, form]);
@@ -146,9 +139,7 @@ export const useRestaurant = () => {
       initialValuesRef.current = {
         ...form.getFieldsValue(),
         logoUrl: res.data.logoUrl,
-        logoPublicId: res.data.logoPublicId,
         coverImageUrl: res.data.coverImageUrl,
-        coverImagePublicId: res.data.coverImagePublicId,
       };
       setIsDirty(false);
     },
@@ -223,13 +214,11 @@ export const useRestaurant = () => {
 
           const res = await restaurantService.uploadImage(file);
           if (type === 'logo') {
-            setLogoPreview(getFullImageUrl(res.data.imageUrl));
-            setLogoPublicId(res.data.publicId);
+            setLogoPreview(res.data.imageUrl);
             setIsDirty(true);
             message.success('Logo uploaded successfully');
           } else {
-            setCoverPreview(getFullImageUrl(res.data.imageUrl));
-            setCoverImagePublicId(res.data.publicId);
+            setCoverPreview(res.data.imageUrl);
             setIsDirty(true);
             message.success('Cover image uploaded successfully');
           }
@@ -253,22 +242,20 @@ export const useRestaurant = () => {
       message.error('Only JPG, PNG, and WEBP images are allowed!');
       return false;
     }
-    const isLt5M = file.size / 1024 / 1024 < 5;
-    if (!isLt5M) {
-      message.error('Image must be smaller than 5MB!');
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error('Image must be smaller than 2MB!');
       return false;
     }
 
     try {
-      const res = await restaurantService.uploadImage(file, type);
+      const res = await restaurantService.uploadImage(file);
       if (type === 'logo') {
-        setLogoPreview(getFullImageUrl(res.data.imageUrl));
-        setLogoPublicId(res.data.publicId);
+        setLogoPreview(res.data.imageUrl);
         setIsDirty(true);
         message.success('Logo uploaded successfully');
       } else {
-        setCoverPreview(getFullImageUrl(res.data.imageUrl));
-        setCoverImagePublicId(res.data.publicId);
+        setCoverPreview(res.data.imageUrl);
         setIsDirty(true);
         message.success('Cover image uploaded successfully');
       }
@@ -299,9 +286,7 @@ export const useRestaurant = () => {
       updateProfileMutation.mutate({
         ...values,
         logoUrl: logoPreview,
-        logoPublicId: logoPublicId,
         coverImageUrl: coverPreview,
-        coverImagePublicId: coverImagePublicId,
       });
     }).catch(() => {
       message.error('Please correct the validation errors in the form.');

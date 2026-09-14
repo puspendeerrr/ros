@@ -90,7 +90,6 @@ export class MenuRepository {
     description?: string | null;
     price: number;
     imageUrl?: string | null;
-    imagePublicId?: string | null;
     isVeg: boolean;
     isAvailable: boolean;
   }): Promise<MenuItem> {
@@ -103,7 +102,6 @@ export class MenuRepository {
         description: data.description,
         price: data.price,
         imageUrl: data.imageUrl,
-        imagePublicId: data.imagePublicId,
         isVeg: data.isVeg,
         isAvailable: data.isAvailable,
       },
@@ -119,7 +117,6 @@ export class MenuRepository {
       description?: string | null;
       price?: number;
       imageUrl?: string | null;
-      imagePublicId?: string | null;
       isVeg?: boolean;
       isAvailable?: boolean;
     }
@@ -159,8 +156,6 @@ export class MenuRepository {
         googleMapsUrl: true,
         openingTime: true,
         closingTime: true,
-        themeId: true,
-        themeConfig: true,
       }
     });
   }

@@ -7,15 +7,14 @@ import {
   LogoutOutlined,
   QrcodeOutlined,
   SettingOutlined,
-  BgColorsOutlined,
 } from '@ant-design/icons';
 import { useMutation } from '@tanstack/react-query';
 import { useAuthStore } from '../store/auth.store.js';
 import { authService } from '../services/auth.service.js';
 import logo from '../assets/logo.png';
 import logoIcon from '../assets/logo-icon.png';
+import { useMobileBridge } from '../hooks/useMobileBridge.js';
 import { OfflineBanner } from '../components/OfflineBanner.js';
-import { useNetworkStatus } from '../pwa/useNetworkStatus.js';
 
 const { Sider, Content, Header } = Layout;
 const { Text } = Typography;
@@ -26,7 +25,7 @@ export const MainLayout: React.FC = () => {
   const location = useLocation();
   const screens = useBreakpoint();
   const { restaurant, logout } = useAuthStore();
-  const { isOnline } = useNetworkStatus();
+  const { isOnline } = useMobileBridge();
 
   // Responsiveness states
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -51,7 +50,6 @@ export const MainLayout: React.FC = () => {
     if (location.pathname === '/menu') return 'menu';
     if (location.pathname === '/qr-menu') return 'qr-menu';
     if (location.pathname === '/restaurant') return 'restaurant';
-    if (location.pathname === '/theme') return 'theme';
     return 'dashboard';
   };
 
@@ -68,8 +66,6 @@ export const MainLayout: React.FC = () => {
       navigate('/qr-menu');
     } else if (info.key === 'restaurant') {
       navigate('/restaurant');
-    } else if (info.key === 'theme') {
-      navigate('/theme');
     } else {
       navigate('/dashboard');
     }
@@ -123,12 +119,6 @@ export const MainLayout: React.FC = () => {
                 key: 'qr-menu',
                 icon: <QrcodeOutlined style={{ fontSize: '16px' }} />,
                 label: showFull ? 'QR Menu' : null,
-                style: { borderRadius: '6px', margin: '4px 12px', width: 'calc(100% - 24px)' }
-              },
-              {
-                key: 'theme',
-                icon: <BgColorsOutlined style={{ fontSize: '16px' }} />,
-                label: showFull ? 'Theme Customizer' : null,
                 style: { borderRadius: '6px', margin: '4px 12px', width: 'calc(100% - 24px)' }
               },
               {
@@ -217,27 +207,11 @@ export const MainLayout: React.FC = () => {
 
   // Determine sidebar configuration
   const sidebarWidth = isMobile ? 0 : (isTablet || isCollapsed ? 80 : 240);
-  const topOffset = isOnline ? '0px' : '40px';
+  const topOffset = isOnline ? '0px' : '36px';
 
   return (
-    <Layout style={{ minHeight: '100vh', paddingTop: !isOnline ? '40px' : '0px' }}>
-      {!isOnline && (
-        <style>{`
-          /* Disable critical update actions when offline */
-          button[type="submit"],
-          .ant-btn-primary,
-          .ant-upload,
-          .ant-upload-select,
-          .ant-btn:has(.anticon-save),
-          .ant-btn:has(.anticon-delete),
-          .ant-btn:has(.anticon-upload) {
-            pointer-events: none !important;
-            opacity: 0.55 !important;
-            cursor: not-allowed !important;
-          }
-        `}</style>
-      )}
-      <OfflineBanner />
+    <Layout style={{ minHeight: '100vh', paddingTop: !isOnline ? '36px' : '0px' }}>
+      <OfflineBanner isOnline={isOnline} />
       
       {/* 1. Mobile Top Header Bar */}
       {isMobile && (
@@ -335,7 +309,6 @@ export const MainLayout: React.FC = () => {
             { key: 'dashboard', icon: <DashboardOutlined />, label: 'Dashboard', path: '/dashboard' },
             { key: 'menu', icon: <ShopOutlined />, label: 'Menu', path: '/menu' },
             { key: 'qr-menu', icon: <QrcodeOutlined />, label: 'QR Menu', path: '/qr-menu' },
-            { key: 'theme', icon: <BgColorsOutlined />, label: 'Theme', path: '/theme' },
             { key: 'restaurant', icon: <SettingOutlined />, label: 'Restaurant', path: '/restaurant' },
           ].map((item) => {
             const isActive = getSelectedKey() === item.key;

@@ -16,7 +16,6 @@ import { QRMenu } from '../pages/QRMenu.js';
 import { PublicMenu } from '../pages/PublicMenu.js';
 import { Restaurant } from '../pages/Restaurant.js';
 import { Onboarding } from '../pages/Onboarding.js';
-import { ThemeCustomizer } from '../pages/ThemeCustomizer.js';
 import { Landing } from '../pages/Landing.js';
 import { Features } from '../pages/Features.js';
 
@@ -95,7 +94,6 @@ export const AppRoutes: React.FC = () => {
             <Route path="/menu" element={<Menu />} />
             <Route path="/qr-menu" element={<QRMenu />} />
             <Route path="/restaurant" element={<Restaurant />} />
-            <Route path="/theme" element={<ThemeCustomizer />} />
           </Route>
         </Route>
 

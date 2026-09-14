@@ -22,7 +22,6 @@ import {
 } from '@ant-design/icons';
 import { QRCodeCanvas } from 'qrcode.react';
 import { Capacitor } from '@capacitor/core';
-import { getFullImageUrl } from '../../../utils/image';
 
 const { Text, Title } = Typography;
 const { Panel } = Collapse;
@@ -105,7 +104,7 @@ export const RestaurantMobile: React.FC<RestaurantMobileProps> = ({ restaurantDa
                 <Flex align="center" gap={16}>
                   {logoPreview ? (
                     <img
-                      src={getFullImageUrl(logoPreview)}
+                      src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${logoPreview}`}
                       alt="Logo"
                       loading="lazy"
                       style={{ width: '64px', height: '64px', borderRadius: '12px', objectFit: 'cover', border: '1px solid #E2E8F0' }}
@@ -139,7 +138,7 @@ export const RestaurantMobile: React.FC<RestaurantMobileProps> = ({ restaurantDa
                 <Flex align="center" gap={16}>
                   {coverPreview ? (
                     <img
-                      src={getFullImageUrl(coverPreview)}
+                      src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${coverPreview}`}
                       alt="Cover"
                       loading="lazy"
                       style={{ width: '120px', height: '48px', borderRadius: '8px', objectFit: 'cover', border: '1px solid #E2E8F0' }}

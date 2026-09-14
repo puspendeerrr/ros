@@ -1,10 +1,46 @@
 import { Request, Response, NextFunction } from 'express';
+import multer from 'multer';
+import path from 'path';
+import crypto from 'crypto';
+import fs from 'fs';
 import { MenuService } from './menu.service';
 import { createCategorySchema, createItemSchema, updateItemSchema } from './menu.validation';
 import { AppError } from '../../middleware/error.middleware';
 import { AuthenticatedRequest } from '../../types';
-import { uploadMiddleware } from '../../middleware/upload.middleware';
-import { cloudinaryService } from '../../services/cloudinary.service';
+
+// Setup multer storage for local uploads
+const uploadsDir = path.resolve(__dirname, '../../../uploads/menu');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadsDir);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname).toLowerCase();
+    const uniqueName = crypto.randomUUID() + ext;
+    cb(null, uniqueName);
+  },
+});
+
+const fileFilter = (req: any, file: any, cb: any) => {
+  const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp'];
+  if (allowedMimeTypes.includes(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(new AppError(400, 'Invalid file type. Only JPG, PNG, and WEBP images are allowed.'), false);
+  }
+};
+
+export const uploadMiddleware = multer({
+  storage,
+  fileFilter,
+  limits: {
+    fileSize: 2 * 1024 * 1024, // 2MB
+  },
+}).single('image');
 
 export class MenuController {
   private service = new MenuService();
@@ -81,7 +117,7 @@ export class MenuController {
 
       res.status(200).json({
         success: true,
-        message: 'Category deleted successfully',
+        message: 'Category and all nested items deleted successfully',
       });
     } catch (error) {
       next(error);
@@ -114,19 +150,6 @@ export class MenuController {
         });
       }
 
-      // Apply Cloudinary optimized transformations on the database fields if public ID is present
-      if (parsed.data.imagePublicId && parsed.data.imageUrl) {
-        parsed.data.imageUrl = cloudinaryService.cloudinary.url(parsed.data.imagePublicId, {
-          secure: true,
-          width: 600,
-          height: 600,
-          crop: 'fill',
-          fetch_format: 'auto',
-          quality: 'auto',
-          flags: 'progressive',
-        });
-      }
-
       const item = await this.service.createItem(restaurantId, parsed.data);
 
       res.status(201).json({
@@ -149,19 +172,6 @@ export class MenuController {
         return res.status(400).json({
           success: false,
           errors: parsed.error.format(),
-        });
-      }
-
-      // Apply Cloudinary optimized transformations on the database fields if public ID is present
-      if (parsed.data.imagePublicId && parsed.data.imageUrl) {
-        parsed.data.imageUrl = cloudinaryService.cloudinary.url(parsed.data.imagePublicId, {
-          secure: true,
-          width: 600,
-          height: 600,
-          crop: 'fill',
-          fetch_format: 'auto',
-          quality: 'auto',
-          flags: 'progressive',
         });
       }
 
@@ -195,8 +205,11 @@ export class MenuController {
 
   // --- UPLOAD IMAGE ---
   uploadImage = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
-    uploadMiddleware(req, res, async (err) => {
+    uploadMiddleware(req, res, (err) => {
       if (err) {
+        if (err instanceof multer.MulterError && err.code === 'LIMIT_FILE_SIZE') {
+          return next(new AppError(400, 'File is too large. Maximum size allowed is 2MB.'));
+        }
         return next(err);
       }
 
@@ -204,20 +217,15 @@ export class MenuController {
         return next(new AppError(400, 'No image file uploaded.'));
       }
 
-      try {
-        const uploadResult = await cloudinaryService.uploadImage(req.file.buffer, 'menu/items', 'item');
+      const relativePath = `/uploads/menu/${req.file.filename}`;
 
-        res.status(200).json({
-          success: true,
-          message: 'Image uploaded successfully',
-          data: {
-            imageUrl: uploadResult.secureUrl,
-            publicId: uploadResult.publicId,
-          },
-        });
-      } catch (uploadError) {
-        next(uploadError);
-      }
+      res.status(200).json({
+        success: true,
+        message: 'Image uploaded successfully',
+        data: {
+          imageUrl: relativePath,
+        },
+      });
     });
   };
 

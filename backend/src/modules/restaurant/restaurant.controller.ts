@@ -1,11 +1,45 @@
+import path from 'path';
+import fs from 'fs';
+import crypto from 'crypto';
 import { Response, NextFunction } from 'express';
+import multer from 'multer';
 import { RestaurantService } from './restaurant.service';
 import { updateRestaurantSchema } from './restaurant.validation';
-import { updateThemeSchema } from './theme.validation';
 import { AuthenticatedRequest } from '../../types';
 import { AppError } from '../../middleware/error.middleware';
-import { uploadMiddleware } from '../../middleware/upload.middleware';
-import { cloudinaryService } from '../../services/cloudinary.service';
+
+const uploadsDir = path.resolve(__dirname, '../../../uploads/restaurant');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadsDir);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname).toLowerCase();
+    const uniqueName = crypto.randomUUID() + ext;
+    cb(null, uniqueName);
+  },
+});
+
+const fileFilter = (req: any, file: any, cb: any) => {
+  const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp'];
+  if (allowedMimeTypes.includes(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(new AppError(400, 'Invalid file type. Only JPG, PNG, and WEBP images are allowed.'), false);
+  }
+};
+
+export const uploadMiddleware = multer({
+  storage,
+  fileFilter,
+  limits: {
+    fileSize: 2 * 1024 * 1024, // 2MB
+  },
+}).single('file');
 
 export class RestaurantController {
   private service = new RestaurantService();
@@ -28,34 +62,6 @@ export class RestaurantController {
     try {
       const restaurantId = req.restaurant!.id;
       const parsedBody = updateRestaurantSchema.parse(req.body);
-
-      // Apply Cloudinary optimized transformations on the database fields if public ID is present
-      if (parsedBody.logoPublicId && parsedBody.logoUrl) {
-        const logoUrl = cloudinaryService.cloudinary.url(parsedBody.logoPublicId, {
-          secure: true,
-          width: 300,
-          height: 300,
-          crop: 'fill',
-          gravity: 'auto',
-          fetch_format: 'auto',
-          quality: 'auto',
-          flags: 'progressive',
-        });
-        parsedBody.logoUrl = logoUrl;
-      }
-      if (parsedBody.coverImagePublicId && parsedBody.coverImageUrl) {
-        const coverUrl = cloudinaryService.cloudinary.url(parsedBody.coverImagePublicId, {
-          secure: true,
-          width: 1600,
-          height: 900,
-          crop: 'fill',
-          fetch_format: 'auto',
-          quality: 'auto',
-          flags: 'progressive',
-        });
-        parsedBody.coverImageUrl = coverUrl;
-      }
-
       const updatedProfile = await this.service.updateProfile(restaurantId, parsedBody);
 
       res.status(200).json({
@@ -69,8 +75,11 @@ export class RestaurantController {
   };
 
   uploadImage = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
-    uploadMiddleware(req, res, async (err) => {
+    uploadMiddleware(req, res, (err) => {
       if (err) {
+        if (err instanceof multer.MulterError && err.code === 'LIMIT_FILE_SIZE') {
+          return next(new AppError(400, 'File is too large. Maximum size allowed is 2MB.'));
+        }
         return next(err);
       }
 
@@ -78,60 +87,15 @@ export class RestaurantController {
         return next(new AppError(400, 'No image file uploaded.'));
       }
 
-      try {
-        const type = req.query.type as 'logo' | 'cover' | 'thumbnail' | undefined;
-        let subfolder = 'restaurants/temp';
-        if (type === 'logo') {
-          subfolder = 'restaurants/logos';
-        } else if (type === 'cover') {
-          subfolder = 'restaurants/covers';
-        }
+      const relativePath = `/uploads/restaurant/${req.file.filename}`;
 
-        const uploadResult = await cloudinaryService.uploadImage(req.file.buffer, subfolder, type);
-
-        res.status(200).json({
-          success: true,
-          message: 'Image uploaded successfully',
-          data: {
-            imageUrl: uploadResult.secureUrl,
-            publicId: uploadResult.publicId,
-          },
-        });
-      } catch (uploadError) {
-        next(uploadError);
-      }
+      res.status(200).json({
+        success: true,
+        message: 'Image uploaded successfully',
+        data: {
+          imageUrl: relativePath,
+        },
+      });
     });
-  };
-
-  updateTheme = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
-    try {
-      const restaurantId = req.restaurant!.id;
-      const parsed = updateThemeSchema.parse(req.body);
-
-      const profile = await this.service.updateTheme(restaurantId, parsed.themeId, parsed.themeConfig);
-
-      res.status(200).json({
-        success: true,
-        message: 'Theme configuration updated successfully',
-        data: profile,
-      });
-    } catch (error) {
-      next(error);
-    }
-  };
-
-  resetTheme = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
-    try {
-      const restaurantId = req.restaurant!.id;
-      const profile = await this.service.updateTheme(restaurantId, 'minimal', null);
-
-      res.status(200).json({
-        success: true,
-        message: 'Theme configuration reset to defaults',
-        data: profile,
-      });
-    } catch (error) {
-      next(error);
-    }
   };
 }

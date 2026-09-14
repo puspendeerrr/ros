@@ -21,7 +21,6 @@ import { Share } from '@capacitor/share';
 import { Clipboard } from '@capacitor/clipboard';
 
 const { Title, Text, Paragraph } = Typography;
-import { getFullImageUrl } from '../utils/image';
 
 // Normalize any time string to HH:mm format for <input type="time">
 const normalizeTimeTo24h = (timeStr: string | null | undefined, fallback: string): string => {
@@ -113,8 +112,8 @@ export const Onboarding: React.FC = () => {
         setClosingTime(normalizeTimeTo24h(rData.closingTime, '22:00'));
         setSlug(rData.slug || '');
         
-        if (rData.logoUrl) setLogoPreview(getFullImageUrl(rData.logoUrl));
-        if (rData.coverImageUrl) setCoverPreview(getFullImageUrl(rData.coverImageUrl));
+        if (rData.logoUrl) setLogoPreview(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${rData.logoUrl}`);
+        if (rData.coverImageUrl) setCoverPreview(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${rData.coverImageUrl}`);
 
         // Fetch categories & items
         const catRes = await menuService.getCategories();
@@ -182,12 +181,9 @@ export const Onboarding: React.FC = () => {
   const handleLogoUpload = async (file: File) => {
     setLoading(true);
     try {
-      const res = await restaurantService.uploadImage(file, 'logo');
-      await restaurantService.updateProfile({ 
-        logoUrl: res.data.imageUrl,
-        logoPublicId: res.data.publicId
-      });
-      setLogoPreview(getFullImageUrl(res.data.imageUrl));
+      const res = await restaurantService.uploadImage(file);
+      await restaurantService.updateProfile({ logoUrl: res.data.imageUrl });
+      setLogoPreview(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${res.data.imageUrl}`);
       message.success('Logo uploaded successfully.');
     } catch (err) {
       message.error('Failed to upload logo.');
@@ -199,12 +195,9 @@ export const Onboarding: React.FC = () => {
   const handleCoverUpload = async (file: File) => {
     setLoading(true);
     try {
-      const res = await restaurantService.uploadImage(file, 'cover');
-      await restaurantService.updateProfile({ 
-        coverImageUrl: res.data.imageUrl,
-        coverImagePublicId: res.data.publicId
-      });
-      setCoverPreview(getFullImageUrl(res.data.imageUrl));
+      const res = await restaurantService.uploadImage(file);
+      await restaurantService.updateProfile({ coverImageUrl: res.data.imageUrl });
+      setCoverPreview(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${res.data.imageUrl}`);
       message.success('Cover image uploaded.');
     } catch (err) {
       message.error('Failed to upload cover image.');

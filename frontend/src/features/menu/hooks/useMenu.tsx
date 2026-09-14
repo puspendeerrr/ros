@@ -10,7 +10,6 @@ import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
-import { getFullImageUrl } from '../../../utils/image';
 
 export const itemSchema = z.object({
   name: z.string().min(1, 'Item name is required').max(100, 'Item name is too long'),
@@ -18,7 +17,6 @@ export const itemSchema = z.object({
   price: z.coerce.number().positive('Price must be a positive number'),
   categoryId: z.string().min(1, 'Category is required'),
   imageUrl: z.string().optional().nullable(),
-  imagePublicId: z.string().optional().nullable(),
   isVeg: z.boolean().default(true),
   isAvailable: z.boolean().default(true),
 });
@@ -259,7 +257,6 @@ export const useMenu = () => {
       price: undefined,
       categoryId: selectedCategoryId || '',
       imageUrl: '',
-      imagePublicId: '',
       isVeg: true,
       isAvailable: true,
     });
@@ -268,14 +265,13 @@ export const useMenu = () => {
 
   const handleOpenEditItem = (item: MenuItem) => {
     setEditingItem(item);
-    setUploadedImageUrl(getFullImageUrl(item.imageUrl));
+    setUploadedImageUrl(item.imageUrl);
     reset({
       name: item.name,
       description: item.description,
       price: Number(item.price),
       categoryId: item.categoryId,
       imageUrl: item.imageUrl,
-      imagePublicId: item.imagePublicId,
       isVeg: item.isVeg,
       isAvailable: item.isAvailable,
     });
@@ -307,10 +303,9 @@ export const useMenu = () => {
           const file = new File([blob], 'photo.jpg', { type: 'image/jpeg' });
 
           const uploadRes = await menuService.uploadImage(file);
-          const { imageUrl, publicId } = uploadRes.data;
-          setUploadedImageUrl(getFullImageUrl(imageUrl));
+          const { imageUrl } = uploadRes.data;
+          setUploadedImageUrl(imageUrl);
           setValue('imageUrl', imageUrl, { shouldValidate: true });
-          setValue('imagePublicId', publicId, { shouldValidate: true });
           message.success('Image uploaded via camera successfully');
           triggerHaptic(ImpactStyle.Light);
         }
@@ -331,19 +326,18 @@ export const useMenu = () => {
       return false;
     }
 
-    const isLt5M = file.size / 1024 / 1024 < 5;
-    if (!isLt5M) {
-      message.error('Image must be smaller than 5MB!');
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error('Image must be smaller than 2MB!');
       return false;
     }
 
     setUploadingImage(true);
     try {
       const response = await menuService.uploadImage(file);
-      const { imageUrl, publicId } = response.data;
-      setUploadedImageUrl(getFullImageUrl(imageUrl));
+      const { imageUrl } = response.data;
+      setUploadedImageUrl(imageUrl);
       setValue('imageUrl', imageUrl, { shouldValidate: true });
-      setValue('imagePublicId', publicId, { shouldValidate: true });
       message.success('Image uploaded successfully');
       triggerHaptic(ImpactStyle.Light);
     } catch (err: any) {

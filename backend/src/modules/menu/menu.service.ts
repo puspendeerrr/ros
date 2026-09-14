@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { Category, MenuItem } from '@prisma/client';
 import { MenuRepository } from './menu.repository';
 import { CreateCategoryInput, CreateItemInput, UpdateItemInput } from './menu.validation';
@@ -7,7 +9,6 @@ import { AppError } from '../../middleware/error.middleware';
 import { slugify } from '../../utils/slug';
 import { cacheService } from '../../utils/cache';
 import { CacheConfig } from '../../config/cache';
-import { cloudinaryService } from '../../services/cloudinary.service';
 
 export class MenuService {
   private repository = new MenuRepository();
@@ -59,20 +60,16 @@ export class MenuService {
       throw new AppError(404, 'Category not found');
     }
 
-    // Get all items in category to clean up their Cloudinary images before database deletion cascades
+    // Get all items in category to clean up their images
     const items = await this.repository.findItems(restaurantId);
     const categoryItems = items.filter((item) => item.categoryId === id);
 
     // Delete category (cascades database items deletion)
     const deleted = await this.repository.deleteCategory(id);
 
-    // Delete associated Cloudinary assets (no orphaned media)
+    // Delete associated local images on disk
     for (const item of categoryItems) {
-      if (item.imagePublicId) {
-        cloudinaryService.deleteImage(item.imagePublicId).catch((err) =>
-          console.error(`Failed to delete Cloudinary asset ${item.imagePublicId} on category delete:`, err)
-        );
-      }
+      this.deleteItemImage(item.imageUrl);
     }
 
     await this.invalidateAndWarmMenu(restaurantId);
@@ -114,7 +111,6 @@ export class MenuService {
       description: input.description,
       price: input.price,
       imageUrl: input.imageUrl,
-      imagePublicId: input.imagePublicId,
       isVeg: input.isVeg,
       isAvailable: input.isAvailable,
     });
@@ -153,12 +149,9 @@ export class MenuService {
       slug = await this.generateUniqueSlug(restaurantId, input.name);
     }
 
-    // File cleanup on Cloudinary image replacement
-    const isImageReplaced = input.imageUrl !== undefined && input.imageUrl !== item.imageUrl;
-    if (isImageReplaced && item.imagePublicId) {
-      cloudinaryService.deleteImage(item.imagePublicId).catch((err) =>
-        console.error(`Failed to delete replaced Cloudinary asset ${item.imagePublicId}:`, err)
-      );
+    // File cleanup on image replacement
+    if (input.imageUrl !== undefined && input.imageUrl !== item.imageUrl) {
+      this.deleteItemImage(item.imageUrl);
     }
 
     const updated = await this.repository.updateItem(id, {
@@ -168,7 +161,6 @@ export class MenuService {
       description: input.description,
       price: input.price,
       imageUrl: input.imageUrl,
-      imagePublicId: input.imagePublicId,
       isVeg: input.isVeg,
       isAvailable: input.isAvailable,
     });
@@ -185,12 +177,8 @@ export class MenuService {
 
     const deleted = await this.repository.deleteItem(id);
 
-    // Delete image from Cloudinary
-    if (item.imagePublicId) {
-      cloudinaryService.deleteImage(item.imagePublicId).catch((err) =>
-        console.error(`Failed to delete Cloudinary asset ${item.imagePublicId} on item delete:`, err)
-      );
-    }
+    // Delete image file from disk
+    this.deleteItemImage(item.imageUrl);
 
     await this.invalidateAndWarmMenu(restaurantId);
     return deleted;
@@ -212,6 +200,29 @@ export class MenuService {
     }
 
     return slug;
+  }
+
+  private deleteItemImage(imageUrl: string | null | undefined): void {
+    if (!imageUrl) return;
+
+    // Clean leading slash and prevent path traversal
+    const relativePath = imageUrl.replace(/^\/+/, '');
+    const absolutePath = path.resolve(__dirname, '../../../', relativePath);
+
+    // Ensure we are only deleting files inside backend/uploads/menu directory
+    const allowedDir = path.resolve(__dirname, '../../../uploads/menu');
+    if (!absolutePath.startsWith(allowedDir)) {
+      console.warn(`Prevented deletion of file outside allowed directory: ${absolutePath}`);
+      return;
+    }
+
+    fs.unlink(absolutePath, (err) => {
+      if (err) {
+        console.error(`Failed to delete local file ${absolutePath}:`, err.message);
+      } else {
+        console.log(`Successfully deleted obsolete local file: ${absolutePath}`);
+      }
+    });
   }
 
   // --- PUBLIC & QR SERVICES ---
@@ -321,8 +332,6 @@ export class MenuService {
         googleMapsUrl: restaurant.googleMapsUrl,
         openingTime: restaurant.openingTime,
         closingTime: restaurant.closingTime,
-        themeId: restaurant.themeId,
-        themeConfig: restaurant.themeConfig,
       },
       categories,
     };

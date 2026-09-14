@@ -36,7 +36,6 @@ export const menuService = {
     price: number;
     categoryId: string;
     imageUrl?: string | null;
-    imagePublicId?: string | null;
     isVeg: boolean;
     isAvailable: boolean;
   }): Promise<{ success: boolean; data: MenuItem }> {
@@ -52,7 +51,6 @@ export const menuService = {
       price?: number;
       categoryId?: string;
       imageUrl?: string | null;
-      imagePublicId?: string | null;
       isVeg?: boolean;
       isAvailable?: boolean;
     }
@@ -67,9 +65,9 @@ export const menuService = {
   },
 
   // --- UPLOAD IMAGE ---
-  async uploadImage(file: File): Promise<{ success: boolean; data: { imageUrl: string; publicId: string } }> {
+  async uploadImage(file: File): Promise<{ success: boolean; data: { imageUrl: string } }> {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('image', file);
     const response = await api.post('/api/menu/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
