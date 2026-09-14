@@ -317,8 +317,9 @@ export const PublicMenuContent: React.FC<PublicMenuContentProps> = ({
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '0 16px',
-          position: 'relative',
-          zIndex: 10,
+          position: 'sticky',
+          top: 0,
+          zIndex: 100,
           boxShadow: '0 1px 3px rgba(0,0,0,0.01)'
         }}
       >
@@ -503,7 +504,7 @@ export const PublicMenuContent: React.FC<PublicMenuContentProps> = ({
           className="sticky-header-container"
           style={{
             position: 'sticky',
-            top: 0,
+            top: '56px',
             zIndex: 90,
             background: 'var(--background-color, #F8FAFC)',
             paddingTop: '4px',
@@ -697,7 +698,7 @@ export const PublicMenuContent: React.FC<PublicMenuContentProps> = ({
                   key={category.id} 
                   id={previewMode ? `preview-cat-${category.id}` : `cat-${category.id}`} 
                   className="category-section" 
-                  style={{ scrollMarginTop: '145px' }}
+                  style={{ scrollMarginTop: '200px' }}
                 >
                   {/* Category Title */}
                   <Title
