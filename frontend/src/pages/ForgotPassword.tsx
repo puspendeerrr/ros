@@ -44,7 +44,7 @@ export const ForgotPassword: React.FC = () => {
 
   if (isSuccess) {
     return (
-      <Card bordered={false} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
+      <Card variant="borderless" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
         <Result
           status="info"
           title="Reset Link Sent"
@@ -62,7 +62,7 @@ export const ForgotPassword: React.FC = () => {
   }
 
   return (
-    <Card bordered={false} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
+    <Card variant="borderless" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
       <Link to="/login" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#64748B', marginBottom: '24px', fontWeight: 500 }}>
         <ArrowLeftOutlined /> Back to login
       </Link>

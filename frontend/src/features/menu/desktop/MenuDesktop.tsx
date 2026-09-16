@@ -1,3 +1,4 @@
+import { getImageUrl } from '../../../utils/image.js';
 import React from 'react';
 import {
   Card,
@@ -104,22 +105,22 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
       {/* Dynamic Statistics Cards */}
       <Row gutter={[16, 16]} style={{ marginBottom: '32px' }}>
         <Col xs={12} sm={6}>
-          <Card bordered={false} style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
+          <Card variant="borderless" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
             <Statistic title="Total Categories" value={totalCategories} valueStyle={{ color: '#F97316', fontWeight: 700 }} />
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card bordered={false} style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
+          <Card variant="borderless" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
             <Statistic title="Total Items" value={totalItems} valueStyle={{ fontWeight: 700 }} />
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card bordered={false} style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
+          <Card variant="borderless" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
             <Statistic title="Available Items" value={availableItems} valueStyle={{ color: '#52C41A', fontWeight: 700 }} />
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card bordered={false} style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
+          <Card variant="borderless" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
             <Statistic title="Unavailable Items" value={unavailableItems} valueStyle={{ color: '#FF4D4F', fontWeight: 700 }} />
           </Card>
         </Col>
@@ -131,7 +132,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
         <Col xs={24} md={8} style={{ marginBottom: '24px' }}>
           <Card
             title="Categories"
-            bordered={false}
+            variant="borderless"
             extra={
               <Button type="primary" size="small" icon={<PlusOutlined />} onClick={handleOpenAddCategory}>
                 Add
@@ -188,7 +189,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
         <Col xs={24} md={16}>
           <Card
             title={activeCategoryName}
-            bordered={false}
+            variant="borderless"
             extra={
               selectedCategoryId && (
                 <Button type="primary" size="small" icon={<PlusOutlined />} onClick={handleOpenAddItem}>
@@ -394,7 +395,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
             >
               {uploadedImageUrl ? (
                 <img
-                  src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${uploadedImageUrl}`}
+                  src={getImageUrl(uploadedImageUrl)}
                   alt="Uploaded preview"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
                 />
@@ -447,7 +448,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
         onClose={() => setIsPreviewOpen(false)}
         open={isPreviewOpen}
         width={450}
-        bodyStyle={{ background: '#F8FAFC', padding: '24px 16px' }}
+        styles={{ body: { background: '#F8FAFC', padding: '24px 16px' } }}
       >
         {categories.length === 0 ? (
           <Empty description="No categories or items to preview." />
@@ -486,7 +487,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
                           avatar={
                             item.imageUrl ? (
                               <img
-                                src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
+                                src={getImageUrl(item.imageUrl)}
                                 alt={item.name}
                                 loading="lazy"
                                 style={{ width: '50px', height: '50px', borderRadius: '6px', objectFit: 'cover' }}

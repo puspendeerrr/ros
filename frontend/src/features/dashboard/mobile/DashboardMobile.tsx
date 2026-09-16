@@ -35,7 +35,7 @@ export const DashboardMobile: React.FC<DashboardMobileProps> = ({ dashboardData 
       
       {/* 1. Welcome Header Section */}
       <Card
-        bodyStyle={{ padding: '16px' }}
+        styles={{ body: { padding: '16px' } }}
         style={{
           background: '#FFFFFF',
           borderRadius: '16px',
@@ -77,7 +77,7 @@ export const DashboardMobile: React.FC<DashboardMobileProps> = ({ dashboardData 
       {/* 2. Today's Summary Metrics */}
       <Row gutter={[12, 12]}>
         <Col span={12}>
-          <Card bodyStyle={{ padding: '12px' }} style={{ borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+          <Card styles={{ body: { padding: '12px' } }} style={{ borderRadius: '12px', border: '1px solid #E2E8F0' }}>
             <Flex align="center" gap={8}>
               <div style={{ background: '#FFF7ED', padding: '8px', borderRadius: '8px' }}>
                 <AppstoreOutlined style={{ color: '#F97316', fontSize: '16px' }} />
@@ -90,7 +90,7 @@ export const DashboardMobile: React.FC<DashboardMobileProps> = ({ dashboardData 
           </Card>
         </Col>
         <Col span={12}>
-          <Card bodyStyle={{ padding: '12px' }} style={{ borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+          <Card styles={{ body: { padding: '12px' } }} style={{ borderRadius: '12px', border: '1px solid #E2E8F0' }}>
             <Flex align="center" gap={8}>
               <div style={{ background: '#EFF6FF', padding: '8px', borderRadius: '8px' }}>
                 <ShopOutlined style={{ color: '#3B82F6', fontSize: '16px' }} />
@@ -103,7 +103,7 @@ export const DashboardMobile: React.FC<DashboardMobileProps> = ({ dashboardData 
           </Card>
         </Col>
         <Col span={24}>
-          <Card bodyStyle={{ padding: '12px' }} style={{ borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+          <Card styles={{ body: { padding: '12px' } }} style={{ borderRadius: '12px', border: '1px solid #E2E8F0' }}>
             <Flex justify="space-between" align="center">
               <Flex align="center" gap={8}>
                 <div style={{ background: '#ECFDF5', padding: '8px', borderRadius: '8px' }}>
@@ -114,14 +114,14 @@ export const DashboardMobile: React.FC<DashboardMobileProps> = ({ dashboardData 
                   <Text strong style={{ fontSize: '15px', color: '#0F172A' }}>{availableItems} / {totalItems} Active</Text>
                 </div>
               </Flex>
-              <Progress type="circle" percent={totalItems > 0 ? Math.round((availableItems / totalItems) * 100) : 0} width={36} strokeWidth={10} strokeColor="#10B981" />
+              <Progress type="circle" percent={totalItems > 0 ? Math.round((availableItems / totalItems) * 100) : 0} size={36} strokeWidth={10} strokeColor="#10B981" />
             </Flex>
           </Card>
         </Col>
       </Row>
 
       {/* 3. Quick Actions */}
-      <Card title={<Text strong style={{ fontSize: '14px', color: '#0F172A' }}>Quick Actions</Text>} bodyStyle={{ padding: '12px' }} style={{ borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+      <Card title={<Text strong style={{ fontSize: '14px', color: '#0F172A' }}>Quick Actions</Text>} styles={{ body: { padding: '12px' } }} style={{ borderRadius: '16px', border: '1px solid #E2E8F0' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
           {[
             { title: 'Add Category', icon: <PlusOutlined />, color: '#F97316', bg: '#FFF7ED', path: '/menu' },
@@ -156,9 +156,9 @@ export const DashboardMobile: React.FC<DashboardMobileProps> = ({ dashboardData 
       </Card>
 
       {/* 4. Menu Status Completion */}
-      <Card title={<Text strong style={{ fontSize: '14px', color: '#0F172A' }}>Setup Status</Text>} bodyStyle={{ padding: '16px' }} style={{ borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+      <Card title={<Text strong style={{ fontSize: '14px', color: '#0F172A' }}>Setup Status</Text>} styles={{ body: { padding: '16px' } }} style={{ borderRadius: '16px', border: '1px solid #E2E8F0' }}>
         <Flex align="center" gap={16}>
-          <Progress type="circle" percent={completionProgress} width={60} strokeWidth={8} strokeColor="#F97316" />
+          <Progress type="circle" percent={completionProgress} size={60} strokeWidth={8} strokeColor="#F97316" />
           <div style={{ flex: 1 }}>
             <Text strong style={{ fontSize: '13px', display: 'block', color: '#0F172A', marginBottom: '2px' }}>
               Menu Completion: {completionProgress}%
@@ -180,7 +180,7 @@ export const DashboardMobile: React.FC<DashboardMobileProps> = ({ dashboardData 
             <Text strong style={{ fontSize: '14px', color: '#0F172A' }}>Recent Activity</Text>
           </Flex>
         }
-        bodyStyle={{ padding: '24px 12px' }}
+        styles={{ body: { padding: '24px 12px' } }}
         style={{ borderRadius: '16px', border: '1px solid #E2E8F0', marginBottom: '16px' }}
       >
         <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={<Text type="secondary" style={{ fontSize: '12px' }}>No updates recorded today.</Text>} />

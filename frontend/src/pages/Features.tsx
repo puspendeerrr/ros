@@ -52,7 +52,7 @@ export const Features: React.FC = () => {
           {details.map((item, idx) => (
             <Col xs={24} md={12} key={idx}>
               <Card 
-                bordered={false} 
+                variant="borderless" 
                 style={{ 
                   borderRadius: '20px', 
                   border: '1px solid #E2E8F0', 

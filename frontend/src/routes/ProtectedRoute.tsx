@@ -1,7 +1,9 @@
 import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/auth.store.js';
-import { Spin, Flex } from 'antd';
+import { Spin, Flex, Typography } from 'antd';
+
+const { Text } = Typography;
 
 export const ProtectedRoute: React.FC = () => {
   const { isAuthenticated, isLoading, profileLoaded, restaurant } = useAuthStore();
@@ -10,8 +12,9 @@ export const ProtectedRoute: React.FC = () => {
   // 1. Still determining auth state (initial app load)
   if (isLoading) {
     return (
-      <Flex align="center" justify="center" style={{ minHeight: '100vh', backgroundColor: '#FAFAFA' }}>
-        <Spin size="large" tip="Verifying session..." />
+      <Flex vertical align="center" justify="center" gap={12} style={{ minHeight: '100vh', backgroundColor: '#FAFAFA' }}>
+        <Spin size="large" />
+        <Text type="secondary">Verifying session...</Text>
       </Flex>
     );
   }
@@ -25,8 +28,9 @@ export const ProtectedRoute: React.FC = () => {
   // This prevents routing decisions based on stale cached data
   if (!profileLoaded) {
     return (
-      <Flex align="center" justify="center" style={{ minHeight: '100vh', backgroundColor: '#FAFAFA' }}>
-        <Spin size="large" tip="Loading profile..." />
+      <Flex vertical align="center" justify="center" gap={12} style={{ minHeight: '100vh', backgroundColor: '#FAFAFA' }}>
+        <Spin size="large" />
+        <Text type="secondary">Loading profile...</Text>
       </Flex>
     );
   }
@@ -49,8 +53,9 @@ export const PublicOnlyRoute: React.FC = () => {
 
   if (isLoading) {
     return (
-      <Flex align="center" justify="center" style={{ minHeight: '100vh', backgroundColor: '#FAFAFA' }}>
-        <Spin size="large" tip="Verifying session..." />
+      <Flex vertical align="center" justify="center" gap={12} style={{ minHeight: '100vh', backgroundColor: '#FAFAFA' }}>
+        <Spin size="large" />
+        <Text type="secondary">Verifying session...</Text>
       </Flex>
     );
   }
@@ -59,8 +64,9 @@ export const PublicOnlyRoute: React.FC = () => {
     // Wait for profile before deciding redirect destination
     if (!profileLoaded) {
       return (
-        <Flex align="center" justify="center" style={{ minHeight: '100vh', backgroundColor: '#FAFAFA' }}>
-          <Spin size="large" tip="Loading profile..." />
+        <Flex vertical align="center" justify="center" gap={12} style={{ minHeight: '100vh', backgroundColor: '#FAFAFA' }}>
+          <Spin size="large" />
+          <Text type="secondary">Loading profile...</Text>
         </Flex>
       );
     }

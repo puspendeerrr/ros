@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getImageUrl } from '../utils/image.js';
 import { Card, Typography, Button, Flex, Space, Input, InputNumber, Popconfirm, Table, Tooltip, message, Spin, Segmented } from 'antd';
 import {
   PrinterOutlined,
@@ -99,9 +100,7 @@ export const QRMenu: React.FC = () => {
   const publicUrl = qrData?.data?.publicUrl || '';
   const slug = qrData?.data?.restaurantSlug || 'menu';
   const restaurantName = restaurant?.restaurantName || 'My Restaurant';
-  const logoUrl = restaurant?.logoUrl 
-    ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${restaurant.logoUrl}`
-    : null;
+  const logoUrl = getImageUrl(restaurant?.logoUrl);
 
   // Sync Table QR list initial default table
   useEffect(() => {
@@ -543,8 +542,9 @@ export const QRMenu: React.FC = () => {
 
   if (isLoading) {
     return (
-      <Flex align="center" justify="center" style={{ minHeight: '60vh' }}>
-        <Spin size="large" tip="Loading standee designer..." />
+      <Flex vertical align="center" justify="center" gap={12} style={{ minHeight: '60vh' }}>
+        <Spin size="large" />
+        <Text type="secondary">Loading standee designer...</Text>
       </Flex>
     );
   }
@@ -867,7 +867,7 @@ export const QRMenu: React.FC = () => {
           </div>
 
           {/* Transition link to Table QR panel */}
-          <Card bordered={false} style={{ width: '100%', maxWidth: '340px', borderRadius: '16px', background: '#F1F5F9', border: '1px solid #E2E8F0', marginTop: '12px' }} bodyStyle={{ padding: '12px 16px' }}>
+          <Card variant="borderless" style={{ width: '100%', maxWidth: '340px', borderRadius: '16px', background: '#F1F5F9', border: '1px solid #E2E8F0', marginTop: '12px' }} styles={{ body: { padding: '12px 16px' } }}>
             <Flex justify="space-between" align="center">
               <div>
                 <Text strong style={{ fontSize: '13px', color: '#1E293B', display: 'block' }}>Need Table-wise QR?</Text>
@@ -891,7 +891,7 @@ export const QRMenu: React.FC = () => {
           </Flex>
 
           {/* Table standee configurations */}
-          <Card bordered={false} style={{ borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+          <Card variant="borderless" style={{ borderRadius: '16px', border: '1px solid #E2E8F0' }}>
             <Space direction="vertical" size={16} style={{ width: '100%' }}>
               
               <Segmented
@@ -935,7 +935,7 @@ export const QRMenu: React.FC = () => {
           </Card>
 
           {/* Active List */}
-          <Card bordered={false} title={<Text strong style={{ fontSize: '14px', color: '#0F172A' }}>Active Table QR Codes</Text>} style={{ borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+          <Card variant="borderless" title={<Text strong style={{ fontSize: '14px', color: '#0F172A' }}>Active Table QR Codes</Text>} style={{ borderRadius: '16px', border: '1px solid #E2E8F0' }}>
             <Table
               dataSource={tableList}
               rowKey="id"

@@ -59,7 +59,7 @@ export const ResetPassword: React.FC = () => {
 
   if (!token) {
     return (
-      <Card bordered={false} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
+      <Card variant="borderless" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
         <Alert
           message="Invalid Link"
           description="The password reset token is missing from the link URL. Please request a new link."
@@ -79,7 +79,7 @@ export const ResetPassword: React.FC = () => {
 
   if (isSuccess) {
     return (
-      <Card bordered={false} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
+      <Card variant="borderless" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
         <Result
           status="success"
           title="Password Reset Successful"
@@ -97,7 +97,7 @@ export const ResetPassword: React.FC = () => {
   }
 
   return (
-    <Card bordered={false} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
+    <Card variant="borderless" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
       <div style={{ marginBottom: '24px' }}>
         <Title level={3} style={{ margin: '0 0 8px 0', fontWeight: 700, letterSpacing: '-0.5px' }}>
           Reset your password

@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Card, Progress, Input, Button, Upload, Flex, Typography, Space, Empty, Spin, Switch, Row, Col, message, Select, InputNumber, Badge } from 'antd';
 import {
-  ShopOutlined,
   ArrowLeftOutlined,
-  UploadOutlined,
   CameraOutlined,
   CopyOutlined,
-  ShareAltOutlined,
   DownloadOutlined,
   PlusOutlined,
+  ShareAltOutlined,
+  ShopOutlined,
+  UploadOutlined,
 } from '@ant-design/icons';
-import { useAuthStore } from '../store/auth.store';
-import { restaurantService } from '../services/restaurant.service';
-import { menuService } from '../services/menu.service';
-import { QRCodeCanvas } from 'qrcode.react';
-import logoIcon from '../assets/logo-icon.png';
+import { Clipboard } from '@capacitor/clipboard';
 import { Capacitor } from '@capacitor/core';
 import { Share } from '@capacitor/share';
-import { Clipboard } from '@capacitor/clipboard';
+import { Badge, Button, Card, Col, Empty, Flex, Input, InputNumber, message, Progress, Row, Select, Space, Spin, Switch, Typography, Upload } from 'antd';
+import { QRCodeCanvas } from 'qrcode.react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import logoIcon from '../assets/logo-icon.png';
+import { menuService } from '../services/menu.service';
+import { restaurantService } from '../services/restaurant.service';
+import { useAuthStore } from '../store/auth.store';
+import { getImageUrl } from '../utils/image.js';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -111,9 +112,9 @@ export const Onboarding: React.FC = () => {
         setOpeningTime(normalizeTimeTo24h(rData.openingTime, '10:00'));
         setClosingTime(normalizeTimeTo24h(rData.closingTime, '22:00'));
         setSlug(rData.slug || '');
-        
-        if (rData.logoUrl) setLogoPreview(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${rData.logoUrl}`);
-        if (rData.coverImageUrl) setCoverPreview(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${rData.coverImageUrl}`);
+
+        if (rData.logoUrl) setLogoPreview(getImageUrl(rData.logoUrl));
+        if (rData.coverImageUrl) setCoverPreview(getImageUrl(rData.coverImageUrl));
 
         // Fetch categories & items
         const catRes = await menuService.getCategories();
@@ -183,7 +184,7 @@ export const Onboarding: React.FC = () => {
     try {
       const res = await restaurantService.uploadImage(file);
       await restaurantService.updateProfile({ logoUrl: res.data.imageUrl });
-      setLogoPreview(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${res.data.imageUrl}`);
+      setLogoPreview(getImageUrl(res.data.imageUrl));
       message.success('Logo uploaded successfully.');
     } catch (err) {
       message.error('Failed to upload logo.');
@@ -197,7 +198,7 @@ export const Onboarding: React.FC = () => {
     try {
       const res = await restaurantService.uploadImage(file);
       await restaurantService.updateProfile({ coverImageUrl: res.data.imageUrl });
-      setCoverPreview(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${res.data.imageUrl}`);
+      setCoverPreview(getImageUrl(res.data.imageUrl));
       message.success('Cover image uploaded.');
     } catch (err) {
       message.error('Failed to upload cover image.');
@@ -315,8 +316,9 @@ export const Onboarding: React.FC = () => {
 
   if (loading && currentStep === 1) {
     return (
-      <Flex align="center" justify="center" style={{ minHeight: '100vh', background: '#F8FAFC' }}>
-        <Spin size="large" tip="Loading onboarding..." />
+      <Flex vertical align="center" justify="center" gap={12} style={{ minHeight: '100vh', background: '#F8FAFC' }}>
+        <Spin size="large" />
+        <Text type="secondary">Loading onboarding...</Text>
       </Flex>
     );
   }
@@ -327,7 +329,7 @@ export const Onboarding: React.FC = () => {
 
   return (
     <div style={{ background: '#F8FAFC', minHeight: '100vh', padding: '40px 16px' }}>
-      
+
       {/* Confetti styles & shimmer keyframes */}
       <style>{`
         @keyframes pop {
@@ -340,7 +342,7 @@ export const Onboarding: React.FC = () => {
       `}</style>
 
       <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-        
+
         {/* Step Indicator */}
         {currentStep < 8 && (
           <div style={{ marginBottom: '24px' }}>
@@ -352,8 +354,8 @@ export const Onboarding: React.FC = () => {
           </div>
         )}
 
-        <Card bordered={false} className="pop-card" style={{ borderRadius: '20px', boxShadow: '0 10px 30px rgba(15,23,42,0.04)', overflow: 'hidden' }}>
-          
+        <Card variant="borderless" className="pop-card" style={{ borderRadius: '20px', boxShadow: '0 10px 30px rgba(15,23,42,0.04)', overflow: 'hidden' }}>
+
           {/* STEP 1: Welcome Splash */}
           {currentStep === 1 && (
             <Flex vertical gap={24} align="center" style={{ textAlign: 'center', padding: '20px 12px' }}>
@@ -683,7 +685,7 @@ export const Onboarding: React.FC = () => {
               </div>
 
               {/* Simple card preview of public menu styling */}
-              <Card style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px' }} bodyStyle={{ padding: '20px' }}>
+              <Card style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px' }} styles={{ body: { padding: '20px' } }}>
                 <Flex align="center" gap={12}>
                   {logoPreview ? (
                     <img src={logoPreview} alt="Logo" loading="lazy" style={{ width: '56px', height: '56px', borderRadius: '12px', objectFit: 'cover' }} />

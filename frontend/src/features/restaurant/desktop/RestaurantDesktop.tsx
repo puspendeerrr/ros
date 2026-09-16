@@ -1,3 +1,5 @@
+import { getImageUrl } from '../../../utils/image.js';
+
 import React from 'react';
 import {
   Card,
@@ -67,8 +69,9 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
 
   if (isProfileLoading) {
     return (
-      <Flex align="center" justify="center" style={{ minHeight: 'calc(100vh - 64px)' }}>
-        <Spin size="large" tip="Loading restaurant profile..." />
+      <Flex vertical align="center" justify="center" gap={12} style={{ minHeight: 'calc(100vh - 64px)' }}>
+        <Spin size="large" />
+        <Text type="secondary">Loading restaurant profile...</Text>
       </Flex>
     );
   }
@@ -91,7 +94,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
 
             {/* Profile Completion Card */}
             <Card
-              bordered={false}
+              variant="borderless"
               style={{
                 borderRadius: '16px',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.02)',
@@ -124,7 +127,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
 
             {/* Setup Checklist Card */}
             <Card
-              bordered={false}
+              variant="borderless"
               style={{
                 borderRadius: '16px',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.02)',
@@ -171,7 +174,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
 
             {/* Form Editor Card */}
             <Card
-              bordered={false}
+              variant="borderless"
               style={{
                 borderRadius: '16px',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.02)',
@@ -194,7 +197,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
                       <Flex vertical align="center" gap={12} style={{ border: '1px dashed #CBD5E1', padding: '16px', borderRadius: '12px', background: '#F8FAFC' }}>
                         {logoPreview ? (
                           <img
-                            src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${logoPreview}`}
+                            src={getImageUrl(logoPreview)}
                             alt="Logo"
                             loading="lazy"
                             style={{ width: '80px', height: '80px', borderRadius: '12px', objectFit: 'cover', border: '1px solid #E2E8F0' }}
@@ -220,7 +223,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
                       <Flex vertical align="center" gap={12} style={{ border: '1px dashed #CBD5E1', padding: '16px', borderRadius: '12px', background: '#F8FAFC', height: '100%', minHeight: '144px', justifySelf: 'stretch', justifyContent: 'center' }}>
                         {coverPreview ? (
                           <img
-                            src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${coverPreview}`}
+                            src={getImageUrl(coverPreview)}
                             alt="Cover"
                             loading="lazy"
                             style={{ width: '100%', height: '54px', borderRadius: '8px', objectFit: 'cover', border: '1px solid #E2E8F0' }}
@@ -368,7 +371,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
           <Space direction="vertical" size={24} style={{ width: '100%', position: 'sticky', top: '24px' }}>
             
             {/* Action Bar */}
-            <Card bordered={false} style={{ borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)' }}>
+            <Card variant="borderless" style={{ borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)' }}>
               <Space direction="vertical" size={12} style={{ width: '100%' }}>
                 <Button
                   type="primary"
@@ -399,7 +402,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
 
             {/* Public QR Code Card */}
             <Card
-              bordered={false}
+              variant="borderless"
               style={{
                 borderRadius: '16px',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.02)',
@@ -445,7 +448,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
 
             {/* Diner Live View Preview Card */}
             <Card
-              bordered={false}
+              variant="borderless"
               style={{
                 borderRadius: '16px',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.02)',

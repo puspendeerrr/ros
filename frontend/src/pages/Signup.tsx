@@ -71,7 +71,7 @@ export const Signup: React.FC = () => {
 
   if (isSuccess) {
     return (
-      <Card bordered={false} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
+      <Card variant="borderless" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
         <Result
           status="success"
           title="Account Created Successfully"
@@ -89,7 +89,7 @@ export const Signup: React.FC = () => {
   }
 
   return (
-    <Card bordered={false} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
+    <Card variant="borderless" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
       <div style={{ marginBottom: '24px' }}>
         <Title level={3} style={{ margin: '0 0 8px 0', fontWeight: 700, letterSpacing: '-0.5px' }}>
           Create owner account

@@ -68,7 +68,7 @@ export const AppRoutes: React.FC = () => {
   }, [setAccessToken, logout, setLoading, setAuth, setProfileLoaded]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <ScrollToTop />
       <AnimatePresence>
         {showSplash && <SplashLoader />}

@@ -1,3 +1,4 @@
+import { getImageUrl } from '../../../utils/image.js';
 import React from 'react';
 import {
   Card,
@@ -26,7 +27,6 @@ import { FoodVegIndicator } from '../../../components/FoodVegIndicator';
 import { Capacitor } from '@capacitor/core';
 
 const { Text, Paragraph } = Typography;
-const { Panel } = Collapse;
 
 interface MenuMobileProps {
   menuData: any; // Return type of useMenu hook
@@ -112,40 +112,38 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
           onChange={(key) => setSelectedCategoryId(Array.isArray(key) ? key[0] : key)}
           expandIconPosition="end"
           style={{ background: 'transparent' }}
-        >
-          {categories.map((category: Category) => {
+          items={categories.map((category: Category) => {
             const categoryItems = getItemsByCategory(category.id);
-            return (
-              <Panel
-                header={
-                  <Flex justify="space-between" align="center" style={{ width: '100%' }}>
-                    <Text strong style={{ fontSize: '16px', color: '#0F172A', wordBreak: 'break-word' }}>
-                      {category.name}
-                    </Text>
-                    <span
-                      style={{
-                        background: '#E2E8F0',
-                        color: '#475569',
-                        padding: '2px 8px',
-                        borderRadius: '12px',
-                        fontSize: '11px',
-                        fontWeight: 600,
-                      }}
-                    >
-                      {categoryItems.length}
-                    </span>
-                  </Flex>
-                }
-                key={category.id}
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: '12px',
-                  marginBottom: '12px',
-                  border: '1px solid #E2E8F0',
-                  boxShadow: '0 2px 8px rgba(15, 23, 42, 0.02)',
-                }}
-              >
-                {categoryItems.length === 0 ? (
+            return {
+              key: category.id,
+              label: (
+                <Flex justify="space-between" align="center" style={{ width: '100%' }}>
+                  <Text strong style={{ fontSize: '16px', color: '#0F172A', wordBreak: 'break-word' }}>
+                    {category.name}
+                  </Text>
+                  <span
+                    style={{
+                      background: '#E2E8F0',
+                      color: '#475569',
+                      padding: '2px 8px',
+                      borderRadius: '12px',
+                      fontSize: '11px',
+                      fontWeight: 600,
+                    }}
+                  >
+                    {categoryItems.length}
+                  </span>
+                </Flex>
+              ),
+              style: {
+                background: '#FFFFFF',
+                borderRadius: '12px',
+                marginBottom: '12px',
+                border: '1px solid #E2E8F0',
+                boxShadow: '0 2px 8px rgba(15, 23, 42, 0.02)',
+              },
+              children: (
+                categoryItems.length === 0 ? (
                   <Empty
                     description="No matching items in this category."
                     image={Empty.PRESENTED_IMAGE_SIMPLE}
@@ -155,7 +153,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
                     {categoryItems.map((item: MenuItem) => (
                       <Card
                         key={item.id}
-                        bodyStyle={{ padding: '12px' }}
+                        styles={{ body: { padding: '12px' } }}
                         style={{
                           borderRadius: '8px',
                           border: '1px solid #F1F5F9',
@@ -166,7 +164,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
                           {/* Item Image */}
                           {item.imageUrl ? (
                             <img
-                              src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
+                              src={getImageUrl(item.imageUrl)}
                               alt={item.name}
                               loading="lazy"
                               style={{
@@ -256,11 +254,11 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
                       </Card>
                     ))}
                   </div>
-                )}
-              </Panel>
-            );
+                )
+              ),
+            };
           })}
-        </Collapse>
+        />
       )}
 
       {/* Floating Action Button (FAB) */}
@@ -296,7 +294,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
         height="85%"
         onClose={() => setIsItemModalOpen(false)}
         open={isItemModalOpen}
-        bodyStyle={{ padding: '20px 16px' }}
+        styles={{ body: { padding: '20px 16px' } }}
         headerStyle={{ borderBottom: '1px solid #F1F5F9', background: '#F8FAFC' }}
         style={{ borderRadius: '16px 16px 0 0' }}
       >
@@ -375,7 +373,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
             </Flex>
             {uploadedImageUrl && (
               <img
-                src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${uploadedImageUrl}`}
+                src={getImageUrl(uploadedImageUrl)}
                 alt="Upload preview"
                 style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px', marginTop: '12px' }}
               />

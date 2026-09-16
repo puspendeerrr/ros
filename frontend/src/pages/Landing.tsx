@@ -20,7 +20,6 @@ import { HeroSection, FeaturesSection, SocialProofMetrics } from '../components/
 import { SEOManager } from '../components/SEOManager.js';
 
 const { Title, Paragraph, Text } = Typography;
-const { Panel } = Collapse;
 
 export const Landing: React.FC = () => {
   const navigate = useNavigate();
@@ -287,7 +286,7 @@ export const Landing: React.FC = () => {
 
           <Row gutter={[32, 32]}>
             <Col xs={24} md={8}>
-              <Card bordered={false} style={{ background: '#FFF7ED', border: '1px solid #FFEDD5', borderRadius: '24px', padding: '16px', height: '100%' }}>
+              <Card variant="borderless" style={{ background: '#FFF7ED', border: '1px solid #FFEDD5', borderRadius: '24px', padding: '16px', height: '100%' }}>
                 <span className="comparison-badge-green">RESTAURANT OS</span>
                 <Title level={4} style={{ marginTop: '20px', fontSize: '18px', fontWeight: 750 }}>Future-Ready QR Menus</Title>
                 <ul style={{ paddingLeft: '18px', marginTop: '16px', lineHeight: '2', color: '#475569' }}>
@@ -299,7 +298,7 @@ export const Landing: React.FC = () => {
             </Col>
 
             <Col xs={24} md={8}>
-              <Card bordered={false} style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '24px', padding: '16px', height: '100%' }}>
+              <Card variant="borderless" style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '24px', padding: '16px', height: '100%' }}>
                 <span className="comparison-badge-red">TRADITIONAL PDF/PRINT</span>
                 <Title level={4} style={{ marginTop: '20px', fontSize: '18px', fontWeight: 750 }}>High Operational Friction</Title>
                 <ul style={{ paddingLeft: '18px', marginTop: '16px', lineHeight: '2', color: '#64748B' }}>
@@ -311,7 +310,7 @@ export const Landing: React.FC = () => {
             </Col>
 
             <Col xs={24} md={8}>
-              <Card bordered={false} style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '24px', padding: '16px', height: '100%' }}>
+              <Card variant="borderless" style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '24px', padding: '16px', height: '100%' }}>
                 <span className="comparison-badge-red">AGGREGATOR APPS</span>
                 <Title level={4} style={{ marginTop: '20px', fontSize: '18px', fontWeight: 750 }}>Severe Commission Deductions</Title>
                 <ul style={{ paddingLeft: '18px', marginTop: '16px', lineHeight: '2', color: '#64748B' }}>
@@ -449,19 +448,19 @@ export const Landing: React.FC = () => {
                   </div>
                   <Row gutter={[24, 24]}>
                     <Col xs={24} md={8}>
-                      <Card bordered={false} style={{ background: '#1E293B', color: '#FFFFFF', borderRadius: '14px' }}>
+                      <Card variant="borderless" style={{ background: '#1E293B', color: '#FFFFFF', borderRadius: '14px' }}>
                         <Text type="secondary" style={{ color: '#94A3B8', fontSize: '13px' }}>TOTAL MENU VIEWS</Text>
                         <Title level={2} style={{ color: '#FFFFFF', margin: '8px 0 0 0', fontWeight: 900 }}>18,492</Title>
                       </Card>
                     </Col>
                     <Col xs={24} md={8}>
-                      <Card bordered={false} style={{ background: '#1E293B', color: '#FFFFFF', borderRadius: '14px' }}>
+                      <Card variant="borderless" style={{ background: '#1E293B', color: '#FFFFFF', borderRadius: '14px' }}>
                         <Text type="secondary" style={{ color: '#94A3B8', fontSize: '13px' }}>QR SCANS FOR TABLES</Text>
                         <Title level={2} style={{ color: '#FFFFFF', margin: '8px 0 0 0', fontWeight: 900 }}>4,921</Title>
                       </Card>
                     </Col>
                     <Col xs={24} md={8}>
-                      <Card bordered={false} style={{ background: '#1E293B', color: '#FFFFFF', borderRadius: '14px' }}>
+                      <Card variant="borderless" style={{ background: '#1E293B', color: '#FFFFFF', borderRadius: '14px' }}>
                         <Text type="secondary" style={{ color: '#94A3B8', fontSize: '13px' }}>COMPLETION RATING</Text>
                         <Title level={2} style={{ color: '#F97316', margin: '8px 0 0 0', fontWeight: 900 }}>100% Ready</Title>
                       </Card>
@@ -683,22 +682,20 @@ export const Landing: React.FC = () => {
 
           <Collapse 
             accordion 
-            bordered={false} 
+            ghost
             expandIconPosition="end"
             style={{ background: 'transparent' }}
-          >
-            {faqsList.map((faq, idx) => (
-              <Panel 
-                header={<span style={{ fontWeight: 700, color: '#0F172A', fontSize: '15px' }}>{faq.q}</span>} 
-                key={idx}
-                style={{ background: '#FFFFFF', borderRadius: '14px', marginBottom: '12px', border: '1px solid #E2E8F0', overflow: 'hidden' }}
-              >
+            items={faqsList.map((faq, idx) => ({
+              key: String(idx),
+              label: <span style={{ fontWeight: 700, color: '#0F172A', fontSize: '15px' }}>{faq.q}</span>,
+              style: { background: '#FFFFFF', borderRadius: '14px', marginBottom: '12px', border: '1px solid #E2E8F0', overflow: 'hidden' },
+              children: (
                 <Paragraph style={{ color: '#475569', fontSize: '13.5px', lineHeight: '1.6', margin: 0 }}>
                   {faq.a}
                 </Paragraph>
-              </Panel>
-            ))}
-          </Collapse>
+              ),
+            }))}
+          />
         </div>
       </section>
 

@@ -141,7 +141,7 @@ export const MainLayout: React.FC = () => {
                 borderRadius: '12px',
                 marginBottom: '12px',
               }}
-              bodyStyle={{ padding: '12px' }}
+              styles={{ body: { padding: '12px' } }}
             >
               <Flex vertical gap={8}>
                 <div>

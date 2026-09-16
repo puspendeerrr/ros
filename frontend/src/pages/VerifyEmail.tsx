@@ -17,7 +17,7 @@ export const VerifyEmail: React.FC = () => {
 
   if (!token) {
     return (
-      <Card bordered={false} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
+      <Card variant="borderless" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
         <Result
           status="warning"
           title="Verification Token Missing"
@@ -34,7 +34,7 @@ export const VerifyEmail: React.FC = () => {
 
   if (isLoading) {
     return (
-      <Card bordered={false} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '40px 12px' }}>
+      <Card variant="borderless" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '40px 12px' }}>
         <Flex vertical align="center" justify="center" gap={20}>
           <Spin size="large" />
           <div style={{ fontSize: '15px', fontWeight: 500, color: '#475569' }}>
@@ -47,7 +47,7 @@ export const VerifyEmail: React.FC = () => {
 
   if (isSuccess) {
     return (
-      <Card bordered={false} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
+      <Card variant="borderless" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
         <Result
           status="success"
           title="Email Verified Successfully!"
@@ -65,7 +65,7 @@ export const VerifyEmail: React.FC = () => {
   }
 
   return (
-    <Card bordered={false} style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
+    <Card variant="borderless" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)', padding: '12px' }}>
       <Result
         status="error"
         title="Verification Failed"

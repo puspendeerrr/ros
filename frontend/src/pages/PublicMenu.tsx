@@ -1,3 +1,4 @@
+import { getImageUrl } from '../utils/image.js';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -14,13 +15,11 @@ import {
 } from '@ant-design/icons';
 import { menuService } from '../services/menu.service.js';
 import logoIcon from '../assets/logo-icon.png';
-import { FoodVegIndicator } from '../components/FoodVegIndicator';
 import { Capacitor } from '@capacitor/core';
 import { Share } from '@capacitor/share';
 import { Clipboard } from '@capacitor/clipboard';
 
 const { Title, Text, Paragraph } = Typography;
-const { Option } = Select;
 
 // Blur placeholder SVG / Fork and Knife
 const ForkKnifePlaceholder: React.FC = () => (
@@ -399,7 +398,7 @@ export const PublicMenu: React.FC = () => {
         style={{
           height: '180px',
           backgroundImage: restaurant.coverImageUrl 
-            ? `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${restaurant.coverImageUrl})`
+            ? `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(${getImageUrl(restaurant.coverImageUrl)})`
             : 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
           backgroundPosition: 'center',
           backgroundSize: 'cover',
@@ -412,21 +411,21 @@ export const PublicMenu: React.FC = () => {
         
         {/* Restaurant Profile Card */}
         <Card
-          bordered={false}
+          variant="borderless"
           style={{
             borderRadius: '16px',
             boxShadow: '0 4px 20px rgba(15, 23, 42, 0.05)',
             marginBottom: '16px',
             background: '#FFFFFF'
           }}
-          bodyStyle={{ padding: '24px 20px' }}
+          styles={{ body: { padding: '24px 20px' } }}
           className="public-restaurant-card-body"
         >
           <Flex align="start" gap={16}>
             {/* Logo */}
             {restaurant.logoUrl ? (
               <img
-                src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${restaurant.logoUrl}`}
+                src={getImageUrl(restaurant.logoUrl)}
                 alt={restaurant.restaurantName}
                 loading="lazy"
                 style={{
@@ -528,7 +527,7 @@ export const PublicMenu: React.FC = () => {
 
         {/* 5. Sticky Search & Combined Filters Area */}
         <Card
-          bordered={false}
+          variant="borderless"
           style={{
             borderRadius: '16px',
             boxShadow: '0 4px 12px rgba(15,23,42,0.02)',
@@ -539,7 +538,7 @@ export const PublicMenu: React.FC = () => {
             background: '#FFFFFF',
             border: '1px solid #E2E8F0'
           }}
-          bodyStyle={{ padding: '12px' }}
+          styles={{ body: { padding: '12px' } }}
         >
           <Flex vertical gap={8}>
             {/* Input Search */}
@@ -612,13 +611,13 @@ export const PublicMenu: React.FC = () => {
               <Select
                 value={sortBy}
                 onChange={(val) => setSortBy(val)}
-                bordered={false}
+                variant="borderless"
                 style={{ marginLeft: 'auto', fontSize: '11px', fontWeight: 600 }}
                 dropdownStyle={{ zIndex: 1000 }}
               >
-                <Option value="default">Sort: Default</Option>
-                <Option value="price-low">Price: Low to High</Option>
-                <Option value="price-high">Price: High to Low</Option>
+                <Select.Option value="default">Sort: Default</Select.Option>
+                <Select.Option value="price-low">Price: Low to High</Select.Option>
+                <Select.Option value="price-high">Price: High to Low</Select.Option>
               </Select>
             </Flex>
           </Flex>
@@ -675,7 +674,7 @@ export const PublicMenu: React.FC = () => {
 
         {/* 7. Menu Categories List */}
         {!hasCategories || !hasAnyProcessedItems ? (
-          <Card bordered={false} style={{ borderRadius: '16px', textAlign: 'center', padding: '40px 0', border: '1px solid #E2E8F0' }}>
+          <Card variant="borderless" style={{ borderRadius: '16px', textAlign: 'center', padding: '40px 0', border: '1px solid #E2E8F0' }}>
             <Empty
               description={
                 <Flex vertical gap={8} align="center">
@@ -719,52 +718,60 @@ export const PublicMenu: React.FC = () => {
                       return (
                         <Card
                           key={item.id}
-                          bordered={false}
+                          variant="borderless"
                           style={{
                             borderRadius: '16px',
                             border: '1px solid #E2E8F0',
                             boxShadow: '0 2px 8px rgba(15,23,42,0.01)',
                             overflow: 'hidden'
                           }}
-                          bodyStyle={{ padding: '16px' }}
+                          styles={{ body: { padding: '16px' } }}
                         >
                           <Flex gap={16} align="start">
                             
                             {/* Main Details */}
                             <div style={{ flex: 1, minWidth: 0 }}>
                               <Flex align="center" gap={8} wrap="wrap" style={{ marginBottom: '6px' }}>
-                                <FoodVegIndicator isVeg={item.isVeg} />
+                                {/* Dietary Veg/Non-Veg Badge Icon */}
+                                {item.dietaryType === 'VEG' && (
+                                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '16px', height: '16px', border: '1.5px solid #16A34A', borderRadius: '4px', padding: '2px' }}>
+                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#16A34A' }} />
+                                  </span>
+                                )}
+                                {item.dietaryType === 'NON_VEG' && (
+                                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '16px', height: '16px', border: '1.5px solid #DC2626', borderRadius: '4px', padding: '2px' }}>
+                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#DC2626' }} />
+                                  </span>
+                                )}
+                                {item.dietaryType === 'EGG' && (
+                                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '16px', height: '16px', border: '1.5px solid #D97706', borderRadius: '4px', padding: '2px' }}>
+                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#D97706' }} />
+                                  </span>
+                                )}
+
                                 {isBest && (
-                                  <span style={{
-                                    fontSize: '9px',
-                                    fontWeight: 700,
-                                    padding: '2px 6px',
-                                    borderRadius: '4px',
-                                    background: '#FFF7ED',
-                                    color: '#EA580C',
-                                    border: '1px solid #FFEDD5'
-                                  }}>
-                                    ⭐ Bestseller
+                                  <span style={{ fontSize: '10px', fontWeight: 700, color: '#D97706', background: '#FEF3C7', padding: '2px 6px', borderRadius: '4px' }}>
+                                    ★ Bestseller
                                   </span>
                                 )}
                               </Flex>
 
-                              <Title level={5} style={{ margin: '0 0 4px 0', fontWeight: 700, color: '#1E293B', fontSize: '15px' }}>
+                              <Title level={5} style={{ margin: '0 0 4px 0', fontSize: '15px', fontWeight: 700, color: '#0F172A' }}>
                                 {item.name}
                               </Title>
 
+                              <Text strong style={{ fontSize: '14px', color: '#1E293B', display: 'block', marginBottom: '6px' }}>
+                                ₹{item.price}
+                              </Text>
+
                               {item.description && (
-                                <Paragraph type="secondary" ellipsis={{ rows: 2 }} style={{ margin: '0 0 8px 0', fontSize: '12px', lineHeight: '1.4' }}>
+                                <Paragraph
+                                  ellipsis={{ rows: 2, expandable: true, symbol: 'more' }}
+                                  style={{ color: '#64748B', fontSize: '12px', margin: 0, lineHeight: '1.4' }}
+                                >
                                   {item.description}
                                 </Paragraph>
                               )}
-
-                              {/* Price tags row */}
-                              <Flex align="center" gap={8}>
-                                <Text strong style={{ color: '#F97316', fontSize: '16px', fontWeight: 700 }}>
-                                  ₹{Number(item.price).toFixed(2)}
-                                </Text>
-                              </Flex>
 
                               {/* Prep Time Tag */}
                               <Text type="secondary" style={{ fontSize: '11px', display: 'block', marginTop: '6px' }}>
@@ -776,7 +783,7 @@ export const PublicMenu: React.FC = () => {
                             <div style={{ position: 'relative', flexShrink: 0 }}>
                               {item.imageUrl ? (
                                 <img
-                                  src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
+                                  src={getImageUrl(item.imageUrl)}
                                   alt={item.name}
                                   style={{
                                     width: '88px',

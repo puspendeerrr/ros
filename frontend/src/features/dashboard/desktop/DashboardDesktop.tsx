@@ -76,7 +76,7 @@ export const DashboardDesktop: React.FC<DashboardDesktopProps> = ({ dashboardDat
         {/* Quick Statistics Cards */}
         <Row gutter={[16, 16]}>
           <Col xs={12} sm={12} lg={6}>
-            <Card bordered={false} style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
+            <Card variant="borderless" style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
               <Statistic
                 title={<Text type="secondary" style={{ fontSize: '13px', fontWeight: 500 }}>Categories</Text>}
                 value={totalCategories}
@@ -87,7 +87,7 @@ export const DashboardDesktop: React.FC<DashboardDesktopProps> = ({ dashboardDat
             </Card>
           </Col>
           <Col xs={12} sm={12} lg={6}>
-            <Card bordered={false} style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
+            <Card variant="borderless" style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
               <Statistic
                 title={<Text type="secondary" style={{ fontSize: '13px', fontWeight: 500 }}>Total Items</Text>}
                 value={totalItems}
@@ -98,7 +98,7 @@ export const DashboardDesktop: React.FC<DashboardDesktopProps> = ({ dashboardDat
             </Card>
           </Col>
           <Col xs={12} sm={12} lg={6}>
-            <Card bordered={false} style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
+            <Card variant="borderless" style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
               <Statistic
                 title={<Text type="secondary" style={{ fontSize: '13px', fontWeight: 500 }}>Available Items</Text>}
                 value={availableItems}
@@ -109,7 +109,7 @@ export const DashboardDesktop: React.FC<DashboardDesktopProps> = ({ dashboardDat
             </Card>
           </Col>
           <Col xs={12} sm={12} lg={6}>
-            <Card bordered={false} style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
+            <Card variant="borderless" style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9' }}>
               <Statistic
                 title={<Text type="secondary" style={{ fontSize: '13px', fontWeight: 500 }}>Unavailable Items</Text>}
                 value={unavailableItems}
@@ -143,7 +143,7 @@ export const DashboardDesktop: React.FC<DashboardDesktopProps> = ({ dashboardDat
         <Row gutter={[24, 24]}>
           {/* Quick Actions Panel */}
           <Col xs={24} lg={16}>
-            <Card title={<Text strong style={{ fontSize: '16px', color: '#0F172A' }}>Quick Actions</Text>} bordered={false} style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9', height: '100%' }}>
+            <Card title={<Text strong style={{ fontSize: '16px', color: '#0F172A' }}>Quick Actions</Text>} variant="borderless" style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9', height: '100%' }}>
               <Row gutter={[16, 16]}>
                 <Col xs={24} sm={8}>
                   <ActionCard
@@ -185,7 +185,7 @@ export const DashboardDesktop: React.FC<DashboardDesktopProps> = ({ dashboardDat
 
           {/* Menu Status Panel */}
           <Col xs={24} lg={8}>
-            <Card title={<Text strong style={{ fontSize: '16px', color: '#0F172A' }}>Menu Status</Text>} bordered={false} style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9', height: '100%' }}>
+            <Card title={<Text strong style={{ fontSize: '16px', color: '#0F172A' }}>Menu Status</Text>} variant="borderless" style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.02)', border: '1px solid #F1F5F9', height: '100%' }}>
               <Flex vertical align="center" justify="center" style={{ padding: '24px 0', textAlign: 'center' }}>
                 <Progress
                   type="circle"
