@@ -241,10 +241,10 @@ export const PublicMenu: React.FC = () => {
   // Loading skeleton screen
   if (isLoading || showSplash) {
     return (
-      <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center p-6 text-white text-center relative overflow-hidden font-sans">
-        {/* Background ambient glow */}
-        <div className="absolute -top-20 -left-20 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-orange-600/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="min-h-screen bg-[#181818] flex flex-col items-center justify-center p-6 text-white text-center relative overflow-hidden font-sans">
+        {/* Background ambient orange glows */}
+        <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#FF6B00]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-[#FF6B00]/15 rounded-full blur-3xl pointer-events-none" />
 
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -253,14 +253,14 @@ export const PublicMenu: React.FC = () => {
           className="relative z-10 flex flex-col items-center"
         >
           {/* Logo container */}
-          <div className="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-3xl p-3 shadow-2xl border border-white/20 mb-6 flex items-center justify-center">
+          <div className="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-3xl p-3 shadow-2xl border border-[#FF6B00]/30 shadow-[#FF6B00]/20 mb-6 flex items-center justify-center">
             <img src={logoIcon} alt="ROS Logo" className="w-full h-full object-contain" />
           </div>
 
           <h1 className="text-2xl font-black tracking-tight text-white mb-2">
             {restaurant?.restaurantName || 'Restaurant OS'}
           </h1>
-          <p className="text-xs font-semibold text-orange-400 tracking-wider uppercase mb-8">
+          <p className="text-xs font-semibold text-[#FF6B00] tracking-wider uppercase mb-8">
             Digital Interactive Menu
           </p>
 
@@ -269,21 +269,21 @@ export const PublicMenu: React.FC = () => {
             <motion.span
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ repeat: Infinity, duration: 1, delay: 0 }}
-              className="w-3 h-3 bg-orange-500 rounded-full"
+              className="w-3 h-3 bg-[#FF6B00] rounded-full shadow-[0_0_10px_#FF6B00]"
             />
             <motion.span
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ repeat: Infinity, duration: 1, delay: 0.2 }}
-              className="w-3 h-3 bg-orange-500 rounded-full"
+              className="w-3 h-3 bg-[#FF6B00] rounded-full shadow-[0_0_10px_#FF6B00]"
             />
             <motion.span
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ repeat: Infinity, duration: 1, delay: 0.4 }}
-              className="w-3 h-3 bg-orange-500 rounded-full"
+              className="w-3 h-3 bg-[#FF6B00] rounded-full shadow-[0_0_10px_#FF6B00]"
             />
           </div>
 
-          <p className="text-xs text-slate-400 font-medium">Preparing fresh menu...</p>
+          <p className="text-xs text-neutral-400 font-medium">Preparing fresh menu...</p>
         </motion.div>
       </div>
     );
@@ -292,18 +292,18 @@ export const PublicMenu: React.FC = () => {
   // Error screen
   if (error || !restaurant) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
-        <div className="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 text-center border border-slate-100">
+      <div className="min-h-screen bg-[#F8F9FA] flex items-center justify-center p-6 font-sans">
+        <div className="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 text-center border border-neutral-100">
           <div className="w-16 h-16 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <Utensils className="w-8 h-8" />
           </div>
-          <h2 className="text-xl font-bold text-slate-900 mb-2">Restaurant Unavailable</h2>
-          <p className="text-sm text-slate-500 mb-6">
+          <h2 className="text-xl font-bold text-[#181818] mb-2">Restaurant Unavailable</h2>
+          <p className="text-sm text-neutral-500 mb-6">
             The requested digital menu could not be loaded or is temporarily offline.
           </p>
           <button
             onClick={() => refetch()}
-            className="w-full py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-lg shadow-orange-500/30 transition-all active:scale-95"
+            className="w-full py-3 bg-[#FF6B00] hover:bg-[#E05300] text-white font-bold rounded-xl shadow-lg shadow-[#FF6B00]/30 transition-all active:scale-95"
           >
             Retry Connection
           </button>
@@ -313,7 +313,7 @@ export const PublicMenu: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 font-sans text-slate-900 antialiased selection:bg-orange-500 selection:text-white flex justify-center">
+    <div className="min-h-screen bg-[#121212] font-sans text-[#181818] antialiased selection:bg-[#FF6B00] selection:text-white flex justify-center">
       {/* PWA Mobile Container Frame (Max 420px centered on Desktop) */}
       <div className="w-full max-w-[420px] bg-white min-h-screen shadow-2xl relative flex flex-col pb-20">
         
@@ -332,7 +332,7 @@ export const PublicMenu: React.FC = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2"
+              className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-[#181818] border border-[#FF6B00]/40 text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-[0_4px_20px_rgba(255,107,0,0.25)] flex items-center gap-2"
             >
               <Check className="w-4 h-4 text-emerald-400" />
               <span>Link copied to clipboard!</span>
@@ -341,25 +341,33 @@ export const PublicMenu: React.FC = () => {
         </AnimatePresence>
 
         {/* ========================================================================= */}
-        {/* HERO SECTION (Matches Mockup media_1789540144787.png strictly)            */}
+        {/* HERO SECTION (Restaurant OS Orange & Charcoal Brand Language)              */}
         {/* ========================================================================= */}
-        <div className="relative bg-slate-900 text-white overflow-hidden">
-          {/* Full-width Cover image with dark gradient overlay */}
-          <div className="h-44 w-full relative overflow-hidden bg-slate-800">
-            <img
-              src={getImageUrl(restaurant.coverImageUrl, 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80')}
-              onError={handleImageError}
-              alt="Restaurant Cover"
-              className="w-full h-full object-cover"
-            />
-            {/* Dark gradient overlay for extreme readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-black/30" />
+        <div className="relative bg-[#181818] text-white overflow-hidden">
+          {/* Cover image or Orange Gradient fallback */}
+          <div className="h-44 w-full relative overflow-hidden bg-[#181818]">
+            {restaurant.coverImageUrl ? (
+              <img
+                src={getImageUrl(restaurant.coverImageUrl)}
+                onError={handleImageError}
+                alt="Restaurant Cover"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-[#FF6B00] via-[#E05300] to-[#181818] flex items-center justify-center relative">
+                {/* Subtle ambient orange glow accents */}
+                <div className="absolute -top-10 -right-10 w-48 h-48 bg-amber-400/20 rounded-full blur-2xl" />
+                <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-[#FF6B00]/30 rounded-full blur-2xl" />
+              </div>
+            )}
+            {/* Dark charcoal gradient overlay for high contrast text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#181818] via-[#181818]/70 to-black/30" />
           </div>
 
           {/* Floating Restaurant Brand Header Info */}
           <div className="px-5 pb-5 -mt-12 relative z-10 text-center flex flex-col items-center">
             {/* Restaurant Logo Avatar */}
-            <div className="w-20 h-20 bg-white rounded-2xl p-1 shadow-2xl ring-4 ring-white/10 overflow-hidden mb-3 flex items-center justify-center shrink-0">
+            <div className="w-20 h-20 bg-white rounded-2xl p-1 shadow-2xl ring-4 ring-[#FF6B00]/20 border border-[#FF6B00]/30 overflow-hidden mb-3 flex items-center justify-center shrink-0 shadow-[#FF6B00]/10">
               {restaurant.logoUrl ? (
                 <img
                   src={getImageUrl(restaurant.logoUrl)}
@@ -368,7 +376,7 @@ export const PublicMenu: React.FC = () => {
                   className="w-full h-full object-cover rounded-xl"
                 />
               ) : (
-                <div className="w-full h-full bg-orange-500 text-white font-black text-2xl flex items-center justify-center rounded-xl">
+                <div className="w-full h-full bg-[#FF6B00] text-white font-black text-2xl flex items-center justify-center rounded-xl shadow-inner">
                   {restaurant.restaurantName.substring(0, 2).toUpperCase()}
                 </div>
               )}
@@ -380,20 +388,20 @@ export const PublicMenu: React.FC = () => {
             </h1>
 
             {/* Tagline / Description */}
-            <p className="text-xs text-slate-300 font-medium line-clamp-1 mb-3">
+            <p className="text-xs text-neutral-300 font-medium line-clamp-1 mb-3">
               {restaurant.description || 'Authentic Taste, Always Special'}
             </p>
 
             {/* Meta Information Badges (Location, Opening Hours, Veg) */}
-            <div className="flex items-center justify-center gap-2 flex-wrap text-[11px] font-semibold text-slate-300 mb-4">
-              <span className="flex items-center gap-1 bg-white/10 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
-                <MapPin className="w-3 h-3 text-orange-400" />
+            <div className="flex items-center justify-center gap-2 flex-wrap text-[11px] font-semibold text-neutral-200 mb-4">
+              <span className="flex items-center gap-1 bg-white/10 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
+                <MapPin className="w-3 h-3 text-[#FF6B00]" />
                 <span>{locationStr}</span>
               </span>
 
               {restaurant.openingTime && restaurant.closingTime && (
-                <span className="flex items-center gap-1 bg-white/10 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
-                  <Clock className="w-3 h-3 text-orange-400" />
+                <span className="flex items-center gap-1 bg-white/10 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
+                  <Clock className="w-3 h-3 text-[#FF6B00]" />
                   <span>Open {formatTimeDisplay(restaurant.openingTime)} - {formatTimeDisplay(restaurant.closingTime)}</span>
                 </span>
               )}
@@ -404,7 +412,7 @@ export const PublicMenu: React.FC = () => {
               </span>
 
               {isOpen && (
-                <span className="bg-emerald-500 text-white px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider">
+                <span className="bg-emerald-500 text-white px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider shadow-sm">
                   Open Now
                 </span>
               )}
@@ -415,9 +423,9 @@ export const PublicMenu: React.FC = () => {
               {restaurant.phone && (
                 <a
                   href={`tel:${restaurant.phone}`}
-                  className="flex flex-col items-center justify-center py-2 bg-white/5 hover:bg-white/10 active:scale-95 rounded-xl border border-white/10 transition-all text-white"
+                  className="flex flex-col items-center justify-center py-2 bg-white/5 hover:bg-[#FF6B00]/15 hover:border-[#FF6B00]/40 active:scale-95 rounded-xl border border-white/10 transition-all text-white group"
                 >
-                  <Phone className="w-4 h-4 text-orange-400 mb-1" />
+                  <Phone className="w-4 h-4 text-[#FF6B00] mb-1 group-hover:scale-110 transition-transform" />
                   <span className="text-[10px] font-bold">Call</span>
                 </a>
               )}
@@ -427,26 +435,26 @@ export const PublicMenu: React.FC = () => {
                   href={restaurant.googleMapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex flex-col items-center justify-center py-2 bg-white/5 hover:bg-white/10 active:scale-95 rounded-xl border border-white/10 transition-all text-white"
+                  className="flex flex-col items-center justify-center py-2 bg-white/5 hover:bg-[#FF6B00]/15 hover:border-[#FF6B00]/40 active:scale-95 rounded-xl border border-white/10 transition-all text-white group"
                 >
-                  <Navigation className="w-4 h-4 text-orange-400 mb-1" />
+                  <Navigation className="w-4 h-4 text-[#FF6B00] mb-1 group-hover:scale-110 transition-transform" />
                   <span className="text-[10px] font-bold">Directions</span>
                 </a>
               )}
 
               <button
                 onClick={handleShare}
-                className="flex flex-col items-center justify-center py-2 bg-white/5 hover:bg-white/10 active:scale-95 rounded-xl border border-white/10 transition-all text-white"
+                className="flex flex-col items-center justify-center py-2 bg-white/5 hover:bg-[#FF6B00]/15 hover:border-[#FF6B00]/40 active:scale-95 rounded-xl border border-white/10 transition-all text-white group"
               >
-                <Share2 className="w-4 h-4 text-orange-400 mb-1" />
+                <Share2 className="w-4 h-4 text-[#FF6B00] mb-1 group-hover:scale-110 transition-transform" />
                 <span className="text-[10px] font-bold">Share</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('gallery')}
-                className="flex flex-col items-center justify-center py-2 bg-white/5 hover:bg-white/10 active:scale-95 rounded-xl border border-white/10 transition-all text-white"
+                className="flex flex-col items-center justify-center py-2 bg-white/5 hover:bg-[#FF6B00]/15 hover:border-[#FF6B00]/40 active:scale-95 rounded-xl border border-white/10 transition-all text-white group"
               >
-                <ImageIcon className="w-4 h-4 text-orange-400 mb-1" />
+                <ImageIcon className="w-4 h-4 text-[#FF6B00] mb-1 group-hover:scale-110 transition-transform" />
                 <span className="text-[10px] font-bold">Gallery</span>
               </button>
             </div>
@@ -461,22 +469,22 @@ export const PublicMenu: React.FC = () => {
           <div className="flex-1 flex flex-col">
             
             {/* STICKY SEARCH & CATEGORY CHIPS BAR */}
-            <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md pt-3 pb-2 px-4 border-b border-slate-100 shadow-sm">
+            <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md pt-3 pb-2 px-4 border-b border-neutral-100 shadow-sm">
               
               {/* Rounded Search Bar */}
               <div className="relative mb-3">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Search className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="text"
                   placeholder="Search for dishes..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-9 py-2.5 bg-slate-100 focus:bg-white border border-transparent focus:border-orange-500 rounded-2xl text-xs font-semibold placeholder:text-slate-400 text-slate-900 outline-none transition-all shadow-inner"
+                  className="w-full pl-10 pr-9 py-2.5 bg-neutral-100 focus:bg-white border border-transparent focus:border-[#FF6B00] focus:ring-2 focus:ring-[#FF6B00]/20 rounded-2xl text-xs font-semibold placeholder:text-neutral-400 text-[#181818] outline-none transition-all shadow-inner"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 p-1"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -492,8 +500,8 @@ export const PublicMenu: React.FC = () => {
                   onClick={() => handleSelectCategory('all')}
                   className={`px-4 py-2 rounded-full whitespace-nowrap transition-all duration-200 shrink-0 ${
                     selectedCategory === 'all'
-                      ? 'bg-orange-500 text-white shadow-md shadow-orange-500/30'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      ? 'bg-[#FF6B00] text-white shadow-md shadow-[#FF6B00]/30'
+                      : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
                   }`}
                 >
                   All Dishes
@@ -507,8 +515,8 @@ export const PublicMenu: React.FC = () => {
                       onClick={() => handleSelectCategory(cat.id)}
                       className={`px-4 py-2 rounded-full whitespace-nowrap transition-all duration-200 shrink-0 ${
                         isSelected
-                          ? 'bg-orange-500 text-white shadow-md shadow-orange-500/30'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                          ? 'bg-[#FF6B00] text-white shadow-md shadow-[#FF6B00]/30'
+                          : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
                       }`}
                     >
                       {cat.name}
@@ -518,16 +526,16 @@ export const PublicMenu: React.FC = () => {
               </div>
 
               {/* Dietary Filter Pills (Veg / Non-Veg / Bestseller) */}
-              <div className="flex items-center gap-2 mt-2 pt-2 border-t border-slate-100 text-[11px] font-bold overflow-x-auto no-scrollbar">
+              <div className="flex items-center gap-2 mt-2 pt-2 border-t border-neutral-100 text-[11px] font-bold overflow-x-auto no-scrollbar">
                 <button
                   onClick={() => { setFilterVeg(!filterVeg); setFilterNonVeg(false); }}
                   className={`px-3 py-1 rounded-full border transition-all shrink-0 flex items-center gap-1 ${
                     filterVeg
-                      ? 'bg-emerald-500 border-emerald-500 text-white shadow-sm'
-                      : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
+                      ? 'bg-emerald-600 border-emerald-600 text-white shadow-sm'
+                      : 'bg-white border-neutral-200 text-neutral-600 hover:border-neutral-300'
                   }`}
                 >
-                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
                   <span>Veg Only</span>
                 </button>
 
@@ -535,11 +543,11 @@ export const PublicMenu: React.FC = () => {
                   onClick={() => { setFilterNonVeg(!filterNonVeg); setFilterVeg(false); }}
                   className={`px-3 py-1 rounded-full border transition-all shrink-0 flex items-center gap-1 ${
                     filterNonVeg
-                      ? 'bg-red-500 border-red-500 text-white shadow-sm'
-                      : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
+                      ? 'bg-red-600 border-red-600 text-white shadow-sm'
+                      : 'bg-white border-neutral-200 text-neutral-600 hover:border-neutral-300'
                   }`}
                 >
-                  <span className="w-2 h-2 rounded-full bg-red-500" />
+                  <span className="w-2 h-2 rounded-full bg-red-400" />
                   <span>Non-Veg</span>
                 </button>
 
@@ -548,7 +556,7 @@ export const PublicMenu: React.FC = () => {
                   className={`px-3 py-1 rounded-full border transition-all shrink-0 flex items-center gap-1 ${
                     filterBestseller
                       ? 'bg-amber-500 border-amber-500 text-white shadow-sm'
-                      : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
+                      : 'bg-white border-neutral-200 text-neutral-600 hover:border-neutral-300'
                   }`}
                 >
                   <Star className="w-3 h-3 fill-white text-white" />
@@ -560,12 +568,12 @@ export const PublicMenu: React.FC = () => {
             {/* DISHES LIST AREA */}
             <div className="px-4 py-4 space-y-6">
               {processedCategories.length === 0 ? (
-                <div className="text-center py-12 bg-slate-50 rounded-3xl border border-slate-100">
-                  <div className="w-12 h-12 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="text-center py-12 bg-neutral-50 rounded-3xl border border-neutral-100">
+                  <div className="w-12 h-12 bg-orange-50 text-[#FF6B00] rounded-full flex items-center justify-center mx-auto mb-3">
                     <Search className="w-6 h-6" />
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 mb-1">No dishes match search</h3>
-                  <p className="text-xs text-slate-500">Try adjusting your search term or dietary filters.</p>
+                  <h3 className="text-sm font-bold text-[#181818] mb-1">No dishes match search</h3>
+                  <p className="text-xs text-neutral-500">Try adjusting your search term or dietary filters.</p>
                 </div>
               ) : (
                 processedCategories.map((category: any) => (
@@ -575,16 +583,16 @@ export const PublicMenu: React.FC = () => {
                     className="scroll-mt-40 space-y-3"
                   >
                     {/* Category Header Title */}
-                    <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                      <h2 className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-2">
+                    <div className="flex items-center justify-between border-b border-neutral-100 pb-2">
+                      <h2 className="text-lg font-black text-[#181818] tracking-tight flex items-center gap-2">
                         <span>{category.name}</span>
-                        <span className="text-xs font-semibold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">
+                        <span className="text-xs font-semibold text-neutral-400 bg-neutral-100 px-2 py-0.5 rounded-full">
                           {category.menuItems.length}
                         </span>
                       </h2>
                     </div>
 
-                    {/* Dish Cards inside Category (Matches Mockup media_1789540144787.png) */}
+                    {/* Dish Cards inside Category */}
                     <div className="space-y-3">
                       {category.menuItems.map((item: any) => {
                         const isFav = favorites.includes(item.id);
@@ -596,28 +604,28 @@ export const PublicMenu: React.FC = () => {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="bg-white rounded-2xl p-3 border border-slate-100 shadow-sm hover:shadow-md transition-all flex items-start gap-3 relative overflow-hidden"
+                            className="bg-white rounded-2xl p-3 border border-neutral-100 shadow-sm hover:shadow-md hover:border-orange-100 transition-all flex items-start gap-3 relative overflow-hidden group"
                           >
                             {/* Left: 96x96 Dish Image (Rounded 14px) */}
-                            <div className="w-24 h-24 rounded-2xl bg-slate-100 overflow-hidden relative shrink-0 border border-slate-100">
+                            <div className="w-24 h-24 rounded-2xl bg-neutral-100 overflow-hidden relative shrink-0 border border-neutral-100">
                               {item.imageUrl ? (
                                 <img
                                   src={getImageUrl(item.imageUrl)}
                                   onError={handleImageError}
                                   alt={item.name}
                                   loading="lazy"
-                                  className="w-full h-full object-cover"
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 />
                               ) : (
-                                <div className="w-full h-full flex flex-col items-center justify-center text-slate-300 bg-slate-50">
-                                  <Utensils className="w-8 h-8 text-orange-300" />
+                                <div className="w-full h-full flex flex-col items-center justify-center text-neutral-300 bg-orange-50/50">
+                                  <Utensils className="w-8 h-8 text-[#FF6B00]/40" />
                                 </div>
                               )}
 
                               {/* Favorite Heart trigger */}
                               <button
                                 onClick={() => toggleFavorite(item.id)}
-                                className="absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white"
+                                className="absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white active:scale-90 transition-transform"
                               >
                                 <Heart className={`w-3.5 h-3.5 ${isFav ? 'fill-red-500 text-red-500' : 'text-white'}`} />
                               </button>
@@ -632,7 +640,7 @@ export const PublicMenu: React.FC = () => {
                                   <span className={`w-1.5 h-1.5 rounded-full ${item.isVeg ? 'bg-emerald-600' : 'bg-red-600'}`} />
                                 </span>
 
-                                <h3 className="text-sm font-bold text-slate-900 tracking-tight truncate leading-snug">
+                                <h3 className="text-sm font-bold text-[#181818] tracking-tight truncate leading-snug">
                                   {item.name}
                                 </h3>
 
@@ -644,20 +652,20 @@ export const PublicMenu: React.FC = () => {
                               </div>
 
                               {/* Price */}
-                              <div className="text-sm font-black text-slate-900 mb-1">
+                              <div className="text-sm font-black text-[#181818] mb-1">
                                 ₹{Number(item.price).toFixed(0)}
                               </div>
 
                               {/* Description (max 2 lines) */}
                               {item.description && (
-                                <p className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed mb-2 font-normal">
+                                <p className="text-[11px] text-neutral-500 line-clamp-2 leading-relaxed mb-2 font-normal">
                                   {item.description}
                                 </p>
                               )}
 
                               {/* Prep Time Tag */}
-                              <div className="flex items-center gap-1 text-[10px] font-bold text-slate-400">
-                                <Clock className="w-3 h-3 text-orange-400" />
+                              <div className="flex items-center gap-1 text-[10px] font-bold text-neutral-400">
+                                <Clock className="w-3 h-3 text-[#FF6B00]" />
                                 <span>15 mins prep time</span>
                               </div>
                             </div>
@@ -678,24 +686,24 @@ export const PublicMenu: React.FC = () => {
         {activeTab === 'about' && (
           <div className="p-4 space-y-4">
             {/* Story Card */}
-            <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm space-y-3">
-              <div className="flex items-center gap-2 text-orange-500">
+            <div className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm space-y-3">
+              <div className="flex items-center gap-2 text-[#FF6B00]">
                 <Sparkles className="w-5 h-5" />
-                <h2 className="text-base font-black text-slate-900">About {restaurant.restaurantName}</h2>
+                <h2 className="text-base font-black text-[#181818]">About {restaurant.restaurantName}</h2>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed font-normal">
+              <p className="text-xs text-neutral-600 leading-relaxed font-normal">
                 {restaurant.description ||
                   `Welcome to ${restaurant.restaurantName}. We are dedicated to providing fresh ingredients, authentic flavors, warm hospitality, and an unforgettably rich dining experience for families and food enthusiasts.`}
               </p>
             </div>
 
             {/* Address & Directions Card */}
-            <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm space-y-3">
-              <div className="flex items-center gap-2 text-orange-500">
+            <div className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm space-y-3">
+              <div className="flex items-center gap-2 text-[#FF6B00]">
                 <MapPin className="w-5 h-5" />
-                <h2 className="text-base font-black text-slate-900">Location & Address</h2>
+                <h2 className="text-base font-black text-[#181818]">Location & Address</h2>
               </div>
-              <p className="text-xs text-slate-700 font-semibold leading-relaxed">
+              <p className="text-xs text-neutral-700 font-semibold leading-relaxed">
                 {restaurant.address ? `${restaurant.address}, ${locationStr}` : locationStr}
               </p>
 
@@ -704,23 +712,23 @@ export const PublicMenu: React.FC = () => {
                   href={restaurant.googleMapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-slate-900 text-white font-bold text-xs rounded-xl hover:bg-slate-800 transition-all"
+                  className="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-[#FF6B00] hover:bg-[#E05300] text-white font-bold text-xs rounded-xl shadow-md shadow-[#FF6B00]/20 transition-all"
                 >
-                  <Navigation className="w-4 h-4 text-orange-400" />
+                  <Navigation className="w-4 h-4 text-white" />
                   <span>Open in Google Maps</span>
                 </a>
               )}
             </div>
 
             {/* Timings Schedule */}
-            <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm space-y-3">
-              <div className="flex items-center gap-2 text-orange-500">
+            <div className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm space-y-3">
+              <div className="flex items-center gap-2 text-[#FF6B00]">
                 <Clock className="w-5 h-5" />
-                <h2 className="text-base font-black text-slate-900">Opening Hours</h2>
+                <h2 className="text-base font-black text-[#181818]">Opening Hours</h2>
               </div>
-              <div className="flex items-center justify-between text-xs font-semibold py-1.5 border-b border-slate-100">
-                <span className="text-slate-500">Monday – Sunday</span>
-                <span className="text-slate-900">
+              <div className="flex items-center justify-between text-xs font-semibold py-1.5 border-b border-neutral-100">
+                <span className="text-neutral-500">Monday – Sunday</span>
+                <span className="text-[#181818]">
                   {restaurant.openingTime && restaurant.closingTime
                     ? `${formatTimeDisplay(restaurant.openingTime)} - ${formatTimeDisplay(restaurant.closingTime)}`
                     : '1:00 PM - 11:00 PM'}
@@ -729,22 +737,22 @@ export const PublicMenu: React.FC = () => {
             </div>
 
             {/* Amenities Grid */}
-            <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm space-y-3">
-              <h2 className="text-sm font-black text-slate-900 mb-2">Amenities & Facilities</h2>
-              <div className="grid grid-cols-2 gap-2 text-xs font-bold text-slate-700">
-                <div className="p-2.5 bg-slate-50 rounded-xl flex items-center gap-2">
+            <div className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm space-y-3">
+              <h2 className="text-sm font-black text-[#181818] mb-2">Amenities & Facilities</h2>
+              <div className="grid grid-cols-2 gap-2 text-xs font-bold text-neutral-700">
+                <div className="p-2.5 bg-neutral-50 rounded-xl flex items-center gap-2">
                   <span className="text-emerald-500">⚡</span>
                   <span>UPI & Card Accepted</span>
                 </div>
-                <div className="p-2.5 bg-slate-50 rounded-xl flex items-center gap-2">
-                  <span className="text-blue-500">❄️</span>
+                <div className="p-2.5 bg-neutral-50 rounded-xl flex items-center gap-2">
+                  <span className="text-[#FF6B00]">❄️</span>
                   <span>Air Conditioned</span>
                 </div>
-                <div className="p-2.5 bg-slate-50 rounded-xl flex items-center gap-2">
-                  <span className="text-orange-500">👨‍👩‍👧</span>
+                <div className="p-2.5 bg-neutral-50 rounded-xl flex items-center gap-2">
+                  <span className="text-[#FF6B00]">👨‍👩‍👧</span>
                   <span>Family Seating</span>
                 </div>
-                <div className="p-2.5 bg-slate-50 rounded-xl flex items-center gap-2">
+                <div className="p-2.5 bg-neutral-50 rounded-xl flex items-center gap-2">
                   <span className="text-amber-500">🅿️</span>
                   <span>Free Parking</span>
                 </div>
@@ -759,8 +767,8 @@ export const PublicMenu: React.FC = () => {
         {activeTab === 'gallery' && (
           <div className="p-4 space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-black text-slate-900">Photo Gallery</h2>
-              <span className="text-xs font-bold text-slate-400">Ambience & Dishes</span>
+              <h2 className="text-lg font-black text-[#181818]">Photo Gallery</h2>
+              <span className="text-xs font-bold text-neutral-400">Ambience & Dishes</span>
             </div>
 
             {/* 3-Column Instagram Grid Layout */}
@@ -770,7 +778,7 @@ export const PublicMenu: React.FC = () => {
                   key={img.id}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedGalleryImg(img.url)}
-                  className="aspect-square bg-slate-100 rounded-2xl overflow-hidden cursor-pointer relative shadow-sm border border-slate-100 group"
+                  className="aspect-square bg-neutral-100 rounded-2xl overflow-hidden cursor-pointer relative shadow-sm border border-neutral-100 group"
                 >
                   <img
                     src={img.url}
@@ -778,8 +786,8 @@ export const PublicMenu: React.FC = () => {
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
                   />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                    <Search className="w-5 h-5" />
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                    <Search className="w-5 h-5 text-[#FF6B00]" />
                   </div>
                 </motion.div>
               ))}
@@ -793,11 +801,11 @@ export const PublicMenu: React.FC = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onClick={() => setSelectedGalleryImg(null)}
-                  className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl p-4 flex flex-col items-center justify-center"
+                  className="fixed inset-0 z-50 bg-[#181818]/95 backdrop-blur-xl p-4 flex flex-col items-center justify-center"
                 >
                   <button
                     onClick={() => setSelectedGalleryImg(null)}
-                    className="absolute top-6 right-6 w-10 h-10 bg-white/20 hover:bg-white/30 text-white rounded-full flex items-center justify-center"
+                    className="absolute top-6 right-6 w-10 h-10 bg-white/20 hover:bg-[#FF6B00] text-white rounded-full flex items-center justify-center transition-colors"
                   >
                     <X className="w-6 h-6" />
                   </button>
@@ -805,7 +813,7 @@ export const PublicMenu: React.FC = () => {
                   <img
                     src={selectedGalleryImg}
                     alt="Enlarged view"
-                    className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl"
+                    className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl border border-white/10"
                   />
                 </motion.div>
               )}
@@ -818,24 +826,24 @@ export const PublicMenu: React.FC = () => {
         {/* ========================================================================= */}
         {activeTab === 'contact' && (
           <div className="p-4 space-y-3">
-            <h2 className="text-lg font-black text-slate-900 mb-2">Connect With Us</h2>
+            <h2 className="text-lg font-black text-[#181818] mb-2">Connect With Us</h2>
 
             {/* Phone Card */}
             {restaurant.phone && (
               <a
                 href={`tel:${restaurant.phone}`}
-                className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm flex items-center justify-between hover:bg-slate-50 transition-all"
+                className="bg-white rounded-2xl p-4 border border-neutral-100 shadow-sm flex items-center justify-between hover:bg-neutral-50 transition-all"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center font-bold">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-400">Phone Number</p>
-                    <p className="text-sm font-black text-slate-900">{restaurant.phone}</p>
+                    <p className="text-xs font-bold text-neutral-400">Phone Number</p>
+                    <p className="text-sm font-black text-[#181818]">{restaurant.phone}</p>
                   </div>
                 </div>
-                <ChevronRight className="w-5 h-5 text-slate-300" />
+                <ChevronRight className="w-5 h-5 text-neutral-300" />
               </a>
             )}
 
@@ -845,18 +853,18 @@ export const PublicMenu: React.FC = () => {
                 href={`https://wa.me/${restaurant.phone.replace(/[^0-9]/g, '')}`}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm flex items-center justify-between hover:bg-slate-50 transition-all"
+                className="bg-white rounded-2xl p-4 border border-neutral-100 shadow-sm flex items-center justify-between hover:bg-neutral-50 transition-all"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center font-bold">
                     <MessageCircle className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-400">WhatsApp Chat</p>
-                    <p className="text-sm font-black text-slate-900">Message on WhatsApp</p>
+                    <p className="text-xs font-bold text-neutral-400">WhatsApp Chat</p>
+                    <p className="text-sm font-black text-[#181818]">Message on WhatsApp</p>
                   </div>
                 </div>
-                <ChevronRight className="w-5 h-5 text-slate-300" />
+                <ChevronRight className="w-5 h-5 text-neutral-300" />
               </a>
             )}
 
@@ -866,36 +874,36 @@ export const PublicMenu: React.FC = () => {
                 href={restaurant.googleMapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm flex items-center justify-between hover:bg-slate-50 transition-all"
+                className="bg-white rounded-2xl p-4 border border-neutral-100 shadow-sm flex items-center justify-between hover:bg-neutral-50 transition-all"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center font-bold">
+                  <div className="w-10 h-10 bg-orange-50 text-[#FF6B00] rounded-xl flex items-center justify-center font-bold">
                     <Navigation className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-400">Location Map</p>
-                    <p className="text-sm font-black text-slate-900">Get Directions</p>
+                    <p className="text-xs font-bold text-neutral-400">Location Map</p>
+                    <p className="text-sm font-black text-[#181818]">Get Directions</p>
                   </div>
                 </div>
-                <ChevronRight className="w-5 h-5 text-slate-300" />
+                <ChevronRight className="w-5 h-5 text-neutral-300" />
               </a>
             )}
 
             {/* Website Card */}
             <button
               onClick={handleShare}
-              className="w-full bg-white rounded-2xl p-4 border border-slate-100 shadow-sm flex items-center justify-between hover:bg-slate-50 transition-all text-left"
+              className="w-full bg-white rounded-2xl p-4 border border-neutral-100 shadow-sm flex items-center justify-between hover:bg-neutral-50 transition-all text-left"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold">
+                <div className="w-10 h-10 bg-orange-50 text-[#FF6B00] rounded-xl flex items-center justify-center font-bold">
                   <Globe className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-slate-400">Share QR Menu</p>
-                  <p className="text-sm font-black text-slate-900">Share Link with Friends</p>
+                  <p className="text-xs font-bold text-neutral-400">Share QR Menu</p>
+                  <p className="text-sm font-black text-[#181818]">Share Link with Friends</p>
                 </div>
               </div>
-              <ChevronRight className="w-5 h-5 text-slate-300" />
+              <ChevronRight className="w-5 h-5 text-neutral-300" />
             </button>
           </div>
         )}
@@ -903,45 +911,57 @@ export const PublicMenu: React.FC = () => {
         {/* ========================================================================= */}
         {/* STICKY BOTTOM NAVIGATION BAR                                              */}
         {/* ========================================================================= */}
-        <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[420px] bg-white/95 backdrop-blur-xl border-t border-slate-100 shadow-2xl z-40 px-6 py-2 flex items-center justify-around">
+        <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[420px] bg-white/95 backdrop-blur-xl border-t border-neutral-100 shadow-2xl z-40 px-6 py-2 flex items-center justify-around">
           <button
             onClick={() => setActiveTab('menu')}
-            className={`flex flex-col items-center gap-1 transition-all ${
-              activeTab === 'menu' ? 'text-orange-500 scale-105' : 'text-slate-400 hover:text-slate-600'
+            className={`flex flex-col items-center gap-1 transition-all relative py-1 ${
+              activeTab === 'menu' ? 'text-[#FF6B00] scale-105 font-black' : 'text-neutral-400 hover:text-neutral-600'
             }`}
           >
             <Utensils className="w-5 h-5" />
             <span className="text-[10px] font-black">Menu</span>
+            {activeTab === 'menu' && (
+              <motion.div layoutId="activeTabPill" className="absolute -bottom-1 w-4 h-1 bg-[#FF6B00] rounded-full shadow-[0_0_6px_#FF6B00]" />
+            )}
           </button>
 
           <button
             onClick={() => setActiveTab('about')}
-            className={`flex flex-col items-center gap-1 transition-all ${
-              activeTab === 'about' ? 'text-orange-500 scale-105' : 'text-slate-400 hover:text-slate-600'
+            className={`flex flex-col items-center gap-1 transition-all relative py-1 ${
+              activeTab === 'about' ? 'text-[#FF6B00] scale-105 font-black' : 'text-neutral-400 hover:text-neutral-600'
             }`}
           >
             <Info className="w-5 h-5" />
             <span className="text-[10px] font-black">About</span>
+            {activeTab === 'about' && (
+              <motion.div layoutId="activeTabPill" className="absolute -bottom-1 w-4 h-1 bg-[#FF6B00] rounded-full shadow-[0_0_6px_#FF6B00]" />
+            )}
           </button>
 
           <button
             onClick={() => setActiveTab('gallery')}
-            className={`flex flex-col items-center gap-1 transition-all ${
-              activeTab === 'gallery' ? 'text-orange-500 scale-105' : 'text-slate-400 hover:text-slate-600'
+            className={`flex flex-col items-center gap-1 transition-all relative py-1 ${
+              activeTab === 'gallery' ? 'text-[#FF6B00] scale-105 font-black' : 'text-neutral-400 hover:text-neutral-600'
             }`}
           >
             <ImageIcon className="w-5 h-5" />
             <span className="text-[10px] font-black">Gallery</span>
+            {activeTab === 'gallery' && (
+              <motion.div layoutId="activeTabPill" className="absolute -bottom-1 w-4 h-1 bg-[#FF6B00] rounded-full shadow-[0_0_6px_#FF6B00]" />
+            )}
           </button>
 
           <button
             onClick={() => setActiveTab('contact')}
-            className={`flex flex-col items-center gap-1 transition-all ${
-              activeTab === 'contact' ? 'text-orange-500 scale-105' : 'text-slate-400 hover:text-slate-600'
+            className={`flex flex-col items-center gap-1 transition-all relative py-1 ${
+              activeTab === 'contact' ? 'text-[#FF6B00] scale-105 font-black' : 'text-neutral-400 hover:text-neutral-600'
             }`}
           >
             <Phone className="w-5 h-5" />
             <span className="text-[10px] font-black">Contact</span>
+            {activeTab === 'contact' && (
+              <motion.div layoutId="activeTabPill" className="absolute -bottom-1 w-4 h-1 bg-[#FF6B00] rounded-full shadow-[0_0_6px_#FF6B00]" />
+            )}
           </button>
         </div>
 
