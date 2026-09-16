@@ -1,17 +1,34 @@
+import React from 'react';
+
 /**
  * Helper function to construct complete image URLs safely.
- * Handles absolute URLs (http/https/data/blob), relative paths (/uploads/...), and missing slashes.
+ * Handles absolute Cloudinary URLs (http/https/data/blob), relative paths (/uploads/...), and missing slashes.
  */
-export const getImageUrl = (url?: string | null): string => {
-  if (!url) return '';
+export const getImageUrl = (url?: string | null, fallback: string = '/placeholder.png'): string => {
+  if (!url || typeof url !== 'string' || !url.trim()) return fallback;
+  const cleanUrl = url.trim();
   if (
-    url.startsWith('http://') ||
-    url.startsWith('https://') ||
-    url.startsWith('data:') ||
-    url.startsWith('blob:')
+    cleanUrl.startsWith('http://') ||
+    cleanUrl.startsWith('https://') ||
+    cleanUrl.startsWith('data:') ||
+    cleanUrl.startsWith('blob:')
   ) {
-    return url;
+    return cleanUrl;
   }
   const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-  return `${baseUrl}${url.startsWith('/') ? '' : '/'}${url}`;
+  return `${baseUrl}${cleanUrl.startsWith('/') ? '' : '/'}${cleanUrl}`;
+};
+
+/**
+ * Global image onError fallback handler to prevent broken image UI icons
+ */
+export const handleImageError = (
+  e: React.SyntheticEvent<HTMLImageElement, Event>,
+  fallback: string = '/placeholder.png'
+) => {
+  const target = e.currentTarget;
+  if (target.src !== fallback && !target.src.endsWith(fallback)) {
+    target.onerror = null; // Prevent infinite error recursion
+    target.src = fallback;
+  }
 };

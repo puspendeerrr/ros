@@ -7,8 +7,9 @@ import { RestaurantService } from './restaurant.service';
 import { updateRestaurantSchema } from './restaurant.validation';
 import { AuthenticatedRequest } from '../../types';
 import { AppError } from '../../middleware/error.middleware';
+import { uploadToCloudinary } from '../../utils/cloudinary';
 
-const uploadsDir = path.resolve(__dirname, '../../../uploads/restaurant');
+const uploadsDir = path.resolve(process.cwd(), 'uploads/restaurant');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
@@ -33,13 +34,13 @@ const fileFilter = (req: any, file: any, cb: any) => {
   }
 };
 
-export const uploadMiddleware = multer({
+const rawUpload = multer({
   storage,
   fileFilter,
   limits: {
     fileSize: 2 * 1024 * 1024, // 2MB
   },
-}).single('file');
+}).any();
 
 export class RestaurantController {
   private service = new RestaurantService();
@@ -75,7 +76,7 @@ export class RestaurantController {
   };
 
   uploadImage = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
-    uploadMiddleware(req, res, (err) => {
+    rawUpload(req, res, async (err) => {
       if (err) {
         if (err instanceof multer.MulterError && err.code === 'LIMIT_FILE_SIZE') {
           return next(new AppError(400, 'File is too large. Maximum size allowed is 2MB.'));
@@ -83,17 +84,22 @@ export class RestaurantController {
         return next(err);
       }
 
-      if (!req.file) {
+      const files = req.files as Express.Multer.File[] | undefined;
+      const uploadedFile = req.file || (files && files.length > 0 ? files[0] : null);
+
+      if (!uploadedFile) {
         return next(new AppError(400, 'No image file uploaded.'));
       }
 
-      const relativePath = `/uploads/restaurant/${req.file.filename}`;
+      const relativePath = `/uploads/restaurant/${uploadedFile.filename}`;
+      const cloudinaryUrl = await uploadToCloudinary(uploadedFile.path, 'restaurant_os/restaurant');
+      const finalUrl = cloudinaryUrl || relativePath;
 
       res.status(200).json({
         success: true,
         message: 'Image uploaded successfully',
         data: {
-          imageUrl: relativePath,
+          imageUrl: finalUrl,
         },
       });
     });

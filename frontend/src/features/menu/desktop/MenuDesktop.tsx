@@ -1,4 +1,4 @@
-import { getImageUrl } from '../../../utils/image.js';
+import { getImageUrl, handleImageError } from '../../../utils/image.js';
 import React from 'react';
 import {
   Card,
@@ -264,7 +264,8 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
                           avatar={
                             item.imageUrl ? (
                               <img
-                                src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.imageUrl}`}
+                                src={getImageUrl(item.imageUrl)}
+                                onError={handleImageError}
                                 alt={item.name}
                                 loading="lazy"
                                 style={{
@@ -396,6 +397,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
               {uploadedImageUrl ? (
                 <img
                   src={getImageUrl(uploadedImageUrl)}
+                  onError={handleImageError}
                   alt="Uploaded preview"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
                 />
@@ -488,6 +490,7 @@ export const MenuDesktop: React.FC<MenuDesktopProps> = ({ menuData }) => {
                             item.imageUrl ? (
                               <img
                                 src={getImageUrl(item.imageUrl)}
+                                onError={handleImageError}
                                 alt={item.name}
                                 loading="lazy"
                                 style={{ width: '50px', height: '50px', borderRadius: '6px', objectFit: 'cover' }}

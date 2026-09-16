@@ -19,7 +19,7 @@ import logoIcon from '../assets/logo-icon.png';
 import { menuService } from '../services/menu.service';
 import { restaurantService } from '../services/restaurant.service';
 import { useAuthStore } from '../store/auth.store';
-import { getImageUrl } from '../utils/image.js';
+import { getImageUrl, handleImageError } from '../utils/image.js';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -441,7 +441,7 @@ export const Onboarding: React.FC = () => {
                 <Text strong style={{ display: 'block', marginBottom: '8px' }}>Restaurant Logo</Text>
                 <Flex align="center" gap={16}>
                   {logoPreview ? (
-                    <img src={logoPreview} alt="Logo" loading="lazy" style={{ width: '80px', height: '80px', borderRadius: '16px', objectFit: 'cover' }} />
+                    <img src={logoPreview} onError={handleImageError} alt="Logo" loading="lazy" style={{ width: '80px', height: '80px', borderRadius: '16px', objectFit: 'cover' }} />
                   ) : (
                     <div style={{ width: '80px', height: '80px', background: '#F1F5F9', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <ShopOutlined style={{ fontSize: '24px', color: '#94A3B8' }} />
@@ -458,7 +458,7 @@ export const Onboarding: React.FC = () => {
                 <Text strong style={{ display: 'block', marginBottom: '8px' }}>Cover Banner Image</Text>
                 <Flex align="center" gap={16}>
                   {coverPreview ? (
-                    <img src={coverPreview} alt="Cover" loading="lazy" style={{ width: '160px', height: '80px', borderRadius: '8px', objectFit: 'cover' }} />
+                    <img src={coverPreview} onError={handleImageError} alt="Cover" loading="lazy" style={{ width: '160px', height: '80px', borderRadius: '8px', objectFit: 'cover' }} />
                   ) : (
                     <div style={{ width: '160px', height: '80px', background: '#F1F5F9', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <CameraOutlined style={{ fontSize: '24px', color: '#94A3B8' }} />
@@ -688,7 +688,7 @@ export const Onboarding: React.FC = () => {
               <Card style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px' }} styles={{ body: { padding: '20px' } }}>
                 <Flex align="center" gap={12}>
                   {logoPreview ? (
-                    <img src={logoPreview} alt="Logo" loading="lazy" style={{ width: '56px', height: '56px', borderRadius: '12px', objectFit: 'cover' }} />
+                    <img src={logoPreview} onError={handleImageError} alt="Logo" loading="lazy" style={{ width: '56px', height: '56px', borderRadius: '12px', objectFit: 'cover' }} />
                   ) : (
                     <div style={{ width: '56px', height: '56px', background: '#F97316', borderRadius: '12px', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}><ShopOutlined /></div>
                   )}

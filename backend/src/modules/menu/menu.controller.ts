@@ -7,9 +7,10 @@ import { MenuService } from './menu.service';
 import { createCategorySchema, createItemSchema, updateItemSchema } from './menu.validation';
 import { AppError } from '../../middleware/error.middleware';
 import { AuthenticatedRequest } from '../../types';
+import { uploadToCloudinary } from '../../utils/cloudinary';
 
 // Setup multer storage for local uploads
-const uploadsDir = path.resolve(__dirname, '../../../uploads/menu');
+const uploadsDir = path.resolve(process.cwd(), 'uploads/menu');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
@@ -34,13 +35,15 @@ const fileFilter = (req: any, file: any, cb: any) => {
   }
 };
 
-export const uploadMiddleware = multer({
+const rawUpload = multer({
   storage,
   fileFilter,
   limits: {
     fileSize: 2 * 1024 * 1024, // 2MB
   },
-}).single('image');
+}).any();
+
+export const uploadMiddleware = rawUpload;
 
 export class MenuController {
   private service = new MenuService();
@@ -205,7 +208,7 @@ export class MenuController {
 
   // --- UPLOAD IMAGE ---
   uploadImage = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
-    uploadMiddleware(req, res, (err) => {
+    rawUpload(req, res, async (err) => {
       if (err) {
         if (err instanceof multer.MulterError && err.code === 'LIMIT_FILE_SIZE') {
           return next(new AppError(400, 'File is too large. Maximum size allowed is 2MB.'));
@@ -213,17 +216,22 @@ export class MenuController {
         return next(err);
       }
 
-      if (!req.file) {
+      const files = req.files as Express.Multer.File[] | undefined;
+      const uploadedFile = req.file || (files && files.length > 0 ? files[0] : null);
+
+      if (!uploadedFile) {
         return next(new AppError(400, 'No image file uploaded.'));
       }
 
-      const relativePath = `/uploads/menu/${req.file.filename}`;
+      const relativePath = `/uploads/menu/${uploadedFile.filename}`;
+      const cloudinaryUrl = await uploadToCloudinary(uploadedFile.path, 'restaurant_os/menu');
+      const finalUrl = cloudinaryUrl || relativePath;
 
       res.status(200).json({
         success: true,
         message: 'Image uploaded successfully',
         data: {
-          imageUrl: relativePath,
+          imageUrl: finalUrl,
         },
       });
     });

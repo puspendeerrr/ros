@@ -1,4 +1,4 @@
-import { getImageUrl } from '../../../utils/image.js';
+import { getImageUrl, handleImageError } from '../../../utils/image.js';
 import React from 'react';
 import {
   Card,
@@ -165,6 +165,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
                           {item.imageUrl ? (
                             <img
                               src={getImageUrl(item.imageUrl)}
+                              onError={handleImageError}
                               alt={item.name}
                               loading="lazy"
                               style={{
@@ -374,6 +375,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ menuData }) => {
             {uploadedImageUrl && (
               <img
                 src={getImageUrl(uploadedImageUrl)}
+                onError={handleImageError}
                 alt="Upload preview"
                 style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px', marginTop: '12px' }}
               />

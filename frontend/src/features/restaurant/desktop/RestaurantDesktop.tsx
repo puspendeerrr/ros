@@ -1,4 +1,4 @@
-import { getImageUrl } from '../../../utils/image.js';
+import { getImageUrl, handleImageError } from '../../../utils/image.js';
 
 import React from 'react';
 import {
@@ -198,6 +198,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
                         {logoPreview ? (
                           <img
                             src={getImageUrl(logoPreview)}
+                            onError={handleImageError}
                             alt="Logo"
                             loading="lazy"
                             style={{ width: '80px', height: '80px', borderRadius: '12px', objectFit: 'cover', border: '1px solid #E2E8F0' }}
@@ -224,6 +225,7 @@ export const RestaurantDesktop: React.FC<RestaurantDesktopProps> = ({ restaurant
                         {coverPreview ? (
                           <img
                             src={getImageUrl(coverPreview)}
+                            onError={handleImageError}
                             alt="Cover"
                             loading="lazy"
                             style={{ width: '100%', height: '54px', borderRadius: '8px', objectFit: 'cover', border: '1px solid #E2E8F0' }}

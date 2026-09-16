@@ -73,7 +73,7 @@ app.use(compression());
 // Static Files Serving - Disable directory indexing, enforce 1-day cache control
 app.use(
   '/uploads',
-  express.static(path.join(__dirname, '../uploads'), {
+  express.static(path.resolve(process.cwd(), 'uploads'), {
     maxAge: '1d',
     index: false,
   })
@@ -125,8 +125,9 @@ app.get('/metrics/cache', (req, res) => {
   res.status(200).json(cacheService.getMetrics());
 });
 
-// Mount auth routes directly to root /
-app.use('/', authLimiter, authRoutes);
+// Apply rate limiting specifically to auth endpoints
+app.use(['/signup', '/login', '/forgot-password', '/reset-password'], authLimiter);
+app.use('/', authRoutes);
 
 // Mount menu builder routes under /api
 app.use('/api', menuRoutes);

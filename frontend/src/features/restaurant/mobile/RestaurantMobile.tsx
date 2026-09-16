@@ -1,4 +1,4 @@
-import { getImageUrl } from '../../../utils/image.js';
+import { getImageUrl, handleImageError } from '../../../utils/image.js';
 import React, { useState } from 'react';
 import {
   Form,
@@ -104,6 +104,7 @@ export const RestaurantMobile: React.FC<RestaurantMobileProps> = ({ restaurantDa
                       {logoPreview ? (
                         <img
                           src={getImageUrl(logoPreview)}
+                          onError={handleImageError}
                           alt="Logo"
                           loading="lazy"
                           style={{ width: '64px', height: '64px', borderRadius: '12px', objectFit: 'cover', border: '1px solid #E2E8F0' }}
@@ -138,6 +139,7 @@ export const RestaurantMobile: React.FC<RestaurantMobileProps> = ({ restaurantDa
                       {coverPreview ? (
                         <img
                           src={getImageUrl(coverPreview)}
+                          onError={handleImageError}
                           alt="Cover"
                           loading="lazy"
                           style={{ width: '120px', height: '48px', borderRadius: '8px', objectFit: 'cover', border: '1px solid #E2E8F0' }}

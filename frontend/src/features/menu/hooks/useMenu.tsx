@@ -105,6 +105,7 @@ export const useMenu = () => {
     mutationFn: (name: string) => menuService.createCategory(name),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['categories'] });
+      queryClient.invalidateQueries({ queryKey: ['public-menu'] });
       setIsCategoryModalOpen(false);
       setCategoryNameInput('');
       message.success('Category created successfully');
@@ -119,6 +120,7 @@ export const useMenu = () => {
     mutationFn: ({ id, name }: { id: string; name: string }) => menuService.updateCategory(id, name),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['categories'] });
+      queryClient.invalidateQueries({ queryKey: ['public-menu'] });
       setIsCategoryModalOpen(false);
       setEditingCategory(null);
       setCategoryNameInput('');
@@ -135,6 +137,7 @@ export const useMenu = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['categories'] });
       queryClient.invalidateQueries({ queryKey: ['items'] });
+      queryClient.invalidateQueries({ queryKey: ['public-menu'] });
       setSelectedCategoryId(null);
       message.success('Category deleted successfully');
       triggerHaptic(ImpactStyle.Medium);
@@ -149,6 +152,7 @@ export const useMenu = () => {
     mutationFn: (data: any) => menuService.createItem(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['items'] });
+      queryClient.invalidateQueries({ queryKey: ['public-menu'] });
       setIsItemModalOpen(false);
       reset();
       setUploadedImageUrl(null);
@@ -164,6 +168,7 @@ export const useMenu = () => {
     mutationFn: ({ id, data }: { id: string; data: any }) => menuService.updateItem(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['items'] });
+      queryClient.invalidateQueries({ queryKey: ['public-menu'] });
       setIsItemModalOpen(false);
       setEditingItem(null);
       reset();
@@ -180,6 +185,7 @@ export const useMenu = () => {
     mutationFn: (id: string) => menuService.deleteItem(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['items'] });
+      queryClient.invalidateQueries({ queryKey: ['public-menu'] });
       message.success('Item deleted successfully');
       triggerHaptic(ImpactStyle.Medium);
     },
@@ -193,6 +199,7 @@ export const useMenu = () => {
       menuService.updateItem(id, { isAvailable }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['items'] });
+      queryClient.invalidateQueries({ queryKey: ['public-menu'] });
       message.success('Item availability toggled');
       triggerHaptic(ImpactStyle.Light);
     },

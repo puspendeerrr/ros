@@ -58,12 +58,12 @@ export const useRestaurant = () => {
 
   // 2. Fetch Category & Item Counts (for checklist)
   const { data: categoriesData } = useQuery({
-    queryKey: ['categories-list'],
+    queryKey: ['categories'],
     queryFn: () => menuService.getCategories(),
   });
 
   const { data: itemsData } = useQuery({
-    queryKey: ['items-list'],
+    queryKey: ['items'],
     queryFn: () => menuService.getItems(),
   });
 
@@ -250,15 +250,19 @@ export const useRestaurant = () => {
 
     try {
       const res = await restaurantService.uploadImage(file);
+      const uploadedUrl = res.data.imageUrl;
       if (type === 'logo') {
-        setLogoPreview(res.data.imageUrl);
-        setIsDirty(true);
+        setLogoPreview(uploadedUrl);
+        await restaurantService.updateProfile({ logoUrl: uploadedUrl });
         message.success('Logo uploaded successfully');
       } else {
-        setCoverPreview(res.data.imageUrl);
-        setIsDirty(true);
+        setCoverPreview(uploadedUrl);
+        await restaurantService.updateProfile({ coverImageUrl: uploadedUrl });
         message.success('Cover image uploaded successfully');
       }
+      queryClient.invalidateQueries({ queryKey: ['restaurant-profile'] });
+      queryClient.invalidateQueries({ queryKey: ['public-menu'] });
+      setIsDirty(false);
       triggerHaptic(ImpactStyle.Light);
     } catch (err: any) {
       message.error(err.response?.data?.message || 'Upload failed');

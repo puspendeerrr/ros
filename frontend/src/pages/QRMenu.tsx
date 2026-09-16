@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getImageUrl } from '../utils/image.js';
+import { getImageUrl, handleImageError } from '../utils/image.js';
 import { Card, Typography, Button, Flex, Space, Input, InputNumber, Popconfirm, Table, Tooltip, message, Spin, Segmented } from 'antd';
 import {
   PrinterOutlined,
@@ -618,6 +618,7 @@ export const QRMenu: React.FC = () => {
               {logoUrl ? (
                 <img
                   src={logoUrl}
+                  onError={handleImageError}
                   alt={restaurantName}
                   loading="lazy"
                   style={{
@@ -729,6 +730,7 @@ export const QRMenu: React.FC = () => {
                 {logoUrl ? (
                   <img
                     src={logoUrl}
+                    onError={handleImageError}
                     alt={restaurantName}
                     loading="lazy"
                     style={{
