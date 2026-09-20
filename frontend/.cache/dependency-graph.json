@@ -1,0 +1,71 @@
+{
+  "guide-leaving-aggregators": {
+    "contentType": "guide",
+    "priority": 60,
+    "dependencies": [
+      "compare-vs-aggregators",
+      "feature-qr-stand"
+    ],
+    "dependents": [
+      "compare-vs-aggregators",
+      "industry-cafes"
+    ]
+  },
+  "doc-quick-start": {
+    "contentType": "documentation",
+    "priority": 70,
+    "dependencies": [
+      "feature-qr-stand",
+      "industry-cafes",
+      "changelog-v2-0-4"
+    ],
+    "dependents": [
+      "changelog-v2-0-4"
+    ]
+  },
+  "compare-vs-aggregators": {
+    "contentType": "comparison",
+    "priority": 40,
+    "dependencies": [
+      "guide-leaving-aggregators",
+      "industry-cafes"
+    ],
+    "dependents": [
+      "guide-leaving-aggregators"
+    ]
+  },
+  "feature-qr-stand": {
+    "contentType": "feature",
+    "priority": 100,
+    "dependencies": [],
+    "dependents": [
+      "guide-leaving-aggregators",
+      "doc-quick-start",
+      "industry-cafes",
+      "changelog-v2-0-4"
+    ]
+  },
+  "industry-cafes": {
+    "contentType": "industry",
+    "priority": 80,
+    "dependencies": [
+      "feature-qr-stand",
+      "guide-leaving-aggregators"
+    ],
+    "dependents": [
+      "doc-quick-start",
+      "compare-vs-aggregators"
+    ]
+  },
+  "changelog-v2-0-4": {
+    "contentType": "changelog",
+    "priority": 10,
+    "dependencies": [
+      "doc-quick-start",
+      "feature-qr-stand"
+    ],
+    "dependents": [
+      "doc-quick-start"
+    ]
+  }
+}

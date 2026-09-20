@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.280Z",
+  "averageRetrievalReadiness": 86,
+  "metrics": [
+    {
+      "contentId": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "contentType": "guide",
+      "retrievalCompleteness": 95,
+      "answerCoverage": 95,
+      "definitionCoverage": 95,
+      "contextDensity": 85,
+      "entityDensity": 100,
+      "referenceDensity": 100,
+      "retrievalConfidence": 90,
+      "retrievalReadinessScore": 93
+    },
+    {
+      "contentId": "doc-quick-start",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "contentType": "documentation",
+      "retrievalCompleteness": 95,
+      "answerCoverage": 95,
+      "definitionCoverage": 95,
+      "contextDensity": 85,
+      "entityDensity": 100,
+      "referenceDensity": 100,
+      "retrievalConfidence": 90,
+      "retrievalReadinessScore": 93
+    },
+    {
+      "contentId": "compare-vs-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "contentType": "comparison",
+      "retrievalCompleteness": 76,
+      "answerCoverage": 80,
+      "definitionCoverage": 95,
+      "contextDensity": 85,
+      "entityDensity": 75,
+      "referenceDensity": 67,
+      "retrievalConfidence": 90,
+      "retrievalReadinessScore": 85
+    },
+    {
+      "contentId": "feature-qr-stand",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "contentType": "feature",
+      "retrievalCompleteness": 39,
+      "answerCoverage": 80,
+      "definitionCoverage": 95,
+      "contextDensity": 85,
+      "entityDensity": 25,
+      "referenceDensity": 0,
+      "retrievalConfidence": 90,
+      "retrievalReadinessScore": 75
+    },
+    {
+      "contentId": "industry-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "contentType": "industry",
+      "retrievalCompleteness": 76,
+      "answerCoverage": 80,
+      "definitionCoverage": 95,
+      "contextDensity": 85,
+      "entityDensity": 75,
+      "referenceDensity": 67,
+      "retrievalConfidence": 90,
+      "retrievalReadinessScore": 85
+    },
+    {
+      "contentId": "changelog-v2-0-4",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "contentType": "changelog",
+      "retrievalCompleteness": 76,
+      "answerCoverage": 80,
+      "definitionCoverage": 95,
+      "contextDensity": 85,
+      "entityDensity": 75,
+      "referenceDensity": 67,
+      "retrievalConfidence": 90,
+      "retrievalReadinessScore": 85
+    }
+  ]
+}

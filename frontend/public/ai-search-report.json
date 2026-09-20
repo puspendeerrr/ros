@@ -1,0 +1,32 @@
+{
+  "buildId": "aeo-1789939841274",
+  "generatedAt": "2026-09-20T21:30:41.274Z",
+  "totalAnswerObjects": 15,
+  "totalConversationalQueries": 23,
+  "averageRetrievalReadiness": 86,
+  "averageAiOverviewScore": 97,
+  "topAiOverviewCandidates": [
+    "The Blueprint for Transitioning to Commission-Free Dining",
+    "5-Minute Restaurant Quick Start Guide",
+    "Restaurant OS vs. Food Delivery Aggregators",
+    "Dynamic QR Menu Stand Ecosystem",
+    "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+    "Restaurant OS v2.0.4 Enterprise Architecture Release"
+  ],
+  "topFeaturedSnippetCandidates": [
+    "The Blueprint for Transitioning to Commission-Free Dining",
+    "5-Minute Restaurant Quick Start Guide",
+    "Restaurant OS vs. Food Delivery Aggregators",
+    "Dynamic QR Menu Stand Ecosystem",
+    "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+    "Restaurant OS v2.0.4 Enterprise Architecture Release"
+  ],
+  "llmCompatibilityAverages": {
+    "google": 90,
+    "chatgpt": 93,
+    "gemini": 80,
+    "perplexity": 81,
+    "bing": 77
+  },
+  "warnings": []
+}

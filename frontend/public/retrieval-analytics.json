@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.522Z",
+  "retrievalSuccessRate": 86.5,
+  "retrievalFailureCount": 13,
+  "weakEvidenceCount": 0,
+  "hallucinationRisk": "low",
+  "hallucinationRiskScore": 14,
+  "missingAnswers": [
+    {
+      "query": "Can Restaurant OS operate 100% offline during local internet fiber cuts?",
+      "category": "resilience",
+      "confidenceScore": 78,
+      "deficitReason": "Offline sync architecture explained in POS guide, but needs a dedicated FAQ node"
+    }
+  ],
+  "chunkPerformance": [
+    {
+      "chunkId": "chunk-guide-leaving-aggregators-main",
+      "contentId": "guide-leaving-aggregators",
+      "hitCount": 420,
+      "averageLatencyMs": 85,
+      "precisionScore": 94
+    },
+    {
+      "chunkId": "chunk-doc-quick-start-main",
+      "contentId": "doc-quick-start",
+      "hitCount": 455,
+      "averageLatencyMs": 100,
+      "precisionScore": 85
+    },
+    {
+      "chunkId": "chunk-compare-vs-aggregators-main",
+      "contentId": "compare-vs-aggregators",
+      "hitCount": 490,
+      "averageLatencyMs": 115,
+      "precisionScore": 85
+    },
+    {
+      "chunkId": "chunk-feature-qr-stand-main",
+      "contentId": "feature-qr-stand",
+      "hitCount": 525,
+      "averageLatencyMs": 85,
+      "precisionScore": 85
+    },
+    {
+      "chunkId": "chunk-industry-cafes-main",
+      "contentId": "industry-cafes",
+      "hitCount": 560,
+      "averageLatencyMs": 100,
+      "precisionScore": 85
+    },
+    {
+      "chunkId": "chunk-changelog-v2-0-4-main",
+      "contentId": "changelog-v2-0-4",
+      "hitCount": 595,
+      "averageLatencyMs": 115,
+      "precisionScore": 85
+    }
+  ]
+}

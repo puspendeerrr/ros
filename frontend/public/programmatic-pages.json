@@ -1,0 +1,1347 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-09-20T21:30:40.595Z",
+  "totalPages": 6,
+  "pages": [
+    {
+      "id": "guide-leaving-aggregators",
+      "slug": "leaving-aggregators-behind",
+      "url": "/resources/guides/leaving-aggregators-behind",
+      "patternVersion": "v1",
+      "contentType": "guide",
+      "template": "ResourceTemplate",
+      "lifecycleState": "published",
+      "crawlPriority": 0.9,
+      "changefreq": "weekly",
+      "searchWeight": 95,
+      "metadata": {
+        "title": "The Blueprint for Transitioning to Commission-Free Dining | Restaurant OS",
+        "description": "How modern restaurants shift 35%+ of order volume from food delivery aggregators to direct table stands without disrupting kitchen operations.",
+        "canonicalUrl": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+        "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+        "ogImageAlt": "The Blueprint for Transitioning to Commission-Free Dining — Restaurant OS",
+        "noIndex": false,
+        "readingTimeMinutes": 8,
+        "updatedAt": "2026-09-18T00:00:00Z",
+        "targetAudience": "restaurateur",
+        "searchIntent": "informational",
+        "primaryKeywords": [
+          "tag-zero-commission",
+          "tag-qr",
+          "tag-pos"
+        ]
+      },
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "https://ros.algorithyum.in/"
+        },
+        {
+          "name": "Resources",
+          "url": "https://ros.algorithyum.in/resources"
+        },
+        {
+          "name": "Guides",
+          "url": "https://ros.algorithyum.in/resources/guides"
+        },
+        {
+          "name": "Leaving aggregators behind",
+          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind"
+        }
+      ],
+      "schemaGraph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ros.algorithyum.in/#organization",
+          "name": "Restaurant OS",
+          "legalName": "Restaurant OS Inc.",
+          "url": "https://ros.algorithyum.in",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://ros.algorithyum.in/#logo",
+            "url": "https://ros.algorithyum.in/favicon.png",
+            "caption": "Restaurant OS"
+          },
+          "image": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company",
+          "foundingDate": "2024-01-01",
+          "sameAs": [
+            "https://twitter.com/restaurantos",
+            "https://linkedin.com/company/restaurant-os",
+            "https://github.com/puspendeerrr/ros"
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "support@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "email": "sales@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            }
+          ],
+          "knowsAbout": [
+            "Restaurant Point of Sale (POS)",
+            "Dynamic QR Code Menus",
+            "Kitchen Display Systems (KDS)",
+            "Zero-Commission Food Ordering",
+            "Hospitality Unit Economics"
+          ]
+        },
+        {
+          "@type": "Brand",
+          "@id": "https://ros.algorithyum.in/#brand",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "logo": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ros.algorithyum.in/#website",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "inLanguage": "en-IN",
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          },
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "@id": "https://ros.algorithyum.in/#searchaction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://ros.algorithyum.in/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://ros.algorithyum.in/#softwareapplication",
+          "name": "Restaurant OS",
+          "operatingSystem": "Web, iOS, Android, macOS, Windows",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "RestaurantManagementSystem",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR",
+            "description": "Zero-commission restaurant digital operating system"
+          },
+          "featureList": [
+            "Dynamic QR Stand Ordering",
+            "Digital Menu Management",
+            "Kitchen Display System (KDS)",
+            "Split Billing with GST",
+            "Offline-First Local Caching"
+          ],
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind#webpage",
+          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+          "name": "The Blueprint for Transitioning to Commission-Free Dining | Restaurant OS",
+          "description": "How modern restaurants shift 35%+ of order volume from food delivery aggregators to direct table stands without disrupting kitchen operations.",
+          "isPartOf": {
+            "@id": "https://ros.algorithyum.in/#website"
+          },
+          "inLanguage": "en-IN"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ros.algorithyum.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Resources",
+              "item": "https://ros.algorithyum.in/resources"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Guides",
+              "item": "https://ros.algorithyum.in/resources/guides"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Leaving aggregators behind",
+              "item": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind"
+            }
+          ]
+        }
+      ],
+      "internalLinks": [
+        {
+          "targetId": "doc-quick-start",
+          "targetUrl": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+          "anchor": "5-Minute Restaurant Quick Start Guide",
+          "anchorVariant": "exact",
+          "relationshipType": "doc"
+        },
+        {
+          "targetId": "compare-vs-aggregators",
+          "targetUrl": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+          "anchor": "Restaurant OS vs. Food Delivery Aggregators commercial analysis",
+          "anchorVariant": "descriptive",
+          "relationshipType": "feature"
+        },
+        {
+          "targetId": "feature-qr-stand",
+          "targetUrl": "https://ros.algorithyum.in/features/qr-menu",
+          "anchor": "See how Dynamic QR Menu Stand Ecosystem works",
+          "anchorVariant": "action",
+          "relationshipType": "feature"
+        }
+      ],
+      "qualityScore": {
+        "totalScore": 90,
+        "metadataScore": 15,
+        "schemaScore": 25,
+        "linkingScore": 25,
+        "relationalScore": 25,
+        "issues": [
+          "Title length (73) outside ideal range (20-70 chars)."
+        ],
+        "passed": true
+      },
+      "contentDependencyScore": 65,
+      "aiCitationScore": 90,
+      "aiSummary": "Guide detailing the transition of restaurant dining operations from commission-heavy third-party delivery apps to direct zero-commission QR ordering.",
+      "productArea": "qr_menu"
+    },
+    {
+      "id": "doc-quick-start",
+      "slug": "5-minute-restaurant-quickstart",
+      "url": "/docs/latest/cat-qr-menus/5-minute-restaurant-quickstart",
+      "patternVersion": "v1",
+      "contentType": "documentation",
+      "template": "DocsTemplate",
+      "lifecycleState": "published",
+      "crawlPriority": 0.8,
+      "changefreq": "weekly",
+      "searchWeight": 98,
+      "metadata": {
+        "title": "5-Minute Restaurant Quick Start Guide | Restaurant OS",
+        "description": "Configure your restaurant profile, upload categories and dishes, and download printable vector table stands.",
+        "canonicalUrl": "https://ros.algorithyum.in/docs/latest/cat-qr-menus/5-minute-restaurant-quickstart",
+        "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+        "ogImageAlt": "5-Minute Restaurant Quick Start Guide — Restaurant OS",
+        "noIndex": false,
+        "readingTimeMinutes": 5,
+        "updatedAt": "2026-09-20T00:00:00Z",
+        "targetAudience": "general_manager",
+        "searchIntent": "transactional",
+        "primaryKeywords": [
+          "tag-qr",
+          "tag-pos"
+        ]
+      },
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "https://ros.algorithyum.in/"
+        },
+        {
+          "name": "Documentation",
+          "url": "https://ros.algorithyum.in/docs"
+        },
+        {
+          "name": "Latest",
+          "url": "https://ros.algorithyum.in/docs/latest"
+        },
+        {
+          "name": "Cat qr menus",
+          "url": "https://ros.algorithyum.in/docs/latest/cat-qr-menus"
+        },
+        {
+          "name": "5 minute restaurant quickstart",
+          "url": "https://ros.algorithyum.in/docs/latest/cat-qr-menus/5-minute-restaurant-quickstart"
+        }
+      ],
+      "schemaGraph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ros.algorithyum.in/#organization",
+          "name": "Restaurant OS",
+          "legalName": "Restaurant OS Inc.",
+          "url": "https://ros.algorithyum.in",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://ros.algorithyum.in/#logo",
+            "url": "https://ros.algorithyum.in/favicon.png",
+            "caption": "Restaurant OS"
+          },
+          "image": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company",
+          "foundingDate": "2024-01-01",
+          "sameAs": [
+            "https://twitter.com/restaurantos",
+            "https://linkedin.com/company/restaurant-os",
+            "https://github.com/puspendeerrr/ros"
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "support@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "email": "sales@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            }
+          ],
+          "knowsAbout": [
+            "Restaurant Point of Sale (POS)",
+            "Dynamic QR Code Menus",
+            "Kitchen Display Systems (KDS)",
+            "Zero-Commission Food Ordering",
+            "Hospitality Unit Economics"
+          ]
+        },
+        {
+          "@type": "Brand",
+          "@id": "https://ros.algorithyum.in/#brand",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "logo": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ros.algorithyum.in/#website",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "inLanguage": "en-IN",
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          },
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "@id": "https://ros.algorithyum.in/#searchaction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://ros.algorithyum.in/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://ros.algorithyum.in/#softwareapplication",
+          "name": "Restaurant OS",
+          "operatingSystem": "Web, iOS, Android, macOS, Windows",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "RestaurantManagementSystem",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR",
+            "description": "Zero-commission restaurant digital operating system"
+          },
+          "featureList": [
+            "Dynamic QR Stand Ordering",
+            "Digital Menu Management",
+            "Kitchen Display System (KDS)",
+            "Split Billing with GST",
+            "Offline-First Local Caching"
+          ],
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://ros.algorithyum.in/docs/latest/cat-qr-menus/5-minute-restaurant-quickstart#webpage",
+          "url": "https://ros.algorithyum.in/docs/latest/cat-qr-menus/5-minute-restaurant-quickstart",
+          "name": "5-Minute Restaurant Quick Start Guide | Restaurant OS",
+          "description": "Configure your restaurant profile, upload categories and dishes, and download printable vector table stands.",
+          "isPartOf": {
+            "@id": "https://ros.algorithyum.in/#website"
+          },
+          "inLanguage": "en-IN"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ros.algorithyum.in/docs/latest/cat-qr-menus/5-minute-restaurant-quickstart#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ros.algorithyum.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Documentation",
+              "item": "https://ros.algorithyum.in/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Latest",
+              "item": "https://ros.algorithyum.in/docs/latest"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Cat qr menus",
+              "item": "https://ros.algorithyum.in/docs/latest/cat-qr-menus"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "5 minute restaurant quickstart",
+              "item": "https://ros.algorithyum.in/docs/latest/cat-qr-menus/5-minute-restaurant-quickstart"
+            }
+          ]
+        }
+      ],
+      "internalLinks": [
+        {
+          "targetId": "guide-leaving-aggregators",
+          "targetUrl": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+          "anchor": "The Blueprint for Transitioning to Commission-Free Dining",
+          "anchorVariant": "exact",
+          "relationshipType": "guide"
+        },
+        {
+          "targetId": "compare-vs-aggregators",
+          "targetUrl": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+          "anchor": "Restaurant OS vs. Food Delivery Aggregators commercial analysis",
+          "anchorVariant": "descriptive",
+          "relationshipType": "feature"
+        },
+        {
+          "targetId": "feature-qr-stand",
+          "targetUrl": "https://ros.algorithyum.in/features/qr-menu",
+          "anchor": "See how Dynamic QR Menu Stand Ecosystem works",
+          "anchorVariant": "action",
+          "relationshipType": "feature"
+        },
+        {
+          "targetId": "industry-cafes",
+          "targetUrl": "https://ros.algorithyum.in/industries/specialty-cafes",
+          "anchor": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+          "anchorVariant": "exact",
+          "relationshipType": "industry"
+        },
+        {
+          "targetId": "changelog-v2-0-4",
+          "targetUrl": "https://ros.algorithyum.in/changelog",
+          "anchor": "Restaurant OS v2.0.4 Enterprise Architecture Release (changelog)",
+          "anchorVariant": "descriptive",
+          "relationshipType": "feature"
+        }
+      ],
+      "qualityScore": {
+        "totalScore": 100,
+        "metadataScore": 25,
+        "schemaScore": 25,
+        "linkingScore": 25,
+        "relationalScore": 25,
+        "issues": [],
+        "passed": true
+      },
+      "contentDependencyScore": 75,
+      "aiCitationScore": 100,
+      "aiSummary": "Step-by-step documentation for initial Restaurant OS setup, table stands, and menu publication.",
+      "productArea": "qr_menu"
+    },
+    {
+      "id": "compare-vs-aggregators",
+      "slug": "vs-delivery-aggregators",
+      "url": "/compare/vs-delivery-aggregators",
+      "patternVersion": "v1",
+      "contentType": "comparison",
+      "template": "ComparisonTemplate",
+      "lifecycleState": "published",
+      "crawlPriority": 0.8,
+      "changefreq": "weekly",
+      "searchWeight": 90,
+      "metadata": {
+        "title": "Restaurant OS vs. Food Delivery Aggregators",
+        "description": "Compare 0% commission direct dine-in and takeaway channels against 15–30% delivery app marketplace commissions.",
+        "canonicalUrl": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+        "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+        "ogImageAlt": "Restaurant OS vs. Food Delivery Aggregators — Restaurant OS",
+        "noIndex": false,
+        "readingTimeMinutes": 6,
+        "updatedAt": "2026-09-15T00:00:00Z",
+        "targetAudience": "restaurateur",
+        "searchIntent": "commercial",
+        "primaryKeywords": [
+          "tag-zero-commission"
+        ]
+      },
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "https://ros.algorithyum.in/"
+        },
+        {
+          "name": "Comparisons",
+          "url": "https://ros.algorithyum.in/compare"
+        },
+        {
+          "name": "Third-Party Delivery Platforms & Marketplaces",
+          "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators"
+        }
+      ],
+      "schemaGraph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ros.algorithyum.in/#organization",
+          "name": "Restaurant OS",
+          "legalName": "Restaurant OS Inc.",
+          "url": "https://ros.algorithyum.in",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://ros.algorithyum.in/#logo",
+            "url": "https://ros.algorithyum.in/favicon.png",
+            "caption": "Restaurant OS"
+          },
+          "image": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company",
+          "foundingDate": "2024-01-01",
+          "sameAs": [
+            "https://twitter.com/restaurantos",
+            "https://linkedin.com/company/restaurant-os",
+            "https://github.com/puspendeerrr/ros"
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "support@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "email": "sales@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            }
+          ],
+          "knowsAbout": [
+            "Restaurant Point of Sale (POS)",
+            "Dynamic QR Code Menus",
+            "Kitchen Display Systems (KDS)",
+            "Zero-Commission Food Ordering",
+            "Hospitality Unit Economics"
+          ]
+        },
+        {
+          "@type": "Brand",
+          "@id": "https://ros.algorithyum.in/#brand",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "logo": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ros.algorithyum.in/#website",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "inLanguage": "en-IN",
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          },
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "@id": "https://ros.algorithyum.in/#searchaction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://ros.algorithyum.in/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://ros.algorithyum.in/#softwareapplication",
+          "name": "Restaurant OS",
+          "operatingSystem": "Web, iOS, Android, macOS, Windows",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "RestaurantManagementSystem",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR",
+            "description": "Zero-commission restaurant digital operating system"
+          },
+          "featureList": [
+            "Dynamic QR Stand Ordering",
+            "Digital Menu Management",
+            "Kitchen Display System (KDS)",
+            "Split Billing with GST",
+            "Offline-First Local Caching"
+          ],
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://ros.algorithyum.in/compare/vs-delivery-aggregators#webpage",
+          "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+          "name": "Restaurant OS vs. Food Delivery Aggregators",
+          "description": "Compare 0% commission direct dine-in and takeaway channels against 15–30% delivery app marketplace commissions.",
+          "isPartOf": {
+            "@id": "https://ros.algorithyum.in/#website"
+          },
+          "inLanguage": "en-IN"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ros.algorithyum.in/compare/vs-delivery-aggregators#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ros.algorithyum.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Comparisons",
+              "item": "https://ros.algorithyum.in/compare"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Third-Party Delivery Platforms & Marketplaces",
+              "item": "https://ros.algorithyum.in/compare/vs-delivery-aggregators"
+            }
+          ]
+        }
+      ],
+      "internalLinks": [
+        {
+          "targetId": "guide-leaving-aggregators",
+          "targetUrl": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+          "anchor": "The Blueprint for Transitioning to Commission-Free Dining",
+          "anchorVariant": "exact",
+          "relationshipType": "guide"
+        },
+        {
+          "targetId": "doc-quick-start",
+          "targetUrl": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+          "anchor": "5-Minute Restaurant Quick Start Guide technical documentation",
+          "anchorVariant": "descriptive",
+          "relationshipType": "doc"
+        },
+        {
+          "targetId": "feature-qr-stand",
+          "targetUrl": "https://ros.algorithyum.in/features/qr-menu",
+          "anchor": "See how Dynamic QR Menu Stand Ecosystem works",
+          "anchorVariant": "action",
+          "relationshipType": "feature"
+        },
+        {
+          "targetId": "industry-cafes",
+          "targetUrl": "https://ros.algorithyum.in/industries/specialty-cafes",
+          "anchor": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+          "anchorVariant": "exact",
+          "relationshipType": "industry"
+        }
+      ],
+      "qualityScore": {
+        "totalScore": 90,
+        "metadataScore": 25,
+        "schemaScore": 25,
+        "linkingScore": 25,
+        "relationalScore": 15,
+        "issues": [],
+        "passed": true
+      },
+      "contentDependencyScore": 80,
+      "aiCitationScore": 100,
+      "aiSummary": "Commercial comparison outlining the financial and operational benefits of zero-commission direct ordering over marketplace delivery apps.",
+      "productArea": "qr_menu"
+    },
+    {
+      "id": "feature-qr-stand",
+      "slug": "qr-menu",
+      "url": "/features/qr-menu",
+      "patternVersion": "v1",
+      "contentType": "feature",
+      "template": "FeatureTemplate",
+      "lifecycleState": "published",
+      "crawlPriority": 0.9,
+      "changefreq": "weekly",
+      "searchWeight": 99,
+      "metadata": {
+        "title": "Dynamic QR Menu Stand Ecosystem | Restaurant OS",
+        "description": "High-resolution acrylic table stands with vector QR codes enabling instant smartphone menu browsing with zero apps to install.",
+        "canonicalUrl": "https://ros.algorithyum.in/features/qr-menu",
+        "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+        "ogImageAlt": "Dynamic QR Menu Stand Ecosystem — Restaurant OS",
+        "noIndex": false,
+        "readingTimeMinutes": 4,
+        "updatedAt": "2026-09-19T00:00:00Z",
+        "targetAudience": "restaurateur",
+        "searchIntent": "commercial",
+        "primaryKeywords": [
+          "tag-qr"
+        ]
+      },
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "https://ros.algorithyum.in/"
+        },
+        {
+          "name": "Features",
+          "url": "https://ros.algorithyum.in/features"
+        },
+        {
+          "name": "Dynamic QR Stand Ecosystem",
+          "url": "https://ros.algorithyum.in/features/qr-menu"
+        }
+      ],
+      "schemaGraph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ros.algorithyum.in/#organization",
+          "name": "Restaurant OS",
+          "legalName": "Restaurant OS Inc.",
+          "url": "https://ros.algorithyum.in",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://ros.algorithyum.in/#logo",
+            "url": "https://ros.algorithyum.in/favicon.png",
+            "caption": "Restaurant OS"
+          },
+          "image": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company",
+          "foundingDate": "2024-01-01",
+          "sameAs": [
+            "https://twitter.com/restaurantos",
+            "https://linkedin.com/company/restaurant-os",
+            "https://github.com/puspendeerrr/ros"
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "support@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "email": "sales@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            }
+          ],
+          "knowsAbout": [
+            "Restaurant Point of Sale (POS)",
+            "Dynamic QR Code Menus",
+            "Kitchen Display Systems (KDS)",
+            "Zero-Commission Food Ordering",
+            "Hospitality Unit Economics"
+          ]
+        },
+        {
+          "@type": "Brand",
+          "@id": "https://ros.algorithyum.in/#brand",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "logo": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ros.algorithyum.in/#website",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "inLanguage": "en-IN",
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          },
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "@id": "https://ros.algorithyum.in/#searchaction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://ros.algorithyum.in/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://ros.algorithyum.in/#softwareapplication",
+          "name": "Restaurant OS",
+          "operatingSystem": "Web, iOS, Android, macOS, Windows",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "RestaurantManagementSystem",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR",
+            "description": "Zero-commission restaurant digital operating system"
+          },
+          "featureList": [
+            "Dynamic QR Stand Ordering",
+            "Digital Menu Management",
+            "Kitchen Display System (KDS)",
+            "Split Billing with GST",
+            "Offline-First Local Caching"
+          ],
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://ros.algorithyum.in/features/qr-menu#webpage",
+          "url": "https://ros.algorithyum.in/features/qr-menu",
+          "name": "Dynamic QR Menu Stand Ecosystem | Restaurant OS",
+          "description": "High-resolution acrylic table stands with vector QR codes enabling instant smartphone menu browsing with zero apps to install.",
+          "isPartOf": {
+            "@id": "https://ros.algorithyum.in/#website"
+          },
+          "inLanguage": "en-IN"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ros.algorithyum.in/features/qr-menu#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ros.algorithyum.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Features",
+              "item": "https://ros.algorithyum.in/features"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Dynamic QR Stand Ecosystem",
+              "item": "https://ros.algorithyum.in/features/qr-menu"
+            }
+          ]
+        }
+      ],
+      "internalLinks": [
+        {
+          "targetId": "guide-leaving-aggregators",
+          "targetUrl": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+          "anchor": "The Blueprint for Transitioning to Commission-Free Dining",
+          "anchorVariant": "exact",
+          "relationshipType": "guide"
+        },
+        {
+          "targetId": "doc-quick-start",
+          "targetUrl": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+          "anchor": "5-Minute Restaurant Quick Start Guide technical documentation",
+          "anchorVariant": "descriptive",
+          "relationshipType": "doc"
+        },
+        {
+          "targetId": "compare-vs-aggregators",
+          "targetUrl": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+          "anchor": "Compare Restaurant OS vs. Food Delivery Aggregators",
+          "anchorVariant": "action",
+          "relationshipType": "feature"
+        }
+      ],
+      "qualityScore": {
+        "totalScore": 75,
+        "metadataScore": 25,
+        "schemaScore": 25,
+        "linkingScore": 25,
+        "relationalScore": 0,
+        "issues": [
+          "Low entity relationship connectivity."
+        ],
+        "passed": true
+      },
+      "contentDependencyScore": 60,
+      "aiCitationScore": 90,
+      "aiSummary": "Feature architecture overview of Restaurant OS dynamic QR table stands.",
+      "productArea": "qr_menu"
+    },
+    {
+      "id": "industry-cafes",
+      "slug": "specialty-cafes",
+      "url": "/industries/specialty-cafes",
+      "patternVersion": "v1",
+      "contentType": "industry",
+      "template": "IndustryTemplate",
+      "lifecycleState": "needs_improvement",
+      "crawlPriority": 0.7,
+      "changefreq": "monthly",
+      "searchWeight": 85,
+      "metadata": {
+        "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops | Restaurant OS",
+        "description": "High-frequency counter dispatch, custom milk modifier workflows, and lightning-fast UPI payments for boutique cafes.",
+        "canonicalUrl": "https://ros.algorithyum.in/industries/specialty-cafes",
+        "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+        "ogImageAlt": "Hospitality Architecture for Specialty Cafes & Coffee Shops — Restaurant OS",
+        "noIndex": false,
+        "readingTimeMinutes": 5,
+        "updatedAt": "2026-09-17T00:00:00Z",
+        "targetAudience": "restaurateur",
+        "searchIntent": "commercial",
+        "primaryKeywords": [
+          "tag-pos",
+          "tag-qr"
+        ]
+      },
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "https://ros.algorithyum.in/"
+        },
+        {
+          "name": "Industries",
+          "url": "https://ros.algorithyum.in/industries"
+        },
+        {
+          "name": "Specialty cafes",
+          "url": "https://ros.algorithyum.in/industries/specialty-cafes"
+        }
+      ],
+      "schemaGraph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ros.algorithyum.in/#organization",
+          "name": "Restaurant OS",
+          "legalName": "Restaurant OS Inc.",
+          "url": "https://ros.algorithyum.in",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://ros.algorithyum.in/#logo",
+            "url": "https://ros.algorithyum.in/favicon.png",
+            "caption": "Restaurant OS"
+          },
+          "image": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company",
+          "foundingDate": "2024-01-01",
+          "sameAs": [
+            "https://twitter.com/restaurantos",
+            "https://linkedin.com/company/restaurant-os",
+            "https://github.com/puspendeerrr/ros"
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "support@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "email": "sales@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            }
+          ],
+          "knowsAbout": [
+            "Restaurant Point of Sale (POS)",
+            "Dynamic QR Code Menus",
+            "Kitchen Display Systems (KDS)",
+            "Zero-Commission Food Ordering",
+            "Hospitality Unit Economics"
+          ]
+        },
+        {
+          "@type": "Brand",
+          "@id": "https://ros.algorithyum.in/#brand",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "logo": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ros.algorithyum.in/#website",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "inLanguage": "en-IN",
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          },
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "@id": "https://ros.algorithyum.in/#searchaction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://ros.algorithyum.in/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://ros.algorithyum.in/#softwareapplication",
+          "name": "Restaurant OS",
+          "operatingSystem": "Web, iOS, Android, macOS, Windows",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "RestaurantManagementSystem",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR",
+            "description": "Zero-commission restaurant digital operating system"
+          },
+          "featureList": [
+            "Dynamic QR Stand Ordering",
+            "Digital Menu Management",
+            "Kitchen Display System (KDS)",
+            "Split Billing with GST",
+            "Offline-First Local Caching"
+          ],
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://ros.algorithyum.in/industries/specialty-cafes#webpage",
+          "url": "https://ros.algorithyum.in/industries/specialty-cafes",
+          "name": "Hospitality Architecture for Specialty Cafes & Coffee Shops | Restaurant OS",
+          "description": "High-frequency counter dispatch, custom milk modifier workflows, and lightning-fast UPI payments for boutique cafes.",
+          "isPartOf": {
+            "@id": "https://ros.algorithyum.in/#website"
+          },
+          "inLanguage": "en-IN"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ros.algorithyum.in/industries/specialty-cafes#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ros.algorithyum.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Industries",
+              "item": "https://ros.algorithyum.in/industries"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Specialty cafes",
+              "item": "https://ros.algorithyum.in/industries/specialty-cafes"
+            }
+          ]
+        }
+      ],
+      "internalLinks": [
+        {
+          "targetId": "guide-leaving-aggregators",
+          "targetUrl": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+          "anchor": "The Blueprint for Transitioning to Commission-Free Dining",
+          "anchorVariant": "exact",
+          "relationshipType": "guide"
+        },
+        {
+          "targetId": "feature-qr-stand",
+          "targetUrl": "https://ros.algorithyum.in/features/qr-menu",
+          "anchor": "Dynamic QR Menu Stand Ecosystem feature architecture",
+          "anchorVariant": "descriptive",
+          "relationshipType": "feature"
+        }
+      ],
+      "qualityScore": {
+        "totalScore": 70,
+        "metadataScore": 15,
+        "schemaScore": 25,
+        "linkingScore": 15,
+        "relationalScore": 15,
+        "issues": [
+          "Title length (75) outside ideal range (20-70 chars).",
+          "Low internal linking count (2 links). Target is >= 3."
+        ],
+        "passed": false
+      },
+      "contentDependencyScore": 50,
+      "aiCitationScore": 90,
+      "aiSummary": "Operational blueprint for cafes utilizing Restaurant OS for counter queues and fast barista dispatch.",
+      "productArea": "cloud_pos"
+    },
+    {
+      "id": "changelog-v2-0-4",
+      "slug": "v2-0-4-release",
+      "url": "/changelog/v2-0-4-release",
+      "patternVersion": "v1",
+      "contentType": "changelog",
+      "template": "ResourceTemplate",
+      "lifecycleState": "published",
+      "crawlPriority": 0.7,
+      "changefreq": "monthly",
+      "searchWeight": 80,
+      "metadata": {
+        "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+        "description": "Information architecture separation, versioned documentation readiness, and enterprise content engine.",
+        "canonicalUrl": "https://ros.algorithyum.in/changelog/v2-0-4-release",
+        "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+        "ogImageAlt": "Restaurant OS v2.0.4 Enterprise Architecture Release — Restaurant OS",
+        "noIndex": false,
+        "readingTimeMinutes": 3,
+        "updatedAt": "2026-09-21T00:00:00Z",
+        "targetAudience": "developer",
+        "searchIntent": "informational",
+        "primaryKeywords": [
+          "tag-pos"
+        ]
+      },
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "https://ros.algorithyum.in/"
+        },
+        {
+          "name": "Changelog",
+          "url": "https://ros.algorithyum.in/changelog"
+        },
+        {
+          "name": "V2 0 4 release",
+          "url": "https://ros.algorithyum.in/changelog/v2-0-4-release"
+        }
+      ],
+      "schemaGraph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ros.algorithyum.in/#organization",
+          "name": "Restaurant OS",
+          "legalName": "Restaurant OS Inc.",
+          "url": "https://ros.algorithyum.in",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://ros.algorithyum.in/#logo",
+            "url": "https://ros.algorithyum.in/favicon.png",
+            "caption": "Restaurant OS"
+          },
+          "image": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company",
+          "foundingDate": "2024-01-01",
+          "sameAs": [
+            "https://twitter.com/restaurantos",
+            "https://linkedin.com/company/restaurant-os",
+            "https://github.com/puspendeerrr/ros"
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "support@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "email": "sales@ros.algorithyum.in",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
+            }
+          ],
+          "knowsAbout": [
+            "Restaurant Point of Sale (POS)",
+            "Dynamic QR Code Menus",
+            "Kitchen Display Systems (KDS)",
+            "Zero-Commission Food Ordering",
+            "Hospitality Unit Economics"
+          ]
+        },
+        {
+          "@type": "Brand",
+          "@id": "https://ros.algorithyum.in/#brand",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "logo": "https://ros.algorithyum.in/favicon.png",
+          "description": "Run Your Restaurant Like a Tech Company"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ros.algorithyum.in/#website",
+          "name": "Restaurant OS",
+          "url": "https://ros.algorithyum.in",
+          "inLanguage": "en-IN",
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          },
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "@id": "https://ros.algorithyum.in/#searchaction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://ros.algorithyum.in/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://ros.algorithyum.in/#softwareapplication",
+          "name": "Restaurant OS",
+          "operatingSystem": "Web, iOS, Android, macOS, Windows",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "RestaurantManagementSystem",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR",
+            "description": "Zero-commission restaurant digital operating system"
+          },
+          "featureList": [
+            "Dynamic QR Stand Ordering",
+            "Digital Menu Management",
+            "Kitchen Display System (KDS)",
+            "Split Billing with GST",
+            "Offline-First Local Caching"
+          ],
+          "publisher": {
+            "@id": "https://ros.algorithyum.in/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://ros.algorithyum.in/changelog/v2-0-4-release#webpage",
+          "url": "https://ros.algorithyum.in/changelog/v2-0-4-release",
+          "name": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+          "description": "Information architecture separation, versioned documentation readiness, and enterprise content engine.",
+          "isPartOf": {
+            "@id": "https://ros.algorithyum.in/#website"
+          },
+          "inLanguage": "en-IN"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ros.algorithyum.in/changelog/v2-0-4-release#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ros.algorithyum.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Changelog",
+              "item": "https://ros.algorithyum.in/changelog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "V2 0 4 release",
+              "item": "https://ros.algorithyum.in/changelog/v2-0-4-release"
+            }
+          ]
+        }
+      ],
+      "internalLinks": [
+        {
+          "targetId": "doc-quick-start",
+          "targetUrl": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+          "anchor": "5-Minute Restaurant Quick Start Guide",
+          "anchorVariant": "exact",
+          "relationshipType": "doc"
+        },
+        {
+          "targetId": "feature-qr-stand",
+          "targetUrl": "https://ros.algorithyum.in/features/qr-menu",
+          "anchor": "Dynamic QR Menu Stand Ecosystem feature architecture",
+          "anchorVariant": "descriptive",
+          "relationshipType": "feature"
+        }
+      ],
+      "qualityScore": {
+        "totalScore": 80,
+        "metadataScore": 25,
+        "schemaScore": 25,
+        "linkingScore": 15,
+        "relationalScore": 15,
+        "issues": [
+          "Low internal linking count (2 links). Target is >= 3."
+        ],
+        "passed": true
+      },
+      "contentDependencyScore": 50,
+      "aiCitationScore": 90,
+      "aiSummary": "Product changelog for Restaurant OS version 2.0.4.",
+      "productArea": "platform"
+    }
+  ]
+}

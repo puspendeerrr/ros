@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.817Z",
+  "totalClustersAudited": 7,
+  "hubClusters": [
+    "cluster-qr-menu",
+    "cluster-qr-payments",
+    "cluster-cloud-pos",
+    "cluster-commission-free"
+  ],
+  "isolatedClusters": [
+    "cluster-kds"
+  ],
+  "clusterHealthDetails": [
+    {
+      "clusterId": "cluster-qr-menu",
+      "internalLinksCount": 8,
+      "crossClusterOutboundCount": 3,
+      "crossClusterInboundCount": 2,
+      "isHub": true,
+      "isOrphan": false,
+      "healthStatus": "healthy",
+      "suggestedBridges": [
+        {
+          "targetClusterId": "cluster-cloud-pos",
+          "reason": "Bridge QR menu table ordering to Cloud POS cashier ticket synchronization."
+        }
+      ]
+    },
+    {
+      "clusterId": "cluster-qr-payments",
+      "internalLinksCount": 1,
+      "crossClusterOutboundCount": 1,
+      "crossClusterInboundCount": 5,
+      "isHub": true,
+      "isOrphan": false,
+      "healthStatus": "healthy",
+      "suggestedBridges": []
+    },
+    {
+      "clusterId": "cluster-cloud-pos",
+      "internalLinksCount": 1,
+      "crossClusterOutboundCount": 4,
+      "crossClusterInboundCount": 2,
+      "isHub": true,
+      "isOrphan": false,
+      "healthStatus": "healthy",
+      "suggestedBridges": []
+    },
+    {
+      "clusterId": "cluster-kds",
+      "internalLinksCount": 0,
+      "crossClusterOutboundCount": 0,
+      "crossClusterInboundCount": 0,
+      "isHub": false,
+      "isOrphan": true,
+      "healthStatus": "isolated",
+      "suggestedBridges": [
+        {
+          "targetClusterId": "cluster-cloud-pos",
+          "reason": "Link KDS station routing from Cloud POS hardware setup guides."
+        }
+      ]
+    },
+    {
+      "clusterId": "cluster-multi-branch",
+      "internalLinksCount": 0,
+      "crossClusterOutboundCount": 2,
+      "crossClusterInboundCount": 1,
+      "isHub": false,
+      "isOrphan": false,
+      "healthStatus": "underlinked",
+      "suggestedBridges": []
+    },
+    {
+      "clusterId": "cluster-commission-free",
+      "internalLinksCount": 8,
+      "crossClusterOutboundCount": 3,
+      "crossClusterInboundCount": 2,
+      "isHub": true,
+      "isOrphan": false,
+      "healthStatus": "healthy",
+      "suggestedBridges": []
+    },
+    {
+      "clusterId": "cluster-restaurant-analytics",
+      "internalLinksCount": 0,
+      "crossClusterOutboundCount": 2,
+      "crossClusterInboundCount": 1,
+      "isHub": false,
+      "isOrphan": false,
+      "healthStatus": "underlinked",
+      "suggestedBridges": []
+    }
+  ]
+}

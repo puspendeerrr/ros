@@ -1,0 +1,22 @@
+# Restaurant OS
+
+> Run your restaurant like a tech company. All the digital menu and QR ordering features you need in one unified, commission-free platform.
+
+Restaurant OS is a modern cloud operating system built specifically for restaurants, cafes, cloud kitchens, and boutique hospitality venues. It provides vector QR code table stands, real-time menu management, branded restaurant profiles, and lightning-fast digital menus that customers open instantly on any mobile browser without downloading an app.
+
+## Core Capabilities
+
+- Dynamic QR Stand Generation: Table-specific and counter vector QR stands (SVG & PNG) dynamically linked to the digital catalog.
+- Real-Time Menu Builder: Instant category, dish, price, and out-of-stock item updating with zero reload latency.
+- Commission-Free Model: 0% transaction commission on orders and menu interactions; restaurants keep 100% of revenue.
+- Edge-Hosted Public Menus: Fast mobile catalog pages with progressive web caching and offline resiliency.
+- Multi-Branch Architecture: Enterprise multi-location management under a single master dashboard.
+
+## Key Links
+
+- [Homepage](https://ros.algorithyum.in/): Core platform overview, demo showcase, and restaurant onboarding.
+- [Features](https://ros.algorithyum.in/features): Detailed functional breakdown of the QR generator, tactile builder, and hosting layer.
+- [About](https://ros.algorithyum.in/about): Platform mission, values, and zero-commission operating philosophy.
+- [Contact](https://ros.algorithyum.in/contact): Sales desk, franchise onboarding, and technical support.
+- [Privacy Policy](https://ros.algorithyum.in/privacy): Merchant data security, cookie policy, and dining privacy protection.
+- [Terms of Service](https://ros.algorithyum.in/terms): Usage terms, software availability, and account governance.

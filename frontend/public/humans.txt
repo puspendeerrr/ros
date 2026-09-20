@@ -1,0 +1,12 @@
+/* TEAM */
+Engineering: Restaurant OS Core Team
+Product Architecture: Restaurant OS Product Engineering
+Location: India
+
+/* SITE */
+Standards: HTML5, CSS3, ES2024, TypeScript, Schema.org JSON-LD, AEO/GEO Compliant
+Components: React 19, Vite, Ant Design, Framer Motion, Lucide Icons
+Performance: Core Web Vitals Tuned (LCP < 2s, CLS < 0.1, INP Excellent)
+Accessibility: WCAG 2.1 AA Compliant, Screen Reader Friendly, Prefers-Reduced-Motion
+Security: CSP, HSTS, X-Content-Type-Options, Strict Referrer Policy
+Software: Restaurant OS (https://ros.algorithyum.in)

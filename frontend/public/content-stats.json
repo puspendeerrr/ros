@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.320Z",
+  "totalItems": 6,
+  "byType": {
+    "guide": 1,
+    "documentation": 1,
+    "comparison": 1,
+    "feature": 1,
+    "industry": 1,
+    "changelog": 1
+  },
+  "byStatus": {
+    "published": 6
+  },
+  "byAudience": {
+    "restaurateur": 4,
+    "general_manager": 1,
+    "developer": 1
+  },
+  "byIntent": {
+    "informational": 2,
+    "transactional": 1,
+    "commercial": 3
+  },
+  "byProductArea": {
+    "qr_menu": 4,
+    "cloud_pos": 1,
+    "platform": 1
+  }
+}

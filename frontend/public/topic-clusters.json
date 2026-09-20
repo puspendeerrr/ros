@@ -1,0 +1,103 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.587Z",
+  "totalPillars": 8,
+  "pillars": [
+    {
+      "pillarId": "pillar-qr_menu",
+      "pillarName": "QR MENU SUITE",
+      "productArea": "qr_menu",
+      "clusterSize": 4,
+      "sufficientSupport": true,
+      "clusterItems": [
+        {
+          "id": "guide-leaving-aggregators",
+          "contentType": "guide",
+          "title": "The Blueprint for Transitioning to Commission-Free Dining"
+        },
+        {
+          "id": "doc-quick-start",
+          "contentType": "documentation",
+          "title": "5-Minute Restaurant Quick Start Guide"
+        },
+        {
+          "id": "compare-vs-aggregators",
+          "contentType": "comparison",
+          "title": "Restaurant OS vs. Food Delivery Aggregators"
+        },
+        {
+          "id": "feature-qr-stand",
+          "contentType": "feature",
+          "title": "Dynamic QR Menu Stand Ecosystem"
+        }
+      ]
+    },
+    {
+      "pillarId": "pillar-cloud_pos",
+      "pillarName": "CLOUD POS SUITE",
+      "productArea": "cloud_pos",
+      "clusterSize": 1,
+      "sufficientSupport": false,
+      "clusterItems": [
+        {
+          "id": "industry-cafes",
+          "contentType": "industry",
+          "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops"
+        }
+      ]
+    },
+    {
+      "pillarId": "pillar-kds",
+      "pillarName": "KDS SUITE",
+      "productArea": "kds",
+      "clusterSize": 0,
+      "sufficientSupport": false,
+      "clusterItems": []
+    },
+    {
+      "pillarId": "pillar-multi_branch",
+      "pillarName": "MULTI BRANCH SUITE",
+      "productArea": "multi_branch",
+      "clusterSize": 0,
+      "sufficientSupport": false,
+      "clusterItems": []
+    },
+    {
+      "pillarId": "pillar-billing",
+      "pillarName": "BILLING SUITE",
+      "productArea": "billing",
+      "clusterSize": 0,
+      "sufficientSupport": false,
+      "clusterItems": []
+    },
+    {
+      "pillarId": "pillar-crm",
+      "pillarName": "CRM SUITE",
+      "productArea": "crm",
+      "clusterSize": 0,
+      "sufficientSupport": false,
+      "clusterItems": []
+    },
+    {
+      "pillarId": "pillar-analytics",
+      "pillarName": "ANALYTICS SUITE",
+      "productArea": "analytics",
+      "clusterSize": 0,
+      "sufficientSupport": false,
+      "clusterItems": []
+    },
+    {
+      "pillarId": "pillar-platform",
+      "pillarName": "PLATFORM SUITE",
+      "productArea": "platform",
+      "clusterSize": 1,
+      "sufficientSupport": false,
+      "clusterItems": [
+        {
+          "id": "changelog-v2-0-4",
+          "contentType": "changelog",
+          "title": "Restaurant OS v2.0.4 Enterprise Architecture Release"
+        }
+      ]
+    }
+  ]
+}

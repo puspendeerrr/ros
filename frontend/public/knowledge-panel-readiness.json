@@ -1,0 +1,229 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.049Z",
+  "totalEntitiesAudited": 10,
+  "averageReadinessScore": 71,
+  "readinessScores": [
+    {
+      "entityId": "ent-org-restaurant-os",
+      "entityName": "Restaurant OS",
+      "entityType": "Organization",
+      "readinessScore": 100,
+      "sameAsLinksCount": 3,
+      "attributes": {
+        "hasLogo": true,
+        "hasContactPoint": true,
+        "hasFoundingDate": true,
+        "hasKnowsAbout": true,
+        "hasMemberOf": true,
+        "hasPublisher": false,
+        "hasSameAs": true,
+        "hasIdentifier": true
+      },
+      "missingCriticalAttributes": [],
+      "recommendations": []
+    },
+    {
+      "entityId": "ent-brand-restaurant-os",
+      "entityName": "Restaurant OS",
+      "entityType": "Brand",
+      "readinessScore": 90,
+      "sameAsLinksCount": 1,
+      "attributes": {
+        "hasLogo": true,
+        "hasContactPoint": true,
+        "hasFoundingDate": true,
+        "hasKnowsAbout": true,
+        "hasMemberOf": true,
+        "hasPublisher": false,
+        "hasSameAs": true,
+        "hasIdentifier": true
+      },
+      "missingCriticalAttributes": [
+        "sameAs (requires >= 2 external authority URLs)"
+      ],
+      "recommendations": [
+        "Link Restaurant OS to verified Wikidata, Crunchbase, or GitHub profiles."
+      ]
+    },
+    {
+      "entityId": "ent-software-restaurant-os",
+      "entityName": "Restaurant OS Enterprise Suite",
+      "entityType": "SoftwareApplication",
+      "readinessScore": 90,
+      "sameAsLinksCount": 2,
+      "attributes": {
+        "hasLogo": true,
+        "hasContactPoint": false,
+        "hasFoundingDate": false,
+        "hasKnowsAbout": true,
+        "hasMemberOf": false,
+        "hasPublisher": true,
+        "hasSameAs": true,
+        "hasIdentifier": true
+      },
+      "missingCriticalAttributes": [],
+      "recommendations": []
+    },
+    {
+      "entityId": "ent-feat-qr-stand",
+      "entityName": "Dynamic QR Menu Stand Ecosystem",
+      "entityType": "Feature",
+      "readinessScore": 70,
+      "sameAsLinksCount": 1,
+      "attributes": {
+        "hasLogo": false,
+        "hasContactPoint": false,
+        "hasFoundingDate": false,
+        "hasKnowsAbout": true,
+        "hasMemberOf": false,
+        "hasPublisher": true,
+        "hasSameAs": true,
+        "hasIdentifier": true
+      },
+      "missingCriticalAttributes": [
+        "sameAs (requires >= 2 external authority URLs)"
+      ],
+      "recommendations": [
+        "Link Dynamic QR Menu Stand Ecosystem to verified Wikidata, Crunchbase, or GitHub profiles."
+      ]
+    },
+    {
+      "entityId": "ent-feat-cloud-pos",
+      "entityName": "Cloud POS & Offline Billing Terminal",
+      "entityType": "Feature",
+      "readinessScore": 60,
+      "sameAsLinksCount": 0,
+      "attributes": {
+        "hasLogo": false,
+        "hasContactPoint": false,
+        "hasFoundingDate": false,
+        "hasKnowsAbout": true,
+        "hasMemberOf": false,
+        "hasPublisher": true,
+        "hasSameAs": false,
+        "hasIdentifier": true
+      },
+      "missingCriticalAttributes": [
+        "sameAs (requires >= 2 external authority URLs)"
+      ],
+      "recommendations": [
+        "Link Cloud POS & Offline Billing Terminal to verified Wikidata, Crunchbase, or GitHub profiles."
+      ]
+    },
+    {
+      "entityId": "ent-feat-kds",
+      "entityName": "Kitchen Display System & Station Routing",
+      "entityType": "Feature",
+      "readinessScore": 60,
+      "sameAsLinksCount": 0,
+      "attributes": {
+        "hasLogo": false,
+        "hasContactPoint": false,
+        "hasFoundingDate": false,
+        "hasKnowsAbout": true,
+        "hasMemberOf": false,
+        "hasPublisher": true,
+        "hasSameAs": false,
+        "hasIdentifier": true
+      },
+      "missingCriticalAttributes": [
+        "sameAs (requires >= 2 external authority URLs)"
+      ],
+      "recommendations": [
+        "Link Kitchen Display System & Station Routing to verified Wikidata, Crunchbase, or GitHub profiles."
+      ]
+    },
+    {
+      "entityId": "ent-feat-multi-branch",
+      "entityName": "Multi-Branch & Franchise Fleet Control",
+      "entityType": "Feature",
+      "readinessScore": 60,
+      "sameAsLinksCount": 0,
+      "attributes": {
+        "hasLogo": false,
+        "hasContactPoint": false,
+        "hasFoundingDate": false,
+        "hasKnowsAbout": true,
+        "hasMemberOf": false,
+        "hasPublisher": true,
+        "hasSameAs": false,
+        "hasIdentifier": true
+      },
+      "missingCriticalAttributes": [
+        "sameAs (requires >= 2 external authority URLs)"
+      ],
+      "recommendations": [
+        "Link Multi-Branch & Franchise Fleet Control to verified Wikidata, Crunchbase, or GitHub profiles."
+      ]
+    },
+    {
+      "entityId": "ent-ind-cafes",
+      "entityName": "Specialty Cafes & Quick-Serve Coffee Architecture",
+      "entityType": "Industry",
+      "readinessScore": 60,
+      "sameAsLinksCount": 0,
+      "attributes": {
+        "hasLogo": false,
+        "hasContactPoint": false,
+        "hasFoundingDate": false,
+        "hasKnowsAbout": true,
+        "hasMemberOf": false,
+        "hasPublisher": true,
+        "hasSameAs": false,
+        "hasIdentifier": true
+      },
+      "missingCriticalAttributes": [
+        "sameAs (requires >= 2 external authority URLs)"
+      ],
+      "recommendations": [
+        "Link Specialty Cafes & Quick-Serve Coffee Architecture to verified Wikidata, Crunchbase, or GitHub profiles."
+      ]
+    },
+    {
+      "entityId": "ent-doc-quickstart",
+      "entityName": "5-Minute Restaurant Quick Start Documentation",
+      "entityType": "Documentation",
+      "readinessScore": 60,
+      "sameAsLinksCount": 0,
+      "attributes": {
+        "hasLogo": false,
+        "hasContactPoint": false,
+        "hasFoundingDate": false,
+        "hasKnowsAbout": true,
+        "hasMemberOf": false,
+        "hasPublisher": true,
+        "hasSameAs": false,
+        "hasIdentifier": true
+      },
+      "missingCriticalAttributes": [
+        "sameAs (requires >= 2 external authority URLs)"
+      ],
+      "recommendations": [
+        "Link 5-Minute Restaurant Quick Start Documentation to verified Wikidata, Crunchbase, or GitHub profiles."
+      ]
+    },
+    {
+      "entityId": "ent-term-commission-free",
+      "entityName": "Commission-Free Dining Infrastructure",
+      "entityType": "DefinedTerm",
+      "readinessScore": 60,
+      "sameAsLinksCount": 0,
+      "attributes": {
+        "hasLogo": false,
+        "hasContactPoint": false,
+        "hasFoundingDate": false,
+        "hasKnowsAbout": true,
+        "hasMemberOf": false,
+        "hasPublisher": true,
+        "hasSameAs": false,
+        "hasIdentifier": true
+      },
+      "missingCriticalAttributes": [
+        "sameAs (requires >= 2 external authority URLs)"
+      ],
+      "recommendations": [
+        "Link Commission-Free Dining Infrastructure to verified Wikidata, Crunchbase, or GitHub profiles."
+      ]
+    }
+  ]
+}

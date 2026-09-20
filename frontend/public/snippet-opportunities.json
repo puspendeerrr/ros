@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.280Z",
+  "totalFeaturedSnippetCandidates": 6,
+  "opportunities": [
+    {
+      "contentId": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "aiOverviewScore": 100,
+      "snippetScore": 100,
+      "answerScore": 100,
+      "isAiOverviewCandidate": true,
+      "isFeaturedSnippetCandidate": true,
+      "targetSnippetType": "list",
+      "primaryQuery": "How to implement The Blueprint for Transitioning to Commission-Free Dining?",
+      "extractedSnippetText": "1. Configure dining room profile. 2. Upload catalog and prices. 3. Download vector table stands for direct UPI ordering."
+    },
+    {
+      "contentId": "doc-quick-start",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "aiOverviewScore": 100,
+      "snippetScore": 100,
+      "answerScore": 100,
+      "isAiOverviewCandidate": true,
+      "isFeaturedSnippetCandidate": true,
+      "targetSnippetType": "list",
+      "primaryQuery": "How to implement 5-Minute Restaurant Quick Start Guide?",
+      "extractedSnippetText": "1. Configure dining room profile. 2. Upload catalog and prices. 3. Download vector table stands for direct UPI ordering."
+    },
+    {
+      "contentId": "compare-vs-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "aiOverviewScore": 100,
+      "snippetScore": 100,
+      "answerScore": 100,
+      "isAiOverviewCandidate": true,
+      "isFeaturedSnippetCandidate": true,
+      "targetSnippetType": "table",
+      "primaryQuery": "Restaurant OS vs delivery aggregators cost comparison",
+      "extractedSnippetText": "Restaurant OS (0% commission, direct UPI, full data ownership) vs Delivery Aggregators (15-30% commissions, customer data retained by app)."
+    },
+    {
+      "contentId": "feature-qr-stand",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "aiOverviewScore": 94,
+      "snippetScore": 80,
+      "answerScore": 100,
+      "isAiOverviewCandidate": true,
+      "isFeaturedSnippetCandidate": true,
+      "targetSnippetType": "paragraph",
+      "primaryQuery": "What is Dynamic QR Menu Stand Ecosystem?",
+      "extractedSnippetText": "Physical-to-digital bridge for restaurants: printable vector table stands connecting diners straight to dynamic, real-time menus."
+    },
+    {
+      "contentId": "industry-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "aiOverviewScore": 94,
+      "snippetScore": 80,
+      "answerScore": 100,
+      "isAiOverviewCandidate": true,
+      "isFeaturedSnippetCandidate": true,
+      "targetSnippetType": "paragraph",
+      "primaryQuery": "What is Hospitality Architecture for Specialty Cafes & Coffee Shops?",
+      "extractedSnippetText": "Tailored operational setup designed for fast barista queue management and rapid drink modifier selection."
+    },
+    {
+      "contentId": "changelog-v2-0-4",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "aiOverviewScore": 94,
+      "snippetScore": 80,
+      "answerScore": 100,
+      "isAiOverviewCandidate": true,
+      "isFeaturedSnippetCandidate": true,
+      "targetSnippetType": "paragraph",
+      "primaryQuery": "What is Restaurant OS v2.0.4 Enterprise Architecture Release?",
+      "extractedSnippetText": "Release notes covering Phase 2 Information Architecture and Phase 3 Content Engine infrastructure rollout."
+    }
+  ]
+}

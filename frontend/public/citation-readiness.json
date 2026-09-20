@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.049Z",
+  "averageCitationScore": 85,
+  "optimizedForAiOverviewCount": 3,
+  "citations": [
+    {
+      "contentId": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "contentType": "guide",
+      "citationReadinessScore": 94,
+      "definitionQuality": 100,
+      "answerCompleteness": 90,
+      "evidenceStrength": 100,
+      "entityLinking": 95,
+      "faqQuality": 70,
+      "schemaCompleteness": 80,
+      "referenceCoverage": 90,
+      "isAiOverviewOptimized": true
+    },
+    {
+      "contentId": "doc-quick-start",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "contentType": "documentation",
+      "citationReadinessScore": 92,
+      "definitionQuality": 100,
+      "answerCompleteness": 90,
+      "evidenceStrength": 90,
+      "entityLinking": 95,
+      "faqQuality": 70,
+      "schemaCompleteness": 80,
+      "referenceCoverage": 90,
+      "isAiOverviewOptimized": true
+    },
+    {
+      "contentId": "compare-vs-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "contentType": "comparison",
+      "citationReadinessScore": 89,
+      "definitionQuality": 100,
+      "answerCompleteness": 85,
+      "evidenceStrength": 90,
+      "entityLinking": 80,
+      "faqQuality": 70,
+      "schemaCompleteness": 80,
+      "referenceCoverage": 90,
+      "isAiOverviewOptimized": true
+    },
+    {
+      "contentId": "feature-qr-stand",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "contentType": "feature",
+      "citationReadinessScore": 74,
+      "definitionQuality": 100,
+      "answerCompleteness": 70,
+      "evidenceStrength": 65,
+      "entityLinking": 50,
+      "faqQuality": 70,
+      "schemaCompleteness": 80,
+      "referenceCoverage": 65,
+      "isAiOverviewOptimized": false
+    },
+    {
+      "contentId": "industry-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "contentType": "industry",
+      "citationReadinessScore": 81,
+      "definitionQuality": 100,
+      "answerCompleteness": 70,
+      "evidenceStrength": 65,
+      "entityLinking": 80,
+      "faqQuality": 70,
+      "schemaCompleteness": 80,
+      "referenceCoverage": 90,
+      "isAiOverviewOptimized": false
+    },
+    {
+      "contentId": "changelog-v2-0-4",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "contentType": "changelog",
+      "citationReadinessScore": 81,
+      "definitionQuality": 100,
+      "answerCompleteness": 70,
+      "evidenceStrength": 65,
+      "entityLinking": 80,
+      "faqQuality": 70,
+      "schemaCompleteness": 80,
+      "referenceCoverage": 90,
+      "isAiOverviewOptimized": false
+    }
+  ]
+}

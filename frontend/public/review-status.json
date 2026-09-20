@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.049Z",
+  "totalReviews": 7,
+  "approvedPercent": 29,
+  "reviews": [
+    {
+      "contentId": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "reviewerId": "security-reviewer",
+      "reviewerRole": "technical_reviewer",
+      "reviewedAt": "2026-09-18T00:00:00Z",
+      "approvalStatus": "approved",
+      "verificationNotes": "Verified for technical reviewer standards, factual integrity, and schema compliance.",
+      "checkedDimensions": {
+        "factualAccuracy": true,
+        "securityCompliance": true,
+        "mathIntegrity": true,
+        "schemaValidity": true
+      }
+    },
+    {
+      "contentId": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "reviewerId": "tech-editor",
+      "reviewerRole": "product_reviewer",
+      "reviewedAt": "2026-09-18T00:00:00Z",
+      "approvalStatus": "approved",
+      "verificationNotes": "Verified for product reviewer standards, factual integrity, and schema compliance.",
+      "checkedDimensions": {
+        "factualAccuracy": true,
+        "securityCompliance": false,
+        "mathIntegrity": true,
+        "schemaValidity": true
+      }
+    },
+    {
+      "contentId": "doc-quick-start",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "reviewerId": "puspender-singh",
+      "reviewerRole": "author",
+      "reviewedAt": "2026-09-20T00:00:00Z",
+      "approvalStatus": "approved_with_revisions",
+      "verificationNotes": "Author self-verified. Recommended for multi-role peer review.",
+      "checkedDimensions": {
+        "factualAccuracy": true,
+        "securityCompliance": false,
+        "mathIntegrity": false,
+        "schemaValidity": true
+      }
+    },
+    {
+      "contentId": "compare-vs-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "reviewerId": "ros-editorial-team",
+      "reviewerRole": "author",
+      "reviewedAt": "2026-09-15T00:00:00Z",
+      "approvalStatus": "approved_with_revisions",
+      "verificationNotes": "Author self-verified. Recommended for multi-role peer review.",
+      "checkedDimensions": {
+        "factualAccuracy": true,
+        "securityCompliance": false,
+        "mathIntegrity": false,
+        "schemaValidity": true
+      }
+    },
+    {
+      "contentId": "feature-qr-stand",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "reviewerId": "puspender-singh",
+      "reviewerRole": "author",
+      "reviewedAt": "2026-09-19T00:00:00Z",
+      "approvalStatus": "approved_with_revisions",
+      "verificationNotes": "Author self-verified. Recommended for multi-role peer review.",
+      "checkedDimensions": {
+        "factualAccuracy": true,
+        "securityCompliance": false,
+        "mathIntegrity": false,
+        "schemaValidity": true
+      }
+    },
+    {
+      "contentId": "industry-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "reviewerId": "ros-editorial-team",
+      "reviewerRole": "author",
+      "reviewedAt": "2026-09-17T00:00:00Z",
+      "approvalStatus": "approved_with_revisions",
+      "verificationNotes": "Author self-verified. Recommended for multi-role peer review.",
+      "checkedDimensions": {
+        "factualAccuracy": true,
+        "securityCompliance": false,
+        "mathIntegrity": false,
+        "schemaValidity": true
+      }
+    },
+    {
+      "contentId": "changelog-v2-0-4",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "reviewerId": "puspender-singh",
+      "reviewerRole": "author",
+      "reviewedAt": "2026-09-21T00:00:00Z",
+      "approvalStatus": "approved_with_revisions",
+      "verificationNotes": "Author self-verified. Recommended for multi-role peer review.",
+      "checkedDimensions": {
+        "factualAccuracy": true,
+        "securityCompliance": false,
+        "mathIntegrity": false,
+        "schemaValidity": true
+      }
+    }
+  ]
+}

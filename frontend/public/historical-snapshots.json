@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.519Z",
+  "snapshots": [
+    {
+      "snapshotId": "snap-60d-ago",
+      "date": "2026-07-22",
+      "overallHealthScore": 82,
+      "impressions": 63525,
+      "clicks": 6282,
+      "activeAlerts": 4,
+      "openRecommendations": 8
+    },
+    {
+      "snapshotId": "snap-30d-ago",
+      "date": "2026-08-21",
+      "overallHealthScore": 88,
+      "impressions": 71995,
+      "clicks": 7329,
+      "activeAlerts": 2,
+      "openRecommendations": 6
+    },
+    {
+      "snapshotId": "snap-2026-09-20",
+      "date": "2026-09-20",
+      "overallHealthScore": 94,
+      "impressions": 84700,
+      "clicks": 8725,
+      "activeAlerts": 5,
+      "openRecommendations": 1
+    }
+  ]
+}

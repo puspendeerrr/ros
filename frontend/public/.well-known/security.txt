@@ -1,0 +1,8 @@
+# Restaurant OS Security Policy (RFC 9116)
+Contact: mailto:security@ros.algorithyum.in
+Contact: mailto:support@ros.algorithyum.in
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, hi
+Canonical: https://ros.algorithyum.in/.well-known/security.txt
+Policy: https://ros.algorithyum.in/privacy
+Acknowledgments: https://ros.algorithyum.in/humans.txt

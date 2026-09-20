@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.817Z",
+  "totalAudited": 6,
+  "staleItemsCount": 0,
+  "freshnessRecords": [
+    {
+      "contentId": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "contentType": "guide",
+      "publishedAt": "2026-08-15T00:00:00Z",
+      "updatedAt": "2026-09-18T00:00:00Z",
+      "daysSinceUpdate": 3,
+      "freshnessScore": 99,
+      "decayRate": 0.17,
+      "refreshPriority": "fresh",
+      "recommendations": [
+        "Content is up-to-date and fully authoritative."
+      ]
+    },
+    {
+      "contentId": "doc-quick-start",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "contentType": "documentation",
+      "publishedAt": "2026-07-01T00:00:00Z",
+      "updatedAt": "2026-09-20T00:00:00Z",
+      "daysSinceUpdate": 1,
+      "freshnessScore": 100,
+      "decayRate": 0.17,
+      "refreshPriority": "fresh",
+      "recommendations": [
+        "Content is up-to-date and fully authoritative."
+      ]
+    },
+    {
+      "contentId": "compare-vs-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "contentType": "comparison",
+      "publishedAt": "2026-08-01T00:00:00Z",
+      "updatedAt": "2026-09-15T00:00:00Z",
+      "daysSinceUpdate": 6,
+      "freshnessScore": 95,
+      "decayRate": 0.33,
+      "refreshPriority": "fresh",
+      "recommendations": [
+        "Content is up-to-date and fully authoritative."
+      ]
+    },
+    {
+      "contentId": "feature-qr-stand",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "contentType": "feature",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "updatedAt": "2026-09-19T00:00:00Z",
+      "daysSinceUpdate": 2,
+      "freshnessScore": 99,
+      "decayRate": 0.13,
+      "refreshPriority": "fresh",
+      "recommendations": [
+        "Content is up-to-date and fully authoritative."
+      ]
+    },
+    {
+      "contentId": "industry-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "contentType": "industry",
+      "publishedAt": "2026-08-10T00:00:00Z",
+      "updatedAt": "2026-09-17T00:00:00Z",
+      "daysSinceUpdate": 4,
+      "freshnessScore": 99,
+      "decayRate": 0.13,
+      "refreshPriority": "fresh",
+      "recommendations": [
+        "Content is up-to-date and fully authoritative."
+      ]
+    },
+    {
+      "contentId": "changelog-v2-0-4",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "contentType": "changelog",
+      "publishedAt": "2026-09-21T00:00:00Z",
+      "updatedAt": "2026-09-21T00:00:00Z",
+      "daysSinceUpdate": 0,
+      "freshnessScore": 100,
+      "decayRate": 0.5,
+      "refreshPriority": "fresh",
+      "recommendations": [
+        "Content is up-to-date and fully authoritative."
+      ]
+    }
+  ]
+}

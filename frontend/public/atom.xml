@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Restaurant OS Knowledge &amp; Engineering</title>
+  <link href="https://ros.algorithyum.in/atom.xml" rel="self"/>
+  <link href="https://ros.algorithyum.in/"/>
+  <updated>2026-09-20T21:30:40.317Z</updated>
+  <id>https://ros.algorithyum.in/</id>
+  <entry>
+    <title>Restaurant OS v2.0.4 Enterprise Architecture Release</title>
+    <link href="https://ros.algorithyum.in/changelog"/>
+    <id>https://ros.algorithyum.in/changelog</id>
+    <updated>2026-09-21T00:00:00Z</updated>
+    <summary>Information architecture separation, versioned documentation readiness, and enterprise content engine.</summary>
+  </entry>
+  <entry>
+    <title>The Blueprint for Transitioning to Commission-Free Dining</title>
+    <link href="https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind"/>
+    <id>https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind</id>
+    <updated>2026-09-18T00:00:00Z</updated>
+    <summary>How modern restaurants shift 35%+ of order volume from food delivery aggregators to direct table stands without disrupting kitchen operations.</summary>
+  </entry>
+  <entry>
+    <title>Hospitality Architecture for Specialty Cafes &amp; Coffee Shops</title>
+    <link href="https://ros.algorithyum.in/industries/specialty-cafes"/>
+    <id>https://ros.algorithyum.in/industries/specialty-cafes</id>
+    <updated>2026-09-17T00:00:00Z</updated>
+    <summary>High-frequency counter dispatch, custom milk modifier workflows, and lightning-fast UPI payments for boutique cafes.</summary>
+  </entry>
+  <entry>
+    <title>Restaurant OS vs. Food Delivery Aggregators</title>
+    <link href="https://ros.algorithyum.in/compare/vs-delivery-aggregators"/>
+    <id>https://ros.algorithyum.in/compare/vs-delivery-aggregators</id>
+    <updated>2026-09-15T00:00:00Z</updated>
+    <summary>Compare 0% commission direct dine-in and takeaway channels against 15–30% delivery app marketplace commissions.</summary>
+  </entry>
+  <entry>
+    <title>5-Minute Restaurant Quick Start Guide</title>
+    <link href="https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide"/>
+    <id>https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide</id>
+    <updated>2026-09-20T00:00:00Z</updated>
+    <summary>Configure your restaurant profile, upload categories and dishes, and download printable vector table stands.</summary>
+  </entry>
+  <entry>
+    <title>Dynamic QR Menu Stand Ecosystem</title>
+    <link href="https://ros.algorithyum.in/features/qr-menu"/>
+    <id>https://ros.algorithyum.in/features/qr-menu</id>
+    <updated>2026-09-19T00:00:00Z</updated>
+    <summary>High-resolution acrylic table stands with vector QR codes enabling instant smartphone menu browsing with zero apps to install.</summary>
+  </entry>
+</feed>

@@ -1,0 +1,60 @@
+{
+  "buildId": "pub-1789939840290-26d70ecb",
+  "status": "success",
+  "startTime": "2026-09-20T21:30:40.295Z",
+  "endTime": "2026-09-20T21:30:40.336Z",
+  "totalDurationMs": 41,
+  "stageTimings": [
+    {
+      "stageName": "Compile",
+      "startTime": "2026-09-20T21:30:40.295Z",
+      "endTime": "2026-09-20T21:30:40.301Z",
+      "durationMs": 6,
+      "status": "success",
+      "itemsProcessed": 6
+    },
+    {
+      "stageName": "Validate",
+      "startTime": "2026-09-20T21:30:40.304Z",
+      "endTime": "2026-09-20T21:30:40.311Z",
+      "durationMs": 7,
+      "status": "success",
+      "itemsProcessed": 6
+    },
+    {
+      "stageName": "Optimize",
+      "startTime": "2026-09-20T21:30:40.311Z",
+      "endTime": "2026-09-20T21:30:40.314Z",
+      "durationMs": 3,
+      "status": "success",
+      "itemsProcessed": 4
+    },
+    {
+      "stageName": "Generate",
+      "startTime": "2026-09-20T21:30:40.315Z",
+      "endTime": "2026-09-20T21:30:40.321Z",
+      "durationMs": 6,
+      "status": "success",
+      "itemsProcessed": 6
+    }
+  ],
+  "diagnostics": {
+    "nodeVersion": "v24.21.0",
+    "platform": "win32",
+    "arch": "x64",
+    "peakMemoryRssMb": 80.05,
+    "peakHeapUsedMb": 11.6,
+    "peakHeapTotalMb": 14.89,
+    "cpuUserMs": 250,
+    "cpuSystemMs": 109
+  },
+  "stats": {
+    "totalPages": 6,
+    "rebuiltPages": 0,
+    "cachedPages": 6,
+    "warningsCount": 0,
+    "errorsCount": 0
+  },
+  "warnings": [],
+  "errors": []
+}

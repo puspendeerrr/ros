@@ -1,0 +1,147 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.585Z",
+  "totalEntities": 8,
+  "coverageRatio": 13,
+  "entities": [
+    {
+      "id": "entity-qr_menu",
+      "name": "QR MENU",
+      "productArea": "qr_menu",
+      "hasFeature": true,
+      "hasGuide": true,
+      "hasFaq": false,
+      "hasComparison": true,
+      "hasDoc": true,
+      "clusterScore": 80,
+      "gaps": [
+        "Missing Architecture FAQs"
+      ]
+    },
+    {
+      "id": "entity-cloud_pos",
+      "name": "CLOUD POS",
+      "productArea": "cloud_pos",
+      "hasFeature": false,
+      "hasGuide": false,
+      "hasFaq": false,
+      "hasComparison": false,
+      "hasDoc": false,
+      "clusterScore": 0,
+      "gaps": [
+        "Missing Feature Landing Page",
+        "Missing Tactical Implementation Guide",
+        "Missing Architecture FAQs",
+        "Missing Competitor Comparison",
+        "Missing Developer Documentation"
+      ]
+    },
+    {
+      "id": "entity-kds",
+      "name": "KDS",
+      "productArea": "kds",
+      "hasFeature": false,
+      "hasGuide": false,
+      "hasFaq": false,
+      "hasComparison": false,
+      "hasDoc": false,
+      "clusterScore": 0,
+      "gaps": [
+        "Missing Feature Landing Page",
+        "Missing Tactical Implementation Guide",
+        "Missing Architecture FAQs",
+        "Missing Competitor Comparison",
+        "Missing Developer Documentation"
+      ]
+    },
+    {
+      "id": "entity-multi_branch",
+      "name": "MULTI BRANCH",
+      "productArea": "multi_branch",
+      "hasFeature": false,
+      "hasGuide": false,
+      "hasFaq": false,
+      "hasComparison": false,
+      "hasDoc": false,
+      "clusterScore": 0,
+      "gaps": [
+        "Missing Feature Landing Page",
+        "Missing Tactical Implementation Guide",
+        "Missing Architecture FAQs",
+        "Missing Competitor Comparison",
+        "Missing Developer Documentation"
+      ]
+    },
+    {
+      "id": "entity-billing",
+      "name": "BILLING",
+      "productArea": "billing",
+      "hasFeature": false,
+      "hasGuide": false,
+      "hasFaq": false,
+      "hasComparison": false,
+      "hasDoc": false,
+      "clusterScore": 0,
+      "gaps": [
+        "Missing Feature Landing Page",
+        "Missing Tactical Implementation Guide",
+        "Missing Architecture FAQs",
+        "Missing Competitor Comparison",
+        "Missing Developer Documentation"
+      ]
+    },
+    {
+      "id": "entity-crm",
+      "name": "CRM",
+      "productArea": "crm",
+      "hasFeature": false,
+      "hasGuide": false,
+      "hasFaq": false,
+      "hasComparison": false,
+      "hasDoc": false,
+      "clusterScore": 0,
+      "gaps": [
+        "Missing Feature Landing Page",
+        "Missing Tactical Implementation Guide",
+        "Missing Architecture FAQs",
+        "Missing Competitor Comparison",
+        "Missing Developer Documentation"
+      ]
+    },
+    {
+      "id": "entity-analytics",
+      "name": "ANALYTICS",
+      "productArea": "analytics",
+      "hasFeature": false,
+      "hasGuide": false,
+      "hasFaq": false,
+      "hasComparison": false,
+      "hasDoc": false,
+      "clusterScore": 0,
+      "gaps": [
+        "Missing Feature Landing Page",
+        "Missing Tactical Implementation Guide",
+        "Missing Architecture FAQs",
+        "Missing Competitor Comparison",
+        "Missing Developer Documentation"
+      ]
+    },
+    {
+      "id": "entity-platform",
+      "name": "PLATFORM",
+      "productArea": "platform",
+      "hasFeature": false,
+      "hasGuide": false,
+      "hasFaq": false,
+      "hasComparison": false,
+      "hasDoc": false,
+      "clusterScore": 0,
+      "gaps": [
+        "Missing Feature Landing Page",
+        "Missing Tactical Implementation Guide",
+        "Missing Architecture FAQs",
+        "Missing Competitor Comparison",
+        "Missing Developer Documentation"
+      ]
+    }
+  ]
+}

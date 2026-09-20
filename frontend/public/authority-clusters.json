@@ -1,0 +1,480 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.817Z",
+  "totalClusters": 7,
+  "clusters": [
+    {
+      "id": "cluster-qr-menu",
+      "name": "QR Menu & Contactless Dining",
+      "slug": "qr-menu-ordering",
+      "domain": "ordering_technology",
+      "businessDomain": "customer_retention",
+      "description": "Dynamic table QR stand generation, instant web menus, UPI bill settlement, and contactless guest experiences without app downloads.",
+      "primaryPillar": {
+        "title": "The Complete Guide to Contactless QR Dining Operations",
+        "targetKeyword": "restaurant qr menu ordering system",
+        "entityId": "feature-qr-stand"
+      },
+      "supportingTopics": [
+        "Digital Table Stand Hardware & Vector PDF Export",
+        "Zero-App-Download Web Menus with Instant UPI Settlement",
+        "Dynamic Menu Updates & 86-ing Dish Out-of-Stock Controls",
+        "Table QR Security & Anti-Tampering Geofencing"
+      ],
+      "subtopics": [
+        {
+          "id": "sub-qr-generation",
+          "name": "Vector Table QR Generation",
+          "slug": "table-qr-generation",
+          "description": "Generating branded print-ready SVG/PNG table stands with custom table number parameters.",
+          "targetKeywords": [
+            "printable qr code for tables",
+            "custom restaurant qr stands"
+          ],
+          "recommendedContentType": "documentation"
+        },
+        {
+          "id": "sub-upi-payments",
+          "name": "Dine-In UPI Settlement",
+          "slug": "dine-in-upi-settlement",
+          "description": "Direct payment integration into table sessions bypassing waiter card machine runs.",
+          "targetKeywords": [
+            "direct upi payment table",
+            "qr code payment settlement"
+          ],
+          "recommendedContentType": "guide"
+        },
+        {
+          "id": "sub-qr-faq",
+          "name": "QR Ordering Frequently Asked Questions",
+          "slug": "qr-ordering-faq",
+          "description": "Common guest and operator questions regarding speed, connectivity, and older devices.",
+          "targetKeywords": [
+            "qr menu faqs",
+            "how qr ordering works"
+          ],
+          "recommendedContentType": "faq"
+        }
+      ],
+      "learningPath": [
+        {
+          "stepNumber": 1,
+          "title": "Understanding Digital Menu Architecture",
+          "contentId": "doc-quick-start",
+          "contentType": "documentation",
+          "difficulty": "beginner",
+          "outcome": "Operator understands menu schema and digital catalog synchronization."
+        },
+        {
+          "stepNumber": 2,
+          "title": "Generating Table QR Stands and Vector Assets",
+          "contentId": "feature-qr-stand",
+          "contentType": "feature",
+          "difficulty": "intermediate",
+          "outcome": "Operator generates printable table stands with embedded table query strings."
+        },
+        {
+          "stepNumber": 3,
+          "title": "Configuring Direct UPI Settlements",
+          "contentType": "guide",
+          "difficulty": "advanced",
+          "outcome": "Dining room achieves 100% direct instant settlements without cashier queues."
+        }
+      ],
+      "requiredContentTypes": [
+        "feature",
+        "guide",
+        "faq",
+        "glossary",
+        "comparison",
+        "documentation"
+      ],
+      "targetAudience": [
+        "restaurateur",
+        "general_manager",
+        "developer"
+      ],
+      "primaryProductArea": "qr_menu",
+      "childClusterIds": [
+        "cluster-qr-payments"
+      ],
+      "entityIds": [
+        "feature-qr-stand",
+        "feature-digital-menu",
+        "doc-quick-start",
+        "industry-cafes"
+      ]
+    },
+    {
+      "id": "cluster-qr-payments",
+      "name": "Direct Table Payments & UPI Settlement",
+      "slug": "direct-table-payments",
+      "domain": "ordering_technology",
+      "businessDomain": "revenue_recovery",
+      "description": "Instant contactless settlements, split billing, tip management, and automated GST invoice issuance at the dining table.",
+      "parentClusterId": "cluster-qr-menu",
+      "primaryPillar": {
+        "title": "Table-Side Digital Payment & Settlement Architecture",
+        "targetKeyword": "instant table payment upi restaurant",
+        "entityId": "feature-qr-stand"
+      },
+      "supportingTopics": [
+        "Split Bill Calculation via Table Sessions",
+        "Automated GST Invoicing & WhatsApp Delivery",
+        "Tip Distribution & Digital Gratuity Accounting"
+      ],
+      "subtopics": [
+        {
+          "id": "sub-split-billing",
+          "name": "Multi-Guest Split Billing",
+          "slug": "table-split-billing",
+          "description": "Splitting dining cheques by item or equal shares directly on guests phones.",
+          "targetKeywords": [
+            "split bill restaurant qr",
+            "group dining payment"
+          ],
+          "recommendedContentType": "feature"
+        }
+      ],
+      "learningPath": [
+        {
+          "stepNumber": 1,
+          "title": "Connecting UPI Payment Gateways",
+          "contentType": "documentation",
+          "difficulty": "intermediate",
+          "outcome": "Direct merchant settlement without third-party escrow delays."
+        }
+      ],
+      "requiredContentTypes": [
+        "feature",
+        "guide",
+        "faq"
+      ],
+      "targetAudience": [
+        "restaurateur",
+        "general_manager"
+      ],
+      "primaryProductArea": "billing",
+      "entityIds": [
+        "feature-qr-stand",
+        "industry-cafes"
+      ]
+    },
+    {
+      "id": "cluster-cloud-pos",
+      "name": "Cloud POS & Offline-Resilient Billing",
+      "slug": "cloud-pos-billing",
+      "domain": "ordering_technology",
+      "businessDomain": "operational_efficiency",
+      "description": "Modern browser-based Point of Sale running on tablets, iPads, and PCs with local IndexedDB offline failover.",
+      "primaryPillar": {
+        "title": "The Cloud POS Blueprint: Never Drop a Bill on Network Outages",
+        "targetKeyword": "cloud restaurant pos offline mode",
+        "entityId": "feature-cloud-pos"
+      },
+      "supportingTopics": [
+        "IndexedDB Local Sync & Automatic Conflict Resolution",
+        "KOT Ticket Printing over Ethernet and Bluetooth",
+        "Multi-Terminal Table Layout Management"
+      ],
+      "subtopics": [
+        {
+          "id": "sub-pos-offline",
+          "name": "Offline-First Billing Architecture",
+          "slug": "offline-billing-sync",
+          "description": "How browser cache persists orders and reconciles with cloud database upon reconnect.",
+          "targetKeywords": [
+            "offline restaurant pos system",
+            "browser pos sync"
+          ],
+          "recommendedContentType": "documentation"
+        },
+        {
+          "id": "sub-pos-hardware",
+          "name": "POS Hardware Compatibility Matrix",
+          "slug": "pos-hardware-compatibility",
+          "description": "Thermal printer, cash drawer, and barcode scanner connectivity specifications.",
+          "targetKeywords": [
+            "restaurant printer compatibility",
+            "esc pos thermal printer guide"
+          ],
+          "recommendedContentType": "guide"
+        }
+      ],
+      "learningPath": [
+        {
+          "stepNumber": 1,
+          "title": "POS Terminal Setup & Peripheral Pairing",
+          "contentType": "documentation",
+          "difficulty": "beginner",
+          "outcome": "Cashier station paired with thermal receipt printer and cash drawer."
+        },
+        {
+          "stepNumber": 2,
+          "title": "Handling Network Outages with Local Queue",
+          "contentType": "guide",
+          "difficulty": "intermediate",
+          "outcome": "Staff continues taking orders and issuing bills seamlessly offline."
+        }
+      ],
+      "requiredContentTypes": [
+        "feature",
+        "documentation",
+        "guide",
+        "faq",
+        "comparison"
+      ],
+      "targetAudience": [
+        "restaurateur",
+        "general_manager",
+        "developer"
+      ],
+      "primaryProductArea": "cloud_pos",
+      "entityIds": [
+        "feature-cloud-pos",
+        "doc-quick-start"
+      ]
+    },
+    {
+      "id": "cluster-kds",
+      "name": "Kitchen Display Systems (KDS) & Ticket Routing",
+      "slug": "kitchen-display-system",
+      "domain": "kitchen_operations",
+      "businessDomain": "operational_efficiency",
+      "description": "Paperless kitchen order routing, item prep timers, expediter screens, and chef-facing bump bars.",
+      "primaryPillar": {
+        "title": "Eliminating Paper KOTs: High-Velocity Kitchen Routing",
+        "targetKeyword": "kitchen display system restaurant",
+        "entityId": "feature-kds"
+      },
+      "supportingTopics": [
+        "Station-Based KOT Routing (Grill, Bar, Pastry, Cold)",
+        "Cook Time Synchronization & Multi-Course Firing",
+        "Expediter Bump Bars and Order Assembly Verification"
+      ],
+      "subtopics": [
+        {
+          "id": "sub-kds-routing",
+          "name": "Station Routing Configuration",
+          "slug": "station-routing-kds",
+          "description": "Directing drinks to service bar and entrees to hotline automatically based on category.",
+          "targetKeywords": [
+            "kds ticket routing",
+            "kitchen station management"
+          ],
+          "recommendedContentType": "documentation"
+        }
+      ],
+      "learningPath": [
+        {
+          "stepNumber": 1,
+          "title": "Mounting Kitchen Screens & Network Setup",
+          "contentType": "documentation",
+          "difficulty": "beginner",
+          "outcome": "Hotline and cold prep displays connected to the local order mesh."
+        }
+      ],
+      "requiredContentTypes": [
+        "feature",
+        "guide",
+        "faq",
+        "documentation"
+      ],
+      "targetAudience": [
+        "chef",
+        "general_manager",
+        "restaurateur"
+      ],
+      "primaryProductArea": "kds",
+      "entityIds": [
+        "feature-kds"
+      ]
+    },
+    {
+      "id": "cluster-multi-branch",
+      "name": "Multi-Branch & Franchise Fleet Control",
+      "slug": "multi-branch-management",
+      "domain": "enterprise_management",
+      "businessDomain": "franchise_scale",
+      "description": "Centralized menu publishing, branch-specific pricing tiers, unified sales rollups, and role-based permissions for multi-unit operators.",
+      "primaryPillar": {
+        "title": "Enterprise Multi-Unit Restaurant Fleet Architecture",
+        "targetKeyword": "multi location restaurant pos software",
+        "entityId": "feature-multi-branch"
+      },
+      "supportingTopics": [
+        "Master Catalog Push with Local Branch Overrides",
+        "Consolidated Executive Financial Reporting",
+        "Role-Based Branch Access Controls & Audit Trails"
+      ],
+      "subtopics": [
+        {
+          "id": "sub-central-menu",
+          "name": "Centralized Menu Distribution",
+          "slug": "centralized-menu-distribution",
+          "description": "Pushing recipe and price changes to 50+ locations in under 5 seconds.",
+          "targetKeywords": [
+            "franchise menu management",
+            "multi branch menu sync"
+          ],
+          "recommendedContentType": "documentation"
+        }
+      ],
+      "learningPath": [
+        {
+          "stepNumber": 1,
+          "title": "Provisioning New Branch Locations",
+          "contentType": "documentation",
+          "difficulty": "beginner",
+          "outcome": "New branch operational with cloned menu hierarchies and localized tax rates."
+        }
+      ],
+      "requiredContentTypes": [
+        "feature",
+        "guide",
+        "case_study",
+        "documentation"
+      ],
+      "targetAudience": [
+        "franchise_operator",
+        "restaurateur",
+        "investor"
+      ],
+      "primaryProductArea": "multi_branch",
+      "entityIds": [
+        "feature-multi-branch",
+        "changelog-v2-0-4"
+      ]
+    },
+    {
+      "id": "cluster-commission-free",
+      "name": "Direct Dining Economics & Aggregator Independence",
+      "slug": "commission-free-dining",
+      "domain": "hospitality_economics",
+      "businessDomain": "revenue_recovery",
+      "description": "Transitioning order volumes from predatory 30% delivery marketplaces to merchant-owned direct ordering channels.",
+      "primaryPillar": {
+        "title": "The Commission-Free Blueprint: Reclaiming Dining Room Profit Margins",
+        "targetKeyword": "zero commission restaurant ordering system",
+        "entityId": "guide-leaving-aggregators"
+      },
+      "supportingTopics": [
+        "The True Math of 30% Aggregator Commissions",
+        "Customer Data Ownership & Direct WhatsApp Retargeting",
+        "Dine-in and Takeaway Conversion Tactics"
+      ],
+      "subtopics": [
+        {
+          "id": "sub-aggregator-math",
+          "name": "Aggregator Commission Profit Impact Calculator",
+          "slug": "aggregator-commission-calculator",
+          "description": "Analyzing bottom-line margin leakage to delivery marketplace intermediaries.",
+          "targetKeywords": [
+            "zomato swiggy commission calculator",
+            "restaurant profit margin delivery"
+          ],
+          "recommendedContentType": "guide"
+        },
+        {
+          "id": "sub-aggregator-comparison",
+          "name": "Restaurant OS vs Aggregators Detailed Comparison",
+          "slug": "restaurant-os-vs-delivery-aggregators",
+          "description": "Side-by-side economics and customer data ownership comparison.",
+          "targetKeywords": [
+            "direct ordering vs swiggy zomato",
+            "commission free pos comparison"
+          ],
+          "recommendedContentType": "comparison"
+        }
+      ],
+      "learningPath": [
+        {
+          "stepNumber": 1,
+          "title": "The Blueprint for Transitioning to Commission-Free Dining",
+          "contentId": "guide-leaving-aggregators",
+          "contentType": "guide",
+          "difficulty": "intermediate",
+          "outcome": "Restaurateur implements customer-owned QR ordering stands."
+        },
+        {
+          "stepNumber": 2,
+          "title": "Comparing Unit Economics: Direct Orders vs Marketplace Aggregators",
+          "contentId": "compare-vs-aggregators",
+          "contentType": "comparison",
+          "difficulty": "advanced",
+          "outcome": "Full financial breakdown and customer retention strategy executed."
+        }
+      ],
+      "requiredContentTypes": [
+        "guide",
+        "comparison",
+        "faq",
+        "case_study"
+      ],
+      "targetAudience": [
+        "restaurateur",
+        "general_manager",
+        "investor"
+      ],
+      "primaryProductArea": "qr_menu",
+      "entityIds": [
+        "guide-leaving-aggregators",
+        "compare-vs-aggregators",
+        "industry-cafes"
+      ]
+    },
+    {
+      "id": "cluster-restaurant-analytics",
+      "name": "Hospitality Analytics & Revenue Optimization",
+      "slug": "restaurant-analytics-optimization",
+      "domain": "restaurant_analytics",
+      "businessDomain": "cost_reduction",
+      "description": "Item gross margin velocity, table turn time tracking, server sales ranking, and predictive prep scheduling.",
+      "primaryPillar": {
+        "title": "Data-Driven Hospitality: Unlocking 20%+ Margin Gains with POS Analytics",
+        "targetKeyword": "restaurant analytics reporting dashboard",
+        "entityId": "changelog-v2-0-4"
+      },
+      "supportingTopics": [
+        "Menu Engineering Matrix (Stars, Plowhorses, Puzzles, Dogs)",
+        "Real-Time Table Turnover Rate Monitoring",
+        "Staff Labor Cost Percentage Against Hourly Sales"
+      ],
+      "subtopics": [
+        {
+          "id": "sub-menu-engineering",
+          "name": "Menu Engineering Matrix Guide",
+          "slug": "menu-engineering-matrix",
+          "description": "Categorizing dishes by popularity and contribution margin to re-engineer menus.",
+          "targetKeywords": [
+            "menu engineering matrix excel",
+            "restaurant dish profitability"
+          ],
+          "recommendedContentType": "guide"
+        }
+      ],
+      "learningPath": [
+        {
+          "stepNumber": 1,
+          "title": "Configuring Analytics Dashboards and Daily Email Digests",
+          "contentType": "documentation",
+          "difficulty": "beginner",
+          "outcome": "Operators receive automated night-audit sales and table turn digests."
+        }
+      ],
+      "requiredContentTypes": [
+        "feature",
+        "guide",
+        "documentation"
+      ],
+      "targetAudience": [
+        "restaurateur",
+        "general_manager",
+        "investor"
+      ],
+      "primaryProductArea": "analytics",
+      "entityIds": [
+        "changelog-v2-0-4"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,654 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.280Z",
+  "nodesCount": 44,
+  "edgesCount": 38,
+  "nodes": [
+    {
+      "id": "node-entity-guide-leaving-aggregators",
+      "label": "The Blueprint for Transitioning to Commission-Free Dining",
+      "nodeType": "Entity",
+      "contentId": "guide-leaving-aggregators",
+      "metadata": {
+        "contentType": "guide",
+        "productArea": "qr_menu"
+      }
+    },
+    {
+      "id": "node-entity-doc-quick-start",
+      "label": "5-Minute Restaurant Quick Start Guide",
+      "nodeType": "Entity",
+      "contentId": "doc-quick-start",
+      "metadata": {
+        "contentType": "documentation",
+        "productArea": "qr_menu"
+      }
+    },
+    {
+      "id": "node-entity-compare-vs-aggregators",
+      "label": "Restaurant OS vs. Food Delivery Aggregators",
+      "nodeType": "Entity",
+      "contentId": "compare-vs-aggregators",
+      "metadata": {
+        "contentType": "comparison",
+        "productArea": "qr_menu"
+      }
+    },
+    {
+      "id": "node-entity-feature-qr-stand",
+      "label": "Dynamic QR Menu Stand Ecosystem",
+      "nodeType": "Entity",
+      "contentId": "feature-qr-stand",
+      "metadata": {
+        "contentType": "feature",
+        "productArea": "qr_menu"
+      }
+    },
+    {
+      "id": "node-entity-industry-cafes",
+      "label": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "nodeType": "Entity",
+      "contentId": "industry-cafes",
+      "metadata": {
+        "contentType": "industry",
+        "productArea": "cloud_pos"
+      }
+    },
+    {
+      "id": "node-entity-changelog-v2-0-4",
+      "label": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "nodeType": "Entity",
+      "contentId": "changelog-v2-0-4",
+      "metadata": {
+        "contentType": "changelog",
+        "productArea": "platform"
+      }
+    },
+    {
+      "id": "node-ans-ans-def-guide-leaving-aggregators",
+      "label": "A tactical blueprint for restaurants to retain 100% of dinin...",
+      "nodeType": "Answer",
+      "contentId": "guide-leaving-aggregators",
+      "metadata": {
+        "type": "definition",
+        "confidence": 95
+      }
+    },
+    {
+      "id": "node-ans-ans-howto-guide-leaving-aggregators",
+      "label": "Restaurants transition to commission-free dining by deployin...",
+      "nodeType": "Answer",
+      "contentId": "guide-leaving-aggregators",
+      "metadata": {
+        "type": "how_to",
+        "confidence": 98
+      }
+    },
+    {
+      "id": "node-ans-ans-probsol-guide-leaving-aggregators",
+      "label": "Restaurant OS eliminates operational bottlenecks in qr menu ...",
+      "nodeType": "Answer",
+      "contentId": "guide-leaving-aggregators",
+      "metadata": {
+        "type": "problem_solution",
+        "confidence": 90
+      }
+    },
+    {
+      "id": "node-ans-ans-def-doc-quick-start",
+      "label": "A fast-track onboarding documentation guide for getting your...",
+      "nodeType": "Answer",
+      "contentId": "doc-quick-start",
+      "metadata": {
+        "type": "definition",
+        "confidence": 95
+      }
+    },
+    {
+      "id": "node-ans-ans-step-doc-quick-start",
+      "label": "Configure your dining room profile, upload dishes and pricin...",
+      "nodeType": "Answer",
+      "contentId": "doc-quick-start",
+      "metadata": {
+        "type": "step_by_step",
+        "confidence": 95
+      }
+    },
+    {
+      "id": "node-ans-ans-probsol-doc-quick-start",
+      "label": "Restaurant OS eliminates operational bottlenecks in qr menu ...",
+      "nodeType": "Answer",
+      "contentId": "doc-quick-start",
+      "metadata": {
+        "type": "problem_solution",
+        "confidence": 90
+      }
+    },
+    {
+      "id": "node-ans-ans-def-compare-vs-aggregators",
+      "label": "Economic breakdown comparing net restaurant profit, customer...",
+      "nodeType": "Answer",
+      "contentId": "compare-vs-aggregators",
+      "metadata": {
+        "type": "definition",
+        "confidence": 95
+      }
+    },
+    {
+      "id": "node-ans-ans-comp-compare-vs-aggregators",
+      "label": "Restaurant OS charges zero commission on dining room orders ...",
+      "nodeType": "Answer",
+      "contentId": "compare-vs-aggregators",
+      "metadata": {
+        "type": "comparison",
+        "confidence": 96
+      }
+    },
+    {
+      "id": "node-ans-ans-probsol-compare-vs-aggregators",
+      "label": "Restaurant OS eliminates operational bottlenecks in qr menu ...",
+      "nodeType": "Answer",
+      "contentId": "compare-vs-aggregators",
+      "metadata": {
+        "type": "problem_solution",
+        "confidence": 90
+      }
+    },
+    {
+      "id": "node-ans-ans-def-feature-qr-stand",
+      "label": "Physical-to-digital bridge for restaurants: printable vector...",
+      "nodeType": "Answer",
+      "contentId": "feature-qr-stand",
+      "metadata": {
+        "type": "definition",
+        "confidence": 95
+      }
+    },
+    {
+      "id": "node-ans-ans-probsol-feature-qr-stand",
+      "label": "Restaurant OS eliminates operational bottlenecks in qr menu ...",
+      "nodeType": "Answer",
+      "contentId": "feature-qr-stand",
+      "metadata": {
+        "type": "problem_solution",
+        "confidence": 90
+      }
+    },
+    {
+      "id": "node-ans-ans-def-industry-cafes",
+      "label": "Tailored operational setup designed for fast barista queue m...",
+      "nodeType": "Answer",
+      "contentId": "industry-cafes",
+      "metadata": {
+        "type": "definition",
+        "confidence": 95
+      }
+    },
+    {
+      "id": "node-ans-ans-probsol-industry-cafes",
+      "label": "Restaurant OS eliminates operational bottlenecks in cloud po...",
+      "nodeType": "Answer",
+      "contentId": "industry-cafes",
+      "metadata": {
+        "type": "problem_solution",
+        "confidence": 90
+      }
+    },
+    {
+      "id": "node-ans-ans-def-changelog-v2-0-4",
+      "label": "Release notes covering Phase 2 Information Architecture and ...",
+      "nodeType": "Answer",
+      "contentId": "changelog-v2-0-4",
+      "metadata": {
+        "type": "definition",
+        "confidence": 95
+      }
+    },
+    {
+      "id": "node-ans-ans-probsol-changelog-v2-0-4",
+      "label": "Restaurant OS eliminates operational bottlenecks in platform...",
+      "nodeType": "Answer",
+      "contentId": "changelog-v2-0-4",
+      "metadata": {
+        "type": "problem_solution",
+        "confidence": 90
+      }
+    },
+    {
+      "id": "node-query-query-what-guide-leaving-aggregators",
+      "label": "What is The Blueprint for Transitioning to Commission-Free Dining in Restaurant OS?",
+      "nodeType": "Question",
+      "contentId": "guide-leaving-aggregators",
+      "metadata": {
+        "category": "what"
+      }
+    },
+    {
+      "id": "node-query-query-why-guide-leaving-aggregators",
+      "label": "Why should restaurants use The Blueprint for Transitioning to Commission-Free Dining?",
+      "nodeType": "Question",
+      "contentId": "guide-leaving-aggregators",
+      "metadata": {
+        "category": "why"
+      }
+    },
+    {
+      "id": "node-query-query-how-guide-leaving-aggregators",
+      "label": "How do I set up The Blueprint for Transitioning to Commission-Free Dining step by step?",
+      "nodeType": "Question",
+      "contentId": "guide-leaving-aggregators",
+      "metadata": {
+        "category": "how"
+      }
+    },
+    {
+      "id": "node-query-query-impl-guide-leaving-aggregators",
+      "label": "How long does it take to implement The Blueprint for Transitioning to Commission-Free Dining?",
+      "nodeType": "Question",
+      "contentId": "guide-leaving-aggregators",
+      "metadata": {
+        "category": "implementation"
+      }
+    },
+    {
+      "id": "node-query-query-trouble-guide-leaving-aggregators",
+      "label": "What happens if the internet goes down while using The Blueprint for Transitioning to Commission-Free Dining?",
+      "nodeType": "Question",
+      "contentId": "guide-leaving-aggregators",
+      "metadata": {
+        "category": "troubleshooting"
+      }
+    },
+    {
+      "id": "node-query-query-what-doc-quick-start",
+      "label": "What is 5-Minute Restaurant Quick Start Guide in Restaurant OS?",
+      "nodeType": "Question",
+      "contentId": "doc-quick-start",
+      "metadata": {
+        "category": "what"
+      }
+    },
+    {
+      "id": "node-query-query-why-doc-quick-start",
+      "label": "Why should restaurants use 5-Minute Restaurant Quick Start Guide?",
+      "nodeType": "Question",
+      "contentId": "doc-quick-start",
+      "metadata": {
+        "category": "why"
+      }
+    },
+    {
+      "id": "node-query-query-how-doc-quick-start",
+      "label": "How do I set up 5-Minute Restaurant Quick Start Guide step by step?",
+      "nodeType": "Question",
+      "contentId": "doc-quick-start",
+      "metadata": {
+        "category": "how"
+      }
+    },
+    {
+      "id": "node-query-query-impl-doc-quick-start",
+      "label": "How long does it take to implement 5-Minute Restaurant Quick Start Guide?",
+      "nodeType": "Question",
+      "contentId": "doc-quick-start",
+      "metadata": {
+        "category": "implementation"
+      }
+    },
+    {
+      "id": "node-query-query-trouble-doc-quick-start",
+      "label": "What happens if the internet goes down while using 5-Minute Restaurant Quick Start Guide?",
+      "nodeType": "Question",
+      "contentId": "doc-quick-start",
+      "metadata": {
+        "category": "troubleshooting"
+      }
+    },
+    {
+      "id": "node-query-query-what-compare-vs-aggregators",
+      "label": "What is Restaurant OS vs. Food Delivery Aggregators in Restaurant OS?",
+      "nodeType": "Question",
+      "contentId": "compare-vs-aggregators",
+      "metadata": {
+        "category": "what"
+      }
+    },
+    {
+      "id": "node-query-query-why-compare-vs-aggregators",
+      "label": "Why should restaurants use Restaurant OS vs. Food Delivery Aggregators?",
+      "nodeType": "Question",
+      "contentId": "compare-vs-aggregators",
+      "metadata": {
+        "category": "why"
+      }
+    },
+    {
+      "id": "node-query-query-comp-compare-vs-aggregators",
+      "label": "How does Restaurant OS compare with Swiggy and Zomato?",
+      "nodeType": "Question",
+      "contentId": "compare-vs-aggregators",
+      "metadata": {
+        "category": "comparison"
+      }
+    },
+    {
+      "id": "node-query-query-trouble-compare-vs-aggregators",
+      "label": "What happens if the internet goes down while using Restaurant OS vs. Food Delivery Aggregators?",
+      "nodeType": "Question",
+      "contentId": "compare-vs-aggregators",
+      "metadata": {
+        "category": "troubleshooting"
+      }
+    },
+    {
+      "id": "node-query-query-what-feature-qr-stand",
+      "label": "What is Dynamic QR Menu Stand Ecosystem in Restaurant OS?",
+      "nodeType": "Question",
+      "contentId": "feature-qr-stand",
+      "metadata": {
+        "category": "what"
+      }
+    },
+    {
+      "id": "node-query-query-why-feature-qr-stand",
+      "label": "Why should restaurants use Dynamic QR Menu Stand Ecosystem?",
+      "nodeType": "Question",
+      "contentId": "feature-qr-stand",
+      "metadata": {
+        "category": "why"
+      }
+    },
+    {
+      "id": "node-query-query-trouble-feature-qr-stand",
+      "label": "What happens if the internet goes down while using Dynamic QR Menu Stand Ecosystem?",
+      "nodeType": "Question",
+      "contentId": "feature-qr-stand",
+      "metadata": {
+        "category": "troubleshooting"
+      }
+    },
+    {
+      "id": "node-query-query-what-industry-cafes",
+      "label": "What is Hospitality Architecture for Specialty Cafes & Coffee Shops in Restaurant OS?",
+      "nodeType": "Question",
+      "contentId": "industry-cafes",
+      "metadata": {
+        "category": "what"
+      }
+    },
+    {
+      "id": "node-query-query-why-industry-cafes",
+      "label": "Why should restaurants use Hospitality Architecture for Specialty Cafes & Coffee Shops?",
+      "nodeType": "Question",
+      "contentId": "industry-cafes",
+      "metadata": {
+        "category": "why"
+      }
+    },
+    {
+      "id": "node-query-query-trouble-industry-cafes",
+      "label": "What happens if the internet goes down while using Hospitality Architecture for Specialty Cafes & Coffee Shops?",
+      "nodeType": "Question",
+      "contentId": "industry-cafes",
+      "metadata": {
+        "category": "troubleshooting"
+      }
+    },
+    {
+      "id": "node-query-query-what-changelog-v2-0-4",
+      "label": "What is Restaurant OS v2.0.4 Enterprise Architecture Release in Restaurant OS?",
+      "nodeType": "Question",
+      "contentId": "changelog-v2-0-4",
+      "metadata": {
+        "category": "what"
+      }
+    },
+    {
+      "id": "node-query-query-why-changelog-v2-0-4",
+      "label": "Why should restaurants use Restaurant OS v2.0.4 Enterprise Architecture Release?",
+      "nodeType": "Question",
+      "contentId": "changelog-v2-0-4",
+      "metadata": {
+        "category": "why"
+      }
+    },
+    {
+      "id": "node-query-query-trouble-changelog-v2-0-4",
+      "label": "What happens if the internet goes down while using Restaurant OS v2.0.4 Enterprise Architecture Release?",
+      "nodeType": "Question",
+      "contentId": "changelog-v2-0-4",
+      "metadata": {
+        "category": "troubleshooting"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "node-entity-guide-leaving-aggregators",
+      "toId": "node-ans-ans-def-guide-leaving-aggregators",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-guide-leaving-aggregators",
+      "toId": "node-ans-ans-howto-guide-leaving-aggregators",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-guide-leaving-aggregators",
+      "toId": "node-ans-ans-probsol-guide-leaving-aggregators",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-doc-quick-start",
+      "toId": "node-ans-ans-def-doc-quick-start",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-doc-quick-start",
+      "toId": "node-ans-ans-step-doc-quick-start",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-doc-quick-start",
+      "toId": "node-ans-ans-probsol-doc-quick-start",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-compare-vs-aggregators",
+      "toId": "node-ans-ans-def-compare-vs-aggregators",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-compare-vs-aggregators",
+      "toId": "node-ans-ans-comp-compare-vs-aggregators",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-compare-vs-aggregators",
+      "toId": "node-ans-ans-probsol-compare-vs-aggregators",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-feature-qr-stand",
+      "toId": "node-ans-ans-def-feature-qr-stand",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-feature-qr-stand",
+      "toId": "node-ans-ans-probsol-feature-qr-stand",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-industry-cafes",
+      "toId": "node-ans-ans-def-industry-cafes",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-industry-cafes",
+      "toId": "node-ans-ans-probsol-industry-cafes",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-changelog-v2-0-4",
+      "toId": "node-ans-ans-def-changelog-v2-0-4",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-entity-changelog-v2-0-4",
+      "toId": "node-ans-ans-probsol-changelog-v2-0-4",
+      "relationship": "has_answer_block",
+      "weight": 0.95
+    },
+    {
+      "fromId": "node-ans-ans-def-guide-leaving-aggregators",
+      "toId": "node-query-query-what-guide-leaving-aggregators",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-guide-leaving-aggregators",
+      "toId": "node-query-query-why-guide-leaving-aggregators",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-howto-guide-leaving-aggregators",
+      "toId": "node-query-query-how-guide-leaving-aggregators",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-howto-guide-leaving-aggregators",
+      "toId": "node-query-query-impl-guide-leaving-aggregators",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-guide-leaving-aggregators",
+      "toId": "node-query-query-trouble-guide-leaving-aggregators",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-def-doc-quick-start",
+      "toId": "node-query-query-what-doc-quick-start",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-doc-quick-start",
+      "toId": "node-query-query-why-doc-quick-start",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-step-doc-quick-start",
+      "toId": "node-query-query-how-doc-quick-start",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-step-doc-quick-start",
+      "toId": "node-query-query-impl-doc-quick-start",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-doc-quick-start",
+      "toId": "node-query-query-trouble-doc-quick-start",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-def-compare-vs-aggregators",
+      "toId": "node-query-query-what-compare-vs-aggregators",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-compare-vs-aggregators",
+      "toId": "node-query-query-why-compare-vs-aggregators",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-comp-compare-vs-aggregators",
+      "toId": "node-query-query-comp-compare-vs-aggregators",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-compare-vs-aggregators",
+      "toId": "node-query-query-trouble-compare-vs-aggregators",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-def-feature-qr-stand",
+      "toId": "node-query-query-what-feature-qr-stand",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-feature-qr-stand",
+      "toId": "node-query-query-why-feature-qr-stand",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-feature-qr-stand",
+      "toId": "node-query-query-trouble-feature-qr-stand",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-def-industry-cafes",
+      "toId": "node-query-query-what-industry-cafes",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-industry-cafes",
+      "toId": "node-query-query-why-industry-cafes",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-industry-cafes",
+      "toId": "node-query-query-trouble-industry-cafes",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-def-changelog-v2-0-4",
+      "toId": "node-query-query-what-changelog-v2-0-4",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-changelog-v2-0-4",
+      "toId": "node-query-query-why-changelog-v2-0-4",
+      "relationship": "answers_question",
+      "weight": 0.9
+    },
+    {
+      "fromId": "node-ans-ans-probsol-changelog-v2-0-4",
+      "toId": "node-query-query-trouble-changelog-v2-0-4",
+      "relationship": "answers_question",
+      "weight": 0.9
+    }
+  ]
+}

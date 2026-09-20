@@ -1,0 +1,191 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.049Z",
+  "totalMappedPages": 6,
+  "totalTrackedReferences": 17,
+  "referenceMap": [
+    {
+      "contentId": "guide-leaving-aggregators",
+      "contentTitle": "The Blueprint for Transitioning to Commission-Free Dining",
+      "references": [
+        {
+          "referenceId": "ref-npci-upi-spec",
+          "title": "NPCI Unified Payments Interface (UPI) Merchant Integration Protocol",
+          "url": "https://www.npci.org.in",
+          "sourceType": "regulatory_standard",
+          "publisher": "National Payments Corporation of India",
+          "isVerifiable": true,
+          "verificationHash": "sha256-npci-upi-v2.1"
+        },
+        {
+          "referenceId": "ref-ros-commission-math",
+          "title": "Restaurant OS Dining Room Margin Recovery & Commission Benchmark Study",
+          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind#methodology",
+          "sourceType": "official_product_source",
+          "publisher": "Restaurant OS Research Board",
+          "isVerifiable": true
+        },
+        {
+          "referenceId": "ref-internal-compare-vs-aggregators",
+          "title": "Restaurant OS vs. Food Delivery Aggregators",
+          "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS",
+          "isVerifiable": true
+        },
+        {
+          "referenceId": "ref-internal-feature-qr-stand",
+          "title": "Dynamic QR Menu Stand Ecosystem",
+          "url": "https://ros.algorithyum.in/features/qr-menu",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS",
+          "isVerifiable": true
+        }
+      ],
+      "totalReferences": 4,
+      "hasOfficialSpecification": true
+    },
+    {
+      "contentId": "doc-quick-start",
+      "contentTitle": "5-Minute Restaurant Quick Start Guide",
+      "references": [
+        {
+          "referenceId": "ref-rfc-9116-security",
+          "title": "RFC 9116: A Reporting Mechanism for Information Security Vulnerabilities",
+          "url": "https://ros.algorithyum.in/.well-known/security.txt",
+          "sourceType": "technical_specification",
+          "publisher": "Internet Engineering Task Force (IETF)",
+          "isVerifiable": true
+        },
+        {
+          "referenceId": "ref-ros-api-v2",
+          "title": "Restaurant OS Core Catalog & Table QR Generation API Specification",
+          "url": "https://ros.algorithyum.in/api",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS Engineering",
+          "isVerifiable": true
+        },
+        {
+          "referenceId": "ref-internal-feature-qr-stand",
+          "title": "Dynamic QR Menu Stand Ecosystem",
+          "url": "https://ros.algorithyum.in/features/qr-menu",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS",
+          "isVerifiable": true
+        },
+        {
+          "referenceId": "ref-internal-industry-cafes",
+          "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+          "url": "https://ros.algorithyum.in/industries/specialty-cafes",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS",
+          "isVerifiable": true
+        },
+        {
+          "referenceId": "ref-internal-changelog-v2-0-4",
+          "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+          "url": "https://ros.algorithyum.in/changelog",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS",
+          "isVerifiable": true
+        }
+      ],
+      "totalReferences": 5,
+      "hasOfficialSpecification": true
+    },
+    {
+      "contentId": "compare-vs-aggregators",
+      "contentTitle": "Restaurant OS vs. Food Delivery Aggregators",
+      "references": [
+        {
+          "referenceId": "ref-aggregator-rates-2026",
+          "title": "Restaurant Food Delivery Aggregator Commission Rate Study (Q3 2026)",
+          "url": "https://ros.algorithyum.in/compare/vs-food-delivery-aggregators#sources",
+          "sourceType": "external_benchmark",
+          "publisher": "Hospitality Economics Review",
+          "isVerifiable": true
+        },
+        {
+          "referenceId": "ref-internal-guide-leaving-aggregators",
+          "title": "The Blueprint for Transitioning to Commission-Free Dining",
+          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS",
+          "isVerifiable": true
+        },
+        {
+          "referenceId": "ref-internal-industry-cafes",
+          "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+          "url": "https://ros.algorithyum.in/industries/specialty-cafes",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS",
+          "isVerifiable": true
+        }
+      ],
+      "totalReferences": 3,
+      "hasOfficialSpecification": false
+    },
+    {
+      "contentId": "feature-qr-stand",
+      "contentTitle": "Dynamic QR Menu Stand Ecosystem",
+      "references": [],
+      "totalReferences": 0,
+      "hasOfficialSpecification": false
+    },
+    {
+      "contentId": "industry-cafes",
+      "contentTitle": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "references": [
+        {
+          "referenceId": "ref-internal-feature-qr-stand",
+          "title": "Dynamic QR Menu Stand Ecosystem",
+          "url": "https://ros.algorithyum.in/features/qr-menu",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS",
+          "isVerifiable": true
+        },
+        {
+          "referenceId": "ref-internal-guide-leaving-aggregators",
+          "title": "The Blueprint for Transitioning to Commission-Free Dining",
+          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS",
+          "isVerifiable": true
+        }
+      ],
+      "totalReferences": 2,
+      "hasOfficialSpecification": false
+    },
+    {
+      "contentId": "changelog-v2-0-4",
+      "contentTitle": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "references": [
+        {
+          "referenceId": "ref-release-notes-v2-0-4",
+          "title": "Restaurant OS v2.0.4 Enterprise Architecture Release Notes",
+          "url": "https://ros.algorithyum.in/changelog",
+          "sourceType": "release_notes",
+          "publisher": "Restaurant OS Release Engineering",
+          "isVerifiable": true
+        },
+        {
+          "referenceId": "ref-internal-doc-quick-start",
+          "title": "5-Minute Restaurant Quick Start Guide",
+          "url": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS",
+          "isVerifiable": true
+        },
+        {
+          "referenceId": "ref-internal-feature-qr-stand",
+          "title": "Dynamic QR Menu Stand Ecosystem",
+          "url": "https://ros.algorithyum.in/features/qr-menu",
+          "sourceType": "internal_documentation",
+          "publisher": "Restaurant OS",
+          "isVerifiable": true
+        }
+      ],
+      "totalReferences": 3,
+      "hasOfficialSpecification": false
+    }
+  ]
+}

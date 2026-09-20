@@ -1,0 +1,124 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.522Z",
+  "averageShareOfVoice": 31,
+  "totalCitationWins": 28,
+  "totalCitationLosses": 11,
+  "netCitationGrowth": 17,
+  "monitoredPages": [
+    {
+      "contentId": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "url": "https://restaurantos.com/guide/leaving-aggregators-behind",
+      "presence": {
+        "googleAiOverview": true,
+        "chatGptSearch": true,
+        "gemini": true,
+        "perplexity": true,
+        "bingCopilot": false
+      },
+      "shareOfVoice": 77,
+      "citationWins": 8,
+      "citationLosses": 1,
+      "displacedCompetitors": [
+        "Generic SaaS POS Blogs"
+      ],
+      "vulnerableToDisplacement": false
+    },
+    {
+      "contentId": "doc-quick-start",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "url": "https://restaurantos.com/documentation/5-minute-restaurant-quickstart",
+      "presence": {
+        "googleAiOverview": false,
+        "chatGptSearch": true,
+        "gemini": false,
+        "perplexity": false,
+        "bingCopilot": false
+      },
+      "shareOfVoice": 23,
+      "citationWins": 4,
+      "citationLosses": 2,
+      "displacedCompetitors": [
+        "Generic SaaS POS Blogs"
+      ],
+      "vulnerableToDisplacement": false
+    },
+    {
+      "contentId": "compare-vs-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "url": "https://restaurantos.com/comparison/vs-delivery-aggregators",
+      "presence": {
+        "googleAiOverview": false,
+        "chatGptSearch": true,
+        "gemini": false,
+        "perplexity": false,
+        "bingCopilot": false
+      },
+      "shareOfVoice": 20,
+      "citationWins": 4,
+      "citationLosses": 2,
+      "displacedCompetitors": [
+        "Traditional Delivery Aggregators",
+        "Legacy On-Premise POS"
+      ],
+      "vulnerableToDisplacement": false
+    },
+    {
+      "contentId": "feature-qr-stand",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "url": "https://restaurantos.com/feature/qr-menu",
+      "presence": {
+        "googleAiOverview": false,
+        "chatGptSearch": true,
+        "gemini": false,
+        "perplexity": false,
+        "bingCopilot": false
+      },
+      "shareOfVoice": 20,
+      "citationWins": 4,
+      "citationLosses": 2,
+      "displacedCompetitors": [
+        "Generic SaaS POS Blogs"
+      ],
+      "vulnerableToDisplacement": false
+    },
+    {
+      "contentId": "industry-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "url": "https://restaurantos.com/industry/specialty-cafes",
+      "presence": {
+        "googleAiOverview": false,
+        "chatGptSearch": true,
+        "gemini": false,
+        "perplexity": false,
+        "bingCopilot": false
+      },
+      "shareOfVoice": 23,
+      "citationWins": 4,
+      "citationLosses": 2,
+      "displacedCompetitors": [
+        "Generic SaaS POS Blogs"
+      ],
+      "vulnerableToDisplacement": false
+    },
+    {
+      "contentId": "changelog-v2-0-4",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "url": "https://restaurantos.com/changelog/v2-0-4-release",
+      "presence": {
+        "googleAiOverview": false,
+        "chatGptSearch": true,
+        "gemini": false,
+        "perplexity": false,
+        "bingCopilot": false
+      },
+      "shareOfVoice": 20,
+      "citationWins": 4,
+      "citationLosses": 2,
+      "displacedCompetitors": [
+        "Generic SaaS POS Blogs"
+      ],
+      "vulnerableToDisplacement": false
+    }
+  ]
+}

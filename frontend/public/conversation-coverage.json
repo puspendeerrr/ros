@@ -1,0 +1,213 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.280Z",
+  "totalQueries": 23,
+  "intents": [
+    {
+      "intentId": "query-what-guide-leaving-aggregators",
+      "category": "what",
+      "userQuery": "What is The Blueprint for Transitioning to Commission-Free Dining in Restaurant OS?",
+      "matchedAnswerId": "ans-def-guide-leaving-aggregators",
+      "targetContentId": "guide-leaving-aggregators",
+      "confidenceScore": 96,
+      "primaryEntityId": "guide-leaving-aggregators"
+    },
+    {
+      "intentId": "query-why-guide-leaving-aggregators",
+      "category": "why",
+      "userQuery": "Why should restaurants use The Blueprint for Transitioning to Commission-Free Dining?",
+      "matchedAnswerId": "ans-probsol-guide-leaving-aggregators",
+      "targetContentId": "guide-leaving-aggregators",
+      "confidenceScore": 92,
+      "primaryEntityId": "guide-leaving-aggregators"
+    },
+    {
+      "intentId": "query-how-guide-leaving-aggregators",
+      "category": "how",
+      "userQuery": "How do I set up The Blueprint for Transitioning to Commission-Free Dining step by step?",
+      "matchedAnswerId": "ans-howto-guide-leaving-aggregators",
+      "targetContentId": "guide-leaving-aggregators",
+      "confidenceScore": 98,
+      "primaryEntityId": "guide-leaving-aggregators"
+    },
+    {
+      "intentId": "query-impl-guide-leaving-aggregators",
+      "category": "implementation",
+      "userQuery": "How long does it take to implement The Blueprint for Transitioning to Commission-Free Dining?",
+      "matchedAnswerId": "ans-howto-guide-leaving-aggregators",
+      "targetContentId": "guide-leaving-aggregators",
+      "confidenceScore": 90,
+      "primaryEntityId": "guide-leaving-aggregators"
+    },
+    {
+      "intentId": "query-trouble-guide-leaving-aggregators",
+      "category": "troubleshooting",
+      "userQuery": "What happens if the internet goes down while using The Blueprint for Transitioning to Commission-Free Dining?",
+      "matchedAnswerId": "ans-probsol-guide-leaving-aggregators",
+      "targetContentId": "guide-leaving-aggregators",
+      "confidenceScore": 88,
+      "primaryEntityId": "guide-leaving-aggregators"
+    },
+    {
+      "intentId": "query-what-doc-quick-start",
+      "category": "what",
+      "userQuery": "What is 5-Minute Restaurant Quick Start Guide in Restaurant OS?",
+      "matchedAnswerId": "ans-def-doc-quick-start",
+      "targetContentId": "doc-quick-start",
+      "confidenceScore": 96,
+      "primaryEntityId": "doc-quick-start"
+    },
+    {
+      "intentId": "query-why-doc-quick-start",
+      "category": "why",
+      "userQuery": "Why should restaurants use 5-Minute Restaurant Quick Start Guide?",
+      "matchedAnswerId": "ans-probsol-doc-quick-start",
+      "targetContentId": "doc-quick-start",
+      "confidenceScore": 92,
+      "primaryEntityId": "doc-quick-start"
+    },
+    {
+      "intentId": "query-how-doc-quick-start",
+      "category": "how",
+      "userQuery": "How do I set up 5-Minute Restaurant Quick Start Guide step by step?",
+      "matchedAnswerId": "ans-step-doc-quick-start",
+      "targetContentId": "doc-quick-start",
+      "confidenceScore": 98,
+      "primaryEntityId": "doc-quick-start"
+    },
+    {
+      "intentId": "query-impl-doc-quick-start",
+      "category": "implementation",
+      "userQuery": "How long does it take to implement 5-Minute Restaurant Quick Start Guide?",
+      "matchedAnswerId": "ans-step-doc-quick-start",
+      "targetContentId": "doc-quick-start",
+      "confidenceScore": 90,
+      "primaryEntityId": "doc-quick-start"
+    },
+    {
+      "intentId": "query-trouble-doc-quick-start",
+      "category": "troubleshooting",
+      "userQuery": "What happens if the internet goes down while using 5-Minute Restaurant Quick Start Guide?",
+      "matchedAnswerId": "ans-probsol-doc-quick-start",
+      "targetContentId": "doc-quick-start",
+      "confidenceScore": 88,
+      "primaryEntityId": "doc-quick-start"
+    },
+    {
+      "intentId": "query-what-compare-vs-aggregators",
+      "category": "what",
+      "userQuery": "What is Restaurant OS vs. Food Delivery Aggregators in Restaurant OS?",
+      "matchedAnswerId": "ans-def-compare-vs-aggregators",
+      "targetContentId": "compare-vs-aggregators",
+      "confidenceScore": 96,
+      "primaryEntityId": "compare-vs-aggregators"
+    },
+    {
+      "intentId": "query-why-compare-vs-aggregators",
+      "category": "why",
+      "userQuery": "Why should restaurants use Restaurant OS vs. Food Delivery Aggregators?",
+      "matchedAnswerId": "ans-probsol-compare-vs-aggregators",
+      "targetContentId": "compare-vs-aggregators",
+      "confidenceScore": 92,
+      "primaryEntityId": "compare-vs-aggregators"
+    },
+    {
+      "intentId": "query-comp-compare-vs-aggregators",
+      "category": "comparison",
+      "userQuery": "How does Restaurant OS compare with Swiggy and Zomato?",
+      "matchedAnswerId": "ans-comp-compare-vs-aggregators",
+      "targetContentId": "compare-vs-aggregators",
+      "confidenceScore": 99,
+      "primaryEntityId": "compare-vs-aggregators"
+    },
+    {
+      "intentId": "query-trouble-compare-vs-aggregators",
+      "category": "troubleshooting",
+      "userQuery": "What happens if the internet goes down while using Restaurant OS vs. Food Delivery Aggregators?",
+      "matchedAnswerId": "ans-probsol-compare-vs-aggregators",
+      "targetContentId": "compare-vs-aggregators",
+      "confidenceScore": 88,
+      "primaryEntityId": "compare-vs-aggregators"
+    },
+    {
+      "intentId": "query-what-feature-qr-stand",
+      "category": "what",
+      "userQuery": "What is Dynamic QR Menu Stand Ecosystem in Restaurant OS?",
+      "matchedAnswerId": "ans-def-feature-qr-stand",
+      "targetContentId": "feature-qr-stand",
+      "confidenceScore": 96,
+      "primaryEntityId": "feature-qr-stand"
+    },
+    {
+      "intentId": "query-why-feature-qr-stand",
+      "category": "why",
+      "userQuery": "Why should restaurants use Dynamic QR Menu Stand Ecosystem?",
+      "matchedAnswerId": "ans-probsol-feature-qr-stand",
+      "targetContentId": "feature-qr-stand",
+      "confidenceScore": 92,
+      "primaryEntityId": "feature-qr-stand"
+    },
+    {
+      "intentId": "query-trouble-feature-qr-stand",
+      "category": "troubleshooting",
+      "userQuery": "What happens if the internet goes down while using Dynamic QR Menu Stand Ecosystem?",
+      "matchedAnswerId": "ans-probsol-feature-qr-stand",
+      "targetContentId": "feature-qr-stand",
+      "confidenceScore": 88,
+      "primaryEntityId": "feature-qr-stand"
+    },
+    {
+      "intentId": "query-what-industry-cafes",
+      "category": "what",
+      "userQuery": "What is Hospitality Architecture for Specialty Cafes & Coffee Shops in Restaurant OS?",
+      "matchedAnswerId": "ans-def-industry-cafes",
+      "targetContentId": "industry-cafes",
+      "confidenceScore": 96,
+      "primaryEntityId": "industry-cafes"
+    },
+    {
+      "intentId": "query-why-industry-cafes",
+      "category": "why",
+      "userQuery": "Why should restaurants use Hospitality Architecture for Specialty Cafes & Coffee Shops?",
+      "matchedAnswerId": "ans-probsol-industry-cafes",
+      "targetContentId": "industry-cafes",
+      "confidenceScore": 92,
+      "primaryEntityId": "industry-cafes"
+    },
+    {
+      "intentId": "query-trouble-industry-cafes",
+      "category": "troubleshooting",
+      "userQuery": "What happens if the internet goes down while using Hospitality Architecture for Specialty Cafes & Coffee Shops?",
+      "matchedAnswerId": "ans-probsol-industry-cafes",
+      "targetContentId": "industry-cafes",
+      "confidenceScore": 88,
+      "primaryEntityId": "industry-cafes"
+    },
+    {
+      "intentId": "query-what-changelog-v2-0-4",
+      "category": "what",
+      "userQuery": "What is Restaurant OS v2.0.4 Enterprise Architecture Release in Restaurant OS?",
+      "matchedAnswerId": "ans-def-changelog-v2-0-4",
+      "targetContentId": "changelog-v2-0-4",
+      "confidenceScore": 96,
+      "primaryEntityId": "changelog-v2-0-4"
+    },
+    {
+      "intentId": "query-why-changelog-v2-0-4",
+      "category": "why",
+      "userQuery": "Why should restaurants use Restaurant OS v2.0.4 Enterprise Architecture Release?",
+      "matchedAnswerId": "ans-probsol-changelog-v2-0-4",
+      "targetContentId": "changelog-v2-0-4",
+      "confidenceScore": 92,
+      "primaryEntityId": "changelog-v2-0-4"
+    },
+    {
+      "intentId": "query-trouble-changelog-v2-0-4",
+      "category": "troubleshooting",
+      "userQuery": "What happens if the internet goes down while using Restaurant OS v2.0.4 Enterprise Architecture Release?",
+      "matchedAnswerId": "ans-probsol-changelog-v2-0-4",
+      "targetContentId": "changelog-v2-0-4",
+      "confidenceScore": 88,
+      "primaryEntityId": "changelog-v2-0-4"
+    }
+  ]
+}

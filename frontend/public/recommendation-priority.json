@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.525Z",
+  "quickWins": [
+    {
+      "id": "rec-faq-0",
+      "type": "faq_expansion",
+      "sources": [
+        "ai_engine"
+      ],
+      "targetContentId": "global-faq",
+      "targetUrl": "https://restaurantos.com/faq",
+      "title": "Add verified answer for query \"Can Restaurant OS operate 100% offline during local internet fiber cuts?\"",
+      "issue": "Retrieval deficit: Offline sync architecture explained in POS guide, but needs a dedicated FAQ node",
+      "recommendedAction": "Create a concise, structured FAQ answer node addressing \"Can Restaurant OS operate 100% offline during local internet fiber cuts?\" with schema.org FAQPage markup.",
+      "status": "open",
+      "impact": {
+        "expectedSeoImpact": "medium",
+        "expectedAiImpact": "high",
+        "implementationEffort": "low",
+        "confidenceScore": 92,
+        "priorityClassification": "quick_win"
+      },
+      "createdAt": "2026-09-20T21:30:41.524Z",
+      "updatedAt": "2026-09-20T21:30:41.524Z"
+    }
+  ],
+  "strategic": [],
+  "lowHangingFruit": [],
+  "deprioritized": []
+}

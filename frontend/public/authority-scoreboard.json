@@ -1,0 +1,215 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.817Z",
+  "averageClusterAuthority": 43,
+  "averageTopicOwnership": 45,
+  "clusterScores": [
+    {
+      "clusterId": "cluster-qr-menu",
+      "clusterName": "QR Menu & Contactless Dining",
+      "completeness": 67,
+      "relationshipDensity": 73,
+      "entityCoverage": 75,
+      "linkStrength": 55,
+      "intentCoverage": 75,
+      "documentationDepth": 40,
+      "glossaryDepth": 0,
+      "faqDepth": 0,
+      "comparisonCoverage": 100,
+      "topicOwnershipScore": 81,
+      "maturity": "growing",
+      "overallAuthorityScore": 71
+    },
+    {
+      "clusterId": "cluster-qr-payments",
+      "clusterName": "Direct Table Payments & UPI Settlement",
+      "completeness": 33,
+      "relationshipDensity": 33,
+      "entityCoverage": 100,
+      "linkStrength": 25,
+      "intentCoverage": 25,
+      "documentationDepth": 0,
+      "glossaryDepth": 0,
+      "faqDepth": 0,
+      "comparisonCoverage": 0,
+      "topicOwnershipScore": 49,
+      "maturity": "seed",
+      "overallAuthorityScore": 40
+    },
+    {
+      "clusterId": "cluster-cloud-pos",
+      "clusterName": "Cloud POS & Offline-Resilient Billing",
+      "completeness": 20,
+      "relationshipDensity": 83,
+      "entityCoverage": 50,
+      "linkStrength": 63,
+      "intentCoverage": 50,
+      "documentationDepth": 40,
+      "glossaryDepth": 0,
+      "faqDepth": 0,
+      "comparisonCoverage": 0,
+      "topicOwnershipScore": 42,
+      "maturity": "seed",
+      "overallAuthorityScore": 50
+    },
+    {
+      "clusterId": "cluster-kds",
+      "clusterName": "Kitchen Display Systems (KDS) & Ticket Routing",
+      "completeness": 0,
+      "relationshipDensity": 0,
+      "entityCoverage": 0,
+      "linkStrength": 0,
+      "intentCoverage": 0,
+      "documentationDepth": 0,
+      "glossaryDepth": 0,
+      "faqDepth": 0,
+      "comparisonCoverage": 0,
+      "topicOwnershipScore": 0,
+      "maturity": "seed",
+      "overallAuthorityScore": 0
+    },
+    {
+      "clusterId": "cluster-multi-branch",
+      "clusterName": "Multi-Branch & Franchise Fleet Control",
+      "completeness": 0,
+      "relationshipDensity": 67,
+      "entityCoverage": 50,
+      "linkStrength": 50,
+      "intentCoverage": 25,
+      "documentationDepth": 0,
+      "glossaryDepth": 0,
+      "faqDepth": 0,
+      "comparisonCoverage": 0,
+      "topicOwnershipScore": 27,
+      "maturity": "seed",
+      "overallAuthorityScore": 34
+    },
+    {
+      "clusterId": "cluster-commission-free",
+      "clusterName": "Direct Dining Economics & Aggregator Independence",
+      "completeness": 50,
+      "relationshipDensity": 73,
+      "entityCoverage": 100,
+      "linkStrength": 55,
+      "intentCoverage": 75,
+      "documentationDepth": 40,
+      "glossaryDepth": 0,
+      "faqDepth": 0,
+      "comparisonCoverage": 100,
+      "topicOwnershipScore": 81,
+      "maturity": "growing",
+      "overallAuthorityScore": 69
+    },
+    {
+      "clusterId": "cluster-restaurant-analytics",
+      "clusterName": "Hospitality Analytics & Revenue Optimization",
+      "completeness": 0,
+      "relationshipDensity": 67,
+      "entityCoverage": 100,
+      "linkStrength": 50,
+      "intentCoverage": 25,
+      "documentationDepth": 0,
+      "glossaryDepth": 0,
+      "faqDepth": 0,
+      "comparisonCoverage": 0,
+      "topicOwnershipScore": 37,
+      "maturity": "seed",
+      "overallAuthorityScore": 40
+    }
+  ],
+  "entityScores": [
+    {
+      "entityId": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "contentType": "guide",
+      "authorityScore": 76,
+      "dependencyScore": 15,
+      "coverageScore": 100,
+      "freshnessScore": 99,
+      "relationshipScore": 100,
+      "citationReadiness": 80,
+      "clusterMemberships": [
+        "QR Menu & Contactless Dining",
+        "Direct Dining Economics & Aggregator Independence"
+      ]
+    },
+    {
+      "entityId": "doc-quick-start",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "contentType": "documentation",
+      "authorityScore": 76,
+      "dependencyScore": 15,
+      "coverageScore": 100,
+      "freshnessScore": 100,
+      "relationshipScore": 100,
+      "citationReadiness": 80,
+      "clusterMemberships": [
+        "QR Menu & Contactless Dining",
+        "Cloud POS & Offline-Resilient Billing",
+        "Direct Dining Economics & Aggregator Independence"
+      ]
+    },
+    {
+      "entityId": "compare-vs-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "contentType": "comparison",
+      "authorityScore": 73,
+      "dependencyScore": 15,
+      "coverageScore": 85,
+      "freshnessScore": 95,
+      "relationshipScore": 100,
+      "citationReadiness": 80,
+      "clusterMemberships": [
+        "QR Menu & Contactless Dining",
+        "Direct Dining Economics & Aggregator Independence"
+      ]
+    },
+    {
+      "entityId": "feature-qr-stand",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "contentType": "feature",
+      "authorityScore": 75,
+      "dependencyScore": 20,
+      "coverageScore": 85,
+      "freshnessScore": 99,
+      "relationshipScore": 100,
+      "citationReadiness": 80,
+      "clusterMemberships": [
+        "QR Menu & Contactless Dining",
+        "Direct Table Payments & UPI Settlement",
+        "Direct Dining Economics & Aggregator Independence"
+      ]
+    },
+    {
+      "entityId": "industry-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "contentType": "industry",
+      "authorityScore": 77,
+      "dependencyScore": 20,
+      "coverageScore": 100,
+      "freshnessScore": 99,
+      "relationshipScore": 100,
+      "citationReadiness": 80,
+      "clusterMemberships": [
+        "QR Menu & Contactless Dining",
+        "Direct Table Payments & UPI Settlement",
+        "Cloud POS & Offline-Resilient Billing",
+        "Direct Dining Economics & Aggregator Independence"
+      ]
+    },
+    {
+      "entityId": "changelog-v2-0-4",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "contentType": "changelog",
+      "authorityScore": 74,
+      "dependencyScore": 15,
+      "coverageScore": 85,
+      "freshnessScore": 100,
+      "relationshipScore": 100,
+      "citationReadiness": 80,
+      "clusterMemberships": [
+        "Multi-Branch & Franchise Fleet Control",
+        "Hospitality Analytics & Revenue Optimization"
+      ]
+    }
+  ]
+}

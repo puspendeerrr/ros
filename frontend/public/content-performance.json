@@ -1,0 +1,104 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.523Z",
+  "averageEngagementScore": 78,
+  "averageDecayScore": 0,
+  "decayingPagesCount": 0,
+  "pages": [
+    {
+      "contentId": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "pageViews": 13300,
+      "uniqueVisitors": 9576,
+      "engagementScore": 78,
+      "bounceSignals": {
+        "bounceRate": 0.35,
+        "exitRate": 0.22,
+        "dwellTimeSeconds": 360
+      },
+      "contentDecayScore": 0,
+      "freshnessDays": 2,
+      "authorityGrowthRate": 14.5,
+      "performanceStatus": "surging"
+    },
+    {
+      "contentId": "doc-quick-start",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "pageViews": 9100,
+      "uniqueVisitors": 6552,
+      "engagementScore": 78,
+      "bounceSignals": {
+        "bounceRate": 0.35,
+        "exitRate": 0.22,
+        "dwellTimeSeconds": 225
+      },
+      "contentDecayScore": 0,
+      "freshnessDays": 0,
+      "authorityGrowthRate": 14.5,
+      "performanceStatus": "surging"
+    },
+    {
+      "contentId": "compare-vs-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "pageViews": 10500,
+      "uniqueVisitors": 7560,
+      "engagementScore": 78,
+      "bounceSignals": {
+        "bounceRate": 0.35,
+        "exitRate": 0.22,
+        "dwellTimeSeconds": 270
+      },
+      "contentDecayScore": 1,
+      "freshnessDays": 5,
+      "authorityGrowthRate": 14.5,
+      "performanceStatus": "surging"
+    },
+    {
+      "contentId": "feature-qr-stand",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "pageViews": 7700,
+      "uniqueVisitors": 5544,
+      "engagementScore": 78,
+      "bounceSignals": {
+        "bounceRate": 0.35,
+        "exitRate": 0.22,
+        "dwellTimeSeconds": 180
+      },
+      "contentDecayScore": 0,
+      "freshnessDays": 1,
+      "authorityGrowthRate": 14.5,
+      "performanceStatus": "surging"
+    },
+    {
+      "contentId": "industry-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "pageViews": 9100,
+      "uniqueVisitors": 6552,
+      "engagementScore": 78,
+      "bounceSignals": {
+        "bounceRate": 0.35,
+        "exitRate": 0.22,
+        "dwellTimeSeconds": 225
+      },
+      "contentDecayScore": 1,
+      "freshnessDays": 3,
+      "authorityGrowthRate": 14.5,
+      "performanceStatus": "surging"
+    },
+    {
+      "contentId": "changelog-v2-0-4",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "pageViews": 6300,
+      "uniqueVisitors": 4536,
+      "engagementScore": 78,
+      "bounceSignals": {
+        "bounceRate": 0.35,
+        "exitRate": 0.22,
+        "dwellTimeSeconds": 135
+      },
+      "contentDecayScore": 0,
+      "freshnessDays": 0,
+      "authorityGrowthRate": 14.5,
+      "performanceStatus": "surging"
+    }
+  ]
+}

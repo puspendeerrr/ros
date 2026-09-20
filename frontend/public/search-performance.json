@@ -1,0 +1,131 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.522Z",
+  "totalImpressions": 84700,
+  "totalClicks": 8725,
+  "averageCtr": 0.103,
+  "averagePosition": 3.8,
+  "totalIndexedPages": 6,
+  "totalCrawlErrors": 0,
+  "pages": [
+    {
+      "contentId": "guide-leaving-aggregators",
+      "url": "https://restaurantos.com/guide/leaving-aggregators-behind",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "impressions": 21200,
+      "clicks": 2184,
+      "ctr": 0.103,
+      "averagePosition": 3.8,
+      "indexed": true,
+      "crawlErrors": [],
+      "coreWebVitals": {
+        "lcpMs": 1150,
+        "fidMs": 12,
+        "cls": 0.01,
+        "inpMs": 45,
+        "fcpMs": 820,
+        "ttfbMs": 180,
+        "rating": "good"
+      }
+    },
+    {
+      "contentId": "doc-quick-start",
+      "url": "https://restaurantos.com/documentation/5-minute-restaurant-quickstart",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "impressions": 13700,
+      "clicks": 1411,
+      "ctr": 0.103,
+      "averagePosition": 3.8,
+      "indexed": true,
+      "crawlErrors": [],
+      "coreWebVitals": {
+        "lcpMs": 1150,
+        "fidMs": 12,
+        "cls": 0.01,
+        "inpMs": 45,
+        "fcpMs": 820,
+        "ttfbMs": 180,
+        "rating": "good"
+      }
+    },
+    {
+      "contentId": "compare-vs-aggregators",
+      "url": "https://restaurantos.com/comparison/vs-delivery-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "impressions": 16200,
+      "clicks": 1669,
+      "ctr": 0.103,
+      "averagePosition": 3.8,
+      "indexed": true,
+      "crawlErrors": [],
+      "coreWebVitals": {
+        "lcpMs": 1150,
+        "fidMs": 12,
+        "cls": 0.01,
+        "inpMs": 45,
+        "fcpMs": 820,
+        "ttfbMs": 180,
+        "rating": "good"
+      }
+    },
+    {
+      "contentId": "feature-qr-stand",
+      "url": "https://restaurantos.com/feature/qr-menu",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "impressions": 11200,
+      "clicks": 1154,
+      "ctr": 0.103,
+      "averagePosition": 3.8,
+      "indexed": true,
+      "crawlErrors": [],
+      "coreWebVitals": {
+        "lcpMs": 1150,
+        "fidMs": 12,
+        "cls": 0.01,
+        "inpMs": 45,
+        "fcpMs": 820,
+        "ttfbMs": 180,
+        "rating": "good"
+      }
+    },
+    {
+      "contentId": "industry-cafes",
+      "url": "https://restaurantos.com/industry/specialty-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "impressions": 13700,
+      "clicks": 1411,
+      "ctr": 0.103,
+      "averagePosition": 3.8,
+      "indexed": true,
+      "crawlErrors": [],
+      "coreWebVitals": {
+        "lcpMs": 1150,
+        "fidMs": 12,
+        "cls": 0.01,
+        "inpMs": 45,
+        "fcpMs": 820,
+        "ttfbMs": 180,
+        "rating": "good"
+      }
+    },
+    {
+      "contentId": "changelog-v2-0-4",
+      "url": "https://restaurantos.com/changelog/v2-0-4-release",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "impressions": 8700,
+      "clicks": 896,
+      "ctr": 0.103,
+      "averagePosition": 3.8,
+      "indexed": true,
+      "crawlErrors": [],
+      "coreWebVitals": {
+        "lcpMs": 1150,
+        "fidMs": 12,
+        "cls": 0.01,
+        "inpMs": 45,
+        "fcpMs": 820,
+        "ttfbMs": 180,
+        "rating": "good"
+      }
+    }
+  ]
+}

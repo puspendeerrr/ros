@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.280Z",
+  "totalScored": 6,
+  "compatibilityScores": [
+    {
+      "contentId": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "googleAiOverview": 90,
+      "chatGptSearch": 100,
+      "gemini": 90,
+      "perplexity": 95,
+      "bingCopilot": 70,
+      "compositeLlmReadiness": 89,
+      "primaryModelAffinity": "ChatGPT"
+    },
+    {
+      "contentId": "doc-quick-start",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "googleAiOverview": 90,
+      "chatGptSearch": 95,
+      "gemini": 90,
+      "perplexity": 75,
+      "bingCopilot": 95,
+      "compositeLlmReadiness": 89,
+      "primaryModelAffinity": "ChatGPT"
+    },
+    {
+      "contentId": "compare-vs-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "googleAiOverview": 90,
+      "chatGptSearch": 100,
+      "gemini": 75,
+      "perplexity": 100,
+      "bingCopilot": 70,
+      "compositeLlmReadiness": 87,
+      "primaryModelAffinity": "ChatGPT"
+    },
+    {
+      "contentId": "feature-qr-stand",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "googleAiOverview": 90,
+      "chatGptSearch": 85,
+      "gemini": 75,
+      "perplexity": 65,
+      "bingCopilot": 85,
+      "compositeLlmReadiness": 80,
+      "primaryModelAffinity": "Google"
+    },
+    {
+      "contentId": "industry-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "googleAiOverview": 90,
+      "chatGptSearch": 95,
+      "gemini": 75,
+      "perplexity": 75,
+      "bingCopilot": 70,
+      "compositeLlmReadiness": 81,
+      "primaryModelAffinity": "ChatGPT"
+    },
+    {
+      "contentId": "changelog-v2-0-4",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "googleAiOverview": 90,
+      "chatGptSearch": 85,
+      "gemini": 75,
+      "perplexity": 75,
+      "bingCopilot": 70,
+      "compositeLlmReadiness": 79,
+      "primaryModelAffinity": "Google"
+    }
+  ]
+}

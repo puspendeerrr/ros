@@ -1,14 +1,83 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="theme-color" content="#FF6B00" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Restaurant OS — Run Your Restaurant Like a Tech Company</title>
+    
+    <!-- Primary Metadata -->
+    <meta name="description" content="Restaurant OS gives restaurants commission-free digital QR menus, dynamic table stands, real-time catalog syncing, and branded storefronts in under 5 minutes." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#F97316" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Resource Hints & Preconnects (Core Web Vitals Optimization) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://ros.algorithyum.in" />
+
+    <!-- Optimized Font Loading with display=swap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+
+    <!-- Favicons & Icons Suite -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Apple PWA Capabilities -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>Restaurant OS</title>
+    <meta name="apple-mobile-web-app-title" content="Restaurant OS" />
+
+    <!-- Open Graph Default Fallbacks -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Restaurant OS" />
+    <meta property="og:title" content="Restaurant OS — Run Your Restaurant Like a Tech Company" />
+    <meta property="og:description" content="Commission-free digital menus, dynamic QR table stands, and instant catalog management for modern restaurants." />
+    <meta property="og:image" content="https://ros.algorithyum.in/assets/logo.png" />
+    <meta property="og:image:alt" content="Restaurant OS Platform" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter Card Default Fallbacks -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@restaurantos" />
+    <meta name="twitter:creator" content="@restaurantos" />
+
+    <!-- AI & Human Discovery Links -->
+    <link rel="author" href="/humans.txt" />
+
+    <!-- Speculation Rules API (Chrome / Edge / Google Search Instant Navigation) -->
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "source": "list",
+            "urls": ["/features", "/about", "/contact", "/privacy", "/terms"],
+            "eagerness": "moderate"
+          }
+        ],
+        "prefetch": [
+          {
+            "source": "document",
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/dashboard*" } },
+                { "not": { "href_matches": "/menu*" } },
+                { "not": { "href_matches": "/qr-menu*" } },
+                { "not": { "href_matches": "/restaurant*" } },
+                { "not": { "href_matches": "/onboarding*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

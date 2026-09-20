@@ -1,0 +1,313 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.280Z",
+  "totalBlockSets": 6,
+  "answerBlocks": [
+    {
+      "contentId": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "definitionBlock": {
+        "term": "The Blueprint for Transitioning to Commission-Free Dining",
+        "definition": "A tactical blueprint for restaurants to retain 100% of dining revenue by deploying customer-owned QR ordering stands and direct takeaway channels.",
+        "wordCount": 21
+      },
+      "summaryBlock": {
+        "tldr": "A tactical blueprint for restaurants to retain 100% of dining revenue by deploying customer-owned QR ordering stands and direct takeaway channels.",
+        "targetAudience": "restaurateur"
+      },
+      "keyTakeaways": [
+        "100% merchant data ownership with zero third-party commissions.",
+        "Cloud-native infrastructure with offline-first local cache synchronization.",
+        "Instant table QR code stand generation and direct UPI bill settlement."
+      ],
+      "quickFacts": [
+        {
+          "label": "Category",
+          "value": "QR MENU"
+        },
+        {
+          "label": "Audience",
+          "value": "restaurateur"
+        },
+        {
+          "label": "Version",
+          "value": "1.0.0"
+        },
+        {
+          "label": "Read Time",
+          "value": "8 mins"
+        },
+        {
+          "label": "Intent",
+          "value": "informational"
+        }
+      ],
+      "checklist": [
+        "Confirm restaurant profile and GST registration details.",
+        "Upload menu categories, dishes, and high-resolution photos.",
+        "Export and print table stands with embedded table query IDs.",
+        "Test table UPI settlement with sample order."
+      ],
+      "advantages": [
+        "Zero commission fees on dining room transactions",
+        "Local IndexedDB offline order preservation",
+        "Direct customer relationship ownership"
+      ],
+      "prerequisites": [
+        "feature-digital-menu"
+      ]
+    },
+    {
+      "contentId": "doc-quick-start",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "definitionBlock": {
+        "term": "5-Minute Restaurant Quick Start Guide",
+        "definition": "A fast-track onboarding documentation guide for getting your dining room active on Restaurant OS in 5 minutes.",
+        "wordCount": 17
+      },
+      "summaryBlock": {
+        "tldr": "A fast-track onboarding documentation guide for getting your dining room active on Restaurant OS in 5 minutes.",
+        "targetAudience": "general manager"
+      },
+      "keyTakeaways": [
+        "100% merchant data ownership with zero third-party commissions.",
+        "Cloud-native infrastructure with offline-first local cache synchronization.",
+        "Instant table QR code stand generation and direct UPI bill settlement."
+      ],
+      "quickFacts": [
+        {
+          "label": "Category",
+          "value": "QR MENU"
+        },
+        {
+          "label": "Audience",
+          "value": "general manager"
+        },
+        {
+          "label": "Version",
+          "value": "latest"
+        },
+        {
+          "label": "Read Time",
+          "value": "5 mins"
+        },
+        {
+          "label": "Intent",
+          "value": "transactional"
+        }
+      ],
+      "checklist": [
+        "Confirm restaurant profile and GST registration details.",
+        "Upload menu categories, dishes, and high-resolution photos.",
+        "Export and print table stands with embedded table query IDs.",
+        "Test table UPI settlement with sample order."
+      ],
+      "advantages": [
+        "Zero commission fees on dining room transactions",
+        "Local IndexedDB offline order preservation",
+        "Direct customer relationship ownership"
+      ],
+      "prerequisites": []
+    },
+    {
+      "contentId": "compare-vs-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "definitionBlock": {
+        "term": "Restaurant OS vs. Food Delivery Aggregators",
+        "definition": "Economic breakdown comparing net restaurant profit, customer data retention, and table turnover between direct QR systems and aggregator apps.",
+        "wordCount": 19
+      },
+      "summaryBlock": {
+        "tldr": "Economic breakdown comparing net restaurant profit, customer data retention, and table turnover between direct QR systems and aggregator apps.",
+        "targetAudience": "restaurateur"
+      },
+      "keyTakeaways": [
+        "100% merchant data ownership with zero third-party commissions.",
+        "Cloud-native infrastructure with offline-first local cache synchronization.",
+        "Instant table QR code stand generation and direct UPI bill settlement."
+      ],
+      "quickFacts": [
+        {
+          "label": "Category",
+          "value": "QR MENU"
+        },
+        {
+          "label": "Audience",
+          "value": "restaurateur"
+        },
+        {
+          "label": "Version",
+          "value": "1.0.0"
+        },
+        {
+          "label": "Read Time",
+          "value": "6 mins"
+        },
+        {
+          "label": "Intent",
+          "value": "commercial"
+        }
+      ],
+      "decisionMatrix": [
+        {
+          "criteria": "Commission Rate",
+          "restaurantOs": "0% fixed (Zero commissions)",
+          "alternative": "15% to 30% per order"
+        },
+        {
+          "criteria": "Customer Phone & Data",
+          "restaurantOs": "100% merchant owned",
+          "alternative": "Masked / Retained by marketplace"
+        },
+        {
+          "criteria": "Payment Settlement",
+          "restaurantOs": "Instant direct to bank via UPI",
+          "alternative": "Weekly/bi-weekly payouts after deductions"
+        }
+      ],
+      "advantages": [
+        "Zero commission fees on dining room transactions",
+        "Local IndexedDB offline order preservation",
+        "Direct customer relationship ownership"
+      ],
+      "prerequisites": []
+    },
+    {
+      "contentId": "feature-qr-stand",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "definitionBlock": {
+        "term": "Dynamic QR Menu Stand Ecosystem",
+        "definition": "Physical-to-digital bridge for restaurants: printable vector table stands connecting diners straight to dynamic, real-time menus.",
+        "wordCount": 15
+      },
+      "summaryBlock": {
+        "tldr": "Physical-to-digital bridge for restaurants: printable vector table stands connecting diners straight to dynamic, real-time menus.",
+        "targetAudience": "restaurateur"
+      },
+      "keyTakeaways": [
+        "100% merchant data ownership with zero third-party commissions.",
+        "Cloud-native infrastructure with offline-first local cache synchronization.",
+        "Instant table QR code stand generation and direct UPI bill settlement."
+      ],
+      "quickFacts": [
+        {
+          "label": "Category",
+          "value": "QR MENU"
+        },
+        {
+          "label": "Audience",
+          "value": "restaurateur"
+        },
+        {
+          "label": "Version",
+          "value": "1.0.0"
+        },
+        {
+          "label": "Read Time",
+          "value": "4 mins"
+        },
+        {
+          "label": "Intent",
+          "value": "commercial"
+        }
+      ],
+      "advantages": [
+        "Zero commission fees on dining room transactions",
+        "Local IndexedDB offline order preservation",
+        "Direct customer relationship ownership"
+      ],
+      "prerequisites": []
+    },
+    {
+      "contentId": "industry-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "definitionBlock": {
+        "term": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+        "definition": "Tailored operational setup designed for fast barista queue management and rapid drink modifier selection.",
+        "wordCount": 14
+      },
+      "summaryBlock": {
+        "tldr": "Tailored operational setup designed for fast barista queue management and rapid drink modifier selection.",
+        "targetAudience": "restaurateur"
+      },
+      "keyTakeaways": [
+        "100% merchant data ownership with zero third-party commissions.",
+        "Cloud-native infrastructure with offline-first local cache synchronization.",
+        "Instant table QR code stand generation and direct UPI bill settlement."
+      ],
+      "quickFacts": [
+        {
+          "label": "Category",
+          "value": "CLOUD POS"
+        },
+        {
+          "label": "Audience",
+          "value": "restaurateur"
+        },
+        {
+          "label": "Version",
+          "value": "1.0.0"
+        },
+        {
+          "label": "Read Time",
+          "value": "5 mins"
+        },
+        {
+          "label": "Intent",
+          "value": "commercial"
+        }
+      ],
+      "advantages": [
+        "Zero commission fees on dining room transactions",
+        "Local IndexedDB offline order preservation",
+        "Direct customer relationship ownership"
+      ],
+      "prerequisites": []
+    },
+    {
+      "contentId": "changelog-v2-0-4",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "definitionBlock": {
+        "term": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+        "definition": "Release notes covering Phase 2 Information Architecture and Phase 3 Content Engine infrastructure rollout.",
+        "wordCount": 14
+      },
+      "summaryBlock": {
+        "tldr": "Release notes covering Phase 2 Information Architecture and Phase 3 Content Engine infrastructure rollout.",
+        "targetAudience": "developer"
+      },
+      "keyTakeaways": [
+        "100% merchant data ownership with zero third-party commissions.",
+        "Cloud-native infrastructure with offline-first local cache synchronization.",
+        "Instant table QR code stand generation and direct UPI bill settlement."
+      ],
+      "quickFacts": [
+        {
+          "label": "Category",
+          "value": "PLATFORM"
+        },
+        {
+          "label": "Audience",
+          "value": "developer"
+        },
+        {
+          "label": "Version",
+          "value": "1.0.0"
+        },
+        {
+          "label": "Read Time",
+          "value": "3 mins"
+        },
+        {
+          "label": "Intent",
+          "value": "informational"
+        }
+      ],
+      "advantages": [
+        "Zero commission fees on dining room transactions",
+        "Local IndexedDB offline order preservation",
+        "Direct customer relationship ownership"
+      ],
+      "prerequisites": []
+    }
+  ]
+}

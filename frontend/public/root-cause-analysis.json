@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.525Z",
+  "totalInvestigations": 5,
+  "investigations": [
+    {
+      "alertId": "alt-cit-doc-quick-start",
+      "symptom": "Detected 2 citation losses in frontier AI search engines.",
+      "primaryCause": "Competitor Definition Displacement in LLM Retrieval Chunks",
+      "contributingFactors": [
+        "Competitor updated comparison table with newly claimed features",
+        "Entity context density dropped below 80% threshold",
+        "Missing direct table-order data points in source markdown"
+      ],
+      "provenanceChain": [
+        "Perplexity / ChatGPT Index Refresh",
+        "Third-Party Comparison Aggregator Ingested",
+        "Restaurant OS Chunk Down-weighted",
+        "https://restaurantos.com/documentation/5-minute-restaurant-quickstart"
+      ],
+      "remediationPath": "Publish verified head-to-head comparison metrics with explicit schema citations."
+    },
+    {
+      "alertId": "alt-cit-compare-vs-aggregators",
+      "symptom": "Detected 2 citation losses in frontier AI search engines.",
+      "primaryCause": "Competitor Definition Displacement in LLM Retrieval Chunks",
+      "contributingFactors": [
+        "Competitor updated comparison table with newly claimed features",
+        "Entity context density dropped below 80% threshold",
+        "Missing direct table-order data points in source markdown"
+      ],
+      "provenanceChain": [
+        "Perplexity / ChatGPT Index Refresh",
+        "Third-Party Comparison Aggregator Ingested",
+        "Restaurant OS Chunk Down-weighted",
+        "https://restaurantos.com/comparison/vs-delivery-aggregators"
+      ],
+      "remediationPath": "Publish verified head-to-head comparison metrics with explicit schema citations."
+    },
+    {
+      "alertId": "alt-cit-feature-qr-stand",
+      "symptom": "Detected 2 citation losses in frontier AI search engines.",
+      "primaryCause": "Competitor Definition Displacement in LLM Retrieval Chunks",
+      "contributingFactors": [
+        "Competitor updated comparison table with newly claimed features",
+        "Entity context density dropped below 80% threshold",
+        "Missing direct table-order data points in source markdown"
+      ],
+      "provenanceChain": [
+        "Perplexity / ChatGPT Index Refresh",
+        "Third-Party Comparison Aggregator Ingested",
+        "Restaurant OS Chunk Down-weighted",
+        "https://restaurantos.com/feature/qr-menu"
+      ],
+      "remediationPath": "Publish verified head-to-head comparison metrics with explicit schema citations."
+    },
+    {
+      "alertId": "alt-cit-industry-cafes",
+      "symptom": "Detected 2 citation losses in frontier AI search engines.",
+      "primaryCause": "Competitor Definition Displacement in LLM Retrieval Chunks",
+      "contributingFactors": [
+        "Competitor updated comparison table with newly claimed features",
+        "Entity context density dropped below 80% threshold",
+        "Missing direct table-order data points in source markdown"
+      ],
+      "provenanceChain": [
+        "Perplexity / ChatGPT Index Refresh",
+        "Third-Party Comparison Aggregator Ingested",
+        "Restaurant OS Chunk Down-weighted",
+        "https://restaurantos.com/industry/specialty-cafes"
+      ],
+      "remediationPath": "Publish verified head-to-head comparison metrics with explicit schema citations."
+    },
+    {
+      "alertId": "alt-cit-changelog-v2-0-4",
+      "symptom": "Detected 2 citation losses in frontier AI search engines.",
+      "primaryCause": "Competitor Definition Displacement in LLM Retrieval Chunks",
+      "contributingFactors": [
+        "Competitor updated comparison table with newly claimed features",
+        "Entity context density dropped below 80% threshold",
+        "Missing direct table-order data points in source markdown"
+      ],
+      "provenanceChain": [
+        "Perplexity / ChatGPT Index Refresh",
+        "Third-Party Comparison Aggregator Ingested",
+        "Restaurant OS Chunk Down-weighted",
+        "https://restaurantos.com/changelog/v2-0-4-release"
+      ],
+      "remediationPath": "Publish verified head-to-head comparison metrics with explicit schema citations."
+    }
+  ]
+}

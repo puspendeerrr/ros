@@ -1,0 +1,57 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Restaurant OS Knowledge & Engineering",
+  "home_page_url": "https://ros.algorithyum.in/",
+  "feed_url": "https://ros.algorithyum.in/jsonfeed.json",
+  "description": "Enterprise restaurant operating system blueprints, guides, and technical architecture.",
+  "items": [
+    {
+      "id": "https://ros.algorithyum.in/changelog",
+      "url": "https://ros.algorithyum.in/changelog",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "summary": "Information architecture separation, versioned documentation readiness, and enterprise content engine.",
+      "date_published": "2026-09-21T00:00:00Z",
+      "date_modified": "2026-09-21T00:00:00Z"
+    },
+    {
+      "id": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+      "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "summary": "How modern restaurants shift 35%+ of order volume from food delivery aggregators to direct table stands without disrupting kitchen operations.",
+      "date_published": "2026-08-15T00:00:00Z",
+      "date_modified": "2026-09-18T00:00:00Z"
+    },
+    {
+      "id": "https://ros.algorithyum.in/industries/specialty-cafes",
+      "url": "https://ros.algorithyum.in/industries/specialty-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "summary": "High-frequency counter dispatch, custom milk modifier workflows, and lightning-fast UPI payments for boutique cafes.",
+      "date_published": "2026-08-10T00:00:00Z",
+      "date_modified": "2026-09-17T00:00:00Z"
+    },
+    {
+      "id": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+      "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "summary": "Compare 0% commission direct dine-in and takeaway channels against 15–30% delivery app marketplace commissions.",
+      "date_published": "2026-08-01T00:00:00Z",
+      "date_modified": "2026-09-15T00:00:00Z"
+    },
+    {
+      "id": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+      "url": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "summary": "Configure your restaurant profile, upload categories and dishes, and download printable vector table stands.",
+      "date_published": "2026-07-01T00:00:00Z",
+      "date_modified": "2026-09-20T00:00:00Z"
+    },
+    {
+      "id": "https://ros.algorithyum.in/features/qr-menu",
+      "url": "https://ros.algorithyum.in/features/qr-menu",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "summary": "High-resolution acrylic table stands with vector QR codes enabling instant smartphone menu browsing with zero apps to install.",
+      "date_published": "2026-06-01T00:00:00Z",
+      "date_modified": "2026-09-19T00:00:00Z"
+    }
+  ]
+}

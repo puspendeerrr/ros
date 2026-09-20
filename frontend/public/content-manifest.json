@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-09-20T21:30:40.322Z",
+  "totalEntries": 6,
+  "entries": {
+    "guide-leaving-aggregators": {
+      "id": "guide-leaving-aggregators",
+      "slug": "leaving-aggregators-behind",
+      "contentType": "guide",
+      "version": "latest",
+      "checksum": "dceaa5d6fe08d127d481de12d21c6f8b7c8cb0437d4b29739b1dbe4826117c1e",
+      "updatedAt": "2026-09-18T00:00:00Z",
+      "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+      "editorialStatus": "published"
+    },
+    "doc-quick-start": {
+      "id": "doc-quick-start",
+      "slug": "5-minute-restaurant-quickstart",
+      "contentType": "documentation",
+      "version": "latest",
+      "checksum": "f436f001b4d4c564cdc08ce49c54eca1c19eb65ff97ff0f5a6f0f7b47c1926d8",
+      "updatedAt": "2026-09-20T00:00:00Z",
+      "url": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+      "editorialStatus": "published"
+    },
+    "compare-vs-aggregators": {
+      "id": "compare-vs-aggregators",
+      "slug": "vs-delivery-aggregators",
+      "contentType": "comparison",
+      "version": "latest",
+      "checksum": "2e5de022ab40fffde34e65f8193546d51701e7b2f1b5f4f0be5c706928b7a1d2",
+      "updatedAt": "2026-09-15T00:00:00Z",
+      "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+      "editorialStatus": "published"
+    },
+    "feature-qr-stand": {
+      "id": "feature-qr-stand",
+      "slug": "qr-menu",
+      "contentType": "feature",
+      "version": "latest",
+      "checksum": "9aee49758f27dd192d743c821f7d8028d8cbefd21bc4d1e6d6c1bebd8f234a29",
+      "updatedAt": "2026-09-19T00:00:00Z",
+      "url": "https://ros.algorithyum.in/features/qr-menu",
+      "editorialStatus": "published"
+    },
+    "industry-cafes": {
+      "id": "industry-cafes",
+      "slug": "specialty-cafes",
+      "contentType": "industry",
+      "version": "latest",
+      "checksum": "99d2b23b3a871b6964687854bec2b2bae0b14fac8c3b399bdf882aaca2688f39",
+      "updatedAt": "2026-09-17T00:00:00Z",
+      "url": "https://ros.algorithyum.in/industries/specialty-cafes",
+      "editorialStatus": "published"
+    },
+    "changelog-v2-0-4": {
+      "id": "changelog-v2-0-4",
+      "slug": "v2-0-4-release",
+      "contentType": "changelog",
+      "version": "latest",
+      "checksum": "66502e6d3910ae7e14c6b5a42f942cf35ce0288a4c9288c8f0bb3c262c363f9b",
+      "updatedAt": "2026-09-21T00:00:00Z",
+      "url": "https://ros.algorithyum.in/changelog",
+      "editorialStatus": "published"
+    }
+  }
+}

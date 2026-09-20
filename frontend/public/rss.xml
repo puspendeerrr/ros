@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Restaurant OS Knowledge &amp; Engineering</title>
+    <link>https://ros.algorithyum.in</link>
+    <description>Enterprise restaurant operating system blueprints, guides, and technical architecture.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 20 Sep 2026 21:30:40 GMT</lastBuildDate>
+    <atom:link href="https://ros.algorithyum.in/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Restaurant OS v2.0.4 Enterprise Architecture Release</title>
+      <link>https://ros.algorithyum.in/changelog</link>
+      <guid isPermaLink="true">https://ros.algorithyum.in/changelog</guid>
+      <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Information architecture separation, versioned documentation readiness, and enterprise content engine.</description>
+    </item>
+    <item>
+      <title>The Blueprint for Transitioning to Commission-Free Dining</title>
+      <link>https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind</link>
+      <guid isPermaLink="true">https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind</guid>
+      <pubDate>Sat, 15 Aug 2026 00:00:00 GMT</pubDate>
+      <description>How modern restaurants shift 35%+ of order volume from food delivery aggregators to direct table stands without disrupting kitchen operations.</description>
+    </item>
+    <item>
+      <title>Hospitality Architecture for Specialty Cafes &amp; Coffee Shops</title>
+      <link>https://ros.algorithyum.in/industries/specialty-cafes</link>
+      <guid isPermaLink="true">https://ros.algorithyum.in/industries/specialty-cafes</guid>
+      <pubDate>Mon, 10 Aug 2026 00:00:00 GMT</pubDate>
+      <description>High-frequency counter dispatch, custom milk modifier workflows, and lightning-fast UPI payments for boutique cafes.</description>
+    </item>
+    <item>
+      <title>Restaurant OS vs. Food Delivery Aggregators</title>
+      <link>https://ros.algorithyum.in/compare/vs-delivery-aggregators</link>
+      <guid isPermaLink="true">https://ros.algorithyum.in/compare/vs-delivery-aggregators</guid>
+      <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Compare 0% commission direct dine-in and takeaway channels against 15–30% delivery app marketplace commissions.</description>
+    </item>
+    <item>
+      <title>5-Minute Restaurant Quick Start Guide</title>
+      <link>https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide</link>
+      <guid isPermaLink="true">https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide</guid>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Configure your restaurant profile, upload categories and dishes, and download printable vector table stands.</description>
+    </item>
+    <item>
+      <title>Dynamic QR Menu Stand Ecosystem</title>
+      <link>https://ros.algorithyum.in/features/qr-menu</link>
+      <guid isPermaLink="true">https://ros.algorithyum.in/features/qr-menu</guid>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <description>High-resolution acrylic table stands with vector QR codes enabling instant smartphone menu browsing with zero apps to install.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "guide-leaving-aggregators",
+    "url": "/resources/guides/leaving-aggregators-behind",
+    "title": "The Blueprint for Transitioning to Commission-Free Dining | Restaurant OS",
+    "titleLength": 73,
+    "titleTruncated": true,
+    "description": "How modern restaurants shift 35%+ of order volume from food delivery aggregators to direct table stands without disrupting kitchen operations.",
+    "descriptionLength": 142,
+    "descriptionTruncated": false,
+    "breadcrumbsPreview": "Home > Resources > Guides > Leaving aggregators behind",
+    "openGraphPreview": {
+      "ogTitle": "The Blueprint for Transitioning to Commission-Free Dining | Restaurant OS",
+      "ogDescription": "How modern restaurants shift 35%+ of order volume from food delivery aggregators to direct table stands without disrupting kitchen operations.",
+      "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+      "ogType": "website"
+    }
+  },
+  {
+    "id": "doc-quick-start",
+    "url": "/docs/latest/cat-qr-menus/5-minute-restaurant-quickstart",
+    "title": "5-Minute Restaurant Quick Start Guide | Restaurant OS",
+    "titleLength": 53,
+    "titleTruncated": false,
+    "description": "Configure your restaurant profile, upload categories and dishes, and download printable vector table stands.",
+    "descriptionLength": 108,
+    "descriptionTruncated": false,
+    "breadcrumbsPreview": "Home > Documentation > Latest > Cat qr menus > 5 minute restaurant quickstart",
+    "openGraphPreview": {
+      "ogTitle": "5-Minute Restaurant Quick Start Guide | Restaurant OS",
+      "ogDescription": "Configure your restaurant profile, upload categories and dishes, and download printable vector table stands.",
+      "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+      "ogType": "website"
+    }
+  },
+  {
+    "id": "compare-vs-aggregators",
+    "url": "/compare/vs-delivery-aggregators",
+    "title": "Restaurant OS vs. Food Delivery Aggregators",
+    "titleLength": 43,
+    "titleTruncated": false,
+    "description": "Compare 0% commission direct dine-in and takeaway channels against 15–30% delivery app marketplace commissions.",
+    "descriptionLength": 111,
+    "descriptionTruncated": false,
+    "breadcrumbsPreview": "Home > Comparisons > Third-Party Delivery Platforms & Marketplaces",
+    "openGraphPreview": {
+      "ogTitle": "Restaurant OS vs. Food Delivery Aggregators",
+      "ogDescription": "Compare 0% commission direct dine-in and takeaway channels against 15–30% delivery app marketplace commissions.",
+      "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+      "ogType": "website"
+    }
+  },
+  {
+    "id": "feature-qr-stand",
+    "url": "/features/qr-menu",
+    "title": "Dynamic QR Menu Stand Ecosystem | Restaurant OS",
+    "titleLength": 47,
+    "titleTruncated": false,
+    "description": "High-resolution acrylic table stands with vector QR codes enabling instant smartphone menu browsing with zero apps to install.",
+    "descriptionLength": 126,
+    "descriptionTruncated": false,
+    "breadcrumbsPreview": "Home > Features > Dynamic QR Stand Ecosystem",
+    "openGraphPreview": {
+      "ogTitle": "Dynamic QR Menu Stand Ecosystem | Restaurant OS",
+      "ogDescription": "High-resolution acrylic table stands with vector QR codes enabling instant smartphone menu browsing with zero apps to install.",
+      "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+      "ogType": "website"
+    }
+  },
+  {
+    "id": "industry-cafes",
+    "url": "/industries/specialty-cafes",
+    "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops | Restaurant OS",
+    "titleLength": 75,
+    "titleTruncated": true,
+    "description": "High-frequency counter dispatch, custom milk modifier workflows, and lightning-fast UPI payments for boutique cafes.",
+    "descriptionLength": 116,
+    "descriptionTruncated": false,
+    "breadcrumbsPreview": "Home > Industries > Specialty cafes",
+    "openGraphPreview": {
+      "ogTitle": "Hospitality Architecture for Specialty Cafes & Coffee Shops | Restaurant OS",
+      "ogDescription": "High-frequency counter dispatch, custom milk modifier workflows, and lightning-fast UPI payments for boutique cafes.",
+      "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+      "ogType": "website"
+    }
+  },
+  {
+    "id": "changelog-v2-0-4",
+    "url": "/changelog/v2-0-4-release",
+    "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+    "titleLength": 52,
+    "titleTruncated": false,
+    "description": "Information architecture separation, versioned documentation readiness, and enterprise content engine.",
+    "descriptionLength": 102,
+    "descriptionTruncated": false,
+    "breadcrumbsPreview": "Home > Changelog > V2 0 4 release",
+    "openGraphPreview": {
+      "ogTitle": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "ogDescription": "Information architecture separation, versioned documentation readiness, and enterprise content engine.",
+      "ogImage": "https://ros.algorithyum.in/assets/logo.png",
+      "ogType": "website"
+    }
+  }
+]

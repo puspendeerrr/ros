@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-09-20T21:30:40.300Z",
+  "entries": {
+    "feature-qr-stand": {
+      "fingerprint": "9aee49758f27dd192d743c821f7d8028d8cbefd21bc4d1e6d6c1bebd8f234a29",
+      "ast": {
+        "type": "element",
+        "tag": "div",
+        "props": {
+          "className": "ros-compiled-content"
+        },
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "children": [
+              "Physical-to-digital bridge for restaurants: printable vector table stands connecting diners straight to dynamic, real-time menus."
+            ]
+          }
+        ]
+      },
+      "headings": [],
+      "readingTimeMinutes": 1,
+      "compiledAt": "2026-09-20T20:09:36.819Z"
+    },
+    "industry-cafes": {
+      "fingerprint": "99d2b23b3a871b6964687854bec2b2bae0b14fac8c3b399bdf882aaca2688f39",
+      "ast": {
+        "type": "element",
+        "tag": "div",
+        "props": {
+          "className": "ros-compiled-content"
+        },
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "children": [
+              "Tailored operational setup designed for fast barista queue management and rapid drink modifier selection."
+            ]
+          }
+        ]
+      },
+      "headings": [],
+      "readingTimeMinutes": 1,
+      "compiledAt": "2026-09-20T20:24:26.952Z"
+    },
+    "doc-quick-start": {
+      "fingerprint": "f436f001b4d4c564cdc08ce49c54eca1c19eb65ff97ff0f5a6f0f7b47c1926d8",
+      "ast": {
+        "type": "element",
+        "tag": "div",
+        "props": {
+          "className": "ros-compiled-content"
+        },
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "children": [
+              "A fast-track onboarding documentation guide for getting your dining room active on Restaurant OS in 5 minutes."
+            ]
+          }
+        ]
+      },
+      "headings": [],
+      "readingTimeMinutes": 1,
+      "compiledAt": "2026-09-20T20:24:26.952Z"
+    },
+    "guide-leaving-aggregators": {
+      "fingerprint": "dceaa5d6fe08d127d481de12d21c6f8b7c8cb0437d4b29739b1dbe4826117c1e",
+      "ast": {
+        "type": "element",
+        "tag": "div",
+        "props": {
+          "className": "ros-compiled-content"
+        },
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "children": [
+              "A tactical blueprint for restaurants to retain 100% of dining revenue by deploying customer-owned QR ordering stands and direct takeaway channels."
+            ]
+          }
+        ]
+      },
+      "headings": [],
+      "readingTimeMinutes": 1,
+      "compiledAt": "2026-09-20T20:24:26.952Z"
+    },
+    "compare-vs-aggregators": {
+      "fingerprint": "2e5de022ab40fffde34e65f8193546d51701e7b2f1b5f4f0be5c706928b7a1d2",
+      "ast": {
+        "type": "element",
+        "tag": "div",
+        "props": {
+          "className": "ros-compiled-content"
+        },
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "children": [
+              "Economic breakdown comparing net restaurant profit, customer data retention, and table turnover between direct QR systems and aggregator apps."
+            ]
+          }
+        ]
+      },
+      "headings": [],
+      "readingTimeMinutes": 1,
+      "compiledAt": "2026-09-20T20:24:26.952Z"
+    },
+    "changelog-v2-0-4": {
+      "fingerprint": "66502e6d3910ae7e14c6b5a42f942cf35ce0288a4c9288c8f0bb3c262c363f9b",
+      "ast": {
+        "type": "element",
+        "tag": "div",
+        "props": {
+          "className": "ros-compiled-content"
+        },
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "children": [
+              "Release notes covering Phase 2 Information Architecture and Phase 3 Content Engine infrastructure rollout."
+            ]
+          }
+        ]
+      },
+      "headings": [],
+      "readingTimeMinutes": 1,
+      "compiledAt": "2026-09-20T20:24:26.952Z"
+    }
+  }
+}

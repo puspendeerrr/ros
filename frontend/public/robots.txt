@@ -1,0 +1,38 @@
+# Robots.txt for Restaurant OS (https://ros.algorithyum.in)
+# Standard crawler configuration
+
+User-agent: *
+Allow: /
+Allow: /features
+Allow: /about
+Allow: /contact
+Allow: /privacy
+Allow: /terms
+Allow: /r/
+Allow: /assets/
+Allow: /favicon*
+Allow: /llms.txt
+Allow: /humans.txt
+
+# Disallow internal application and authenticated areas
+Disallow: /dashboard
+Disallow: /menu
+Disallow: /qr-menu
+Disallow: /restaurant
+Disallow: /onboarding
+Disallow: /login
+Disallow: /signup
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /verify-email
+Disallow: /403
+Disallow: /404
+Disallow: /500
+Disallow: /api/
+
+# Canonical Sitemaps
+Sitemap: https://ros.algorithyum.in/sitemap-index.xml
+Sitemap: https://ros.algorithyum.in/sitemap.xml
+
+# Canonical Host
+Host: https://ros.algorithyum.in

@@ -1,0 +1,15 @@
+{
+  "buildId": "intel-1789939841519",
+  "generatedAt": "2026-09-20T21:30:41.519Z",
+  "overallHealthScore": 76,
+  "organicSearchHealth": 95,
+  "aiSearchHealth": 31,
+  "retrievalHealth": 87,
+  "contentQualityHealth": 78,
+  "knowledgeGraphHealth": 100,
+  "totalActiveAlerts": 5,
+  "criticalAlertsCount": 0,
+  "totalRecommendations": 1,
+  "quickWinOpportunities": 1,
+  "trajectory": "improving"
+}

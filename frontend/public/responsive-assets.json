@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-09-20T21:30:40.314Z",
+  "totalAssets": 4,
+  "assets": {
+    "logo-mark": {
+      "id": "logo-mark",
+      "originalUrl": "/assets/logo.png",
+      "aspectRatio": "1:1",
+      "width": 512,
+      "height": 512,
+      "dominantColor": "#F97316",
+      "blurPlaceholder": "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%230F172A' filter='url(%23b)'/%3E%3C/svg%3E",
+      "srcset": [
+        {
+          "width": 320,
+          "url": "/assets/logo.png?w=320&fmt=webp"
+        }
+      ]
+    },
+    "pos-guide-hero": {
+      "id": "pos-guide-hero",
+      "originalUrl": "/assets/guides/pos-guide.jpg",
+      "aspectRatio": "16:9",
+      "width": 1920,
+      "height": 1080,
+      "dominantColor": "#0F172A",
+      "blurPlaceholder": "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%230F172A' filter='url(%23b)'/%3E%3C/svg%3E",
+      "srcset": [
+        {
+          "width": 320,
+          "url": "/assets/guides/pos-guide.jpg?w=320&fmt=webp"
+        },
+        {
+          "width": 640,
+          "url": "/assets/guides/pos-guide.jpg?w=640&fmt=webp"
+        },
+        {
+          "width": 1024,
+          "url": "/assets/guides/pos-guide.jpg?w=1024&fmt=webp"
+        },
+        {
+          "width": 1920,
+          "url": "/assets/guides/pos-guide.jpg?w=1920&fmt=webp"
+        }
+      ]
+    },
+    "qr-stand-mockup": {
+      "id": "qr-stand-mockup",
+      "originalUrl": "/assets/features/table-stand.png",
+      "aspectRatio": "3:2",
+      "width": 1200,
+      "height": 800,
+      "dominantColor": "#0F172A",
+      "blurPlaceholder": "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%230F172A' filter='url(%23b)'/%3E%3C/svg%3E",
+      "srcset": [
+        {
+          "width": 320,
+          "url": "/assets/features/table-stand.png?w=320&fmt=webp"
+        },
+        {
+          "width": 640,
+          "url": "/assets/features/table-stand.png?w=640&fmt=webp"
+        },
+        {
+          "width": 1024,
+          "url": "/assets/features/table-stand.png?w=1024&fmt=webp"
+        }
+      ]
+    },
+    "kds-screen": {
+      "id": "kds-screen",
+      "originalUrl": "/assets/features/kds-screen.jpg",
+      "aspectRatio": "16:9",
+      "width": 1920,
+      "height": 1080,
+      "dominantColor": "#0F172A",
+      "blurPlaceholder": "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%230F172A' filter='url(%23b)'/%3E%3C/svg%3E",
+      "srcset": [
+        {
+          "width": 320,
+          "url": "/assets/features/kds-screen.jpg?w=320&fmt=webp"
+        },
+        {
+          "width": 640,
+          "url": "/assets/features/kds-screen.jpg?w=640&fmt=webp"
+        },
+        {
+          "width": 1024,
+          "url": "/assets/features/kds-screen.jpg?w=1024&fmt=webp"
+        },
+        {
+          "width": 1920,
+          "url": "/assets/features/kds-screen.jpg?w=1920&fmt=webp"
+        }
+      ]
+    }
+  }
+}

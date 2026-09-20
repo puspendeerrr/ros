@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ros.algorithyum.in/</loc>
+    <image:image>
+      <image:loc>https://ros.algorithyum.in/assets/logo.png</image:loc>
+      <image:title>Restaurant OS Official Brand Logo</image:title>
+      <image:caption>Restaurant OS Digital Operating System for Modern Hospitality</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ros.algorithyum.in/assets/logo-icon.png</image:loc>
+      <image:title>Restaurant OS Brand Icon</image:title>
+      <image:caption>Dynamic QR Code Menu Platform Icon</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ros.algorithyum.in/features</loc>
+    <image:image>
+      <image:loc>https://ros.algorithyum.in/assets/hero.png</image:loc>
+      <image:title>Dynamic QR Table Stand Ecosystem</image:title>
+      <image:caption>Instant smartphone scanning table stand demonstration</image:caption>
+    </image:image>
+  </url>
+</urlset>

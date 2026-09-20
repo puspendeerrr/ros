@@ -1,57 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
-import { Layout, Button, Flex, Drawer, Input, message, Row, Col } from 'antd';
-import { 
-  MenuOutlined, 
-  VerticalAlignTopOutlined,
-  MailOutlined,
-  BookOutlined,
-  CustomerServiceOutlined,
-  MessageOutlined,
-} from '@ant-design/icons';
+import { Outlet, Link } from 'react-router-dom';
+import { Layout, Button, Flex, Input, message, Row, Col } from 'antd';
+import { VerticalAlignTopOutlined } from '@ant-design/icons';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAuthStore } from '../store/auth.store.js';
+import { Header as EnterpriseHeader } from '../components/navigation/Header.js';
+import { FOOTER_SECTIONS } from '../config/navigation.config.js';
 import logo from '../assets/logo.png';
-import logoIcon from '../assets/logo-icon.png';
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 export const LandingLayout: React.FC = () => {
-  const { isAuthenticated } = useAuthStore();
-  const navigate = useNavigate();
-  const location = useLocation();
-  
-  const [drawerVisible, setDrawerVisible] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [emailInput, setEmailInput] = useState('');
 
-  const navLinks = [
-    { label: 'Features', path: '/features' },
-    { label: 'About', path: '/about' },
-    { label: 'Contact', path: '/contact' },
-  ];
-
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
       setShowBackToTop(window.scrollY > 300);
     };
-
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleLogoClick = () => {
-    if (location.pathname === '/') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    } else {
-      navigate('/');
-    }
-  };
 
   const handleSubscribe = () => {
     if (!emailInput) {
@@ -64,323 +32,122 @@ export const LandingLayout: React.FC = () => {
 
   return (
     <Layout style={{ minHeight: '100vh', background: '#FFFFFF' }}>
-      <style>{`
-        .landing-header {
-          position: sticky;
-          top: 0;
-          z-index: 1000;
-          background: ${isScrolled ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 1)'} !important;
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border-bottom: 1px solid ${isScrolled ? '#E2E8F0' : '#F1F5F9'};
-          box-shadow: ${isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.02)' : 'none'};
-          padding: 0 24px;
-          height: 64px;
-          line-height: 64px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          transition: all 0.3s ease;
-        }
-        .landing-nav-link {
-          color: #475569;
-          font-weight: 600;
-          font-size: 14px;
-          transition: color 0.2s;
-          padding: 0 16px;
-          text-decoration: none;
-          position: relative;
-        }
-        .landing-nav-link:hover, .landing-nav-link.active {
-          color: #F97316;
-        }
-        .footer-link-redesign {
-          color: #94A3B8;
-          text-decoration: none;
-          transition: color 0.2s;
-          font-size: 14px;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-        .footer-link-redesign:hover {
-          color: #F97316;
-        }
-        @media (max-width: 768px) {
-          .desktop-nav {
-            display: none !important;
-          }
-          .mobile-menu-btn {
-            display: inline-flex !important;
-          }
-        }
-        @media (min-width: 769px) {
-          .desktop-nav {
-            display: flex !important;
-          }
-          .mobile-menu-btn {
-            display: none !important;
-          }
-        }
-      `}</style>
+      {/* Skip to Content for Keyboard Accessibility */}
+      <a href="#main-content" className="skip-to-content">
+        Skip to main content
+      </a>
 
-      {/* Sticky Header */}
-      <Header className="landing-header">
-        {/* Logo Section */}
-        <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', height: '100%' }} onClick={handleLogoClick}>
-          <img 
-            src={logo} 
-            alt="Restaurant OS" 
-            style={{ 
-              height: '140px', 
-              marginTop: '-56px', 
-              marginBottom: '-56px', 
-              objectFit: 'contain',
-              display: 'inline-block'
-            }} 
-            className="desktop-nav"
-          />
-          <img 
-            src={logoIcon} 
-            alt="ROS" 
-            style={{ 
-              height: '32px', 
-              objectFit: 'contain',
-              display: 'none'
-            }} 
-            className="mobile-menu-btn"
-          />
-        </div>
+      {/* Accessible Live Region for Screen Reader Announcements */}
+      <div 
+        aria-live="polite" 
+        aria-atomic="true" 
+        className="sr-live-region" 
+        id="a11y-status-announcer" 
+      />
 
-        {/* Desktop Navigation Links */}
-        <Flex align="center" className="desktop-nav">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.path} 
-              to={link.path} 
-              className={`landing-nav-link ${location.pathname === link.path ? 'active' : ''}`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </Flex>
+      {/* Enterprise Sticky Header with MegaMenu, CommandPalette, MobileNav */}
+      <EnterpriseHeader />
 
-        {/* Auth CTA Buttons */}
-        <Flex align="center" gap={12} className="desktop-nav">
-          {isAuthenticated ? (
-            <Button 
-              type="primary" 
-              onClick={() => navigate('/dashboard')}
-              style={{ background: '#F97316', borderColor: '#F97316', borderRadius: '10px', fontWeight: 600, height: '40px' }}
-            >
-              Go to Dashboard
-            </Button>
-          ) : (
-            <>
-              <Button type="text" onClick={() => navigate('/login')} style={{ color: '#475569', fontWeight: 600 }}>
-                Login
-              </Button>
-              <Button 
-                type="primary" 
-                onClick={() => navigate('/signup')}
-                style={{ background: '#F97316', borderColor: '#F97316', borderRadius: '10px', fontWeight: 600, height: '40px' }}
-              >
-                Get Started
-              </Button>
-            </>
-          )}
-        </Flex>
 
-        {/* Mobile Hamburger Button */}
-        <Button 
-          type="text" 
-          icon={<MenuOutlined style={{ fontSize: '18px', color: '#475569' }} />} 
-          className="mobile-menu-btn" 
-          onClick={() => setDrawerVisible(true)}
-          style={{ width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        />
-      </Header>
-
-      {/* Mobile Navigation Drawer */}
-      <Drawer
-        title={
-          <img 
-            src={logo} 
-            alt="Restaurant OS" 
-            style={{ 
-              height: '140px', 
-              marginTop: '-56px', 
-              marginBottom: '-56px', 
-              objectFit: 'contain'
-            }} 
-          />
-        }
-        placement="right"
-        onClose={() => setDrawerVisible(false)}
-        open={drawerVisible}
-        width="280px"
-      >
-        <Flex vertical gap={16} style={{ padding: '8px 0' }}>
-          {navLinks.map((link) => (
-            <Link 
-              key={link.path} 
-              to={link.path} 
-              style={{ 
-                fontSize: '16px', 
-                color: location.pathname === link.path ? '#F97316' : '#475569', 
-                fontWeight: 600,
-                textDecoration: 'none',
-                padding: '8px 0',
-                borderBottom: '1px solid #F1F5F9'
-              }}
-              onClick={() => setDrawerVisible(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-          
-          <Flex vertical gap={12} style={{ marginTop: '24px' }}>
-            {isAuthenticated ? (
-              <Button 
-                type="primary" 
-                block 
-                size="large"
-                onClick={() => {
-                  setDrawerVisible(false);
-                  navigate('/dashboard');
-                }}
-                style={{ background: '#F97316', borderColor: '#F97316', borderRadius: '10px', fontWeight: 600 }}
-              >
-                Go to Dashboard
-              </Button>
-            ) : (
-              <>
-                <Button 
-                  type="default" 
-                  block 
-                  size="large"
-                  onClick={() => {
-                    setDrawerVisible(false);
-                    navigate('/login');
-                  }}
-                  style={{ borderRadius: '10px' }}
-                >
-                  Login
-                </Button>
-                <Button 
-                  type="primary" 
-                  block 
-                  size="large"
-                  onClick={() => {
-                    setDrawerVisible(false);
-                    navigate('/signup');
-                  }}
-                  style={{ background: '#F97316', borderColor: '#F97316', borderRadius: '10px', fontWeight: 600 }}
-                >
-                  Get Started
-                </Button>
-              </>
-            )}
-          </Flex>
-        </Flex>
-      </Drawer>
-
-      {/* Main Page Content */}
-      <Content style={{ background: '#FFFFFF' }}>
+      {/* Main Page Content Landmark */}
+      <Content id="main-content" role="main" style={{ background: '#FFFFFF' }}>
         <Outlet />
       </Content>
 
-      {/* Footer Redesign */}
-      <Footer style={{ background: '#0F172A', color: '#94A3B8', padding: '80px 24px 40px 24px', borderTop: '1px solid #1E293B' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <Row gutter={[48, 48]} justify="space-between">
-            {/* Branding Column */}
-            <Col xs={24} lg={8}>
-              <div style={{ marginBottom: '20px' }}>
+      {/* Footer Landmark */}
+      <Footer role="contentinfo" style={{ background: '#0F172A', color: '#94A3B8', padding: '72px 24px 36px 24px', borderTop: '1px solid #1E293B' }}>
+        <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+          {/* Top Brand & Newsletter Banner */}
+          <Row gutter={[40, 32]} justify="space-between" align="middle" style={{ marginBottom: '48px', paddingBottom: '40px', borderBottom: '1px solid #1E293B' }}>
+            <Col xs={24} md={12}>
+              <div style={{ marginBottom: '16px' }}>
                 <img 
                   src={logo} 
                   alt="Restaurant OS" 
                   style={{ 
-                    height: '140px', 
-                    marginTop: '-56px', 
-                    marginBottom: '-56px', 
+                    height: '130px', 
+                    marginTop: '-52px', 
+                    marginBottom: '-52px', 
                     objectFit: 'contain',
                     filter: 'brightness(0) invert(1)'
                   }} 
                 />
               </div>
-              <p style={{ color: '#64748B', fontSize: '14px', lineHeight: '1.65', maxWidth: '320px', marginBottom: '24px' }}>
+              <p style={{ color: '#94A3B8', fontSize: '14.5px', lineHeight: '1.6', maxWidth: '440px', margin: 0 }}>
                 Run your restaurant like a tech company. All the digital menu and QR ordering features you need in one unified, commission-free platform.
               </p>
-              <Flex gap={8} wrap="wrap">
-                <span style={{ fontSize: '12px', background: '#1E293B', padding: '4px 10px', borderRadius: '4px', color: '#94A3B8', fontWeight: 500 }}>v2.0.4</span>
-                <span style={{ fontSize: '12px', background: '#1E293B', padding: '4px 10px', borderRadius: '4px', color: '#94A3B8', fontWeight: 500 }}>React + TS</span>
-                <span style={{ fontSize: '12px', background: '#1E293B', padding: '4px 10px', borderRadius: '4px', color: '#94A3B8', fontWeight: 500 }}>Made in India 🇮🇳</span>
-              </Flex>
             </Col>
 
-            {/* Links Columns */}
-            <Col xs={24} sm={12} lg={8}>
-              <Row gutter={[16, 16]}>
-                <Col span={12}>
-                  <Flex vertical gap={12}>
-                    <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '14px', letterSpacing: '0.5px' }}>Product</span>
-                    <Link to="/features" className="footer-link-redesign">Features</Link>
-                    <Link to="/about" className="footer-link-redesign">About Brand</Link>
-                  </Flex>
-                </Col>
-                <Col span={12}>
-                  <Flex vertical gap={12}>
-                    <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '14px', letterSpacing: '0.5px' }}>Support Desk</span>
-                    <a href="mailto:support@ros.algorithyum.in" className="footer-link-redesign">
-                      <MailOutlined /> Email Support
-                    </a>
-                    <Link to="/contact" className="footer-link-redesign">
-                      <CustomerServiceOutlined /> Contact Sales
-                    </Link>
-                    <a href="#" className="footer-link-redesign">
-                      <BookOutlined /> Documentation
-                    </a>
-                    <a href="#" className="footer-link-redesign">
-                      <MessageOutlined /> Help Center
-                    </a>
-                  </Flex>
-                </Col>
-              </Row>
-            </Col>
-
-            {/* Newsletter Column */}
-            <Col xs={24} sm={12} lg={8}>
-              <Flex vertical gap={12} style={{ maxWidth: '320px' }}>
-                <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '14px', letterSpacing: '0.5px' }}>Subscribe to updates</span>
-                <span style={{ fontSize: '13px', color: '#64748B', lineHeight: '1.5' }}>Get latest feature updates, restaurant guides, and system status straight to your inbox.</span>
-                <Flex gap={8} style={{ marginTop: '8px' }}>
+            <Col xs={24} md={12}>
+              <Flex vertical gap={8} style={{ maxWidth: '420px', marginLeft: 'auto' }}>
+                <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '14px' }}>Stay ahead with Hospitality Tech insights</span>
+                <span style={{ fontSize: '13px', color: '#64748B' }}>Get monthly product updates, operational guides, and growth strategies.</span>
+                <Flex gap={8} style={{ marginTop: '4px' }}>
                   <Input 
                     type="email" 
-                    placeholder="Enter email address" 
+                    placeholder="Enter business email" 
+                    aria-label="Business email for newsletter"
                     value={emailInput}
                     onChange={(e) => setEmailInput(e.target.value)}
-                    style={{ background: '#1E293B', border: '1px solid #334155', color: '#FFFFFF', borderRadius: '8px', height: '40px' }} 
+                    style={{ background: '#1E293B', border: '1px solid #334155', color: '#FFFFFF', borderRadius: '6px', height: '40px' }} 
                   />
                   <Button 
                     type="primary" 
                     onClick={handleSubscribe}
-                    style={{ background: '#F97316', borderColor: '#F97316', borderRadius: '8px', height: '40px', fontWeight: 600 }}
+                    style={{ background: '#F97316', borderColor: '#F97316', borderRadius: '6px', height: '40px', fontWeight: 600 }}
                   >
-                    Join
+                    Subscribe
                   </Button>
                 </Flex>
               </Flex>
             </Col>
           </Row>
 
+          {/* 5-Column Navigation Grid */}
+          <Row gutter={[32, 36]}>
+            {FOOTER_SECTIONS.map((section, idx) => (
+              <Col key={idx} xs={12} sm={8} md={6} lg={idx === 0 ? 5 : idx === 1 ? 5 : 4}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    {section.title}
+                  </span>
+                  {section.items.map((linkItem) => (
+                    linkItem.isExternal ? (
+                      <a
+                        key={linkItem.path}
+                        href={linkItem.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="footer-link-redesign"
+                      >
+                        {linkItem.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={linkItem.path}
+                        to={linkItem.path}
+                        className="footer-link-redesign"
+                      >
+                        {linkItem.label}
+                      </Link>
+                    )
+                  ))}
+                </div>
+              </Col>
+            ))}
+          </Row>
+
           <hr style={{ border: 'none', borderTop: '1px solid #1E293B', margin: '48px 0 24px 0' }} />
 
-          <Flex justify="space-between" align="center" wrap="wrap" gap={16} style={{ fontSize: '13.5px', color: '#64748B' }}>
-            <span>© {new Date().getFullYear()} Restaurant OS. All rights reserved.</span>
-            <Flex gap={20}>
-              <Link to="/privacy" className="footer-link-redesign">Privacy Policy</Link>
-              <Link to="/terms" className="footer-link-redesign">Terms of Service</Link>
+          {/* Bottom Bar */}
+          <Flex justify="space-between" align="center" wrap="wrap" gap={16} style={{ fontSize: '13px', color: '#64748B' }}>
+            <span>© {new Date().getFullYear()} Restaurant OS. All rights reserved. Enterprise Restaurant Technology.</span>
+            <Flex gap={16} align="center" wrap="wrap">
+              <span style={{ fontSize: '12px', background: '#1E293B', padding: '3px 8px', borderRadius: '4px', color: '#94A3B8' }}>v2.0.4 Enterprise</span>
+              <Link to="/legal/privacy-policy" className="footer-link-redesign" style={{ fontSize: '13px' }}>Privacy Policy</Link>
+              <Link to="/legal/terms-of-service" className="footer-link-redesign" style={{ fontSize: '13px' }}>Terms of Service</Link>
+              <a href="/.well-known/security.txt" className="footer-link-redesign" style={{ fontSize: '13px' }}>Security (RFC 9116)</a>
+              <a href="/llms.txt" className="footer-link-redesign" style={{ fontSize: '13px' }}>LLMs.txt</a>
             </Flex>
           </Flex>
         </div>
@@ -399,6 +166,7 @@ export const LandingLayout: React.FC = () => {
             <Button
               type="primary"
               shape="circle"
+              aria-label="Scroll back to top"
               icon={<VerticalAlignTopOutlined style={{ fontSize: '18px' }} />}
               size="large"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

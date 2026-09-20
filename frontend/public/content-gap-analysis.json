@@ -1,0 +1,407 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.817Z",
+  "totalGaps": 34,
+  "totalOverlaps": 2,
+  "gaps": [
+    {
+      "clusterId": "cluster-qr-menu",
+      "gapType": "missing_faq",
+      "title": "QR Menu & Contactless Dining Frequently Asked Questions",
+      "reason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "urgency": "high",
+      "targetContentType": "faq",
+      "suggestedSlug": "qr-menu-ordering-faq",
+      "targetAudience": "restaurateur",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-qr-menu",
+      "gapType": "missing_glossary",
+      "title": "Key Terminology & Definitions: QR Menu & Contactless Dining",
+      "reason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "urgency": "low",
+      "targetContentType": "glossary",
+      "suggestedSlug": "qr-menu-ordering-terminology",
+      "targetAudience": "all",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-qr-payments",
+      "gapType": "missing_guide",
+      "title": "How-To Operational Guide for Direct Table Payments & UPI Settlement",
+      "reason": "Cluster lacks a practical step-by-step operational guide for restaurateur, general_manager.",
+      "urgency": "high",
+      "targetContentType": "guide",
+      "suggestedSlug": "direct-table-payments-implementation-guide",
+      "targetAudience": "restaurateur",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-qr-payments",
+      "gapType": "missing_faq",
+      "title": "Direct Table Payments & UPI Settlement Frequently Asked Questions",
+      "reason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "urgency": "high",
+      "targetContentType": "faq",
+      "suggestedSlug": "direct-table-payments-faq",
+      "targetAudience": "restaurateur",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-qr-payments",
+      "gapType": "missing_documentation",
+      "title": "Direct Table Payments & UPI Settlement Technical Setup & Configuration",
+      "reason": "Engineers and operators lack technical onboarding documentation and API specifications.",
+      "urgency": "critical",
+      "targetContentType": "documentation",
+      "suggestedSlug": "direct-table-payments-setup-docs",
+      "targetAudience": "developer",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-qr-payments",
+      "gapType": "missing_comparison",
+      "title": "Restaurant OS vs Traditional Alternatives: Direct Table Payments & UPI Settlement",
+      "reason": "Missing commercial investigation comparison table. High intent buyers searching for comparisons are lost to competitors.",
+      "urgency": "medium",
+      "targetContentType": "comparison",
+      "suggestedSlug": "compare-direct-table-payments-alternatives",
+      "targetAudience": "restaurateur",
+      "targetIntent": "commercial"
+    },
+    {
+      "clusterId": "cluster-qr-payments",
+      "gapType": "missing_glossary",
+      "title": "Key Terminology & Definitions: Direct Table Payments & UPI Settlement",
+      "reason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "urgency": "low",
+      "targetContentType": "glossary",
+      "suggestedSlug": "direct-table-payments-terminology",
+      "targetAudience": "all",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-cloud-pos",
+      "gapType": "missing_guide",
+      "title": "How-To Operational Guide for Cloud POS & Offline-Resilient Billing",
+      "reason": "Cluster lacks a practical step-by-step operational guide for restaurateur, general_manager, developer.",
+      "urgency": "high",
+      "targetContentType": "guide",
+      "suggestedSlug": "cloud-pos-billing-implementation-guide",
+      "targetAudience": "restaurateur",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-cloud-pos",
+      "gapType": "missing_faq",
+      "title": "Cloud POS & Offline-Resilient Billing Frequently Asked Questions",
+      "reason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "urgency": "high",
+      "targetContentType": "faq",
+      "suggestedSlug": "cloud-pos-billing-faq",
+      "targetAudience": "restaurateur",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-cloud-pos",
+      "gapType": "missing_comparison",
+      "title": "Restaurant OS vs Traditional Alternatives: Cloud POS & Offline-Resilient Billing",
+      "reason": "Missing commercial investigation comparison table. High intent buyers searching for comparisons are lost to competitors.",
+      "urgency": "medium",
+      "targetContentType": "comparison",
+      "suggestedSlug": "compare-cloud-pos-billing-alternatives",
+      "targetAudience": "restaurateur",
+      "targetIntent": "commercial"
+    },
+    {
+      "clusterId": "cluster-cloud-pos",
+      "gapType": "missing_glossary",
+      "title": "Key Terminology & Definitions: Cloud POS & Offline-Resilient Billing",
+      "reason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "urgency": "low",
+      "targetContentType": "glossary",
+      "suggestedSlug": "cloud-pos-billing-terminology",
+      "targetAudience": "all",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-kds",
+      "gapType": "missing_guide",
+      "title": "How-To Operational Guide for Kitchen Display Systems (KDS) & Ticket Routing",
+      "reason": "Cluster lacks a practical step-by-step operational guide for chef, general_manager, restaurateur.",
+      "urgency": "high",
+      "targetContentType": "guide",
+      "suggestedSlug": "kitchen-display-system-implementation-guide",
+      "targetAudience": "chef",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-kds",
+      "gapType": "missing_faq",
+      "title": "Kitchen Display Systems (KDS) & Ticket Routing Frequently Asked Questions",
+      "reason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "urgency": "high",
+      "targetContentType": "faq",
+      "suggestedSlug": "kitchen-display-system-faq",
+      "targetAudience": "chef",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-kds",
+      "gapType": "missing_documentation",
+      "title": "Kitchen Display Systems (KDS) & Ticket Routing Technical Setup & Configuration",
+      "reason": "Engineers and operators lack technical onboarding documentation and API specifications.",
+      "urgency": "critical",
+      "targetContentType": "documentation",
+      "suggestedSlug": "kitchen-display-system-setup-docs",
+      "targetAudience": "developer",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-kds",
+      "gapType": "missing_comparison",
+      "title": "Restaurant OS vs Traditional Alternatives: Kitchen Display Systems (KDS) & Ticket Routing",
+      "reason": "Missing commercial investigation comparison table. High intent buyers searching for comparisons are lost to competitors.",
+      "urgency": "medium",
+      "targetContentType": "comparison",
+      "suggestedSlug": "compare-kitchen-display-system-alternatives",
+      "targetAudience": "restaurateur",
+      "targetIntent": "commercial"
+    },
+    {
+      "clusterId": "cluster-kds",
+      "gapType": "missing_glossary",
+      "title": "Key Terminology & Definitions: Kitchen Display Systems (KDS) & Ticket Routing",
+      "reason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "urgency": "low",
+      "targetContentType": "glossary",
+      "suggestedSlug": "kitchen-display-system-terminology",
+      "targetAudience": "all",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-kds",
+      "gapType": "search_intent_gap",
+      "title": "Commercial Evaluation Page for Kitchen Display Systems (KDS) & Ticket Routing",
+      "reason": "Cluster has zero commercial intent pages to convert organic discovery traffic into sales consultations.",
+      "urgency": "high",
+      "targetContentType": "feature",
+      "suggestedSlug": "kitchen-display-system-pricing-and-plans",
+      "targetAudience": "restaurateur",
+      "targetIntent": "commercial"
+    },
+    {
+      "clusterId": "cluster-kds",
+      "gapType": "journey_gap",
+      "title": "Day 1 Onboarding Checklist for Kitchen Display Systems (KDS) & Ticket Routing",
+      "reason": "New customers lack structured onboarding content for the Kitchen Display Systems (KDS) & Ticket Routing product area.",
+      "urgency": "high",
+      "targetContentType": "documentation",
+      "suggestedSlug": "kitchen-display-system-onboarding-checklist",
+      "targetAudience": "general_manager",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-multi-branch",
+      "gapType": "missing_guide",
+      "title": "How-To Operational Guide for Multi-Branch & Franchise Fleet Control",
+      "reason": "Cluster lacks a practical step-by-step operational guide for franchise_operator, restaurateur, investor.",
+      "urgency": "high",
+      "targetContentType": "guide",
+      "suggestedSlug": "multi-branch-management-implementation-guide",
+      "targetAudience": "franchise_operator",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-multi-branch",
+      "gapType": "missing_faq",
+      "title": "Multi-Branch & Franchise Fleet Control Frequently Asked Questions",
+      "reason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "urgency": "high",
+      "targetContentType": "faq",
+      "suggestedSlug": "multi-branch-management-faq",
+      "targetAudience": "franchise_operator",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-multi-branch",
+      "gapType": "missing_documentation",
+      "title": "Multi-Branch & Franchise Fleet Control Technical Setup & Configuration",
+      "reason": "Engineers and operators lack technical onboarding documentation and API specifications.",
+      "urgency": "critical",
+      "targetContentType": "documentation",
+      "suggestedSlug": "multi-branch-management-setup-docs",
+      "targetAudience": "developer",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-multi-branch",
+      "gapType": "missing_comparison",
+      "title": "Restaurant OS vs Traditional Alternatives: Multi-Branch & Franchise Fleet Control",
+      "reason": "Missing commercial investigation comparison table. High intent buyers searching for comparisons are lost to competitors.",
+      "urgency": "medium",
+      "targetContentType": "comparison",
+      "suggestedSlug": "compare-multi-branch-management-alternatives",
+      "targetAudience": "restaurateur",
+      "targetIntent": "commercial"
+    },
+    {
+      "clusterId": "cluster-multi-branch",
+      "gapType": "missing_glossary",
+      "title": "Key Terminology & Definitions: Multi-Branch & Franchise Fleet Control",
+      "reason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "urgency": "low",
+      "targetContentType": "glossary",
+      "suggestedSlug": "multi-branch-management-terminology",
+      "targetAudience": "all",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-multi-branch",
+      "gapType": "search_intent_gap",
+      "title": "Commercial Evaluation Page for Multi-Branch & Franchise Fleet Control",
+      "reason": "Cluster has zero commercial intent pages to convert organic discovery traffic into sales consultations.",
+      "urgency": "high",
+      "targetContentType": "feature",
+      "suggestedSlug": "multi-branch-management-pricing-and-plans",
+      "targetAudience": "restaurateur",
+      "targetIntent": "commercial"
+    },
+    {
+      "clusterId": "cluster-multi-branch",
+      "gapType": "journey_gap",
+      "title": "Day 1 Onboarding Checklist for Multi-Branch & Franchise Fleet Control",
+      "reason": "New customers lack structured onboarding content for the Multi-Branch & Franchise Fleet Control product area.",
+      "urgency": "high",
+      "targetContentType": "documentation",
+      "suggestedSlug": "multi-branch-management-onboarding-checklist",
+      "targetAudience": "general_manager",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-commission-free",
+      "gapType": "missing_faq",
+      "title": "Direct Dining Economics & Aggregator Independence Frequently Asked Questions",
+      "reason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "urgency": "high",
+      "targetContentType": "faq",
+      "suggestedSlug": "commission-free-dining-faq",
+      "targetAudience": "restaurateur",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-commission-free",
+      "gapType": "missing_glossary",
+      "title": "Key Terminology & Definitions: Direct Dining Economics & Aggregator Independence",
+      "reason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "urgency": "low",
+      "targetContentType": "glossary",
+      "suggestedSlug": "commission-free-dining-terminology",
+      "targetAudience": "all",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-restaurant-analytics",
+      "gapType": "missing_guide",
+      "title": "How-To Operational Guide for Hospitality Analytics & Revenue Optimization",
+      "reason": "Cluster lacks a practical step-by-step operational guide for restaurateur, general_manager, investor.",
+      "urgency": "high",
+      "targetContentType": "guide",
+      "suggestedSlug": "restaurant-analytics-optimization-implementation-guide",
+      "targetAudience": "restaurateur",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-restaurant-analytics",
+      "gapType": "missing_faq",
+      "title": "Hospitality Analytics & Revenue Optimization Frequently Asked Questions",
+      "reason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "urgency": "high",
+      "targetContentType": "faq",
+      "suggestedSlug": "restaurant-analytics-optimization-faq",
+      "targetAudience": "restaurateur",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-restaurant-analytics",
+      "gapType": "missing_documentation",
+      "title": "Hospitality Analytics & Revenue Optimization Technical Setup & Configuration",
+      "reason": "Engineers and operators lack technical onboarding documentation and API specifications.",
+      "urgency": "critical",
+      "targetContentType": "documentation",
+      "suggestedSlug": "restaurant-analytics-optimization-setup-docs",
+      "targetAudience": "developer",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-restaurant-analytics",
+      "gapType": "missing_comparison",
+      "title": "Restaurant OS vs Traditional Alternatives: Hospitality Analytics & Revenue Optimization",
+      "reason": "Missing commercial investigation comparison table. High intent buyers searching for comparisons are lost to competitors.",
+      "urgency": "medium",
+      "targetContentType": "comparison",
+      "suggestedSlug": "compare-restaurant-analytics-optimization-alternatives",
+      "targetAudience": "restaurateur",
+      "targetIntent": "commercial"
+    },
+    {
+      "clusterId": "cluster-restaurant-analytics",
+      "gapType": "missing_glossary",
+      "title": "Key Terminology & Definitions: Hospitality Analytics & Revenue Optimization",
+      "reason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "urgency": "low",
+      "targetContentType": "glossary",
+      "suggestedSlug": "restaurant-analytics-optimization-terminology",
+      "targetAudience": "all",
+      "targetIntent": "informational"
+    },
+    {
+      "clusterId": "cluster-restaurant-analytics",
+      "gapType": "search_intent_gap",
+      "title": "Commercial Evaluation Page for Hospitality Analytics & Revenue Optimization",
+      "reason": "Cluster has zero commercial intent pages to convert organic discovery traffic into sales consultations.",
+      "urgency": "high",
+      "targetContentType": "feature",
+      "suggestedSlug": "restaurant-analytics-optimization-pricing-and-plans",
+      "targetAudience": "restaurateur",
+      "targetIntent": "commercial"
+    },
+    {
+      "clusterId": "cluster-restaurant-analytics",
+      "gapType": "journey_gap",
+      "title": "Day 1 Onboarding Checklist for Hospitality Analytics & Revenue Optimization",
+      "reason": "New customers lack structured onboarding content for the Hospitality Analytics & Revenue Optimization product area.",
+      "urgency": "high",
+      "targetContentType": "documentation",
+      "suggestedSlug": "restaurant-analytics-optimization-onboarding-checklist",
+      "targetAudience": "general_manager",
+      "targetIntent": "informational"
+    }
+  ],
+  "overlaps": [
+    {
+      "itemAId": "guide-leaving-aggregators",
+      "itemBId": "compare-vs-aggregators",
+      "titleA": "The Blueprint for Transitioning to Commission-Free Dining",
+      "titleB": "Restaurant OS vs. Food Delivery Aggregators",
+      "overlapScore": 52,
+      "sharedTags": [
+        "tag-zero-commission"
+      ],
+      "sharedEntities": [],
+      "recommendation": "cross_link"
+    },
+    {
+      "itemAId": "doc-quick-start",
+      "itemBId": "feature-qr-stand",
+      "titleA": "5-Minute Restaurant Quick Start Guide",
+      "titleB": "Dynamic QR Menu Stand Ecosystem",
+      "overlapScore": 45,
+      "sharedTags": [
+        "tag-qr"
+      ],
+      "sharedEntities": [],
+      "recommendation": "cross_link"
+    }
+  ]
+}

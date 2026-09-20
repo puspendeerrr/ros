@@ -7,6 +7,7 @@ import {
   ShopOutlined, 
   GlobalOutlined
 } from '@ant-design/icons';
+import { SEOManager } from '../components/SEOManager.js';
 
 const { Title, Paragraph } = Typography;
 
@@ -38,6 +39,7 @@ export const Features: React.FC = () => {
 
   return (
     <div style={{ padding: '80px 24px', background: '#FFFFFF' }}>
+      <SEOManager />
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <Title level={1} style={{ fontSize: '42px', fontWeight: 800, color: '#0F172A', letterSpacing: '-1px' }}>

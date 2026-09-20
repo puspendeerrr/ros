@@ -1,0 +1,96 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.049Z",
+  "totalPolicies": 6,
+  "policies": [
+    {
+      "policyId": "gov-editorial-policy",
+      "name": "Editorial Integrity & Hospitality Objectivity Policy",
+      "version": "1.2.0",
+      "lastAudited": "2026-09-15T00:00:00Z",
+      "status": "active",
+      "purpose": "Ensures all operational guides, benchmarks, and architectural analyses reflect unbiased, merchant-first hospitality engineering standards.",
+      "standards": [
+        "Zero paid sponsorship or third-party editorial interference",
+        "All technical claims must be grounded in production benchmarks or verifiable code",
+        "Clear separation between architectural documentation and commercial positioning"
+      ],
+      "enforcementMechanism": "Mandatory peer review by at least one independent technical reviewer before public release.",
+      "publicUrl": "https://ros.algorithyum.in/editorial-policy"
+    },
+    {
+      "policyId": "gov-review-policy",
+      "name": "Multi-Role Peer Review Policy",
+      "version": "2.0.0",
+      "lastAudited": "2026-09-18T00:00:00Z",
+      "status": "active",
+      "purpose": "Mandates multi-discipline peer review across technical, regulatory, and operational criteria prior to publication.",
+      "standards": [
+        "Technical Review: Validation of offline caching, network sockets, and API schemas",
+        "Legal/Regulatory Review: Verification of payment compliance, GST invoicing, and data security",
+        "Editorial Review: Assessment of step-by-step clarity, tone, and readability"
+      ],
+      "enforcementMechanism": "Automated CI build failure if published content lacks verified reviewer IDs.",
+      "publicUrl": "https://ros.algorithyum.in/review-policy"
+    },
+    {
+      "policyId": "gov-update-policy",
+      "name": "Content Lifecycle & Quarterly Audit Policy",
+      "version": "1.1.0",
+      "lastAudited": "2026-09-01T00:00:00Z",
+      "status": "active",
+      "purpose": "Prevents content decay by establishing maximum age thresholds and mandatory re-audits.",
+      "standards": [
+        "Competitor comparison tables must be audited at least once every 90 days",
+        "Technical API documentation must be re-verified with every major and minor platform release",
+        "Timestamp transparency: Explicitly exposing publishedAt and updatedAt in UI and schema"
+      ],
+      "enforcementMechanism": "Automated decay alerts flagged by ContentFreshnessEngine.",
+      "publicUrl": "https://ros.algorithyum.in/update-policy"
+    },
+    {
+      "policyId": "gov-fact-checking-policy",
+      "name": "Empirical Verification & Fact-Checking Policy",
+      "version": "1.0.0",
+      "lastAudited": "2026-09-10T00:00:00Z",
+      "status": "active",
+      "purpose": "Guarantees the statistical integrity of margin calculations, commission math, and performance claims.",
+      "standards": [
+        "Margin calculations must publish all underlying cost formulas and assumptions",
+        "Commission rates cited for food delivery aggregators must reflect public merchant agreements",
+        "Hardware and network latency claims must be benchmarked on standard Android/iOS devices"
+      ],
+      "enforcementMechanism": "Reviewer signoff on calculation spreadsheets and benchmark reproduction.",
+      "publicUrl": "https://ros.algorithyum.in/fact-checking-policy"
+    },
+    {
+      "policyId": "gov-correction-policy",
+      "name": "Transparent Corrections & Retractions Policy",
+      "version": "1.0.0",
+      "lastAudited": "2026-08-25T00:00:00Z",
+      "status": "active",
+      "purpose": "Provides public correction logs whenever substantive technical or financial errors are identified.",
+      "standards": [
+        "Corrections must include an explicit editor notice stating the correction date and prior claim",
+        "Semantic version bump for modified technical documentation",
+        "Public changelog entries for breaking API changes or corrected financial estimates"
+      ],
+      "enforcementMechanism": "Public changelog logging and semantic version tracking.",
+      "publicUrl": "https://ros.algorithyum.in/correction-policy"
+    },
+    {
+      "policyId": "gov-ai-usage-policy",
+      "name": "Responsible AI & Automated Tooling Policy",
+      "version": "2.1.0",
+      "lastAudited": "2026-09-20T00:00:00Z",
+      "status": "active",
+      "purpose": "Governs the acceptable use of algorithmic automation and artificial intelligence in content production.",
+      "standards": [
+        "Zero unreviewed or purely synthetic AI-generated articles permitted on the domain",
+        "All AI-assisted outlines or schema structures must be authored, validated, and signed by human experts",
+        "Prohibition of synthetic customer reviews, artificial ratings, or hallucinated benchmark data"
+      ],
+      "enforcementMechanism": "Schema Engine zero-synthetic review gatekeeper and mandatory author attribution.",
+      "publicUrl": "https://ros.algorithyum.in/ai-policy"
+    }
+  ]
+}

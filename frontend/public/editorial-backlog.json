@@ -1,0 +1,642 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.817Z",
+  "totalBacklogItems": 34,
+  "backlog": [
+    {
+      "id": "backlog-cluster-kds-guide-12",
+      "title": "How-To Operational Guide for Kitchen Display Systems (KDS) & Ticket Routing",
+      "suggestedSlug": "kitchen-display-system-implementation-guide",
+      "targetClusterId": "cluster-kds",
+      "targetContentType": "guide",
+      "priorityScore": 88,
+      "confidenceScore": 75,
+      "businessValue": "high",
+      "estimatedAuthorityGain": 5.5,
+      "primaryIntent": "informational",
+      "targetAudience": "chef",
+      "recommendationReason": "Cluster lacks a practical step-by-step operational guide for chef, general_manager, restaurateur.",
+      "suggestedEntitiesToLink": [
+        "feature-kds"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-kds-documentation-14",
+      "title": "Kitchen Display Systems (KDS) & Ticket Routing Technical Setup & Configuration",
+      "suggestedSlug": "kitchen-display-system-setup-docs",
+      "targetClusterId": "cluster-kds",
+      "targetContentType": "documentation",
+      "priorityScore": 85,
+      "confidenceScore": 95,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 7.5,
+      "primaryIntent": "informational",
+      "targetAudience": "developer",
+      "recommendationReason": "Engineers and operators lack technical onboarding documentation and API specifications.",
+      "suggestedEntitiesToLink": [
+        "feature-kds"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-qr-payments-documentation-5",
+      "title": "Direct Table Payments & UPI Settlement Technical Setup & Configuration",
+      "suggestedSlug": "direct-table-payments-setup-docs",
+      "targetClusterId": "cluster-qr-payments",
+      "targetContentType": "documentation",
+      "priorityScore": 83,
+      "confidenceScore": 100,
+      "businessValue": "high",
+      "estimatedAuthorityGain": 4.5,
+      "primaryIntent": "informational",
+      "targetAudience": "developer",
+      "recommendationReason": "Engineers and operators lack technical onboarding documentation and API specifications.",
+      "suggestedEntitiesToLink": [
+        "feature-qr-stand",
+        "industry-cafes"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-kds-faq-13",
+      "title": "Kitchen Display Systems (KDS) & Ticket Routing Frequently Asked Questions",
+      "suggestedSlug": "kitchen-display-system-faq",
+      "targetClusterId": "cluster-kds",
+      "targetContentType": "faq",
+      "priorityScore": 78,
+      "confidenceScore": 80,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 5.5,
+      "primaryIntent": "informational",
+      "targetAudience": "chef",
+      "recommendationReason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "suggestedEntitiesToLink": [
+        "feature-kds"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-kds-feature-17",
+      "title": "Commercial Evaluation Page for Kitchen Display Systems (KDS) & Ticket Routing",
+      "suggestedSlug": "kitchen-display-system-pricing-and-plans",
+      "targetClusterId": "cluster-kds",
+      "targetContentType": "feature",
+      "priorityScore": 78,
+      "confidenceScore": 75,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 5.5,
+      "primaryIntent": "commercial",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Cluster has zero commercial intent pages to convert organic discovery traffic into sales consultations.",
+      "suggestedEntitiesToLink": [
+        "feature-kds"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-kds-documentation-18",
+      "title": "Day 1 Onboarding Checklist for Kitchen Display Systems (KDS) & Ticket Routing",
+      "suggestedSlug": "kitchen-display-system-onboarding-checklist",
+      "targetClusterId": "cluster-kds",
+      "targetContentType": "documentation",
+      "priorityScore": 78,
+      "confidenceScore": 80,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 5.5,
+      "primaryIntent": "informational",
+      "targetAudience": "general_manager",
+      "recommendationReason": "New customers lack structured onboarding content for the Kitchen Display Systems (KDS) & Ticket Routing product area.",
+      "suggestedEntitiesToLink": [
+        "feature-kds"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-multi-branch-guide-19",
+      "title": "How-To Operational Guide for Multi-Branch & Franchise Fleet Control",
+      "suggestedSlug": "multi-branch-management-implementation-guide",
+      "targetClusterId": "cluster-multi-branch",
+      "targetContentType": "guide",
+      "priorityScore": 77,
+      "confidenceScore": 75,
+      "businessValue": "high",
+      "estimatedAuthorityGain": 3.6,
+      "primaryIntent": "informational",
+      "targetAudience": "franchise_operator",
+      "recommendationReason": "Cluster lacks a practical step-by-step operational guide for franchise_operator, restaurateur, investor.",
+      "suggestedEntitiesToLink": [
+        "feature-multi-branch",
+        "changelog-v2-0-4"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-qr-payments-guide-3",
+      "title": "How-To Operational Guide for Direct Table Payments & UPI Settlement",
+      "suggestedSlug": "direct-table-payments-implementation-guide",
+      "targetClusterId": "cluster-qr-payments",
+      "targetContentType": "guide",
+      "priorityScore": 76,
+      "confidenceScore": 85,
+      "businessValue": "high",
+      "estimatedAuthorityGain": 3.3,
+      "primaryIntent": "informational",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Cluster lacks a practical step-by-step operational guide for restaurateur, general_manager.",
+      "suggestedEntitiesToLink": [
+        "feature-qr-stand",
+        "industry-cafes"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-qr-payments-faq-4",
+      "title": "Direct Table Payments & UPI Settlement Frequently Asked Questions",
+      "suggestedSlug": "direct-table-payments-faq",
+      "targetClusterId": "cluster-qr-payments",
+      "targetContentType": "faq",
+      "priorityScore": 76,
+      "confidenceScore": 90,
+      "businessValue": "high",
+      "estimatedAuthorityGain": 3.3,
+      "primaryIntent": "informational",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "suggestedEntitiesToLink": [
+        "feature-qr-stand",
+        "industry-cafes"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-restaurant-analytics-guide-28",
+      "title": "How-To Operational Guide for Hospitality Analytics & Revenue Optimization",
+      "suggestedSlug": "restaurant-analytics-optimization-implementation-guide",
+      "targetClusterId": "cluster-restaurant-analytics",
+      "targetContentType": "guide",
+      "priorityScore": 76,
+      "confidenceScore": 85,
+      "businessValue": "high",
+      "estimatedAuthorityGain": 3.3,
+      "primaryIntent": "informational",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Cluster lacks a practical step-by-step operational guide for restaurateur, general_manager, investor.",
+      "suggestedEntitiesToLink": [
+        "changelog-v2-0-4"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-multi-branch-documentation-21",
+      "title": "Multi-Branch & Franchise Fleet Control Technical Setup & Configuration",
+      "suggestedSlug": "multi-branch-management-setup-docs",
+      "targetClusterId": "cluster-multi-branch",
+      "targetContentType": "documentation",
+      "priorityScore": 75,
+      "confidenceScore": 95,
+      "businessValue": "strategic",
+      "estimatedAuthorityGain": 5,
+      "primaryIntent": "informational",
+      "targetAudience": "developer",
+      "recommendationReason": "Engineers and operators lack technical onboarding documentation and API specifications.",
+      "suggestedEntitiesToLink": [
+        "feature-multi-branch",
+        "changelog-v2-0-4"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-cloud-pos-guide-8",
+      "title": "How-To Operational Guide for Cloud POS & Offline-Resilient Billing",
+      "suggestedSlug": "cloud-pos-billing-implementation-guide",
+      "targetClusterId": "cluster-cloud-pos",
+      "targetContentType": "guide",
+      "priorityScore": 73,
+      "confidenceScore": 75,
+      "businessValue": "high",
+      "estimatedAuthorityGain": 2.8,
+      "primaryIntent": "informational",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Cluster lacks a practical step-by-step operational guide for restaurateur, general_manager, developer.",
+      "suggestedEntitiesToLink": [
+        "feature-cloud-pos",
+        "doc-quick-start"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-restaurant-analytics-documentation-30",
+      "title": "Hospitality Analytics & Revenue Optimization Technical Setup & Configuration",
+      "suggestedSlug": "restaurant-analytics-optimization-setup-docs",
+      "targetClusterId": "cluster-restaurant-analytics",
+      "targetContentType": "documentation",
+      "priorityScore": 73,
+      "confidenceScore": 100,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 4.5,
+      "primaryIntent": "informational",
+      "targetAudience": "developer",
+      "recommendationReason": "Engineers and operators lack technical onboarding documentation and API specifications.",
+      "suggestedEntitiesToLink": [
+        "changelog-v2-0-4"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-kds-comparison-15",
+      "title": "Restaurant OS vs Traditional Alternatives: Kitchen Display Systems (KDS) & Ticket Routing",
+      "suggestedSlug": "compare-kitchen-display-system-alternatives",
+      "targetClusterId": "cluster-kds",
+      "targetContentType": "comparison",
+      "priorityScore": 70,
+      "confidenceScore": 75,
+      "businessValue": "strategic",
+      "estimatedAuthorityGain": 3.5,
+      "primaryIntent": "commercial",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Missing commercial investigation comparison table. High intent buyers searching for comparisons are lost to competitors.",
+      "suggestedEntitiesToLink": [
+        "feature-kds"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-kds-glossary-16",
+      "title": "Key Terminology & Definitions: Kitchen Display Systems (KDS) & Ticket Routing",
+      "suggestedSlug": "kitchen-display-system-terminology",
+      "targetClusterId": "cluster-kds",
+      "targetContentType": "glossary",
+      "priorityScore": 70,
+      "confidenceScore": 75,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 3.5,
+      "primaryIntent": "informational",
+      "targetAudience": "all",
+      "recommendationReason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "suggestedEntitiesToLink": [
+        "feature-kds"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-qr-payments-comparison-6",
+      "title": "Restaurant OS vs Traditional Alternatives: Direct Table Payments & UPI Settlement",
+      "suggestedSlug": "compare-direct-table-payments-alternatives",
+      "targetClusterId": "cluster-qr-payments",
+      "targetContentType": "comparison",
+      "priorityScore": 68,
+      "confidenceScore": 85,
+      "businessValue": "high",
+      "estimatedAuthorityGain": 2.1,
+      "primaryIntent": "commercial",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Missing commercial investigation comparison table. High intent buyers searching for comparisons are lost to competitors.",
+      "suggestedEntitiesToLink": [
+        "feature-qr-stand",
+        "industry-cafes"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-qr-payments-glossary-7",
+      "title": "Key Terminology & Definitions: Direct Table Payments & UPI Settlement",
+      "suggestedSlug": "direct-table-payments-terminology",
+      "targetClusterId": "cluster-qr-payments",
+      "targetContentType": "glossary",
+      "priorityScore": 68,
+      "confidenceScore": 85,
+      "businessValue": "high",
+      "estimatedAuthorityGain": 2.1,
+      "primaryIntent": "informational",
+      "targetAudience": "all",
+      "recommendationReason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "suggestedEntitiesToLink": [
+        "feature-qr-stand",
+        "industry-cafes"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-multi-branch-faq-20",
+      "title": "Multi-Branch & Franchise Fleet Control Frequently Asked Questions",
+      "suggestedSlug": "multi-branch-management-faq",
+      "targetClusterId": "cluster-multi-branch",
+      "targetContentType": "faq",
+      "priorityScore": 67,
+      "confidenceScore": 80,
+      "businessValue": "strategic",
+      "estimatedAuthorityGain": 3.6,
+      "primaryIntent": "informational",
+      "targetAudience": "franchise_operator",
+      "recommendationReason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "suggestedEntitiesToLink": [
+        "feature-multi-branch",
+        "changelog-v2-0-4"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-multi-branch-feature-24",
+      "title": "Commercial Evaluation Page for Multi-Branch & Franchise Fleet Control",
+      "suggestedSlug": "multi-branch-management-pricing-and-plans",
+      "targetClusterId": "cluster-multi-branch",
+      "targetContentType": "feature",
+      "priorityScore": 67,
+      "confidenceScore": 75,
+      "businessValue": "strategic",
+      "estimatedAuthorityGain": 3.6,
+      "primaryIntent": "commercial",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Cluster has zero commercial intent pages to convert organic discovery traffic into sales consultations.",
+      "suggestedEntitiesToLink": [
+        "feature-multi-branch",
+        "changelog-v2-0-4"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-multi-branch-documentation-25",
+      "title": "Day 1 Onboarding Checklist for Multi-Branch & Franchise Fleet Control",
+      "suggestedSlug": "multi-branch-management-onboarding-checklist",
+      "targetClusterId": "cluster-multi-branch",
+      "targetContentType": "documentation",
+      "priorityScore": 67,
+      "confidenceScore": 80,
+      "businessValue": "strategic",
+      "estimatedAuthorityGain": 3.6,
+      "primaryIntent": "informational",
+      "targetAudience": "general_manager",
+      "recommendationReason": "New customers lack structured onboarding content for the Multi-Branch & Franchise Fleet Control product area.",
+      "suggestedEntitiesToLink": [
+        "feature-multi-branch",
+        "changelog-v2-0-4"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-commission-free-faq-26",
+      "title": "Direct Dining Economics & Aggregator Independence Frequently Asked Questions",
+      "suggestedSlug": "commission-free-dining-faq",
+      "targetClusterId": "cluster-commission-free",
+      "targetContentType": "faq",
+      "priorityScore": 67,
+      "confidenceScore": 90,
+      "businessValue": "high",
+      "estimatedAuthorityGain": 1.7,
+      "primaryIntent": "informational",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "suggestedEntitiesToLink": [
+        "guide-leaving-aggregators",
+        "compare-vs-aggregators",
+        "industry-cafes"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-restaurant-analytics-faq-29",
+      "title": "Hospitality Analytics & Revenue Optimization Frequently Asked Questions",
+      "suggestedSlug": "restaurant-analytics-optimization-faq",
+      "targetClusterId": "cluster-restaurant-analytics",
+      "targetContentType": "faq",
+      "priorityScore": 66,
+      "confidenceScore": 90,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 3.3,
+      "primaryIntent": "informational",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "suggestedEntitiesToLink": [
+        "changelog-v2-0-4"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-restaurant-analytics-feature-33",
+      "title": "Commercial Evaluation Page for Hospitality Analytics & Revenue Optimization",
+      "suggestedSlug": "restaurant-analytics-optimization-pricing-and-plans",
+      "targetClusterId": "cluster-restaurant-analytics",
+      "targetContentType": "feature",
+      "priorityScore": 66,
+      "confidenceScore": 85,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 3.3,
+      "primaryIntent": "commercial",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Cluster has zero commercial intent pages to convert organic discovery traffic into sales consultations.",
+      "suggestedEntitiesToLink": [
+        "changelog-v2-0-4"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-restaurant-analytics-documentation-34",
+      "title": "Day 1 Onboarding Checklist for Hospitality Analytics & Revenue Optimization",
+      "suggestedSlug": "restaurant-analytics-optimization-onboarding-checklist",
+      "targetClusterId": "cluster-restaurant-analytics",
+      "targetContentType": "documentation",
+      "priorityScore": 66,
+      "confidenceScore": 90,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 3.3,
+      "primaryIntent": "informational",
+      "targetAudience": "general_manager",
+      "recommendationReason": "New customers lack structured onboarding content for the Hospitality Analytics & Revenue Optimization product area.",
+      "suggestedEntitiesToLink": [
+        "changelog-v2-0-4"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-cloud-pos-faq-9",
+      "title": "Cloud POS & Offline-Resilient Billing Frequently Asked Questions",
+      "suggestedSlug": "cloud-pos-billing-faq",
+      "targetClusterId": "cluster-cloud-pos",
+      "targetContentType": "faq",
+      "priorityScore": 63,
+      "confidenceScore": 80,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 2.8,
+      "primaryIntent": "informational",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "suggestedEntitiesToLink": [
+        "feature-cloud-pos",
+        "doc-quick-start"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-multi-branch-comparison-22",
+      "title": "Restaurant OS vs Traditional Alternatives: Multi-Branch & Franchise Fleet Control",
+      "suggestedSlug": "compare-multi-branch-management-alternatives",
+      "targetClusterId": "cluster-multi-branch",
+      "targetContentType": "comparison",
+      "priorityScore": 60,
+      "confidenceScore": 75,
+      "businessValue": "strategic",
+      "estimatedAuthorityGain": 2.3,
+      "primaryIntent": "commercial",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Missing commercial investigation comparison table. High intent buyers searching for comparisons are lost to competitors.",
+      "suggestedEntitiesToLink": [
+        "feature-multi-branch",
+        "changelog-v2-0-4"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-multi-branch-glossary-23",
+      "title": "Key Terminology & Definitions: Multi-Branch & Franchise Fleet Control",
+      "suggestedSlug": "multi-branch-management-terminology",
+      "targetClusterId": "cluster-multi-branch",
+      "targetContentType": "glossary",
+      "priorityScore": 60,
+      "confidenceScore": 75,
+      "businessValue": "strategic",
+      "estimatedAuthorityGain": 2.3,
+      "primaryIntent": "informational",
+      "targetAudience": "all",
+      "recommendationReason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "suggestedEntitiesToLink": [
+        "feature-multi-branch",
+        "changelog-v2-0-4"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-commission-free-glossary-27",
+      "title": "Key Terminology & Definitions: Direct Dining Economics & Aggregator Independence",
+      "suggestedSlug": "commission-free-dining-terminology",
+      "targetClusterId": "cluster-commission-free",
+      "targetContentType": "glossary",
+      "priorityScore": 59,
+      "confidenceScore": 85,
+      "businessValue": "high",
+      "estimatedAuthorityGain": 1.1,
+      "primaryIntent": "informational",
+      "targetAudience": "all",
+      "recommendationReason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "suggestedEntitiesToLink": [
+        "guide-leaving-aggregators",
+        "compare-vs-aggregators",
+        "industry-cafes"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-restaurant-analytics-comparison-31",
+      "title": "Restaurant OS vs Traditional Alternatives: Hospitality Analytics & Revenue Optimization",
+      "suggestedSlug": "compare-restaurant-analytics-optimization-alternatives",
+      "targetClusterId": "cluster-restaurant-analytics",
+      "targetContentType": "comparison",
+      "priorityScore": 58,
+      "confidenceScore": 85,
+      "businessValue": "strategic",
+      "estimatedAuthorityGain": 2.1,
+      "primaryIntent": "commercial",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Missing commercial investigation comparison table. High intent buyers searching for comparisons are lost to competitors.",
+      "suggestedEntitiesToLink": [
+        "changelog-v2-0-4"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-restaurant-analytics-glossary-32",
+      "title": "Key Terminology & Definitions: Hospitality Analytics & Revenue Optimization",
+      "suggestedSlug": "restaurant-analytics-optimization-terminology",
+      "targetClusterId": "cluster-restaurant-analytics",
+      "targetContentType": "glossary",
+      "priorityScore": 58,
+      "confidenceScore": 85,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 2.1,
+      "primaryIntent": "informational",
+      "targetAudience": "all",
+      "recommendationReason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "suggestedEntitiesToLink": [
+        "changelog-v2-0-4"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-qr-menu-faq-1",
+      "title": "QR Menu & Contactless Dining Frequently Asked Questions",
+      "suggestedSlug": "qr-menu-ordering-faq",
+      "targetClusterId": "cluster-qr-menu",
+      "targetContentType": "faq",
+      "priorityScore": 56,
+      "confidenceScore": 90,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 1.6,
+      "primaryIntent": "informational",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Zero FAQ coverage detected. FAQs are essential for Google AI Overviews and conversational answer extraction.",
+      "suggestedEntitiesToLink": [
+        "feature-qr-stand",
+        "feature-digital-menu",
+        "doc-quick-start"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "backlog-cluster-cloud-pos-comparison-10",
+      "title": "Restaurant OS vs Traditional Alternatives: Cloud POS & Offline-Resilient Billing",
+      "suggestedSlug": "compare-cloud-pos-billing-alternatives",
+      "targetClusterId": "cluster-cloud-pos",
+      "targetContentType": "comparison",
+      "priorityScore": 55,
+      "confidenceScore": 75,
+      "businessValue": "strategic",
+      "estimatedAuthorityGain": 1.8,
+      "primaryIntent": "commercial",
+      "targetAudience": "restaurateur",
+      "recommendationReason": "Missing commercial investigation comparison table. High intent buyers searching for comparisons are lost to competitors.",
+      "suggestedEntitiesToLink": [
+        "feature-cloud-pos",
+        "doc-quick-start"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-cloud-pos-glossary-11",
+      "title": "Key Terminology & Definitions: Cloud POS & Offline-Resilient Billing",
+      "suggestedSlug": "cloud-pos-billing-terminology",
+      "targetClusterId": "cluster-cloud-pos",
+      "targetContentType": "glossary",
+      "priorityScore": 55,
+      "confidenceScore": 75,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 1.8,
+      "primaryIntent": "informational",
+      "targetAudience": "all",
+      "recommendationReason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "suggestedEntitiesToLink": [
+        "feature-cloud-pos",
+        "doc-quick-start"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "backlog-cluster-qr-menu-glossary-2",
+      "title": "Key Terminology & Definitions: QR Menu & Contactless Dining",
+      "suggestedSlug": "qr-menu-ordering-terminology",
+      "targetClusterId": "cluster-qr-menu",
+      "targetContentType": "glossary",
+      "priorityScore": 49,
+      "confidenceScore": 85,
+      "businessValue": "medium",
+      "estimatedAuthorityGain": 1,
+      "primaryIntent": "informational",
+      "targetAudience": "all",
+      "recommendationReason": "Missing glossary DefinedTerm entities prevents semantic Schema.org knowledge graph anchoring.",
+      "suggestedEntitiesToLink": [
+        "feature-qr-stand",
+        "feature-digital-menu",
+        "doc-quick-start"
+      ],
+      "status": "planned"
+    }
+  ]
+}

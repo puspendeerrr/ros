@@ -1,0 +1,207 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.817Z",
+  "nodesCount": 6,
+  "edgesCount": 18,
+  "nodes": [
+    {
+      "id": "guide-leaving-aggregators",
+      "title": "The Blueprint for Transitioning to Commission-Free Dining",
+      "contentType": "guide",
+      "productArea": "qr_menu",
+      "inDegree": 3,
+      "outDegree": 3,
+      "centralityScore": 50,
+      "dependencyScore": 15,
+      "prerequisiteChain": [],
+      "dependentIds": []
+    },
+    {
+      "id": "doc-quick-start",
+      "title": "5-Minute Restaurant Quick Start Guide",
+      "contentType": "documentation",
+      "productArea": "qr_menu",
+      "inDegree": 3,
+      "outDegree": 3,
+      "centralityScore": 50,
+      "dependencyScore": 15,
+      "prerequisiteChain": [],
+      "dependentIds": []
+    },
+    {
+      "id": "compare-vs-aggregators",
+      "title": "Restaurant OS vs. Food Delivery Aggregators",
+      "contentType": "comparison",
+      "productArea": "qr_menu",
+      "inDegree": 2,
+      "outDegree": 2,
+      "centralityScore": 33,
+      "dependencyScore": 15,
+      "prerequisiteChain": [],
+      "dependentIds": []
+    },
+    {
+      "id": "feature-qr-stand",
+      "title": "Dynamic QR Menu Stand Ecosystem",
+      "contentType": "feature",
+      "productArea": "qr_menu",
+      "inDegree": 4,
+      "outDegree": 4,
+      "centralityScore": 67,
+      "dependencyScore": 20,
+      "prerequisiteChain": [],
+      "dependentIds": []
+    },
+    {
+      "id": "industry-cafes",
+      "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
+      "contentType": "industry",
+      "productArea": "cloud_pos",
+      "inDegree": 4,
+      "outDegree": 4,
+      "centralityScore": 67,
+      "dependencyScore": 20,
+      "prerequisiteChain": [],
+      "dependentIds": []
+    },
+    {
+      "id": "changelog-v2-0-4",
+      "title": "Restaurant OS v2.0.4 Enterprise Architecture Release",
+      "contentType": "changelog",
+      "productArea": "platform",
+      "inDegree": 2,
+      "outDegree": 2,
+      "centralityScore": 33,
+      "dependencyScore": 15,
+      "prerequisiteChain": [],
+      "dependentIds": []
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "guide-leaving-aggregators",
+      "toId": "compare-vs-aggregators",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "compare-vs-aggregators",
+      "toId": "guide-leaving-aggregators",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "guide-leaving-aggregators",
+      "toId": "feature-qr-stand",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "feature-qr-stand",
+      "toId": "guide-leaving-aggregators",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "doc-quick-start",
+      "toId": "feature-qr-stand",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "feature-qr-stand",
+      "toId": "doc-quick-start",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "doc-quick-start",
+      "toId": "industry-cafes",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "industry-cafes",
+      "toId": "doc-quick-start",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "doc-quick-start",
+      "toId": "changelog-v2-0-4",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "changelog-v2-0-4",
+      "toId": "doc-quick-start",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "compare-vs-aggregators",
+      "toId": "industry-cafes",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "industry-cafes",
+      "toId": "compare-vs-aggregators",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "industry-cafes",
+      "toId": "feature-qr-stand",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "feature-qr-stand",
+      "toId": "industry-cafes",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "industry-cafes",
+      "toId": "guide-leaving-aggregators",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "guide-leaving-aggregators",
+      "toId": "industry-cafes",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "changelog-v2-0-4",
+      "toId": "feature-qr-stand",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    },
+    {
+      "fromId": "feature-qr-stand",
+      "toId": "changelog-v2-0-4",
+      "relation": "see_also",
+      "inverseRelation": "see_also",
+      "weight": 0.6
+    }
+  ]
+}

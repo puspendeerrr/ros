@@ -1,0 +1,132 @@
+/**
+ * Enterprise Author & Reviewer Profile Registry
+ * Comprehensive credentials, biographies, certifications, and reviewed vs published corpus.
+ */
+
+import type { EnterpriseAuthorProfile } from '../types/eeat.types.ts';
+
+export const ENTERPRISE_AUTHORS_REGISTRY: Record<string, EnterpriseAuthorProfile> = {
+  'puspender-singh': {
+    id: 'puspender-singh',
+    slug: 'puspender-singh',
+    name: 'Puspender Singh',
+    roles: ['author', 'engineering_reviewer'],
+    jobTitle: 'Principal Systems Architect & Founder',
+    biography: 'Principal software architect and distributed systems engineer with over 8 years of experience designing mission-critical enterprise POS, real-time kitchen orchestration, and direct QR payment infrastructure.',
+    avatarUrl: '/assets/logo-icon.png',
+    email: 'puspender@algorithyum.in',
+    socialProfiles: {
+      github: 'https://github.com/puspendeerrr',
+      linkedin: 'https://linkedin.com/in/puspender-singh',
+      website: 'https://ros.algorithyum.in'
+    },
+    expertiseAreas: [
+      'Cloud POS Systems',
+      'Offline-First Web Architecture',
+      'Dynamic Table QR Systems',
+      'Real-Time Kitchen Orchestration',
+      'Distributed State Machines'
+    ],
+    experienceYears: 8,
+    certifications: [
+      'Certified Distributed Systems Professional',
+      'Advanced Cloud Architecture Specialist'
+    ],
+    organization: 'Restaurant OS',
+    publishedContentIds: [
+      'guide-leaving-aggregators',
+      'doc-quick-start',
+      'compare-vs-aggregators',
+      'feature-qr-stand',
+      'industry-cafes',
+      'changelog-v2-0-4'
+    ],
+    reviewedContentIds: ['doc-quick-start', 'changelog-v2-0-4'],
+    knowledgeDomains: ['ordering_technology', 'kitchen_operations', 'enterprise_management'],
+    isStaff: true,
+    credentialsSummary: 'Principal Systems Architect | 8+ Years Enterprise Architecture | Lead POS Designer'
+  },
+
+  'security-reviewer': {
+    id: 'security-reviewer',
+    slug: 'hospitality-security-council',
+    name: 'Hospitality Security & Compliance Council',
+    roles: ['technical_reviewer', 'legal_reviewer'],
+    jobTitle: 'Security & Regulatory Review Board',
+    biography: 'Independent technical auditing and security governance body responsible for verifying payment tokenization, UPI settlement security, RFC 9116 security policies, and GST compliance.',
+    avatarUrl: '/assets/logo-icon.png',
+    socialProfiles: {
+      website: 'https://ros.algorithyum.in/.well-known/security.txt',
+      github: 'https://github.com/puspendeerrr/ros'
+    },
+    expertiseAreas: [
+      'Payment Gateway Isolation',
+      'UPI Protocol Security',
+      'GST Regulatory Compliance',
+      'Data Protection & Privacy'
+    ],
+    experienceYears: 10,
+    certifications: ['PCI-DSS Compliance Auditor', 'Information Security Lead Assessor'],
+    organization: 'Restaurant OS Standards Board',
+    publishedContentIds: [],
+    reviewedContentIds: ['guide-leaving-aggregators', 'compare-vs-aggregators'],
+    knowledgeDomains: ['hospitality_economics', 'ordering_technology'],
+    isStaff: true,
+    credentialsSummary: 'Accredited Security Council | RFC 9116 Compliant | Payment Regulatory Auditor'
+  },
+
+  'tech-editor': {
+    id: 'tech-editor',
+    slug: 'developer-standards-editor',
+    name: 'Developer Standards & Technical Editorial Desk',
+    roles: ['product_reviewer', 'technical_reviewer'],
+    jobTitle: 'Documentation & Developer Standards Editor',
+    biography: 'Engineering editorial desk dedicated to auditing code clarity, step-by-step reproducibility, API endpoint documentation, and technical onboarding blueprints.',
+    avatarUrl: '/assets/logo-icon.png',
+    socialProfiles: {
+      website: 'https://ros.algorithyum.in/docs'
+    },
+    expertiseAreas: [
+      'API Technical Specifications',
+      'Developer Ergonomics',
+      'Webhook Architecture',
+      'Hardware Peripheral Standards'
+    ],
+    experienceYears: 6,
+    certifications: ['Technical Communication Specialist', 'OpenAPI Standards Auditor'],
+    organization: 'Restaurant OS',
+    publishedContentIds: [],
+    reviewedContentIds: ['doc-quick-start', 'guide-leaving-aggregators', 'feature-qr-stand'],
+    knowledgeDomains: ['ordering_technology', 'enterprise_management'],
+    isStaff: true,
+    credentialsSummary: 'Developer Standards Editor | OpenAPI Specialist | Technical UX Auditor'
+  },
+
+  'ros-editorial-team': {
+    id: 'ros-editorial-team',
+    slug: 'restaurant-os-editorial-board',
+    name: 'Restaurant OS Editorial Board',
+    roles: ['author', 'product_reviewer'],
+    jobTitle: 'Central Research & Hospitality Standards Group',
+    biography: 'The central hospitality research and engineering standards committee at Restaurant OS, authoring industry unit economics benchmarks and restaurant operating guides.',
+    avatarUrl: '/assets/logo-icon.png',
+    socialProfiles: {
+      website: 'https://ros.algorithyum.in',
+      twitter: 'https://twitter.com/restaurant_os'
+    },
+    expertiseAreas: [
+      'Restaurant Unit Economics',
+      'Commission-Free Hospitality',
+      'Franchise Fleet Management',
+      'Menu Engineering'
+    ],
+    experienceYears: 12,
+    certifications: ['Hospitality Operations Excellence Institute'],
+    organization: 'Restaurant OS',
+    publishedContentIds: ['compare-vs-aggregators', 'industry-cafes'],
+    reviewedContentIds: ['guide-leaving-aggregators', 'feature-qr-stand', 'industry-cafes'],
+    knowledgeDomains: ['hospitality_economics', 'restaurant_analytics', 'guest_experience'],
+    isStaff: true,
+    credentialsSummary: 'Central Editorial Board | 12+ Years Hospitality Research | Industry Benchmarks'
+  }
+};

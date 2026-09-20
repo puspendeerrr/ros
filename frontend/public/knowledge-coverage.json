@@ -1,0 +1,104 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.816Z",
+  "topicCoverage": {
+    "QR Menu & Contactless Dining": {
+      "totalItems": 5,
+      "coveragePercent": 100
+    },
+    "Direct Table Payments & UPI Settlement": {
+      "totalItems": 2,
+      "coveragePercent": 50
+    },
+    "Cloud POS & Offline-Resilient Billing": {
+      "totalItems": 2,
+      "coveragePercent": 50
+    },
+    "Kitchen Display Systems (KDS) & Ticket Routing": {
+      "totalItems": 0,
+      "coveragePercent": 0
+    },
+    "Multi-Branch & Franchise Fleet Control": {
+      "totalItems": 1,
+      "coveragePercent": 25
+    },
+    "Direct Dining Economics & Aggregator Independence": {
+      "totalItems": 5,
+      "coveragePercent": 100
+    },
+    "Hospitality Analytics & Revenue Optimization": {
+      "totalItems": 1,
+      "coveragePercent": 25
+    }
+  },
+  "industryCoverage": {
+    "cafes": {
+      "totalItems": 1,
+      "coveragePercent": 50
+    },
+    "qsr": {
+      "totalItems": 0,
+      "coveragePercent": 0
+    },
+    "fine_dining": {
+      "totalItems": 0,
+      "coveragePercent": 0
+    },
+    "bars_breweries": {
+      "totalItems": 0,
+      "coveragePercent": 0
+    },
+    "cloud_kitchens": {
+      "totalItems": 0,
+      "coveragePercent": 0
+    }
+  },
+  "featureCoverage": {
+    "qr_menu": {
+      "totalItems": 4,
+      "coveragePercent": 100
+    },
+    "cloud_pos": {
+      "totalItems": 1,
+      "coveragePercent": 33
+    },
+    "kds": {
+      "totalItems": 0,
+      "coveragePercent": 0
+    },
+    "multi_branch": {
+      "totalItems": 0,
+      "coveragePercent": 0
+    },
+    "billing": {
+      "totalItems": 0,
+      "coveragePercent": 0
+    },
+    "analytics": {
+      "totalItems": 0,
+      "coveragePercent": 0
+    }
+  },
+  "userJourneyCoverage": {
+    "awareness": 50,
+    "consideration": 100,
+    "decision": 0,
+    "onboarding": 50,
+    "expansion": 100
+  },
+  "searchIntentCoverage": {
+    "informational": 33,
+    "commercial": 50,
+    "transactional": 17,
+    "navigational": 0
+  },
+  "funnelStageCoverage": {
+    "tofu": 50,
+    "mofu": 100,
+    "bofu": 50
+  },
+  "businessGoalCoverage": {
+    "marketplace_replacement": 100,
+    "operational_efficiency": 40,
+    "franchise_scaling": 0
+  }
+}

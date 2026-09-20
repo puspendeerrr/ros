@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-09-20T21:30:40.595Z",
+  "totalTemplates": 5,
+  "templates": {
+    "ResourceTemplate": {
+      "count": 2,
+      "averageQualityScore": 85,
+      "errorRate": 0,
+      "healthStatus": "healthy"
+    },
+    "DocsTemplate": {
+      "count": 1,
+      "averageQualityScore": 100,
+      "errorRate": 0,
+      "healthStatus": "healthy"
+    },
+    "ComparisonTemplate": {
+      "count": 1,
+      "averageQualityScore": 90,
+      "errorRate": 0,
+      "healthStatus": "healthy"
+    },
+    "FeatureTemplate": {
+      "count": 1,
+      "averageQualityScore": 75,
+      "errorRate": 0,
+      "healthStatus": "warning"
+    },
+    "IndustryTemplate": {
+      "count": 1,
+      "averageQualityScore": 70,
+      "errorRate": 0,
+      "healthStatus": "warning"
+    }
+  }
+}

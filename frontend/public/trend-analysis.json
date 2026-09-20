@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-09-20T21:30:41.524Z",
+  "overallTrajectory": "improving",
+  "metrics": [
+    {
+      "metricName": "Organic Impressions",
+      "currentValue": 84700,
+      "sevenDaysAgo": 79618,
+      "thirtyDaysAgo": 69454,
+      "ninetyDaysAgo": 55055,
+      "trend": "improving",
+      "percentageChange30d": 22
+    },
+    {
+      "metricName": "Organic Clicks",
+      "currentValue": 8725,
+      "sevenDaysAgo": 8114,
+      "thirtyDaysAgo": 6980,
+      "ninetyDaysAgo": 5322,
+      "trend": "improving",
+      "percentageChange30d": 25
+    },
+    {
+      "metricName": "Average Search Position",
+      "currentValue": 3.8,
+      "sevenDaysAgo": 4,
+      "thirtyDaysAgo": 4.6,
+      "ninetyDaysAgo": 5.7,
+      "trend": "improving",
+      "percentageChange30d": 17.4
+    },
+    {
+      "metricName": "Click-Through Rate (CTR)",
+      "currentValue": 0.103,
+      "sevenDaysAgo": 0.101,
+      "thirtyDaysAgo": 0.095,
+      "ninetyDaysAgo": 0.088,
+      "trend": "improving",
+      "percentageChange30d": 8.4
+    }
+  ]
+}
