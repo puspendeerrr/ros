@@ -1,5 +1,733 @@
 [
   {
+    "buildId": "pub-1790052253235-4a8e62f9",
+    "timestamp": "2026-09-22T04:44:13.251Z",
+    "totalDurationMs": 13,
+    "contentManifestSnapshot": {
+      "schemaVersion": "1.0.0",
+      "generatedAt": "2026-09-22T04:44:13.246Z",
+      "totalEntries": 6,
+      "entries": {
+        "guide-leaving-aggregators": {
+          "id": "guide-leaving-aggregators",
+          "slug": "leaving-aggregators-behind",
+          "contentType": "guide",
+          "version": "latest",
+          "checksum": "dceaa5d6fe08d127d481de12d21c6f8b7c8cb0437d4b29739b1dbe4826117c1e",
+          "updatedAt": "2026-09-18T00:00:00Z",
+          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+          "editorialStatus": "published"
+        },
+        "doc-quick-start": {
+          "id": "doc-quick-start",
+          "slug": "5-minute-restaurant-quickstart",
+          "contentType": "documentation",
+          "version": "latest",
+          "checksum": "f436f001b4d4c564cdc08ce49c54eca1c19eb65ff97ff0f5a6f0f7b47c1926d8",
+          "updatedAt": "2026-09-20T00:00:00Z",
+          "url": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+          "editorialStatus": "published"
+        },
+        "compare-vs-aggregators": {
+          "id": "compare-vs-aggregators",
+          "slug": "vs-delivery-aggregators",
+          "contentType": "comparison",
+          "version": "latest",
+          "checksum": "2e5de022ab40fffde34e65f8193546d51701e7b2f1b5f4f0be5c706928b7a1d2",
+          "updatedAt": "2026-09-15T00:00:00Z",
+          "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+          "editorialStatus": "published"
+        },
+        "feature-qr-stand": {
+          "id": "feature-qr-stand",
+          "slug": "qr-menu",
+          "contentType": "feature",
+          "version": "latest",
+          "checksum": "9aee49758f27dd192d743c821f7d8028d8cbefd21bc4d1e6d6c1bebd8f234a29",
+          "updatedAt": "2026-09-19T00:00:00Z",
+          "url": "https://ros.algorithyum.in/features/qr-menu",
+          "editorialStatus": "published"
+        },
+        "industry-cafes": {
+          "id": "industry-cafes",
+          "slug": "specialty-cafes",
+          "contentType": "industry",
+          "version": "latest",
+          "checksum": "99d2b23b3a871b6964687854bec2b2bae0b14fac8c3b399bdf882aaca2688f39",
+          "updatedAt": "2026-09-17T00:00:00Z",
+          "url": "https://ros.algorithyum.in/industries/specialty-cafes",
+          "editorialStatus": "published"
+        },
+        "changelog-v2-0-4": {
+          "id": "changelog-v2-0-4",
+          "slug": "v2-0-4-release",
+          "contentType": "changelog",
+          "version": "latest",
+          "checksum": "66502e6d3910ae7e14c6b5a42f942cf35ce0288a4c9288c8f0bb3c262c363f9b",
+          "updatedAt": "2026-09-21T00:00:00Z",
+          "url": "https://ros.algorithyum.in/changelog",
+          "editorialStatus": "published"
+        }
+      }
+    },
+    "artifactsManifestSnapshot": {
+      "manifestVersion": "1.0.0",
+      "generatedAt": "2026-09-22T04:44:13.250Z",
+      "artifacts": {
+        "search-index.json": {
+          "path": "search-index.json",
+          "version": "1.0.0",
+          "sizeBytes": 7090,
+          "checksumSha256": "8d7bc3a3c586c23ed54d770d8e2f6b7e737840a2e33c9242839b0b425df782dd",
+          "generatedAt": "2026-09-22T04:44:13.249Z",
+          "contentType": "application/json"
+        },
+        "search-index.min.json": {
+          "path": "search-index.min.json",
+          "version": "1.0.0",
+          "sizeBytes": 5680,
+          "checksumSha256": "0164fe8e14f818462018b9b06ce44c1ff253e7513e9e4cb0627211ff3e5b193b",
+          "generatedAt": "2026-09-22T04:44:13.250Z",
+          "contentType": "application/json"
+        },
+        "atom.xml": {
+          "path": "atom.xml",
+          "version": "1.0.0",
+          "sizeBytes": 2854,
+          "checksumSha256": "b71cd0e15a398e6be07a0dc1bbf4719fe32f90079b5b3d58b8d2c489c93b252f",
+          "generatedAt": "2026-09-22T04:44:13.247Z",
+          "contentType": "application/xml"
+        },
+        "content-manifest.json": {
+          "path": "content-manifest.json",
+          "version": "1.0.0",
+          "sizeBytes": 2546,
+          "checksumSha256": "9496d9269ebc18cbd57f841c56475cf0e9078e9d312654a5f1d808ef58b2527c",
+          "generatedAt": "2026-09-22T04:44:13.247Z",
+          "contentType": "application/json"
+        },
+        "content-stats.json": {
+          "path": "content-stats.json",
+          "version": "1.0.0",
+          "sizeBytes": 504,
+          "checksumSha256": "a35020f449ae76b051272921aabd2de200ac62d1b8c0514eb87adb7a3e4c10ba",
+          "generatedAt": "2026-09-22T04:44:13.247Z",
+          "contentType": "application/json"
+        },
+        "jsonfeed.json": {
+          "path": "jsonfeed.json",
+          "version": "1.0.0",
+          "sizeBytes": 3065,
+          "checksumSha256": "c83bfa06308e7cf549bdb3ee2975eba75453fdf6f2487f6dc6bf1b5c3449819c",
+          "generatedAt": "2026-09-22T04:44:13.248Z",
+          "contentType": "application/json"
+        },
+        "responsive-assets.json": {
+          "path": "responsive-assets.json",
+          "version": "1.0.0",
+          "sizeBytes": 3678,
+          "checksumSha256": "1d421401e4128eb2ae54bb15f97381ce408dc4e1110a5f287dc640c8eaf9955d",
+          "generatedAt": "2026-09-22T04:44:13.249Z",
+          "contentType": "application/json"
+        },
+        "rss.xml": {
+          "path": "rss.xml",
+          "version": "1.0.0",
+          "sizeBytes": 3359,
+          "checksumSha256": "4b8abc72047c4d30b1cfffd343dfe013db354d97323740924812a2a2c04b13d7",
+          "generatedAt": "2026-09-22T04:44:13.249Z",
+          "contentType": "application/xml"
+        }
+      }
+    },
+    "statsSnapshot": {
+      "generatedAt": "2026-09-22T04:44:13.245Z",
+      "totalItems": 6,
+      "byType": {
+        "guide": 1,
+        "documentation": 1,
+        "comparison": 1,
+        "feature": 1,
+        "industry": 1,
+        "changelog": 1
+      },
+      "byStatus": {
+        "published": 6
+      },
+      "byAudience": {
+        "restaurateur": 4,
+        "general_manager": 1,
+        "developer": 1
+      },
+      "byIntent": {
+        "informational": 2,
+        "transactional": 1,
+        "commercial": 3
+      },
+      "byProductArea": {
+        "qr_menu": 4,
+        "cloud_pos": 1,
+        "platform": 1
+      }
+    },
+    "diagnostics": {
+      "nodeVersion": "v24.21.0",
+      "platform": "win32",
+      "arch": "x64",
+      "peakMemoryRssMb": 76.69,
+      "peakHeapUsedMb": 11.61,
+      "peakHeapTotalMb": 14.64,
+      "cpuUserMs": 46,
+      "cpuSystemMs": 93
+    }
+  },
+  {
+    "buildId": "pub-1790052050949-2f8a12f5",
+    "timestamp": "2026-09-22T04:40:50.969Z",
+    "totalDurationMs": 16,
+    "contentManifestSnapshot": {
+      "schemaVersion": "1.0.0",
+      "generatedAt": "2026-09-22T04:40:50.964Z",
+      "totalEntries": 6,
+      "entries": {
+        "guide-leaving-aggregators": {
+          "id": "guide-leaving-aggregators",
+          "slug": "leaving-aggregators-behind",
+          "contentType": "guide",
+          "version": "latest",
+          "checksum": "dceaa5d6fe08d127d481de12d21c6f8b7c8cb0437d4b29739b1dbe4826117c1e",
+          "updatedAt": "2026-09-18T00:00:00Z",
+          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+          "editorialStatus": "published"
+        },
+        "doc-quick-start": {
+          "id": "doc-quick-start",
+          "slug": "5-minute-restaurant-quickstart",
+          "contentType": "documentation",
+          "version": "latest",
+          "checksum": "f436f001b4d4c564cdc08ce49c54eca1c19eb65ff97ff0f5a6f0f7b47c1926d8",
+          "updatedAt": "2026-09-20T00:00:00Z",
+          "url": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+          "editorialStatus": "published"
+        },
+        "compare-vs-aggregators": {
+          "id": "compare-vs-aggregators",
+          "slug": "vs-delivery-aggregators",
+          "contentType": "comparison",
+          "version": "latest",
+          "checksum": "2e5de022ab40fffde34e65f8193546d51701e7b2f1b5f4f0be5c706928b7a1d2",
+          "updatedAt": "2026-09-15T00:00:00Z",
+          "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+          "editorialStatus": "published"
+        },
+        "feature-qr-stand": {
+          "id": "feature-qr-stand",
+          "slug": "qr-menu",
+          "contentType": "feature",
+          "version": "latest",
+          "checksum": "9aee49758f27dd192d743c821f7d8028d8cbefd21bc4d1e6d6c1bebd8f234a29",
+          "updatedAt": "2026-09-19T00:00:00Z",
+          "url": "https://ros.algorithyum.in/features/qr-menu",
+          "editorialStatus": "published"
+        },
+        "industry-cafes": {
+          "id": "industry-cafes",
+          "slug": "specialty-cafes",
+          "contentType": "industry",
+          "version": "latest",
+          "checksum": "99d2b23b3a871b6964687854bec2b2bae0b14fac8c3b399bdf882aaca2688f39",
+          "updatedAt": "2026-09-17T00:00:00Z",
+          "url": "https://ros.algorithyum.in/industries/specialty-cafes",
+          "editorialStatus": "published"
+        },
+        "changelog-v2-0-4": {
+          "id": "changelog-v2-0-4",
+          "slug": "v2-0-4-release",
+          "contentType": "changelog",
+          "version": "latest",
+          "checksum": "66502e6d3910ae7e14c6b5a42f942cf35ce0288a4c9288c8f0bb3c262c363f9b",
+          "updatedAt": "2026-09-21T00:00:00Z",
+          "url": "https://ros.algorithyum.in/changelog",
+          "editorialStatus": "published"
+        }
+      }
+    },
+    "artifactsManifestSnapshot": {
+      "manifestVersion": "1.0.0",
+      "generatedAt": "2026-09-22T04:40:50.968Z",
+      "artifacts": {
+        "search-index.json": {
+          "path": "search-index.json",
+          "version": "1.0.0",
+          "sizeBytes": 7090,
+          "checksumSha256": "ec6dfd9121ecff0b8d1f105079784d48cfa82cff0c579d3606af37be71407c21",
+          "generatedAt": "2026-09-22T04:40:50.968Z",
+          "contentType": "application/json"
+        },
+        "search-index.min.json": {
+          "path": "search-index.min.json",
+          "version": "1.0.0",
+          "sizeBytes": 5680,
+          "checksumSha256": "56a65fcceb084e7f3f93243985ee91c41b909ecf8528d86e63911f5926bb6ddd",
+          "generatedAt": "2026-09-22T04:40:50.968Z",
+          "contentType": "application/json"
+        },
+        "atom.xml": {
+          "path": "atom.xml",
+          "version": "1.0.0",
+          "sizeBytes": 2854,
+          "checksumSha256": "290d168f08d1bf596c707a6d1ae75c6d74b247d10023c1ffe52b88d3d4415e56",
+          "generatedAt": "2026-09-22T04:40:50.965Z",
+          "contentType": "application/xml"
+        },
+        "content-manifest.json": {
+          "path": "content-manifest.json",
+          "version": "1.0.0",
+          "sizeBytes": 2546,
+          "checksumSha256": "6c2d88553420f2459d4929e0d58384c3c4a53cc9c624531ad4b1a249cd143e90",
+          "generatedAt": "2026-09-22T04:40:50.965Z",
+          "contentType": "application/json"
+        },
+        "content-stats.json": {
+          "path": "content-stats.json",
+          "version": "1.0.0",
+          "sizeBytes": 504,
+          "checksumSha256": "27e31200d6bf09de5d2f3ca8757fce054f06f29d9a5149f3fb98db06b0b5e7df",
+          "generatedAt": "2026-09-22T04:40:50.966Z",
+          "contentType": "application/json"
+        },
+        "jsonfeed.json": {
+          "path": "jsonfeed.json",
+          "version": "1.0.0",
+          "sizeBytes": 3065,
+          "checksumSha256": "c83bfa06308e7cf549bdb3ee2975eba75453fdf6f2487f6dc6bf1b5c3449819c",
+          "generatedAt": "2026-09-22T04:40:50.966Z",
+          "contentType": "application/json"
+        },
+        "responsive-assets.json": {
+          "path": "responsive-assets.json",
+          "version": "1.0.0",
+          "sizeBytes": 3678,
+          "checksumSha256": "508d0872f2c37d4800273346a02ca97929c9408f27bf29a80a090501c1e6ef61",
+          "generatedAt": "2026-09-22T04:40:50.967Z",
+          "contentType": "application/json"
+        },
+        "rss.xml": {
+          "path": "rss.xml",
+          "version": "1.0.0",
+          "sizeBytes": 3359,
+          "checksumSha256": "e8ead5f733fc6cf5f4dfd6694de5a4b3421edb54986b24000e98c0a30c047270",
+          "generatedAt": "2026-09-22T04:40:50.967Z",
+          "contentType": "application/xml"
+        }
+      }
+    },
+    "statsSnapshot": {
+      "generatedAt": "2026-09-22T04:40:50.963Z",
+      "totalItems": 6,
+      "byType": {
+        "guide": 1,
+        "documentation": 1,
+        "comparison": 1,
+        "feature": 1,
+        "industry": 1,
+        "changelog": 1
+      },
+      "byStatus": {
+        "published": 6
+      },
+      "byAudience": {
+        "restaurateur": 4,
+        "general_manager": 1,
+        "developer": 1
+      },
+      "byIntent": {
+        "informational": 2,
+        "transactional": 1,
+        "commercial": 3
+      },
+      "byProductArea": {
+        "qr_menu": 4,
+        "cloud_pos": 1,
+        "platform": 1
+      }
+    },
+    "diagnostics": {
+      "nodeVersion": "v24.21.0",
+      "platform": "win32",
+      "arch": "x64",
+      "peakMemoryRssMb": 70.09,
+      "peakHeapUsedMb": 11.63,
+      "peakHeapTotalMb": 14.89,
+      "cpuUserMs": 140,
+      "cpuSystemMs": 31
+    }
+  },
+  {
+    "buildId": "pub-1789965991678-8e8a5f52",
+    "timestamp": "2026-09-21T04:46:31.697Z",
+    "totalDurationMs": 17,
+    "contentManifestSnapshot": {
+      "schemaVersion": "1.0.0",
+      "generatedAt": "2026-09-21T04:46:31.691Z",
+      "totalEntries": 6,
+      "entries": {
+        "guide-leaving-aggregators": {
+          "id": "guide-leaving-aggregators",
+          "slug": "leaving-aggregators-behind",
+          "contentType": "guide",
+          "version": "latest",
+          "checksum": "dceaa5d6fe08d127d481de12d21c6f8b7c8cb0437d4b29739b1dbe4826117c1e",
+          "updatedAt": "2026-09-18T00:00:00Z",
+          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+          "editorialStatus": "published"
+        },
+        "doc-quick-start": {
+          "id": "doc-quick-start",
+          "slug": "5-minute-restaurant-quickstart",
+          "contentType": "documentation",
+          "version": "latest",
+          "checksum": "f436f001b4d4c564cdc08ce49c54eca1c19eb65ff97ff0f5a6f0f7b47c1926d8",
+          "updatedAt": "2026-09-20T00:00:00Z",
+          "url": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+          "editorialStatus": "published"
+        },
+        "compare-vs-aggregators": {
+          "id": "compare-vs-aggregators",
+          "slug": "vs-delivery-aggregators",
+          "contentType": "comparison",
+          "version": "latest",
+          "checksum": "2e5de022ab40fffde34e65f8193546d51701e7b2f1b5f4f0be5c706928b7a1d2",
+          "updatedAt": "2026-09-15T00:00:00Z",
+          "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+          "editorialStatus": "published"
+        },
+        "feature-qr-stand": {
+          "id": "feature-qr-stand",
+          "slug": "qr-menu",
+          "contentType": "feature",
+          "version": "latest",
+          "checksum": "9aee49758f27dd192d743c821f7d8028d8cbefd21bc4d1e6d6c1bebd8f234a29",
+          "updatedAt": "2026-09-19T00:00:00Z",
+          "url": "https://ros.algorithyum.in/features/qr-menu",
+          "editorialStatus": "published"
+        },
+        "industry-cafes": {
+          "id": "industry-cafes",
+          "slug": "specialty-cafes",
+          "contentType": "industry",
+          "version": "latest",
+          "checksum": "99d2b23b3a871b6964687854bec2b2bae0b14fac8c3b399bdf882aaca2688f39",
+          "updatedAt": "2026-09-17T00:00:00Z",
+          "url": "https://ros.algorithyum.in/industries/specialty-cafes",
+          "editorialStatus": "published"
+        },
+        "changelog-v2-0-4": {
+          "id": "changelog-v2-0-4",
+          "slug": "v2-0-4-release",
+          "contentType": "changelog",
+          "version": "latest",
+          "checksum": "66502e6d3910ae7e14c6b5a42f942cf35ce0288a4c9288c8f0bb3c262c363f9b",
+          "updatedAt": "2026-09-21T00:00:00Z",
+          "url": "https://ros.algorithyum.in/changelog",
+          "editorialStatus": "published"
+        }
+      }
+    },
+    "artifactsManifestSnapshot": {
+      "manifestVersion": "1.0.0",
+      "generatedAt": "2026-09-21T04:46:31.696Z",
+      "artifacts": {
+        "search-index.json": {
+          "path": "search-index.json",
+          "version": "1.0.0",
+          "sizeBytes": 7090,
+          "checksumSha256": "146f972446820fc17d0ba1e7c88f1781b303cf67b4486162b21c1e51af523e20",
+          "generatedAt": "2026-09-21T04:46:31.695Z",
+          "contentType": "application/json"
+        },
+        "search-index.min.json": {
+          "path": "search-index.min.json",
+          "version": "1.0.0",
+          "sizeBytes": 5680,
+          "checksumSha256": "b5705237c012e52baeeb2ec0d91244f6e063cfe21ce7c1122ff82629ea18fc4e",
+          "generatedAt": "2026-09-21T04:46:31.696Z",
+          "contentType": "application/json"
+        },
+        "atom.xml": {
+          "path": "atom.xml",
+          "version": "1.0.0",
+          "sizeBytes": 2854,
+          "checksumSha256": "0fcc53b035daff44979b317d65ad8adaa43813962dba0100cbf0b72dd0d45f5a",
+          "generatedAt": "2026-09-21T04:46:31.692Z",
+          "contentType": "application/xml"
+        },
+        "content-manifest.json": {
+          "path": "content-manifest.json",
+          "version": "1.0.0",
+          "sizeBytes": 2546,
+          "checksumSha256": "bae6a97a48153cbd79df67a3b9dbd504f9e7b4541d006e6e6573201faab48ee9",
+          "generatedAt": "2026-09-21T04:46:31.693Z",
+          "contentType": "application/json"
+        },
+        "content-stats.json": {
+          "path": "content-stats.json",
+          "version": "1.0.0",
+          "sizeBytes": 504,
+          "checksumSha256": "7847b67d551d363033ff5d56de8dc8cfc7cd2ffc5df7d5f777083a93bc89b347",
+          "generatedAt": "2026-09-21T04:46:31.694Z",
+          "contentType": "application/json"
+        },
+        "jsonfeed.json": {
+          "path": "jsonfeed.json",
+          "version": "1.0.0",
+          "sizeBytes": 3065,
+          "checksumSha256": "c83bfa06308e7cf549bdb3ee2975eba75453fdf6f2487f6dc6bf1b5c3449819c",
+          "generatedAt": "2026-09-21T04:46:31.694Z",
+          "contentType": "application/json"
+        },
+        "responsive-assets.json": {
+          "path": "responsive-assets.json",
+          "version": "1.0.0",
+          "sizeBytes": 3678,
+          "checksumSha256": "43bc61ac9f779fa530ff26808cec2eb68a68066f89120bcf1a42c4fec4a10084",
+          "generatedAt": "2026-09-21T04:46:31.695Z",
+          "contentType": "application/json"
+        },
+        "rss.xml": {
+          "path": "rss.xml",
+          "version": "1.0.0",
+          "sizeBytes": 3359,
+          "checksumSha256": "c8a4b6ab89c16e0677c51aefb6aaa1f3e58abb36102b0e307e0a78ccfeae7834",
+          "generatedAt": "2026-09-21T04:46:31.695Z",
+          "contentType": "application/xml"
+        }
+      }
+    },
+    "statsSnapshot": {
+      "generatedAt": "2026-09-21T04:46:31.691Z",
+      "totalItems": 6,
+      "byType": {
+        "guide": 1,
+        "documentation": 1,
+        "comparison": 1,
+        "feature": 1,
+        "industry": 1,
+        "changelog": 1
+      },
+      "byStatus": {
+        "published": 6
+      },
+      "byAudience": {
+        "restaurateur": 4,
+        "general_manager": 1,
+        "developer": 1
+      },
+      "byIntent": {
+        "informational": 2,
+        "transactional": 1,
+        "commercial": 3
+      },
+      "byProductArea": {
+        "qr_menu": 4,
+        "cloud_pos": 1,
+        "platform": 1
+      }
+    },
+    "diagnostics": {
+      "nodeVersion": "v24.21.0",
+      "platform": "win32",
+      "arch": "x64",
+      "peakMemoryRssMb": 70,
+      "peakHeapUsedMb": 11.61,
+      "peakHeapTotalMb": 14.39,
+      "cpuUserMs": 171,
+      "cpuSystemMs": 78
+    }
+  },
+  {
+    "buildId": "pub-1789965590547-c67ca4c3",
+    "timestamp": "2026-09-21T04:39:50.565Z",
+    "totalDurationMs": 16,
+    "contentManifestSnapshot": {
+      "schemaVersion": "1.0.0",
+      "generatedAt": "2026-09-21T04:39:50.560Z",
+      "totalEntries": 6,
+      "entries": {
+        "guide-leaving-aggregators": {
+          "id": "guide-leaving-aggregators",
+          "slug": "leaving-aggregators-behind",
+          "contentType": "guide",
+          "version": "latest",
+          "checksum": "dceaa5d6fe08d127d481de12d21c6f8b7c8cb0437d4b29739b1dbe4826117c1e",
+          "updatedAt": "2026-09-18T00:00:00Z",
+          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
+          "editorialStatus": "published"
+        },
+        "doc-quick-start": {
+          "id": "doc-quick-start",
+          "slug": "5-minute-restaurant-quickstart",
+          "contentType": "documentation",
+          "version": "latest",
+          "checksum": "f436f001b4d4c564cdc08ce49c54eca1c19eb65ff97ff0f5a6f0f7b47c1926d8",
+          "updatedAt": "2026-09-20T00:00:00Z",
+          "url": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
+          "editorialStatus": "published"
+        },
+        "compare-vs-aggregators": {
+          "id": "compare-vs-aggregators",
+          "slug": "vs-delivery-aggregators",
+          "contentType": "comparison",
+          "version": "latest",
+          "checksum": "2e5de022ab40fffde34e65f8193546d51701e7b2f1b5f4f0be5c706928b7a1d2",
+          "updatedAt": "2026-09-15T00:00:00Z",
+          "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
+          "editorialStatus": "published"
+        },
+        "feature-qr-stand": {
+          "id": "feature-qr-stand",
+          "slug": "qr-menu",
+          "contentType": "feature",
+          "version": "latest",
+          "checksum": "9aee49758f27dd192d743c821f7d8028d8cbefd21bc4d1e6d6c1bebd8f234a29",
+          "updatedAt": "2026-09-19T00:00:00Z",
+          "url": "https://ros.algorithyum.in/features/qr-menu",
+          "editorialStatus": "published"
+        },
+        "industry-cafes": {
+          "id": "industry-cafes",
+          "slug": "specialty-cafes",
+          "contentType": "industry",
+          "version": "latest",
+          "checksum": "99d2b23b3a871b6964687854bec2b2bae0b14fac8c3b399bdf882aaca2688f39",
+          "updatedAt": "2026-09-17T00:00:00Z",
+          "url": "https://ros.algorithyum.in/industries/specialty-cafes",
+          "editorialStatus": "published"
+        },
+        "changelog-v2-0-4": {
+          "id": "changelog-v2-0-4",
+          "slug": "v2-0-4-release",
+          "contentType": "changelog",
+          "version": "latest",
+          "checksum": "66502e6d3910ae7e14c6b5a42f942cf35ce0288a4c9288c8f0bb3c262c363f9b",
+          "updatedAt": "2026-09-21T00:00:00Z",
+          "url": "https://ros.algorithyum.in/changelog",
+          "editorialStatus": "published"
+        }
+      }
+    },
+    "artifactsManifestSnapshot": {
+      "manifestVersion": "1.0.0",
+      "generatedAt": "2026-09-21T04:39:50.564Z",
+      "artifacts": {
+        "search-index.json": {
+          "path": "search-index.json",
+          "version": "1.0.0",
+          "sizeBytes": 7090,
+          "checksumSha256": "33e861056338d916e023074710b11112805d649bef746eef89137f3b0b591a07",
+          "generatedAt": "2026-09-21T04:39:50.564Z",
+          "contentType": "application/json"
+        },
+        "search-index.min.json": {
+          "path": "search-index.min.json",
+          "version": "1.0.0",
+          "sizeBytes": 5680,
+          "checksumSha256": "00014e855ec1b9e86222a42213d0c1b2f6116972ee4364603349921ecb73e6cf",
+          "generatedAt": "2026-09-21T04:39:50.564Z",
+          "contentType": "application/json"
+        },
+        "atom.xml": {
+          "path": "atom.xml",
+          "version": "1.0.0",
+          "sizeBytes": 2854,
+          "checksumSha256": "36482e133e1966635d49596517c4c567de2ad2efb206568c05efe97c732990b7",
+          "generatedAt": "2026-09-21T04:39:50.561Z",
+          "contentType": "application/xml"
+        },
+        "content-manifest.json": {
+          "path": "content-manifest.json",
+          "version": "1.0.0",
+          "sizeBytes": 2546,
+          "checksumSha256": "076eb263492946ff269407a527c676997fe1a5135d10a4ded4deffdfa9e84809",
+          "generatedAt": "2026-09-21T04:39:50.561Z",
+          "contentType": "application/json"
+        },
+        "content-stats.json": {
+          "path": "content-stats.json",
+          "version": "1.0.0",
+          "sizeBytes": 504,
+          "checksumSha256": "899df48a79957bc0b2748e6056f07776eb20cae43db9b05bff5872daac6587e0",
+          "generatedAt": "2026-09-21T04:39:50.562Z",
+          "contentType": "application/json"
+        },
+        "jsonfeed.json": {
+          "path": "jsonfeed.json",
+          "version": "1.0.0",
+          "sizeBytes": 3065,
+          "checksumSha256": "c83bfa06308e7cf549bdb3ee2975eba75453fdf6f2487f6dc6bf1b5c3449819c",
+          "generatedAt": "2026-09-21T04:39:50.562Z",
+          "contentType": "application/json"
+        },
+        "responsive-assets.json": {
+          "path": "responsive-assets.json",
+          "version": "1.0.0",
+          "sizeBytes": 3678,
+          "checksumSha256": "c5a8fcc4e0fc809d02a38436cc42ddda564e937d1688504beba5ce3c2a80803a",
+          "generatedAt": "2026-09-21T04:39:50.563Z",
+          "contentType": "application/json"
+        },
+        "rss.xml": {
+          "path": "rss.xml",
+          "version": "1.0.0",
+          "sizeBytes": 3359,
+          "checksumSha256": "360b2459c008fc8b6b05cb668e7125ecc766adb1d2fdf6eb777d31cb4363957c",
+          "generatedAt": "2026-09-21T04:39:50.563Z",
+          "contentType": "application/xml"
+        }
+      }
+    },
+    "statsSnapshot": {
+      "generatedAt": "2026-09-21T04:39:50.559Z",
+      "totalItems": 6,
+      "byType": {
+        "guide": 1,
+        "documentation": 1,
+        "comparison": 1,
+        "feature": 1,
+        "industry": 1,
+        "changelog": 1
+      },
+      "byStatus": {
+        "published": 6
+      },
+      "byAudience": {
+        "restaurateur": 4,
+        "general_manager": 1,
+        "developer": 1
+      },
+      "byIntent": {
+        "informational": 2,
+        "transactional": 1,
+        "commercial": 3
+      },
+      "byProductArea": {
+        "qr_menu": 4,
+        "cloud_pos": 1,
+        "platform": 1
+      }
+    },
+    "diagnostics": {
+      "nodeVersion": "v24.21.0",
+      "platform": "win32",
+      "arch": "x64",
+      "peakMemoryRssMb": 69.94,
+      "peakHeapUsedMb": 11.62,
+      "peakHeapTotalMb": 14.39,
+      "cpuUserMs": 109,
+      "cpuSystemMs": 62
+    }
+  },
+  {
     "buildId": "pub-1789939840290-26d70ecb",
     "timestamp": "2026-09-20T21:30:40.337Z",
     "totalDurationMs": 41,
@@ -179,734 +907,6 @@
       "peakHeapTotalMb": 14.89,
       "cpuUserMs": 250,
       "cpuSystemMs": 109
-    }
-  },
-  {
-    "buildId": "pub-1789939262155-e1d07689",
-    "timestamp": "2026-09-20T21:21:02.197Z",
-    "totalDurationMs": 35,
-    "contentManifestSnapshot": {
-      "schemaVersion": "1.0.0",
-      "generatedAt": "2026-09-20T21:21:02.185Z",
-      "totalEntries": 6,
-      "entries": {
-        "guide-leaving-aggregators": {
-          "id": "guide-leaving-aggregators",
-          "slug": "leaving-aggregators-behind",
-          "contentType": "guide",
-          "version": "latest",
-          "checksum": "dceaa5d6fe08d127d481de12d21c6f8b7c8cb0437d4b29739b1dbe4826117c1e",
-          "updatedAt": "2026-09-18T00:00:00Z",
-          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
-          "editorialStatus": "published"
-        },
-        "doc-quick-start": {
-          "id": "doc-quick-start",
-          "slug": "5-minute-restaurant-quickstart",
-          "contentType": "documentation",
-          "version": "latest",
-          "checksum": "f436f001b4d4c564cdc08ce49c54eca1c19eb65ff97ff0f5a6f0f7b47c1926d8",
-          "updatedAt": "2026-09-20T00:00:00Z",
-          "url": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
-          "editorialStatus": "published"
-        },
-        "compare-vs-aggregators": {
-          "id": "compare-vs-aggregators",
-          "slug": "vs-delivery-aggregators",
-          "contentType": "comparison",
-          "version": "latest",
-          "checksum": "2e5de022ab40fffde34e65f8193546d51701e7b2f1b5f4f0be5c706928b7a1d2",
-          "updatedAt": "2026-09-15T00:00:00Z",
-          "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
-          "editorialStatus": "published"
-        },
-        "feature-qr-stand": {
-          "id": "feature-qr-stand",
-          "slug": "qr-menu",
-          "contentType": "feature",
-          "version": "latest",
-          "checksum": "9aee49758f27dd192d743c821f7d8028d8cbefd21bc4d1e6d6c1bebd8f234a29",
-          "updatedAt": "2026-09-19T00:00:00Z",
-          "url": "https://ros.algorithyum.in/features/qr-menu",
-          "editorialStatus": "published"
-        },
-        "industry-cafes": {
-          "id": "industry-cafes",
-          "slug": "specialty-cafes",
-          "contentType": "industry",
-          "version": "latest",
-          "checksum": "99d2b23b3a871b6964687854bec2b2bae0b14fac8c3b399bdf882aaca2688f39",
-          "updatedAt": "2026-09-17T00:00:00Z",
-          "url": "https://ros.algorithyum.in/industries/specialty-cafes",
-          "editorialStatus": "published"
-        },
-        "changelog-v2-0-4": {
-          "id": "changelog-v2-0-4",
-          "slug": "v2-0-4-release",
-          "contentType": "changelog",
-          "version": "latest",
-          "checksum": "66502e6d3910ae7e14c6b5a42f942cf35ce0288a4c9288c8f0bb3c262c363f9b",
-          "updatedAt": "2026-09-21T00:00:00Z",
-          "url": "https://ros.algorithyum.in/changelog",
-          "editorialStatus": "published"
-        }
-      }
-    },
-    "artifactsManifestSnapshot": {
-      "manifestVersion": "1.0.0",
-      "generatedAt": "2026-09-20T21:21:02.195Z",
-      "artifacts": {
-        "search-index.json": {
-          "path": "search-index.json",
-          "version": "1.0.0",
-          "sizeBytes": 7090,
-          "checksumSha256": "2d63ea56f4cb6742559a4915316f8f02901f357807d1818915249b2c27aff7ed",
-          "generatedAt": "2026-09-20T21:21:02.194Z",
-          "contentType": "application/json"
-        },
-        "search-index.min.json": {
-          "path": "search-index.min.json",
-          "version": "1.0.0",
-          "sizeBytes": 5680,
-          "checksumSha256": "4b550eaace633463a02a2d562f66f87d1cdd3478136a0842d2861642e7579745",
-          "generatedAt": "2026-09-20T21:21:02.195Z",
-          "contentType": "application/json"
-        },
-        "atom.xml": {
-          "path": "atom.xml",
-          "version": "1.0.0",
-          "sizeBytes": 2854,
-          "checksumSha256": "1a12e04c976283340d54368917b31eb398cc2ceed676cd1caf085ce158008d11",
-          "generatedAt": "2026-09-20T21:21:02.187Z",
-          "contentType": "application/xml"
-        },
-        "content-manifest.json": {
-          "path": "content-manifest.json",
-          "version": "1.0.0",
-          "sizeBytes": 2546,
-          "checksumSha256": "9f14349b1cf59182f6b5fabe6d361859babde2bace0de9d071164c3836084199",
-          "generatedAt": "2026-09-20T21:21:02.188Z",
-          "contentType": "application/json"
-        },
-        "content-stats.json": {
-          "path": "content-stats.json",
-          "version": "1.0.0",
-          "sizeBytes": 504,
-          "checksumSha256": "cdf702addd9c209d1daf49e914fbc765f5096c5f40f970a8faa3f9ceb7d6e39f",
-          "generatedAt": "2026-09-20T21:21:02.189Z",
-          "contentType": "application/json"
-        },
-        "jsonfeed.json": {
-          "path": "jsonfeed.json",
-          "version": "1.0.0",
-          "sizeBytes": 3065,
-          "checksumSha256": "c83bfa06308e7cf549bdb3ee2975eba75453fdf6f2487f6dc6bf1b5c3449819c",
-          "generatedAt": "2026-09-20T21:21:02.189Z",
-          "contentType": "application/json"
-        },
-        "responsive-assets.json": {
-          "path": "responsive-assets.json",
-          "version": "1.0.0",
-          "sizeBytes": 3678,
-          "checksumSha256": "6978884140da515e85e84f7ff90fd69dcfc062fc366f2bd681175bf8ce3303fa",
-          "generatedAt": "2026-09-20T21:21:02.191Z",
-          "contentType": "application/json"
-        },
-        "rss.xml": {
-          "path": "rss.xml",
-          "version": "1.0.0",
-          "sizeBytes": 3359,
-          "checksumSha256": "4387bda6ecfd6c17467745c4e74ed56477840abf0a0b40285e1984d21d0e4d19",
-          "generatedAt": "2026-09-20T21:21:02.193Z",
-          "contentType": "application/xml"
-        }
-      }
-    },
-    "statsSnapshot": {
-      "generatedAt": "2026-09-20T21:21:02.184Z",
-      "totalItems": 6,
-      "byType": {
-        "guide": 1,
-        "documentation": 1,
-        "comparison": 1,
-        "feature": 1,
-        "industry": 1,
-        "changelog": 1
-      },
-      "byStatus": {
-        "published": 6
-      },
-      "byAudience": {
-        "restaurateur": 4,
-        "general_manager": 1,
-        "developer": 1
-      },
-      "byIntent": {
-        "informational": 2,
-        "transactional": 1,
-        "commercial": 3
-      },
-      "byProductArea": {
-        "qr_menu": 4,
-        "cloud_pos": 1,
-        "platform": 1
-      }
-    },
-    "diagnostics": {
-      "nodeVersion": "v24.21.0",
-      "platform": "win32",
-      "arch": "x64",
-      "peakMemoryRssMb": 82.04,
-      "peakHeapUsedMb": 11.6,
-      "peakHeapTotalMb": 14.64,
-      "cpuUserMs": 359,
-      "cpuSystemMs": 156
-    }
-  },
-  {
-    "buildId": "pub-1789938062888-d4be7c40",
-    "timestamp": "2026-09-20T21:01:02.925Z",
-    "totalDurationMs": 32,
-    "contentManifestSnapshot": {
-      "schemaVersion": "1.0.0",
-      "generatedAt": "2026-09-20T21:01:02.914Z",
-      "totalEntries": 6,
-      "entries": {
-        "guide-leaving-aggregators": {
-          "id": "guide-leaving-aggregators",
-          "slug": "leaving-aggregators-behind",
-          "contentType": "guide",
-          "version": "latest",
-          "checksum": "dceaa5d6fe08d127d481de12d21c6f8b7c8cb0437d4b29739b1dbe4826117c1e",
-          "updatedAt": "2026-09-18T00:00:00Z",
-          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
-          "editorialStatus": "published"
-        },
-        "doc-quick-start": {
-          "id": "doc-quick-start",
-          "slug": "5-minute-restaurant-quickstart",
-          "contentType": "documentation",
-          "version": "latest",
-          "checksum": "f436f001b4d4c564cdc08ce49c54eca1c19eb65ff97ff0f5a6f0f7b47c1926d8",
-          "updatedAt": "2026-09-20T00:00:00Z",
-          "url": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
-          "editorialStatus": "published"
-        },
-        "compare-vs-aggregators": {
-          "id": "compare-vs-aggregators",
-          "slug": "vs-delivery-aggregators",
-          "contentType": "comparison",
-          "version": "latest",
-          "checksum": "2e5de022ab40fffde34e65f8193546d51701e7b2f1b5f4f0be5c706928b7a1d2",
-          "updatedAt": "2026-09-15T00:00:00Z",
-          "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
-          "editorialStatus": "published"
-        },
-        "feature-qr-stand": {
-          "id": "feature-qr-stand",
-          "slug": "qr-menu",
-          "contentType": "feature",
-          "version": "latest",
-          "checksum": "9aee49758f27dd192d743c821f7d8028d8cbefd21bc4d1e6d6c1bebd8f234a29",
-          "updatedAt": "2026-09-19T00:00:00Z",
-          "url": "https://ros.algorithyum.in/features/qr-menu",
-          "editorialStatus": "published"
-        },
-        "industry-cafes": {
-          "id": "industry-cafes",
-          "slug": "specialty-cafes",
-          "contentType": "industry",
-          "version": "latest",
-          "checksum": "99d2b23b3a871b6964687854bec2b2bae0b14fac8c3b399bdf882aaca2688f39",
-          "updatedAt": "2026-09-17T00:00:00Z",
-          "url": "https://ros.algorithyum.in/industries/specialty-cafes",
-          "editorialStatus": "published"
-        },
-        "changelog-v2-0-4": {
-          "id": "changelog-v2-0-4",
-          "slug": "v2-0-4-release",
-          "contentType": "changelog",
-          "version": "latest",
-          "checksum": "66502e6d3910ae7e14c6b5a42f942cf35ce0288a4c9288c8f0bb3c262c363f9b",
-          "updatedAt": "2026-09-21T00:00:00Z",
-          "url": "https://ros.algorithyum.in/changelog",
-          "editorialStatus": "published"
-        }
-      }
-    },
-    "artifactsManifestSnapshot": {
-      "manifestVersion": "1.0.0",
-      "generatedAt": "2026-09-20T21:01:02.923Z",
-      "artifacts": {
-        "search-index.json": {
-          "path": "search-index.json",
-          "version": "1.0.0",
-          "sizeBytes": 7090,
-          "checksumSha256": "a801f2847599809143200b23460adc82302632ac3d5f8eb33534ef27e06091c4",
-          "generatedAt": "2026-09-20T21:01:02.922Z",
-          "contentType": "application/json"
-        },
-        "search-index.min.json": {
-          "path": "search-index.min.json",
-          "version": "1.0.0",
-          "sizeBytes": 5680,
-          "checksumSha256": "061348a0ae2ae61ed72ddf0a6a5f20523477f3fbb64f14a97d788ccc16cfd756",
-          "generatedAt": "2026-09-20T21:01:02.923Z",
-          "contentType": "application/json"
-        },
-        "atom.xml": {
-          "path": "atom.xml",
-          "version": "1.0.0",
-          "sizeBytes": 2854,
-          "checksumSha256": "a6cd3e6990fd5e0e12136c943d3d26bf134974adf2f2b07cb1126bcc8ed60952",
-          "generatedAt": "2026-09-20T21:01:02.916Z",
-          "contentType": "application/xml"
-        },
-        "content-manifest.json": {
-          "path": "content-manifest.json",
-          "version": "1.0.0",
-          "sizeBytes": 2546,
-          "checksumSha256": "481822ea37aef19530e6a148fc2f478d9c5ca73b91c8e584a5b14678f99bec7d",
-          "generatedAt": "2026-09-20T21:01:02.917Z",
-          "contentType": "application/json"
-        },
-        "content-stats.json": {
-          "path": "content-stats.json",
-          "version": "1.0.0",
-          "sizeBytes": 504,
-          "checksumSha256": "18964cc9fcae5266cca8da8382029ba57aaf7da6a612ff142c1800ddb4d4c584",
-          "generatedAt": "2026-09-20T21:01:02.917Z",
-          "contentType": "application/json"
-        },
-        "jsonfeed.json": {
-          "path": "jsonfeed.json",
-          "version": "1.0.0",
-          "sizeBytes": 3065,
-          "checksumSha256": "c83bfa06308e7cf549bdb3ee2975eba75453fdf6f2487f6dc6bf1b5c3449819c",
-          "generatedAt": "2026-09-20T21:01:02.918Z",
-          "contentType": "application/json"
-        },
-        "responsive-assets.json": {
-          "path": "responsive-assets.json",
-          "version": "1.0.0",
-          "sizeBytes": 3678,
-          "checksumSha256": "e594b48be7980490e7eb2c267d27debd4e1fcf83086a86053f2c72271a975d56",
-          "generatedAt": "2026-09-20T21:01:02.919Z",
-          "contentType": "application/json"
-        },
-        "rss.xml": {
-          "path": "rss.xml",
-          "version": "1.0.0",
-          "sizeBytes": 3359,
-          "checksumSha256": "faf7aab4544e516be39868a7c69f49453c5646159536b8abc0007cac1a7edd86",
-          "generatedAt": "2026-09-20T21:01:02.920Z",
-          "contentType": "application/xml"
-        }
-      }
-    },
-    "statsSnapshot": {
-      "generatedAt": "2026-09-20T21:01:02.913Z",
-      "totalItems": 6,
-      "byType": {
-        "guide": 1,
-        "documentation": 1,
-        "comparison": 1,
-        "feature": 1,
-        "industry": 1,
-        "changelog": 1
-      },
-      "byStatus": {
-        "published": 6
-      },
-      "byAudience": {
-        "restaurateur": 4,
-        "general_manager": 1,
-        "developer": 1
-      },
-      "byIntent": {
-        "informational": 2,
-        "transactional": 1,
-        "commercial": 3
-      },
-      "byProductArea": {
-        "qr_menu": 4,
-        "cloud_pos": 1,
-        "platform": 1
-      }
-    },
-    "diagnostics": {
-      "nodeVersion": "v24.21.0",
-      "platform": "win32",
-      "arch": "x64",
-      "peakMemoryRssMb": 80.33,
-      "peakHeapUsedMb": 11.62,
-      "peakHeapTotalMb": 14.64,
-      "cpuUserMs": 234,
-      "cpuSystemMs": 234
-    }
-  },
-  {
-    "buildId": "pub-1789937685012-58108bdc",
-    "timestamp": "2026-09-20T20:54:45.053Z",
-    "totalDurationMs": 35,
-    "contentManifestSnapshot": {
-      "schemaVersion": "1.0.0",
-      "generatedAt": "2026-09-20T20:54:45.040Z",
-      "totalEntries": 6,
-      "entries": {
-        "guide-leaving-aggregators": {
-          "id": "guide-leaving-aggregators",
-          "slug": "leaving-aggregators-behind",
-          "contentType": "guide",
-          "version": "latest",
-          "checksum": "dceaa5d6fe08d127d481de12d21c6f8b7c8cb0437d4b29739b1dbe4826117c1e",
-          "updatedAt": "2026-09-18T00:00:00Z",
-          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
-          "editorialStatus": "published"
-        },
-        "doc-quick-start": {
-          "id": "doc-quick-start",
-          "slug": "5-minute-restaurant-quickstart",
-          "contentType": "documentation",
-          "version": "latest",
-          "checksum": "f436f001b4d4c564cdc08ce49c54eca1c19eb65ff97ff0f5a6f0f7b47c1926d8",
-          "updatedAt": "2026-09-20T00:00:00Z",
-          "url": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
-          "editorialStatus": "published"
-        },
-        "compare-vs-aggregators": {
-          "id": "compare-vs-aggregators",
-          "slug": "vs-delivery-aggregators",
-          "contentType": "comparison",
-          "version": "latest",
-          "checksum": "2e5de022ab40fffde34e65f8193546d51701e7b2f1b5f4f0be5c706928b7a1d2",
-          "updatedAt": "2026-09-15T00:00:00Z",
-          "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
-          "editorialStatus": "published"
-        },
-        "feature-qr-stand": {
-          "id": "feature-qr-stand",
-          "slug": "qr-menu",
-          "contentType": "feature",
-          "version": "latest",
-          "checksum": "9aee49758f27dd192d743c821f7d8028d8cbefd21bc4d1e6d6c1bebd8f234a29",
-          "updatedAt": "2026-09-19T00:00:00Z",
-          "url": "https://ros.algorithyum.in/features/qr-menu",
-          "editorialStatus": "published"
-        },
-        "industry-cafes": {
-          "id": "industry-cafes",
-          "slug": "specialty-cafes",
-          "contentType": "industry",
-          "version": "latest",
-          "checksum": "99d2b23b3a871b6964687854bec2b2bae0b14fac8c3b399bdf882aaca2688f39",
-          "updatedAt": "2026-09-17T00:00:00Z",
-          "url": "https://ros.algorithyum.in/industries/specialty-cafes",
-          "editorialStatus": "published"
-        },
-        "changelog-v2-0-4": {
-          "id": "changelog-v2-0-4",
-          "slug": "v2-0-4-release",
-          "contentType": "changelog",
-          "version": "latest",
-          "checksum": "66502e6d3910ae7e14c6b5a42f942cf35ce0288a4c9288c8f0bb3c262c363f9b",
-          "updatedAt": "2026-09-21T00:00:00Z",
-          "url": "https://ros.algorithyum.in/changelog",
-          "editorialStatus": "published"
-        }
-      }
-    },
-    "artifactsManifestSnapshot": {
-      "manifestVersion": "1.0.0",
-      "generatedAt": "2026-09-20T20:54:45.051Z",
-      "artifacts": {
-        "search-index.json": {
-          "path": "search-index.json",
-          "version": "1.0.0",
-          "sizeBytes": 7090,
-          "checksumSha256": "06025bd3a8c0976be012b29f6d19436b2c50b77b009255ebd2e9212e8405678b",
-          "generatedAt": "2026-09-20T20:54:45.050Z",
-          "contentType": "application/json"
-        },
-        "search-index.min.json": {
-          "path": "search-index.min.json",
-          "version": "1.0.0",
-          "sizeBytes": 5680,
-          "checksumSha256": "4b44f6cfe3b8523484262e7c737b62f83a0745c6051eb674c11e8e1be7dc4cb4",
-          "generatedAt": "2026-09-20T20:54:45.051Z",
-          "contentType": "application/json"
-        },
-        "atom.xml": {
-          "path": "atom.xml",
-          "version": "1.0.0",
-          "sizeBytes": 2854,
-          "checksumSha256": "e7753cb426cdad41ee430414ec23809161cc75f083a8688bfdabc4f7082f3723",
-          "generatedAt": "2026-09-20T20:54:45.043Z",
-          "contentType": "application/xml"
-        },
-        "content-manifest.json": {
-          "path": "content-manifest.json",
-          "version": "1.0.0",
-          "sizeBytes": 2546,
-          "checksumSha256": "b6709ff98b84c3393ca21255c39d01f2a4784e0f134fd3da2e7f7ed6fd0b4b9b",
-          "generatedAt": "2026-09-20T20:54:45.045Z",
-          "contentType": "application/json"
-        },
-        "content-stats.json": {
-          "path": "content-stats.json",
-          "version": "1.0.0",
-          "sizeBytes": 504,
-          "checksumSha256": "d4eb1ec1b305458fd7453fe181388f1922cd0040e870c6e50064797c568a762d",
-          "generatedAt": "2026-09-20T20:54:45.046Z",
-          "contentType": "application/json"
-        },
-        "jsonfeed.json": {
-          "path": "jsonfeed.json",
-          "version": "1.0.0",
-          "sizeBytes": 3065,
-          "checksumSha256": "c83bfa06308e7cf549bdb3ee2975eba75453fdf6f2487f6dc6bf1b5c3449819c",
-          "generatedAt": "2026-09-20T20:54:45.047Z",
-          "contentType": "application/json"
-        },
-        "responsive-assets.json": {
-          "path": "responsive-assets.json",
-          "version": "1.0.0",
-          "sizeBytes": 3678,
-          "checksumSha256": "8b88f53790aa8bf58190504e442964e071fbe91d650534ffca893b2f405e46b0",
-          "generatedAt": "2026-09-20T20:54:45.048Z",
-          "contentType": "application/json"
-        },
-        "rss.xml": {
-          "path": "rss.xml",
-          "version": "1.0.0",
-          "sizeBytes": 3359,
-          "checksumSha256": "f3c95b97a9c329158ffadf87af1baabe23547faf73b1249b904d3037a7c727e6",
-          "generatedAt": "2026-09-20T20:54:45.049Z",
-          "contentType": "application/xml"
-        }
-      }
-    },
-    "statsSnapshot": {
-      "generatedAt": "2026-09-20T20:54:45.039Z",
-      "totalItems": 6,
-      "byType": {
-        "guide": 1,
-        "documentation": 1,
-        "comparison": 1,
-        "feature": 1,
-        "industry": 1,
-        "changelog": 1
-      },
-      "byStatus": {
-        "published": 6
-      },
-      "byAudience": {
-        "restaurateur": 4,
-        "general_manager": 1,
-        "developer": 1
-      },
-      "byIntent": {
-        "informational": 2,
-        "transactional": 1,
-        "commercial": 3
-      },
-      "byProductArea": {
-        "qr_menu": 4,
-        "cloud_pos": 1,
-        "platform": 1
-      }
-    },
-    "diagnostics": {
-      "nodeVersion": "v24.21.0",
-      "platform": "win32",
-      "arch": "x64",
-      "peakMemoryRssMb": 80.67,
-      "peakHeapUsedMb": 11.59,
-      "peakHeapTotalMb": 14.64,
-      "cpuUserMs": 218,
-      "cpuSystemMs": 140
-    }
-  },
-  {
-    "buildId": "pub-1789937176596-5003e53c",
-    "timestamp": "2026-09-20T20:46:16.647Z",
-    "totalDurationMs": 45,
-    "contentManifestSnapshot": {
-      "schemaVersion": "1.0.0",
-      "generatedAt": "2026-09-20T20:46:16.628Z",
-      "totalEntries": 6,
-      "entries": {
-        "guide-leaving-aggregators": {
-          "id": "guide-leaving-aggregators",
-          "slug": "leaving-aggregators-behind",
-          "contentType": "guide",
-          "version": "latest",
-          "checksum": "dceaa5d6fe08d127d481de12d21c6f8b7c8cb0437d4b29739b1dbe4826117c1e",
-          "updatedAt": "2026-09-18T00:00:00Z",
-          "url": "https://ros.algorithyum.in/resources/guides/leaving-aggregators-behind",
-          "editorialStatus": "published"
-        },
-        "doc-quick-start": {
-          "id": "doc-quick-start",
-          "slug": "5-minute-restaurant-quickstart",
-          "contentType": "documentation",
-          "version": "latest",
-          "checksum": "f436f001b4d4c564cdc08ce49c54eca1c19eb65ff97ff0f5a6f0f7b47c1926d8",
-          "updatedAt": "2026-09-20T00:00:00Z",
-          "url": "https://ros.algorithyum.in/docs/latest/getting-started/quick-start-guide",
-          "editorialStatus": "published"
-        },
-        "compare-vs-aggregators": {
-          "id": "compare-vs-aggregators",
-          "slug": "vs-delivery-aggregators",
-          "contentType": "comparison",
-          "version": "latest",
-          "checksum": "2e5de022ab40fffde34e65f8193546d51701e7b2f1b5f4f0be5c706928b7a1d2",
-          "updatedAt": "2026-09-15T00:00:00Z",
-          "url": "https://ros.algorithyum.in/compare/vs-delivery-aggregators",
-          "editorialStatus": "published"
-        },
-        "feature-qr-stand": {
-          "id": "feature-qr-stand",
-          "slug": "qr-menu",
-          "contentType": "feature",
-          "version": "latest",
-          "checksum": "9aee49758f27dd192d743c821f7d8028d8cbefd21bc4d1e6d6c1bebd8f234a29",
-          "updatedAt": "2026-09-19T00:00:00Z",
-          "url": "https://ros.algorithyum.in/features/qr-menu",
-          "editorialStatus": "published"
-        },
-        "industry-cafes": {
-          "id": "industry-cafes",
-          "slug": "specialty-cafes",
-          "contentType": "industry",
-          "version": "latest",
-          "checksum": "99d2b23b3a871b6964687854bec2b2bae0b14fac8c3b399bdf882aaca2688f39",
-          "updatedAt": "2026-09-17T00:00:00Z",
-          "url": "https://ros.algorithyum.in/industries/specialty-cafes",
-          "editorialStatus": "published"
-        },
-        "changelog-v2-0-4": {
-          "id": "changelog-v2-0-4",
-          "slug": "v2-0-4-release",
-          "contentType": "changelog",
-          "version": "latest",
-          "checksum": "66502e6d3910ae7e14c6b5a42f942cf35ce0288a4c9288c8f0bb3c262c363f9b",
-          "updatedAt": "2026-09-21T00:00:00Z",
-          "url": "https://ros.algorithyum.in/changelog",
-          "editorialStatus": "published"
-        }
-      }
-    },
-    "artifactsManifestSnapshot": {
-      "manifestVersion": "1.0.0",
-      "generatedAt": "2026-09-20T20:46:16.644Z",
-      "artifacts": {
-        "search-index.json": {
-          "path": "search-index.json",
-          "version": "1.0.0",
-          "sizeBytes": 7090,
-          "checksumSha256": "ce9d788dc5ebf2090f7a9ed907a662d4082f29d4e4a54e6ea010cb3099fb05e3",
-          "generatedAt": "2026-09-20T20:46:16.643Z",
-          "contentType": "application/json"
-        },
-        "search-index.min.json": {
-          "path": "search-index.min.json",
-          "version": "1.0.0",
-          "sizeBytes": 5680,
-          "checksumSha256": "a9974bb3621b68ed6d32195ae7c8ccd89fa8ef6277639fe2ff0314d1873d052f",
-          "generatedAt": "2026-09-20T20:46:16.644Z",
-          "contentType": "application/json"
-        },
-        "atom.xml": {
-          "path": "atom.xml",
-          "version": "1.0.0",
-          "sizeBytes": 2854,
-          "checksumSha256": "fa5e3df414b549df724b4bc74db51739c0fde6ebba3ba90f3830194a68744642",
-          "generatedAt": "2026-09-20T20:46:16.630Z",
-          "contentType": "application/xml"
-        },
-        "content-manifest.json": {
-          "path": "content-manifest.json",
-          "version": "1.0.0",
-          "sizeBytes": 2546,
-          "checksumSha256": "4dc435d29f445fc64c0e7851e568d3592ea65ff84c433aa27b00dce53d8023e0",
-          "generatedAt": "2026-09-20T20:46:16.632Z",
-          "contentType": "application/json"
-        },
-        "content-stats.json": {
-          "path": "content-stats.json",
-          "version": "1.0.0",
-          "sizeBytes": 504,
-          "checksumSha256": "e424d3c6a472418f8ac39c8b0be4ebbbae15bc4af768ffb0726ecfcbeab20da2",
-          "generatedAt": "2026-09-20T20:46:16.633Z",
-          "contentType": "application/json"
-        },
-        "jsonfeed.json": {
-          "path": "jsonfeed.json",
-          "version": "1.0.0",
-          "sizeBytes": 3065,
-          "checksumSha256": "c83bfa06308e7cf549bdb3ee2975eba75453fdf6f2487f6dc6bf1b5c3449819c",
-          "generatedAt": "2026-09-20T20:46:16.635Z",
-          "contentType": "application/json"
-        },
-        "responsive-assets.json": {
-          "path": "responsive-assets.json",
-          "version": "1.0.0",
-          "sizeBytes": 3678,
-          "checksumSha256": "00635630b6b1df57b69934568bccdba5a2444f24eb0f62411bb4bbf39ce981fa",
-          "generatedAt": "2026-09-20T20:46:16.637Z",
-          "contentType": "application/json"
-        },
-        "rss.xml": {
-          "path": "rss.xml",
-          "version": "1.0.0",
-          "sizeBytes": 3359,
-          "checksumSha256": "e9129ea93386420f94188a73b7dcc0d44f2803476237b6604d641694baddc7f4",
-          "generatedAt": "2026-09-20T20:46:16.641Z",
-          "contentType": "application/xml"
-        }
-      }
-    },
-    "statsSnapshot": {
-      "generatedAt": "2026-09-20T20:46:16.626Z",
-      "totalItems": 6,
-      "byType": {
-        "guide": 1,
-        "documentation": 1,
-        "comparison": 1,
-        "feature": 1,
-        "industry": 1,
-        "changelog": 1
-      },
-      "byStatus": {
-        "published": 6
-      },
-      "byAudience": {
-        "restaurateur": 4,
-        "general_manager": 1,
-        "developer": 1
-      },
-      "byIntent": {
-        "informational": 2,
-        "transactional": 1,
-        "commercial": 3
-      },
-      "byProductArea": {
-        "qr_menu": 4,
-        "cloud_pos": 1,
-        "platform": 1
-      }
-    },
-    "diagnostics": {
-      "nodeVersion": "v24.21.0",
-      "platform": "win32",
-      "arch": "x64",
-      "peakMemoryRssMb": 83.98,
-      "peakHeapUsedMb": 11.65,
-      "peakHeapTotalMb": 14.64,
-      "cpuUserMs": 390,
-      "cpuSystemMs": 156
     }
   }
 ]

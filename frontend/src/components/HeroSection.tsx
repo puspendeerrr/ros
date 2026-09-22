@@ -55,7 +55,7 @@ export const HeroSection: React.FC = () => {
           font-size: clamp(2rem, 1.8rem + 2.5vw, 3.4rem) !important;
           font-weight: 900 !important;
           letter-spacing: -2px !important;
-          line-height: 1.1 !important;
+          line-height: 1.15 !important;
           margin: 0 0 20px 0 !important;
           color: #0F172A !important;
           max-width: 580px;
@@ -63,11 +63,11 @@ export const HeroSection: React.FC = () => {
         .hero-btn-primary-v4 {
           background: #F97316 !important;
           border-color: #F97316 !important;
-          height: 54px !important;
-          padding: 0 36px !important;
+          height: 48px !important;
+          padding: 0 28px !important;
           border-radius: 12px !important;
-          font-weight: 750 !important;
-          font-size: 16px !important;
+          font-weight: 700 !important;
+          font-size: 15px !important;
           box-shadow: 0 8px 20px rgba(249,115,22,0.25) !important;
           transition: all 0.25s !important;
         }
@@ -76,11 +76,11 @@ export const HeroSection: React.FC = () => {
           box-shadow: 0 12px 24px rgba(249,115,22,0.35) !important;
         }
         .hero-btn-secondary-v4 {
-          height: 54px !important;
-          padding: 0 36px !important;
+          height: 48px !important;
+          padding: 0 28px !important;
           border-radius: 12px !important;
-          font-weight: 750 !important;
-          font-size: 16px !important;
+          font-weight: 700 !important;
+          font-size: 15px !important;
           border-color: #CBD5E1 !important;
           color: #475569 !important;
           transition: all 0.25s !important;
@@ -90,33 +90,33 @@ export const HeroSection: React.FC = () => {
           transform: translateY(-2px);
         }
         .benefit-item-v4 {
-          font-size: 15px;
+          font-size: 14px;
           font-weight: 700;
-          color: #1E293B;
+          color: #0F172A;
           display: inline-flex;
           align-items: center;
           gap: 8px;
         }
         .benefit-icon-v4 {
-          color: #22C55E;
+          color: #16A34A;
           font-weight: 900;
           font-size: 16px;
         }
         .trust-text-v4 {
-          font-size: 13px;
+          font-size: 12px;
           color: #64748B;
           font-weight: 600;
-          margin-top: 14px;
+          margin-top: 16px;
           display: block;
         }
 
         /* Physical Table Stand Mockup */
         .physical-stand {
-          width: 160px;
-          height: 240px;
-          background: linear-gradient(to bottom, #475569, #1E293B);
-          border-radius: 12px;
-          padding: 6px;
+          width: 200px;
+          min-height: 290px;
+          background: linear-gradient(to bottom, #475569, #0F172A);
+          border-radius: 16px;
+          padding: 8px;
           box-shadow: 0 20px 40px rgba(15,23,42,0.15);
           display: flex;
           flex-direction: column;
@@ -125,18 +125,18 @@ export const HeroSection: React.FC = () => {
         .stand-base {
           position: absolute;
           bottom: -12px;
-          left: -10px;
-          right: -10px;
+          left: -8px;
+          right: -8px;
           height: 16px;
           background: #0F172A;
-          border-radius: 4px;
+          border-radius: 8px;
           box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .stand-card {
           flex: 1;
           background: #FFFFFF;
-          border-radius: 8px;
-          padding: 12px;
+          border-radius: 12px;
+          padding: 16px 12px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -146,10 +146,10 @@ export const HeroSection: React.FC = () => {
 
         /* Phone Mockup */
         .customer-phone {
-          width: 170px;
-          height: 310px;
+          width: 210px;
+          min-height: 350px;
           background: #0F172A;
-          border-radius: 28px;
+          border-radius: 24px;
           border: 6px solid #0F172A;
           box-shadow: 0 25px 50px rgba(15,23,42,0.2);
           overflow: hidden;
@@ -159,7 +159,7 @@ export const HeroSection: React.FC = () => {
         .phone-screen {
           flex: 1;
           background: #FFFFFF;
-          border-radius: 22px;
+          border-radius: 18px;
           overflow: hidden;
           display: flex;
           flex-direction: column;
@@ -211,9 +211,9 @@ export const HeroSection: React.FC = () => {
           <Row gutter={[48, 48]} align="middle">
             {/* ─── Left Side: Super Simple Headline & Checklist ─── */}
             <Col xs={24} lg={11}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#FFF7ED', border: '1px solid #FFEDD5', padding: '6px 14px', borderRadius: '30px', marginBottom: '20px' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#FFF7ED', border: '1px solid #FFEDD5', padding: '6px 14px', borderRadius: '9999px', marginBottom: '20px' }}>
                 <span style={{ fontSize: '12px' }}>🇮🇳</span>
-                <span style={{ color: '#EA580C', fontWeight: 750, fontSize: '11px', letterSpacing: '0.5px' }}>MADE FOR INDIAN RESTAURANTS</span>
+                <span style={{ color: '#EA580C', fontWeight: 700, fontSize: '12px', letterSpacing: '0.5px' }}>Made for Indian Restaurants</span>
               </div>
 
               <Title level={1} className="hero-headline-v4">
@@ -236,7 +236,7 @@ export const HeroSection: React.FC = () => {
                 ].map(b => (
                   <Col span={12} key={b}>
                     <span className="benefit-item-v4">
-                      <Check size={16} strokeWidth={3} style={{ color: '#22C55E' }} /> {b}
+                      <Check size={16} strokeWidth={3} style={{ color: '#16A34A' }} /> {b}
                     </span>
                   </Col>
                 ))}
@@ -279,11 +279,11 @@ export const HeroSection: React.FC = () => {
                 {/* 1. Physical QR Table Stand */}
                 <div className="physical-stand">
                   <div className="stand-card">
-                    <span style={{ fontSize: '8px', fontWeight: 800, color: '#EA580C', background: '#FFF7ED', padding: '2px 8px', borderRadius: '10px' }}>THE PEPPER BISTRO</span>
-                    <QrCode size={72} strokeWidth={1.5} style={{ color: '#0F172A', margin: '12px 0' }} />
+                    <span style={{ fontSize: '12px', fontWeight: 800, color: '#EA580C', background: '#FFF7ED', padding: '4px 10px', borderRadius: '8px' }}>The Pepper Bistro</span>
+                    <QrCode size={80} strokeWidth={1.5} style={{ color: '#0F172A', margin: '14px 0' }} />
                     <div>
-                      <span style={{ display: 'block', fontSize: '9px', fontWeight: 900, color: '#0F172A' }}>SCAN TO VIEW MENU</span>
-                      <span style={{ display: 'block', fontSize: '6px', color: '#64748B', marginTop: '2px' }}>No App Download Required</span>
+                      <span style={{ display: 'block', fontSize: '13px', fontWeight: 800, color: '#0F172A' }}>Scan to View Menu</span>
+                      <span style={{ display: 'block', fontSize: '12px', color: '#64748B', marginTop: '3px' }}>No app download required</span>
                     </div>
                   </div>
                   <div className="stand-base" />
@@ -291,49 +291,49 @@ export const HeroSection: React.FC = () => {
 
                 {/* 2. Dotted Connecting Flow with Label */}
                 <div className="connecting-flow">
-                  <span style={{ fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', background: '#FFF7ED', padding: '4px 10px', borderRadius: '12px', border: '1px solid #FFEDD5', color: '#EA580C', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                    <Camera size={12} /> Scan QR
+                  <span style={{ fontSize: '12px', fontWeight: 700, background: '#FFF7ED', padding: '5px 12px', borderRadius: '9999px', border: '1px solid #FFEDD5', color: '#EA580C', display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                    <Camera size={14} /> Scan QR
                   </span>
-                  <span className="connecting-arrow"><ArrowRight size={20} strokeWidth={3} /></span>
+                  <span className="connecting-arrow"><ArrowRight size={22} strokeWidth={3} /></span>
                 </div>
 
                 {/* 3. Sleek Mobile Mockup displaying Diner Menu */}
                 <div className="customer-phone">
                   <div className="phone-screen">
                     {/* Header Banner */}
-                    <div style={{ height: '48px', background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)', padding: '6px 10px', color: '#FFFFFF', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                      <span style={{ fontSize: '9px', fontWeight: 800 }}>The Pepper Bistro</span>
-                      <span style={{ fontSize: '5.5px', color: '#94A3B8' }}>Koramangala, Bengaluru</span>
+                    <div style={{ height: '60px', background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)', padding: '8px 12px', color: '#FFFFFF', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      <span style={{ fontSize: '13px', fontWeight: 800 }}>The Pepper Bistro</span>
+                      <span style={{ fontSize: '12px', color: '#94A3B8' }}>Koramangala, Bengaluru</span>
                     </div>
                     {/* Status badge floating inside phone */}
-                    <div style={{ margin: '-8px 6px 4px 6px', background: '#FFFFFF', borderRadius: '4px', padding: '4px', border: '1px solid #F1F5F9', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
-                      <span style={{ fontSize: '7px', fontWeight: 800, color: '#0F172A' }}>Digital Menu</span>
-                      <span style={{ fontSize: '5px', background: '#F0FDF4', color: '#16A34A', padding: '1px 3px', borderRadius: '4px', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '2px' }}>
-                        <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#16A34A' }} /> Open
+                    <div style={{ margin: '-10px 8px 6px 8px', background: '#FFFFFF', borderRadius: '8px', padding: '6px 10px', border: '1px solid #F1F5F9', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+                      <span style={{ fontSize: '12px', fontWeight: 800, color: '#0F172A' }}>Digital Menu</span>
+                      <span style={{ fontSize: '12px', background: '#F0FDF4', color: '#16A34A', padding: '2px 6px', borderRadius: '8px', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
+                        <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#16A34A' }} /> Open
                       </span>
                     </div>
                     {/* Menu items */}
-                    <div style={{ padding: '4px 6px', display: 'flex', flexDirection: 'column', gap: '4px', flex: 1, overflow: 'hidden' }}>
+                    <div style={{ padding: '6px 8px', display: 'flex', flexDirection: 'column', gap: '6px', flex: 1, overflow: 'hidden' }}>
                       {[
                         { name: 'Paneer Butter Masala', price: '₹280', veg: true },
                         { name: 'Chicken Biryani', price: '₹340', veg: false },
                         { name: 'Dal Makhani', price: '₹220', veg: true },
                       ].map((item, idx) => (
-                        <div key={idx} style={{ display: 'flex', gap: '5px', padding: '4px', background: '#FFFFFF', borderRadius: '4px', border: '1px solid #F1F5F9', alignItems: 'center' }}>
-                          <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: '#FFF7ED', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <Utensils size={10} style={{ color: '#EA580C' }} />
+                        <div key={idx} style={{ display: 'flex', gap: '8px', padding: '6px 8px', background: '#FFFFFF', borderRadius: '8px', border: '1px solid #F1F5F9', alignItems: 'center' }}>
+                          <div style={{ width: '26px', height: '26px', borderRadius: '8px', background: '#FFF7ED', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Utensils size={12} style={{ color: '#EA580C' }} />
                           </div>
                           <div style={{ flex: 1, minWidth: 0 }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', lineHeight: 1 }}>
-                              <span style={{ fontSize: '7.5px', fontWeight: 800, color: '#1E293B', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{item.name}</span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', lineHeight: 1.2 }}>
+                              <span style={{ fontSize: '12px', fontWeight: 700, color: '#0F172A', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{item.name}</span>
                               <FoodVegIndicator isVeg={item.veg} />
                             </div>
-                            <span style={{ display: 'block', fontSize: '7.5px', fontWeight: 900, color: '#F97316', marginTop: '2px' }}>{item.price}</span>
+                            <span style={{ display: 'block', fontSize: '12px', fontWeight: 800, color: '#EA580C', marginTop: '2px' }}>{item.price}</span>
                           </div>
                         </div>
                       ))}
                     </div>
-                    <div style={{ background: '#FFFFFF', borderTop: '1px solid #F1F5F9', padding: '4px 0', textAlign: 'center', fontSize: '5.5px', color: '#94A3B8', fontWeight: 600 }}>
+                    <div style={{ background: '#FFFFFF', borderTop: '1px solid #F1F5F9', padding: '6px 0', textAlign: 'center', fontSize: '12px', color: '#64748B', fontWeight: 600 }}>
                       Powered by Restaurant OS
                     </div>
                   </div>
@@ -413,12 +413,12 @@ export const FeaturesSection: React.FC = () => {
         }
         .feature-title-v3 {
           font-size: 18px;
-          fontWeight: 800;
+          font-weight: 700;
           color: #0F172A;
           margin: 16px 0 8px 0;
         }
         .feature-desc-v3 {
-          font-size: 13.5px;
+          font-size: 14px;
           color: #64748B;
           line-height: 1.5;
         }
@@ -438,10 +438,10 @@ export const FeaturesSection: React.FC = () => {
       <section className="features-section-v3" id="how-it-works">
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <Title level={2} style={{ fontSize: '30px', fontWeight: 900, color: '#0F172A', letterSpacing: '-1px' }}>
+            <Title level={2} style={{ fontSize: '32px', fontWeight: 900, color: '#0F172A', letterSpacing: '-1px' }}>
               Everything You Need to Run Your Restaurant Digitally
             </Title>
-            <Paragraph style={{ fontSize: '15px', color: '#64748B', maxWidth: '600px', margin: '8px auto 0 auto' }}>
+            <Paragraph style={{ fontSize: '16px', color: '#64748B', maxWidth: '600px', margin: '8px auto 0 auto' }}>
               Simple, powerful tools designed specifically for non-technical restaurant owners in India.
             </Paragraph>
           </div>
@@ -481,7 +481,7 @@ export const SocialProofMetrics: React.FC = () => {
               <div style={{ fontSize: '32px', fontWeight: 900, color: '#0F172A', letterSpacing: '-1px', lineHeight: 1.2 }}>
                 {m.value}
               </div>
-              <div style={{ fontSize: '12.5px', color: '#64748B', fontWeight: 600, marginTop: '2px' }}>{m.label}</div>
+              <div style={{ fontSize: '12px', color: '#64748B', fontWeight: 600, marginTop: '4px' }}>{m.label}</div>
             </Col>
           ))}
         </Row>

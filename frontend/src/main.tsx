@@ -2,9 +2,9 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.tsx';
-import { initializeAnalytics } from './utils/analytics.js';
+import { initializeAnalytics } from './lib/analytics.ts';
 
-// Initialize telemetry providers if environment variables are provided
+// Initialize enterprise multi-provider telemetry hub
 initializeAnalytics();
 
 createRoot(document.getElementById('root')!).render(

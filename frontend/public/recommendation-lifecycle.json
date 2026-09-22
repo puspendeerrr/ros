@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T21:30:41.525Z",
+  "generatedAt": "2026-09-22T04:44:13.847Z",
   "statusSummary": {
     "open": 1,
     "accepted": 0,
@@ -27,8 +27,8 @@
         "confidenceScore": 92,
         "priorityClassification": "quick_win"
       },
-      "createdAt": "2026-09-20T21:30:41.524Z",
-      "updatedAt": "2026-09-20T21:30:41.524Z"
+      "createdAt": "2026-09-22T04:44:13.847Z",
+      "updatedAt": "2026-09-22T04:44:13.847Z"
     }
   ]
 }

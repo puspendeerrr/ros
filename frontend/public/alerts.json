@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T21:30:41.525Z",
+  "generatedAt": "2026-09-22T04:44:13.847Z",
   "criticalCount": 0,
   "warningCount": 5,
   "infoCount": 0,
@@ -11,7 +11,7 @@
       "title": "Lost AI Citations on \"5-Minute Restaurant Quick Start Guide\"",
       "description": "Detected 2 citation losses in frontier AI search engines.",
       "affectedUrl": "https://restaurantos.com/documentation/5-minute-restaurant-quickstart",
-      "detectedAt": "2026-09-20T21:30:41.525Z",
+      "detectedAt": "2026-09-22T04:44:13.847Z",
       "rootCause": {
         "alertId": "alt-cit-doc-quick-start",
         "symptom": "Detected 2 citation losses in frontier AI search engines.",
@@ -37,7 +37,7 @@
       "title": "Lost AI Citations on \"Restaurant OS vs. Food Delivery Aggregators\"",
       "description": "Detected 2 citation losses in frontier AI search engines.",
       "affectedUrl": "https://restaurantos.com/comparison/vs-delivery-aggregators",
-      "detectedAt": "2026-09-20T21:30:41.525Z",
+      "detectedAt": "2026-09-22T04:44:13.847Z",
       "rootCause": {
         "alertId": "alt-cit-compare-vs-aggregators",
         "symptom": "Detected 2 citation losses in frontier AI search engines.",
@@ -63,7 +63,7 @@
       "title": "Lost AI Citations on \"Dynamic QR Menu Stand Ecosystem\"",
       "description": "Detected 2 citation losses in frontier AI search engines.",
       "affectedUrl": "https://restaurantos.com/feature/qr-menu",
-      "detectedAt": "2026-09-20T21:30:41.525Z",
+      "detectedAt": "2026-09-22T04:44:13.847Z",
       "rootCause": {
         "alertId": "alt-cit-feature-qr-stand",
         "symptom": "Detected 2 citation losses in frontier AI search engines.",
@@ -89,7 +89,7 @@
       "title": "Lost AI Citations on \"Hospitality Architecture for Specialty Cafes & Coffee Shops\"",
       "description": "Detected 2 citation losses in frontier AI search engines.",
       "affectedUrl": "https://restaurantos.com/industry/specialty-cafes",
-      "detectedAt": "2026-09-20T21:30:41.525Z",
+      "detectedAt": "2026-09-22T04:44:13.847Z",
       "rootCause": {
         "alertId": "alt-cit-industry-cafes",
         "symptom": "Detected 2 citation losses in frontier AI search engines.",
@@ -115,7 +115,7 @@
       "title": "Lost AI Citations on \"Restaurant OS v2.0.4 Enterprise Architecture Release\"",
       "description": "Detected 2 citation losses in frontier AI search engines.",
       "affectedUrl": "https://restaurantos.com/changelog/v2-0-4-release",
-      "detectedAt": "2026-09-20T21:30:41.525Z",
+      "detectedAt": "2026-09-22T04:44:13.847Z",
       "rootCause": {
         "alertId": "alt-cit-changelog-v2-0-4",
         "symptom": "Detected 2 citation losses in frontier AI search engines.",

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-20T21:30:41.523Z",
+  "generatedAt": "2026-09-22T04:44:13.846Z",
   "averageEngagementScore": 78,
-  "averageDecayScore": 0,
+  "averageDecayScore": 1,
   "decayingPagesCount": 0,
   "pages": [
     {
@@ -15,8 +15,8 @@
         "exitRate": 0.22,
         "dwellTimeSeconds": 360
       },
-      "contentDecayScore": 0,
-      "freshnessDays": 2,
+      "contentDecayScore": 1,
+      "freshnessDays": 4,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     },
@@ -32,7 +32,7 @@
         "dwellTimeSeconds": 225
       },
       "contentDecayScore": 0,
-      "freshnessDays": 0,
+      "freshnessDays": 2,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     },
@@ -41,14 +41,14 @@
       "title": "Restaurant OS vs. Food Delivery Aggregators",
       "pageViews": 10500,
       "uniqueVisitors": 7560,
-      "engagementScore": 78,
+      "engagementScore": 77,
       "bounceSignals": {
-        "bounceRate": 0.35,
-        "exitRate": 0.22,
+        "bounceRate": 0.36,
+        "exitRate": 0.23,
         "dwellTimeSeconds": 270
       },
-      "contentDecayScore": 1,
-      "freshnessDays": 5,
+      "contentDecayScore": 2,
+      "freshnessDays": 7,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     },
@@ -63,8 +63,8 @@
         "exitRate": 0.22,
         "dwellTimeSeconds": 180
       },
-      "contentDecayScore": 0,
-      "freshnessDays": 1,
+      "contentDecayScore": 1,
+      "freshnessDays": 3,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     },
@@ -80,7 +80,7 @@
         "dwellTimeSeconds": 225
       },
       "contentDecayScore": 1,
-      "freshnessDays": 3,
+      "freshnessDays": 5,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     },
@@ -96,7 +96,7 @@
         "dwellTimeSeconds": 135
       },
       "contentDecayScore": 0,
-      "freshnessDays": 0,
+      "freshnessDays": 1,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     }

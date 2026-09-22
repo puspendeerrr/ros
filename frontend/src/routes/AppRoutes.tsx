@@ -6,6 +6,7 @@ import { AuthLayout } from '../layouts/AuthLayout.js';
 import { MainLayout } from '../layouts/MainLayout.js';
 import { LandingLayout } from '../layouts/LandingLayout.js';
 import { ScrollToTop } from '../components/ScrollToTop.js';
+import { AnalyticsTracker } from '../components/analytics/AnalyticsTracker.tsx';
 import { SplashLoader } from '../components/SplashLoader.js';
 import { ProtectedRoute, PublicOnlyRoute } from './ProtectedRoute.js';
 import { useAuthStore } from '../store/auth.store.js';
@@ -94,6 +95,7 @@ export const AppRoutes: React.FC = () => {
   return (
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <ScrollToTop />
+      <AnalyticsTracker />
       <AnimatePresence>
         {showSplash && <SplashLoader />}
       </AnimatePresence>
