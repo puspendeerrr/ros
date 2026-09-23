@@ -36,26 +36,31 @@ app.use((req, res, next) => {
 
 // Configure CORS allowed origins from comma-separated string
 const allowedOrigins = env.CORS_ORIGINS.split(',').map((origin) => origin.trim());
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (
-        !origin ||
-        allowedOrigins.includes(origin) ||
-        allowedOrigins.includes('*') ||
-        origin.endsWith('.vercel.app') ||
-        origin.endsWith('.algorithyum.in') ||
-        origin.includes('localhost') ||
-        origin.includes('127.0.0.1')
-      ) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    credentials: true,
-  })
-);
+const corsOptions: cors.CorsOptions = {
+  origin: (origin, callback) => {
+    if (
+      !origin ||
+      origin === 'https://ros.algorithyum.in' ||
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.algorithyum.in') ||
+      origin.endsWith('.vercel.app') ||
+      origin.includes('localhost') ||
+      origin.includes('127.0.0.1')
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  exposedHeaders: ['Set-Cookie'],
+  maxAge: 86400,
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Security Middlewares - allow cross-origin resource policies for uploaded images
 app.use(

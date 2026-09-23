@@ -1,0 +1,7 @@
+name = "ros"
+main = "worker.js"
+compatibility_date = "2024-09-01"
+
+[vars]
+# Replace this with the URL where your backend Node.js / Express API is deployed
+UPSTREAM_API_URL = "https://api.ros.algorithyum.in"
