@@ -46,8 +46,24 @@ model Restaurant {
   tokens         Token[]
   categories     Category[]
   menuItems      MenuItem[]
+  galleryImages  GalleryImage[]
 
   @@map("restaurants")
+}
+
+model GalleryImage {
+  id           String     @id @default(cuid())
+  restaurantId String     @map("restaurant_id")
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  url          String
+  publicId     String?    @map("public_id")
+  title        String?
+  displayOrder Int        @default(0) @map("display_order")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  @@index([restaurantId])
+  @@map("gallery_images")
 }
 
 model Token {

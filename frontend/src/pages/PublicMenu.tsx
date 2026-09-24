@@ -773,17 +773,21 @@ export const PublicMenu: React.FC = () => {
 
             {/* 3-Column Instagram Grid Layout */}
             <div className="grid grid-cols-3 gap-2">
-              {DEFAULT_GALLERY.map((img) => (
+              {((restaurant as any)?.gallery && (restaurant as any).gallery.length > 0
+                ? (restaurant as any).gallery
+                : DEFAULT_GALLERY
+              ).map((img: any) => (
                 <motion.div
                   key={img.id}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedGalleryImg(img.url)}
+                  onClick={() => setSelectedGalleryImg(getImageUrl(img.url))}
                   className="aspect-square bg-neutral-100 rounded-2xl overflow-hidden cursor-pointer relative shadow-sm border border-neutral-100 group"
                 >
                   <img
-                    src={img.url}
-                    alt={img.title}
+                    src={getImageUrl(img.url)}
+                    alt={img.title || restaurant?.restaurantName || 'Photo gallery'}
                     loading="lazy"
+                    onError={handleImageError}
                     className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
                   />
                   <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">

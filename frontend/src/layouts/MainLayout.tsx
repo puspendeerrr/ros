@@ -7,6 +7,7 @@ import {
   LogoutOutlined,
   QrcodeOutlined,
   SettingOutlined,
+  PictureOutlined,
 } from '@ant-design/icons';
 import { useMutation } from '@tanstack/react-query';
 import { useAuthStore } from '../store/auth.store.js';
@@ -49,6 +50,7 @@ export const MainLayout: React.FC = () => {
   const getSelectedKey = () => {
     if (location.pathname === '/menu') return 'menu';
     if (location.pathname === '/qr-menu') return 'qr-menu';
+    if (location.pathname === '/gallery') return 'gallery';
     if (location.pathname === '/restaurant') return 'restaurant';
     return 'dashboard';
   };
@@ -64,6 +66,8 @@ export const MainLayout: React.FC = () => {
       navigate('/menu');
     } else if (info.key === 'qr-menu') {
       navigate('/qr-menu');
+    } else if (info.key === 'gallery') {
+      navigate('/gallery');
     } else if (info.key === 'restaurant') {
       navigate('/restaurant');
     } else {
@@ -119,6 +123,12 @@ export const MainLayout: React.FC = () => {
                 key: 'qr-menu',
                 icon: <QrcodeOutlined style={{ fontSize: '16px' }} />,
                 label: showFull ? 'QR Menu' : null,
+                style: { borderRadius: '6px', margin: '4px 12px', width: 'calc(100% - 24px)' }
+              },
+              {
+                key: 'gallery',
+                icon: <PictureOutlined style={{ fontSize: '16px' }} />,
+                label: showFull ? 'Gallery' : null,
                 style: { borderRadius: '6px', margin: '4px 12px', width: 'calc(100% - 24px)' }
               },
               {
@@ -309,6 +319,7 @@ export const MainLayout: React.FC = () => {
             { key: 'dashboard', icon: <DashboardOutlined />, label: 'Dashboard', path: '/dashboard' },
             { key: 'menu', icon: <ShopOutlined />, label: 'Menu', path: '/menu' },
             { key: 'qr-menu', icon: <QrcodeOutlined />, label: 'QR Menu', path: '/qr-menu' },
+            { key: 'gallery', icon: <PictureOutlined />, label: 'Gallery', path: '/gallery' },
             { key: 'restaurant', icon: <SettingOutlined />, label: 'Restaurant', path: '/restaurant' },
           ].map((item) => {
             const isActive = getSelectedKey() === item.key;
@@ -335,7 +346,7 @@ export const MainLayout: React.FC = () => {
                   fontSize: '10px',
                   cursor: 'pointer',
                   padding: '4px 0',
-                  width: '25%',
+                  width: '20%',
                   transition: 'color 0.2s',
                 }}
               >

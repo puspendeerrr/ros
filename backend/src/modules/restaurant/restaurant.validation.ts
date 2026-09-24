@@ -24,3 +24,15 @@ export const updateRestaurantSchema = z.object({
 });
 
 export type UpdateRestaurantInput = z.infer<typeof updateRestaurantSchema>;
+
+export const reorderGallerySchema = z.object({
+  imageIds: z.array(z.string().min(1, 'Image ID cannot be empty')).min(1, 'At least one image ID is required'),
+});
+
+export type ReorderGalleryInput = z.infer<typeof reorderGallerySchema>;
+
+export const updateGalleryImageSchema = z.object({
+  title: z.string().max(100, 'Title cannot exceed 100 characters').optional(),
+});
+
+export type UpdateGalleryImageInput = z.infer<typeof updateGalleryImageSchema>;

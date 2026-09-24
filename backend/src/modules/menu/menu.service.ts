@@ -332,6 +332,7 @@ export class MenuService {
         googleMapsUrl: restaurant.googleMapsUrl,
         openingTime: restaurant.openingTime,
         closingTime: restaurant.closingTime,
+        gallery: (restaurant as any).galleryImages || [],
       },
       categories,
     };

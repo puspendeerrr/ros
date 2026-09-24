@@ -156,6 +156,15 @@ export class MenuRepository {
         googleMapsUrl: true,
         openingTime: true,
         closingTime: true,
+        galleryImages: {
+          orderBy: { displayOrder: 'asc' },
+          select: {
+            id: true,
+            url: true,
+            title: true,
+            displayOrder: true,
+          },
+        },
       }
     });
   }

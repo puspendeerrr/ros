@@ -32,4 +32,59 @@ export class RestaurantRepository {
       },
     });
   }
+
+  async findGalleryImages(restaurantId: string) {
+    return prisma.galleryImage.findMany({
+      where: { restaurantId },
+      orderBy: { displayOrder: 'asc' },
+    });
+  }
+
+  async findGalleryImageById(id: string, restaurantId: string) {
+    return prisma.galleryImage.findFirst({
+      where: { id, restaurantId },
+    });
+  }
+
+  async countGalleryImages(restaurantId: string): Promise<number> {
+    return prisma.galleryImage.count({
+      where: { restaurantId },
+    });
+  }
+
+  async createGalleryImage(data: {
+    restaurantId: string;
+    url: string;
+    publicId?: string | null;
+    title?: string | null;
+    displayOrder: number;
+  }) {
+    return prisma.galleryImage.create({
+      data,
+    });
+  }
+
+  async deleteGalleryImage(id: string) {
+    return prisma.galleryImage.delete({
+      where: { id },
+    });
+  }
+
+  async updateGalleryOrders(restaurantId: string, imageIds: string[]) {
+    return prisma.$transaction(
+      imageIds.map((id, index) =>
+        prisma.galleryImage.updateMany({
+          where: { id, restaurantId },
+          data: { displayOrder: index },
+        })
+      )
+    );
+  }
+
+  async updateGalleryImage(id: string, restaurantId: string, data: { title?: string }) {
+    return prisma.galleryImage.updateMany({
+      where: { id, restaurantId },
+      data,
+    });
+  }
 }

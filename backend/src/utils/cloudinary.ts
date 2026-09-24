@@ -45,3 +45,48 @@ export const uploadToCloudinary = async (
     return null;
   }
 };
+
+export const uploadToCloudinaryDetailed = async (
+  filePath: string,
+  folder: string = 'restaurant_os/gallery'
+): Promise<{ url: string; publicId: string } | null> => {
+  if (!isCloudinaryConfigured) return null;
+
+  try {
+    const result = await cloudinary.uploader.upload(filePath, {
+      folder,
+      resource_type: 'auto',
+    });
+
+    try {
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
+    } catch (e) {
+      console.warn('[Cloudinary] Could not remove temp file:', filePath);
+    }
+
+    console.log('[Cloudinary Detailed] Upload success:', result.secure_url, 'publicId:', result.public_id);
+    return {
+      url: result.secure_url,
+      publicId: result.public_id,
+    };
+  } catch (error: any) {
+    console.error('[Cloudinary Detailed Upload Error]:', error.message || error);
+    return null;
+  }
+};
+
+export const deleteFromCloudinary = async (publicId: string): Promise<boolean> => {
+  if (!isCloudinaryConfigured || !publicId) return false;
+
+  try {
+    const result = await cloudinary.uploader.destroy(publicId);
+    console.log('[Cloudinary Delete] Destroy result:', result);
+    return result.result === 'ok';
+  } catch (error: any) {
+    console.error('[Cloudinary Delete Error]:', error.message || error);
+    return false;
+  }
+};
+

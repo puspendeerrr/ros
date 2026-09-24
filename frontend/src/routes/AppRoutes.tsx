@@ -43,6 +43,7 @@ const DownloadsPage = React.lazy(() => import('../pages/DownloadsPage.js').then(
 const Dashboard = React.lazy(() => import('../pages/Dashboard.js').then(m => ({ default: m.Dashboard })));
 const Menu = React.lazy(() => import('../pages/Menu.js').then(m => ({ default: m.Menu })));
 const QRMenu = React.lazy(() => import('../pages/QRMenu.js').then(m => ({ default: m.QRMenu })));
+const Gallery = React.lazy(() => import('../pages/Gallery.js').then(m => ({ default: m.Gallery })));
 const PublicMenu = React.lazy(() => import('../pages/PublicMenu.js').then(m => ({ default: m.PublicMenu })));
 const Restaurant = React.lazy(() => import('../pages/Restaurant.js').then(m => ({ default: m.Restaurant })));
 const Onboarding = React.lazy(() => import('../pages/Onboarding.js').then(m => ({ default: m.Onboarding })));
@@ -165,6 +166,7 @@ export const AppRoutes: React.FC = () => {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/menu" element={<Menu />} />
               <Route path="/qr-menu" element={<QRMenu />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/restaurant" element={<Restaurant />} />
             </Route>
           </Route>

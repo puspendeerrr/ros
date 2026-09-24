@@ -6,6 +6,7 @@ import { UpdateRestaurantInput } from './restaurant.validation';
 import { AppError } from '../../middleware/error.middleware';
 import { cacheService } from '../../utils/cache';
 import { CacheConfig } from '../../config/cache';
+import { deleteFromCloudinary } from '../../utils/cloudinary';
 
 export class RestaurantService {
   private repository = new RestaurantRepository();
@@ -100,5 +101,63 @@ export class RestaurantService {
         console.log(`Successfully deleted obsolete local file: ${absolutePath}`);
       }
     });
+  }
+
+  async getGallery(restaurantId: string) {
+    return this.repository.findGalleryImages(restaurantId);
+  }
+
+  async addGalleryImage(
+    restaurantId: string,
+    data: { url: string; publicId?: string | null; title?: string | null }
+  ) {
+    const currentCount = await this.repository.countGalleryImages(restaurantId);
+    const newImage = await this.repository.createGalleryImage({
+      restaurantId,
+      url: data.url,
+      publicId: data.publicId || null,
+      title: data.title || null,
+      displayOrder: currentCount,
+    });
+
+    await this.invalidatePublicMenuCache(restaurantId);
+    return newImage;
+  }
+
+  async reorderGallery(restaurantId: string, imageIds: string[]) {
+    await this.repository.updateGalleryOrders(restaurantId, imageIds);
+    await this.invalidatePublicMenuCache(restaurantId);
+    return this.repository.findGalleryImages(restaurantId);
+  }
+
+  async deleteGalleryImage(restaurantId: string, imageId: string) {
+    const image = await this.repository.findGalleryImageById(imageId, restaurantId);
+    if (!image) {
+      throw new AppError(404, 'Gallery image not found');
+    }
+
+    await this.repository.deleteGalleryImage(imageId);
+
+    // If hosted on Cloudinary, delete remote asset
+    if (image.publicId) {
+      await deleteFromCloudinary(image.publicId);
+    } else if (image.url && image.url.startsWith('/uploads/')) {
+      // Local fallback file deletion
+      this.deleteLocalFile(image.url);
+    }
+
+    await this.invalidatePublicMenuCache(restaurantId);
+    return { success: true };
+  }
+
+  private async invalidatePublicMenuCache(restaurantId: string) {
+    const restaurant = await this.repository.findById(restaurantId);
+    if (!restaurant) return;
+    await Promise.all([
+      cacheService.incrementVersion(`profile:${restaurantId}`),
+      cacheService.incrementVersion(`restaurant:${restaurantId}`),
+      cacheService.incrementVersion(`restaurant:slug:${restaurant.slug}`),
+      cacheService.incrementVersion(`public-menu:${restaurant.slug}`),
+    ]);
   }
 }
