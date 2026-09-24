@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T04:44:13.846Z",
+  "generatedAt": "2026-09-24T04:30:29.204Z",
   "averageEngagementScore": 78,
   "averageDecayScore": 1,
   "decayingPagesCount": 0,
@@ -16,7 +16,7 @@
         "dwellTimeSeconds": 360
       },
       "contentDecayScore": 1,
-      "freshnessDays": 4,
+      "freshnessDays": 6,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     },
@@ -31,8 +31,8 @@
         "exitRate": 0.22,
         "dwellTimeSeconds": 225
       },
-      "contentDecayScore": 0,
-      "freshnessDays": 2,
+      "contentDecayScore": 1,
+      "freshnessDays": 4,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     },
@@ -48,7 +48,7 @@
         "dwellTimeSeconds": 270
       },
       "contentDecayScore": 2,
-      "freshnessDays": 7,
+      "freshnessDays": 9,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     },
@@ -64,7 +64,7 @@
         "dwellTimeSeconds": 180
       },
       "contentDecayScore": 1,
-      "freshnessDays": 3,
+      "freshnessDays": 5,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     },
@@ -73,14 +73,14 @@
       "title": "Hospitality Architecture for Specialty Cafes & Coffee Shops",
       "pageViews": 9100,
       "uniqueVisitors": 6552,
-      "engagementScore": 78,
+      "engagementScore": 77,
       "bounceSignals": {
-        "bounceRate": 0.35,
-        "exitRate": 0.22,
+        "bounceRate": 0.36,
+        "exitRate": 0.23,
         "dwellTimeSeconds": 225
       },
-      "contentDecayScore": 1,
-      "freshnessDays": 5,
+      "contentDecayScore": 2,
+      "freshnessDays": 7,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     },
@@ -95,8 +95,8 @@
         "exitRate": 0.22,
         "dwellTimeSeconds": 135
       },
-      "contentDecayScore": 0,
-      "freshnessDays": 1,
+      "contentDecayScore": 1,
+      "freshnessDays": 3,
       "authorityGrowthRate": 14.5,
       "performanceStatus": "surging"
     }

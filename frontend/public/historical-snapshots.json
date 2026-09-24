@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T04:44:13.845Z",
+  "generatedAt": "2026-09-24T04:30:29.202Z",
   "snapshots": [
     {
       "snapshotId": "snap-60d-ago",
@@ -20,8 +20,8 @@
       "openRecommendations": 6
     },
     {
-      "snapshotId": "snap-2026-09-22",
-      "date": "2026-09-22",
+      "snapshotId": "snap-2026-09-24",
+      "date": "2026-09-24",
       "overallHealthScore": 94,
       "impressions": 84700,
       "clicks": 8725,

@@ -11,6 +11,7 @@ import { SplashLoader } from '../components/SplashLoader.js';
 import { ProtectedRoute, PublicOnlyRoute } from './ProtectedRoute.js';
 import { useAuthStore } from '../store/auth.store.js';
 import { restaurantService } from '../services/restaurant.service.js';
+import { API_BASE_URL } from '../services/api.js';
 
 // Route-based code splitting with lazy loading
 const Landing = React.lazy(() => import('../pages/Landing.js').then(m => ({ default: m.Landing })));
@@ -64,7 +65,7 @@ export const AppRoutes: React.FC = () => {
     const autoLogin = async () => {
       try {
         const response = await axios.post(
-          `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/refresh-token`,
+          `${API_BASE_URL}/refresh-token`,
           {},
           { withCredentials: true }
         );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { API_BASE_URL } from '../services/api.js';
 
 /**
  * Helper function to construct complete image URLs safely.
@@ -15,8 +16,7 @@ export const getImageUrl = (url?: string | null, fallback: string = '/placeholde
   ) {
     return cleanUrl;
   }
-  const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-  return `${baseUrl}${cleanUrl.startsWith('/') ? '' : '/'}${cleanUrl}`;
+  return `${API_BASE_URL}${cleanUrl.startsWith('/') ? '' : '/'}${cleanUrl}`;
 };
 
 /**
